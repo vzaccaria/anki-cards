@@ -1,0 +1,74 @@
+
+#+TITLE: Algebra
+#+AUTHOR: Vittorio Zaccaria
+#+INCLUDE: ./beamer_modern.org
+#+LEVEL: 3
+
+#+OPTIONS:   H:3 num:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t ':t
+
+
+* Algebraic structures
+
+** Semirings
+*** Semiring (Rig)
+    A [[https://en.wikipedia.org/wiki/Semiring][semiring]] $R$ consists of a set $R$ such that:
+
+    - $(R, +)$ is a commutative monoid with identity = 0 (note, *not a group*, it
+      should not have an inverse).
+    - $(R, *)$ is a monoid with identity = 1
+    - multiplication distributes over addition
+    - multiplication by 0 gives 0 (annihilates).
+   
+** Rings 
+*** Ring
+
+    A [[https://en.wikipedia.org/wiki/Ring_(mathematics)][ring]] $R$ consists of a set $R$ such that:
+    
+    - $(R, +)$ is a commutative *group* with identity=0 (note that it should have
+      an inverse).
+    - $(R, *)$ is a monoid with identity = 1 (Semigroup)
+    - multiplication distributes over addition
+    - multiplication by 0 gives 0 (annihilates).
+
+*** Ideals 
+    An *ideal* $I$ is a special subset of a ring $R$ that respects the following properties:
+
+    - *closure*: summing two elements of $I$ gives another element of $I$.
+    - *absorption*: multiplying an element of $I$ by any other element in $R$
+      gives an element of $I$.
+
+    Example: the even numbers are an ideal of the natural numbers
+
+** Fields
+
+*** Field
+
+    A [[https://en.wikipedia.org/wiki/Field_(mathematics)][field]] a set with two operations:
+
+    - $(F, +)$ is a commutative group 
+    - $(F, *)$ is a commutative group 
+
+*** Field characteristic 
+
+    Given a multiplication operator 
+
+    \[ 
+      \cdot: \mathbb{N}^+ \times F \rightarrow F = \Pi_{n} f, ~~f \in F
+    \] 
+
+    The field characteristic $n$ is such that $n \cdot 1_{*}$ is 0. 
+    If $n \neq 0$, then $n$ is prime, otherwise it is 0.
+
+*** Prime field of F
+    It is a subfield of F containing elements $f_i$ such that:
+    
+    \[
+      f_i \in PF(F) \leftrightarrow \exists n~~s.t.~~ f_i = \Pi_n 1_{*}
+    \]
+
+    If the field has characteristic $p$, then its prime field is isomorphic to $F_p$.
+
+*** Finite field F
+    It has finitiely many elements. For example, for any prime number $p$ there
+    is a finite field $F_p$ where the arithmetic operations are understood as
+    modular.
