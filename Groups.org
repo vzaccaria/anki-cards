@@ -1,12 +1,11 @@
 
-#+TITLE: Algebra
+#+TITLE: Algebra (1)
 #+AUTHOR: Vittorio Zaccaria
 #+LEVEL: 3
 
 
 
-* Simple algebraic structures
-
+* Algebraic structures with one operator
 ** Other structures 
 *** Magma
     A magma is set $M$ equipped with a single binary operation,
@@ -57,7 +56,6 @@
     \[
       f(1_X) = 1_Y \textrm{~~and~~} f(m \star n) = f(m) * f(n)
     \]
-
 
 ** Groups
 *** Group
