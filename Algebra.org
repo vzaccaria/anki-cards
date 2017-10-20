@@ -231,14 +231,14 @@
 
 *** R-Module
 
-    Generalization of vector space. A pair $(V,R)$ where 
+    Generalization of vector space. A pair $(V,K)$ where 
 
     - $(K,(+ ,0),(\cdot,1))$ is a *ring*
     - $(V,+,e)$ is an abelian group under addition
     
     Moreover, the following operation should be total (scalar multiplication)
     \[
-    *: R \times V \rightarrow V
+    *: K \times V \rightarrow V
     \]
   
    

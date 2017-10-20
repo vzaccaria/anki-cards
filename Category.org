@@ -1,0 +1,171 @@
+#+STARTUP: showall indent latexpreview entitiespretty
+#+TITLE: Category Theory
+#+LEVEL: 3
+* Category
+:PROPERTIES:
+:color: blue!30
+:placement: 13,5
+:END:       
+** Introduction to categories
+*** Category: Definition
+
+A  is a triple $\mathcal{C}(O, M, \bullet)$ where 
+
+
+- $\forall o \in O, \exists id_o \in M$
+- $\bullet$ is a composition operation which should be defined for all morphisms
+  in $M$ that share source and target :
+
+  1. $\bullet(A \rightarrow B, B \rightarrow C) = A \rightarrow C$
+  2. $(f \bullet g) \bullet h == f \bullet (h \bullet g)$ 
+  3. $id_x \bullet f = f \bullet id_y$
+
+*** Category: example 
+
+The question mark indicates that the value *has to be defined* accordingly (but left unspecified in the table)[fn:1].
+
+**** 
+     :PROPERTIES:
+     :BEAMER_COL: 0.5
+     :END:
+#+BEGIN_EXPORT latex
+\begin{figure}
+\begin{tikzpicture}[scale=0.5]
+\node (x) [circle,draw] at (0,0) {x}  edge [loop above] node {$f_x$} ();
+\node [circle,draw] at (0,0) {x}  edge [loop below] node {$id_x$} ();
+\node (y) [circle,draw] at (2,0) {y}  edge [loop above] node {$f_y$} ();
+\node [circle,draw] at (2,0) {y}  edge [loop below] node {$id_y$} ();
+\path[->] (x) edge [bend left]  node [above]  {a} (y)
+              edge [bend right] node [below]  {b} (y);
+\end{tikzpicture}
+\end{figure}
+#+END_EXPORT
+
+**** 
+     :PROPERTIES:
+     :BEAMER_COL: 0.5
+     :END:
+
+| $\downarrow \bullet \rightarrow$ | $id_x$ | $id_y$ | $f_x$ | $f_y$ | $a$ | $b$ |
+|----------------------------------+--------+--------+-------+-------+-----+-----|
+| $id_x$                           | $id_x$ |        | $f_x$ |       |     |     |
+| $id_y$                           |        | $id_y$ |       | $f_y$ | $a$ | $b$ |
+| $f_x$                            | $f_x$  |        | ?     |       |     |     |
+| $f_y$                            |        | $f_y$  |       | ?     | ?   | ?   |
+| a                                | $a$    |        | ?     |       |     |     |
+| b                                | $b$    |        | ?     |       |     |     |
+
+** Monoid 
+*** Monoid definition 
+    A monoid $\mathcal{M}(M, id_0, \star)$ is just a category $\mathcal{C}(O, M,
+    \star)$ where O = ${ o_1 }$ and $id_0 = id_{o1}$.
+
+    Basically, the elements of a monoid are the arrows of the corresponding
+    category. Elements and operations allowed are:
+   
+    - *unit* (element)
+    - *sum* (operation)
+    
+    A monoid is a semi-group (no inverse) with identity element.
+
+*** Free Monoid 
+:PROPERTIES:
+:placement: 18,0
+:END:
+
+A free monoid of M is just a monoid $\mathcal{M}(List[M], [], ++)$. 
+
+*** Action 
+
+An action of a $\mathcal{M}(M, id_0, \star)$ over a set $S$ of states is a
+function \[ M \times S \rightarrow S \]
+  
+It is equivalent to an automata
+** Preorder
+*** Preorder definition
+
+   A preorder is a category where for any pair of objects x,y there there is at
+   most one morphism from x to y. Identity and composition manifest themselves
+   through the *reflexivity* and *transitivity* properties.
+
+*** Partial order (poset) definition
+    A partial order is a preorder where there cannot be cycles.
+
+*** Linear order definition
+    In a linear order, either there exists a morphism from $a \rightarrow b$ or
+    from $b \rightarrow a$ (not both).
+*** Meet 
+    - A *meet* (where it exists) is the unique product of two objects in a poset:
+#+BEGIN_EXPORT latex
+\begin{figure}
+\begin{tikzpicture}
+\graph[layered layout, level distance=1cm]{ "$x \wedge y$" -> {"$x$", "$y$"} };
+\end{tikzpicture}
+\end{figure}
+#+END_EXPORT
+*** Join 
+    - A *join* (where it exists) is the unique coproduct of two objects in a poset:
+#+BEGIN_EXPORT latex
+\begin{figure}
+\begin{tikzpicture}
+\graph[layered layout, level distance=1cm]{ "$x$" -> "$x \vee y$" , "$y$" -> "$x \vee y$" };
+\end{tikzpicture}
+\end{figure}
+#+END_EXPORT
+*** Examples / Simplicial category
+    An ordinal number $\textbf{n}$ is a linearly ordered set of previous ordinals:
+
+    | $\textbf{n}$ | Ordered set                       |
+    |--------------+-----------------------------------|
+    | $\textbf{0}$ | {}                                |
+    | $\textbf{1}$ | {$0$}                             |
+    | $\textbf{2}$ | {$0 \rightarrow 1$}               |
+    | $\textbf{3}$ | {$0 \rightarrow 1 \rightarrow 2$} | 
+
+    The set $\textbf{0}, \ldots \textbf{n-1}$ is the object set of a *simplicial
+    category* if there are *order preserving morphisms* 
+    
+    #+BEGIN_EXPORT latex
+    \begin{equation}
+    f_i: \textbf{n} \rightarrow \textbf{m}
+    \end{equation}
+    #+END_EXPORT
+    
+    between ordinals. If we remove order preservation, we get the category *Finord*.
+
+** Lattice 
+*** Definition 
+    [[https://ncatlab.org/nlab/show/lattice][A lattice]] is a poset which admits all finite meets and finite joins (of its objects).
+** Groupoid / Group
+*** Definition 
+    A (small) *groupoid* is a (small) category in which all morphisms are
+   *isomorphisms*. I.e., composition has a *two sided inverse*.
+** Special cats
+*** Small Category
+    Just a set.
+*** Big category 
+    A category of categories that has functors as morphisms and excludes itself.
+* Functors
+*** Introduction
+  A functor $F$
+  \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ where 
+  $F_o$ maps objects across categories $\mathcal{C}$ and $\mathcal{C'}$, while 
+  $F_m$ maps morphisms. Laws: $F(id_o) = id_F(o)$ and $F(h \bullet g) = F(h) \bullet F(g)$
+*** Examples 
+    The powerset operator $P$ is a functor from the *Set* to *Set*:
+*** Full and faithful functors 
+    It is easier to look at the following definitions by taking into account the maps on the Homsets:
+
+    - a *full functor* $T: C \rightarrow D$ is such that, for each morphism in $D$
+      there is at least one morphism in $C$ that produces it (/surjectivity/).
+    - a *faithful functor* $T: C \rightarrow D$ is such that for each different
+      morphism in $C$ we get different morphism in $D$ (/injectivity/).
+
+    A full and faithful functor may not be an isomorphism because categories
+    might have different sets of objects.
+
+* Footnotes
+
+[fn:1] if one has to introduce another morphism, it should take care of filling
+up the composition table. Besides, the operation should be associative.
+
