@@ -111,7 +111,7 @@
 *** Factor group
 
     If $H$ is a normal subgroup of $G$, coset multiplication is a group
-    operation of a particular group: the _factor group_.
+    operation of a particular group: the *factor group*.
 
     The factor group or quotient group $G/H$ is a group where elements are the
     cosets of $G$ by $H$ and group operation is cosets multiplication.
