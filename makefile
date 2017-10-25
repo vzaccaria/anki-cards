@@ -7,7 +7,7 @@ TARGETS=\
 all: $(TARGETS)
 
 CURTGT=Algebra.pdf
-CURORG=$(patsubst %.pdf, %.org, $(CURTGT))
+CURORG=$(patsubst %.pdf,%.org,$(CURTGT))
 
 anki-cards/Algebra/Algebra.json: Algebra.org
 	mkdir -p $(dir $@)
@@ -22,11 +22,14 @@ anki-cards/Books/Books.json: Books.org
 	pandoc-anki $< -j > $@
 
 %.pdf: %.org
-	org2pdf $< --use-header ~/dotfiles/org-headers/header_anki.org
+	org2pdf $<
 
-edit: $(CURTGT)
+watch: $(CURTGT)
 	open $(CURTGT)
 	watchman $(CURORG) "make $(CURTGT)"
+
+edit:
+	emacsclient "$(CURORG)" -c
 
 clean:
 	rm -rf anki-cards
