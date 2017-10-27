@@ -32,4 +32,4 @@ edit:
 	emacsclient "$(CURORG)" -c
 
 clean:
-	rm -rf anki-cards
+	rm -rf anki-cards *.pdf *.log
