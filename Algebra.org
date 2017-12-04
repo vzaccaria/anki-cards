@@ -4,23 +4,23 @@
 #+OPTIONS: H:3
 
 * Algebraic structures with one operator
-** Other structures 
+** Other structures
 *** Magma
     A magma is set $M$ equipped with a single binary operation,
     $(*): M \times M \rightarrow M$ that satisfies:
 
-   - *closure*: $a \in M, b \in M \rightarrow a * b \in M$ 
+   - *closure*: $a \in M, b \in M \rightarrow a * b \in M$
 
 ** Monoids
 *** Monoid
-   
-   A monoid $(M,*)$ is a *semigroup* with a unit element ($1 \in M$) where the $*$ 
+
+   A monoid $(M,*)$ is a *semigroup* with a unit element ($1 \in M$) where the $*$
    operation satisfies:
-   
+
    - *identity*: $m * 1 = m, \forall m \in M$.
 
 *** Generator set (Monoid)
-    A subset $S$ of $M$ is said to be a generator if all elements $m \in M$ 
+    A subset $S$ of $M$ is said to be a generator if all elements $m \in M$
     can be obtained by some kind of *fold* of the elements $s \in S$.
 
     \[
@@ -29,7 +29,7 @@
 
 *** Free generator set (Monoid)
 
-    A subset $S$ of $M$ is said to be a generator if all elements $m \in M$ 
+    A subset $S$ of $M$ is said to be a generator if all elements $m \in M$
     can be obtained by a *unique fold* of the elements $s \in S$.
 
     \[
@@ -49,30 +49,30 @@
 *** Abelian monoid
     A monoid $(M,*)$ where $$\forall m_1,m_2 \in M, m_1 * m_2 = m_2 * m_1$$
 
-*** Monoid homomorphisms 
+*** Monoid homomorphisms
     Given two monoids $(X,\star)$ and $(Y, *)$, a homomorphism $$f: (X,\star)
     \rightarrow (Y,*)$$ is a function $f: X \rightarrow Y$ such that:
-    
+
     \[
       f(1_X) = 1_Y \textrm{~~and~~} f(m \star n) = f(m) * f(n)
     \]
 
 ** Groups
 *** Group
-   
+
    A [[https://en.wikipedia.org/wiki/Group_(mathematics)][group]] $G$ is a monoid where for all elements $a$, the (*) operation satisfies:
 
    - *closure*: $a \in G, b \in G \rightarrow a * b \in G$
    - *identity element*: $a * 1_G = 1_G * a = a$
    - *invertibility*: $a * a^{-1} = 1$.
-   - *associativity*: $a * (b * c) = (a * b) * c$ 
+   - *associativity*: $a * (b * c) = (a * b) * c$
 
    In a group, every element has its own inverse.
 
-*** Subgroup  
+*** Subgroup
    $H$ is a [[https://en.wikipedia.org/wiki/Subgroup][subgroup]] of $G$ if:
 
-   - $H \subseteq G$ 
+   - $H \subseteq G$
    - It is closed under (*).
 
    The *trivial subgroup* of any group is the subgroup ${e}$ consisting of just the identity element.
@@ -82,21 +82,21 @@
 
 *** Kernel of a group homomorphism
     The *kernel* $\textrm{ker}(f)$ of a group homomorphism $f: (G,\star)
-    \rightarrow (H,*)$ is a set $K$ such that 
-    
-    - $K \subseteq G$ 
-    - $\forall k \in K, f(k) = 1_{*}$ 
+    \rightarrow (H,*)$ is a set $K$ such that
+
+    - $K \subseteq G$
+    - $\forall k \in K, f(k) = 1_{*}$
 
 *** Range of a group homomorphism
     The *range* $\textrm{range}(f)$ of a homomorphism  $f: (G,\star)
-    \rightarrow (H,*)$ is a set $R$ such that 
+    \rightarrow (H,*)$ is a set $R$ such that
 
     - $R \subseteq H$
     - $\forall r \in R, \exists g \in G \textrm{~s.t.~} r = f(g)$
 
-*** Coset 
+*** Coset
     Given a subgroup $(H, \star) \subseteq (G, \star)$, we define the *left coset* of $H$ as
-    $$H_g = \{g \star h : h \in H\}$$ 
+    $$H_g = \{g \star h : h \in H\}$$
 
 *** What is the set of cosets of a normal subgroup $H$ of $G$?
 
@@ -108,8 +108,8 @@
     Every subgroup of an abelian group is normal.
 
 *** Coset multiplication
-    
-    Coset multiplication operation: $$Hg_1 * Hg_2 = H(g_1 \star g_2),~~g_1,g_2 \in G$$ 
+
+    Coset multiplication operation: $$Hg_1 * Hg_2 = H(g_1 \star g_2),~~g_1,g_2 \in G$$
 
 *** Factor/quotient group
 
@@ -118,9 +118,9 @@
 
     - The factor group $G/H$ is a group where elements are the
       cosets of $G$ by $H$ and group operation is cosets multiplication.
-  
-*** Construct a quotient group $Z/6Z$. 
-    
+
+*** Construct a quotient group $Z/6Z$.
+
 
     - $(G, +) = Z$
     - $(H, +) \subseteq (G,+) = 6Z$ is the subgroup of all multiples of 6 in $Z$
@@ -128,22 +128,22 @@
       (their elements are infinite, but there are only 6 of them, $H_1=H_7=\ldots$).
     - the *operation* among cosets $$Hg_1 + Hg_2 = H_{g_1 + g_2}$$  respects
       the quotient group properties.
-    
-    This quotient group is also called *the cyclic group $Z_6$*. 
 
-*** Homomorphisms of a group into a quotient group 
+    This quotient group is also called *the cyclic group $Z_6$*.
+
+*** Homomorphisms of a group into a quotient group
     Given a quotient group $G/H$, there is a homomorphism $G \rightarrow G/H$.
 
 *** How many elements has each coset of $H$ (a subgroup of $G$)?
-    
-    All cosets of $H$ have *the same amount* of elements of $H$ 
+
+    All cosets of $H$ have *the same amount* of elements of $H$
 
 *** What is the size of a group $G$ with respect to the size of the cosets of its subgroup $H$?
 
     The size of $G$ is a multiple of the size of $H$ (and in turn, also of the size of its cosets).
-    
-*** Semigroup 
-   
+
+*** Semigroup
+
     A [[https://en.wikipedia.org/wiki/Semigroup][semigroup]] $S$ is a "group without inverse".
 
    - *closure*: $a \in G, b \in G \rightarrow a * b \in G$
@@ -162,28 +162,28 @@
     \[
       F = End(A) = \{ f: f(a + b) = f(a) + f(b), \forall a,b \in A \}
     \]
-    
+
     $End(A,++,\circ, \textrm{const~} 0, \textrm{const~} 1)$ is a *ring* (of functions) where
 
     - $(f ++ g)(x) = f(x) + g(x)$
     - $(f \circ g)(x) = f(g(x))$
 
 *** Order of a group element
-    In a group, the least integer $n$ such that $a^n=1_{*}$, then that element 
+    In a group, the least integer $n$ such that $a^n=1_{*}$, then that element
     has order $n$.
 
 *** Cyclic group
     If $G$ has an element $a$ and all its elements are powers of $a$, then $G$ is cyclic:
     $$G = \{ a^n : n \in Z \}$$
 
-    $a$ is called generator and the group order is the order of $a$. 
-    
-*** Symmetric group 
+    $a$ is called generator and the group order is the order of $a$.
+
+*** Symmetric group
     The symmetric group $S_n$ is the group of all permutations (symmetries) of $\{1, . . . , n\}$
 
 *** Group action
-     
-     - A group action $\phi$ of group $G$ on a set $X$ is a function 
+
+     - A group action $\phi$ of group $G$ on a set $X$ is a function
        $$*: G \times X \rightarrow X$$ satisfying the following properties:
 
        - identity: $e * x = x$
@@ -192,59 +192,38 @@
      - An action $g * x$ is the same as a group homomorphism $G \rightarrow \textrm{Aut}(X)$
 
 *** Linear group representation
-    
-    - A *linear group representation* of $G$ is a group homomorphism 
+
+    - A *linear group representation* of $G$ is a group homomorphism
       $$\rho : G \rightarrow GL(V)$$
-     
+
     - It “represents” the elements of $G$ as *symmetries of the vector space $V$*.
 
-*** Permutation representation of $G$ on $X$
-     The *permutation representation* encodes a group $G$ action on $X$ as a
-     linear group representation on $V$ which is built on bases indexed by
-     $X$.
+*** Properties of a linear group representation
 
-     It is defined as the group homomorphism $$\rho: G \rightarrow
-     GL(V)$$ given by $$\rho(s)e_{x}=e_{s.x}$$
-
-*** Left regular representation 
-
-    - If we treat $G$ as a set $X$, the left regular representation is just the 
-      permutation representation of $G$ on $G$.
-
-    - Formally, we can assign a vector basis to each $g \in G$ to get a vector
-      space $\mathbb{C}G$ that is freely generated by the elements of $G$.
- 
-    - A left regular representation $$G \rightarrow
-      GL(\mathbb{C}G)$$ represents a left translation by $g$ (i.e., one of 
-      the possible actions}.
-
-*** Right regular representation 
-
-    - If we treat $G$ as a set $X$, the right regular representation is defined
-      by a different permutation representation of $G$ on $G$, i.e.,
-      $$\rho(s)e_{x}=e_{x.s^{-1}}$$
-
-# # *** Group representation 
-
-# #     A group representation is a function $$\rho : G \rightarrow E \rightarrow E$$
-# #     with the following properties:
-
-# #     - $E$ is a vector space
-# #     - $\rho(gh) = \rho(g)\rho(h)$ (homomorphism)
-# #     - $\rho(1)v = v$
-# #     - $(g*_Gh)v = g(hv)$
-    
-# #     where $g,h \in G$, $v \in E$.
-
-# # *** Degree of a representation
-
-# #     The degree of a representation of $G$ over $V$ is the *dimension of its
-# #     representation space* $V$.
+    - $\rho_g \rho_h = \rho_{gh}$
+    - $\rho_1 = Id$
+    - $(\rho_g)^{-1} = \rho_{g^{-1}}$
+    - $\rho_g(xv + yw) = x\rho_gv + y\rho_gw$
 
 
+*** Permutation representation
+     - The *permutation representation* is associated with a symmetric group $G =
+       S_n$ and acts on a $V_k = k^n$.
+
+     - It is defined as the group homomorphism $\rho: S_n \rightarrow GL(k^n)$
+       where $$\rho_s(x_1 \ldots x_n) = (x_{s(1)} \ldots x_{s(n)})$$.
+
+*** Left regular representation
+
+    - Given a group $G$ and a field $K$ we can define a group algebra $K(G)$
+      where vectors are of the form:
+
+      $$f = \sum_{g\in G}a_{g,f} e_g$$
+
+    - A left regular representation $\rho: G \rightarrow GL(K(G))$
+      is such that $$\rho(s)f = \rho(s)\sum_{g\in G}a_{g,f} e_g = \sum_{g\in G}a_{g,f} e_{s*g}$$
 
 
-    
 * Algebraic structures with two operators
 ** Semirings
 *** Semiring (Rig)
@@ -255,19 +234,19 @@
     - $(R, *)$ is a monoid with identity = 1
     - multiplication distributes over addition
     - multiplication by 0 gives 0 (annihilates).
-   
-** Rings 
+
+** Rings
 *** Ring
 
     A [[https://en.wikipedia.org/wiki/Ring_(mathematics)][ring]] $R$ consists of a set $R$ such that:
-    
+
     - $(R, +)$ is a *commutative* *group* with identity=0 (note that it should have
       an inverse).
     - $(R, *)$ is a monoid with identity = 1 (Semigroup)
     - multiplication distributes over addition
     - multiplication by 0 gives 0 (annihilates).
 
-*** Ideals 
+*** Ideals
     An *ideal* $I$ is a special subset of a ring $R$ that respects the following properties:
 
     - *closure*: $+: I \times I \rightarrow I$ is total.
@@ -278,7 +257,7 @@
 *** Ring homomorphism
 
     If $R$ and $S$ are rings, a ring homomorphism $f: R \rightarrow S$ is a
-    total function such that: 
+    total function such that:
 
     - $f(a + b) = f(a) + f(b)$
     - $f(a * b) = f(a) * f(b)$
@@ -291,18 +270,18 @@
 
     A [[https://en.wikipedia.org/wiki/Field_(mathematics)][field]] a set with two operations:
 
-    - $(F, +)$ is a commutative group 
-    - $(F, *)$ is a commutative group 
+    - $(F, +)$ is a commutative group
+    - $(F, *)$ is a commutative group
 
-*** Field characteristic 
+*** Field characteristic
 
-    Given a multiplication operator 
+    Given a multiplication operator
 
-    \[ 
+    \[
       \cdot: \mathbb{N}^+ \times F \rightarrow F = \sum_{n} f, ~~f \in F
-    \] 
+    \]
 
-    The field characteristic $n$ is such that $n \cdot 1_{*}$ is 0. 
+    The field characteristic $n$ is such that $n \cdot 1_{*}$ is 0.
     If $n \neq 0$, then $n$ is prime, otherwise it is 0.
 
 *** Prime field F
@@ -315,15 +294,15 @@
 
 
 * Algebras of vector spaces and modules
-** Vector spaces 
+** Vector spaces
 
 *** Vector space
 
-    A pair $(V,K)$ where 
+    A pair $(V,K)$ where
 
     - $(K,(+,0),(\cdot,1))$ is a field
     - $(V,+,e)$ is an abelian group under addition
-    
+
     Moreover, the following operation should be total (scalar multiplication)
     \[
     *: K \times V \rightarrow V
@@ -335,14 +314,14 @@
     Classical results of geometry apply.
 
 *** Normed vector spaces
-    
-    A *normed* vector space $V$ is endowed with a map $V \rightarrow R$. 
 
-*** Inner product spaces 
-    
+    A *normed* vector space $V$ is endowed with a map $V \rightarrow R$.
+
+*** Inner product spaces
+
     An *inner product* space $V$ is endowed with an operation $V \times V \rightarrow R$.
 
-*** Algebra 
+*** Algebra
 
     - It is a module/vector space equipped with a bi-linear operator $$ \times: V \times V
       \rightarrow V$$ acting as *multiplication* between vectors.
@@ -353,20 +332,29 @@
       - Left distributivity: $x \times (y + z) = x \times y + x \times z$
       - Compatibility with scalars: $(ax) \times (by) = (ab) (x \times y)$.
 
-    - Examples: 
-    
-      - $R^3$ with cross-product $\times$
+*** Group Algebra
+
+    Given a group $G$ and a field $K$, we can build an algebra $K[G]$ where
+
+    - vectors are functions $f: G \rightarrow K$ for $K$ either a ring or
+      field.
+    - $(f_1 + f_2) = g \mapsto f_1(g) + f_2(g)$
+    - $(\alpha f) = g \mapsto \alpha f(g)$
+    - $(f_1 \times f_2) = g \mapsto \sum_{u \in G}f_1(u)f_2(u^{-1}g)$
+
+    - Sometimes vectors $f$ are written as /linear combinations of the elements
+      of $G$ with coefficients in K/, i.e., $$f = \sum_{g\in G}a_{g,f} e_g$$ where
+      $e_g$ are basis in $K[G]$.
+
 
 *** R-Module
 
-    Generalization of vector space. A pair $(V,K)$ where 
+    Generalization of vector space. A pair $(V,K)$ where
 
     - $(K,(+ ,0),(\cdot,1))$ is a *ring*
     - $(V,+,e)$ is an abelian group under addition
-    
+
     Moreover, the following operation should be total (scalar multiplication)
     \[
     *: K \times V \rightarrow V
     \]
-  
-   

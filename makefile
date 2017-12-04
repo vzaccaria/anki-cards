@@ -2,7 +2,7 @@
 TARGETS=\
 	anki-cards/Algebra/Algebra.json \
 	anki-cards/Books/Books.json \
-	anki-cards/Category/Category.json 
+	anki-cards/Category/Category.json
 
 all: $(TARGETS)
 
@@ -32,4 +32,4 @@ edit:
 	emacsclient "$(CURORG)" -c
 
 clean:
-	rm -rf anki-cards *.pdf *.log
+	rm -rf anki-cards *.pdf *.log tmp-*
