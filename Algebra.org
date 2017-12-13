@@ -196,7 +196,7 @@
     - A *linear group representation* of $G$ is a group homomorphism
       $$\rho : G \rightarrow GL(V)$$
 
-    - It “represents” the elements of $G$ as *symmetries of the vector space $V$*.
+    - It represents the elements of $G$ as *symmetries of the vector space* $V$.
 
 *** Properties of a linear group representation
 
@@ -210,8 +210,8 @@
      - The *permutation representation* is associated with a symmetric group $G =
        S_n$ and acts on a $V_k = k^n$.
 
-     - It is defined as the group homomorphism $\rho: S_n \rightarrow GL(k^n)$
-       where $$\rho_s(x_1 \ldots x_n) = (x_{s(1)} \ldots x_{s(n)})$$.
+     - A permutation representation $\rho: S_n \rightarrow GL(k^n)$
+       is such that $$\rho_s(x_1 \ldots x_n) = (x_{s(1)} \ldots x_{s(n)})$$.
 
 *** Left regular representation
 
@@ -275,14 +275,11 @@
 
 *** Field characteristic
 
-    Given a multiplication operator
+    A field has characteristic $n$ if $1_{*}$ summed with it self $n$ times gives
+    $0_{+}$.
 
-    \[
-      \cdot: \mathbb{N}^+ \times F \rightarrow F = \sum_{n} f, ~~f \in F
-    \]
-
-    The field characteristic $n$ is such that $n \cdot 1_{*}$ is 0.
-    If $n \neq 0$, then $n$ is prime, otherwise it is 0.
+    The following relation is found to hold: $$ n > 0 \leftrightarrow
+    \textrm{prime}(n)$$
 
 *** Prime field F
     A finite field of order $p$ where $p$ is prime.
