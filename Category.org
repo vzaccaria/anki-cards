@@ -12,26 +12,27 @@
 :PROPERTIES:
 :color: blue!30
 :placement: 13,5
-:END:       
+:END:
 ** Introduction to categories
 *** Category: Definition
 
-A  is a triple $\mathcal{C}(O, M, \bullet)$ where 
-
+A  is a triple $\mathcal{C}(O, M, \bullet)$ where
 
 - $\forall o \in O, \exists id_o \in M$
+
 - $\bullet$ is a composition operation which should be defined for all morphisms
   in $M$ that share source and target :
 
   1. $\bullet(A \rightarrow B, B \rightarrow C) = A \rightarrow C$
-  2. $(f \bullet g) \bullet h == f \bullet (h \bullet g)$ 
+  2. $(f \bullet g) \bullet h == f \bullet (h \bullet g)$
   3. $id_x \bullet f = f \bullet id_y$
 
-*** Category: example 
+*** Category: example
 
-The question mark indicates that the value *has to be defined* accordingly (but left unspecified in the table)[fn:1].
+The question mark indicates that the value *has to be defined* accordingly (but
+left unspecified in the table)[fn:1].
 
-**** 
+****
      :PROPERTIES:
      :BEAMER_COL: 0.5
      :END:
@@ -48,7 +49,7 @@ The question mark indicates that the value *has to be defined* accordingly (but 
 \end{figure}
 #+END_EXPORT
 
-**** 
+****
      :PROPERTIES:
      :BEAMER_COL: 0.5
      :END:
@@ -62,32 +63,36 @@ The question mark indicates that the value *has to be defined* accordingly (but 
 | a                                | $a$    |        | ?     |       |     |     |
 | b                                | $b$    |        | ?     |       |     |     |
 
-** Monoid 
-*** Monoid definition 
+*** Category: meaning
+
+You define a property of an object in terms of all the other object,
+not its internals.
+** Monoid
+*** Monoid definition
     A monoid $\mathcal{M}(M, id_0, \star)$ is just a category $\mathcal{C}(O, M,
     \star)$ where O = ${ o_1 }$ and $id_0 = id_{o1}$.
 
     Basically, the elements of a monoid are the arrows of the corresponding
     category. Elements and operations allowed are:
-   
+
     - *unit* (element)
     - *sum* (operation)
-    
+
     A monoid is a semi-group (no inverse) with identity element.
 
-*** Free Monoid 
+*** Free Monoid
 :PROPERTIES:
 :placement: 18,0
 :END:
 
-A free monoid of M is just a monoid $\mathcal{M}(List[M], [], ++)$. 
+A free monoid of M is just a monoid $\mathcal{M}(List[M], [], ++)$.
 
-*** Action 
+*** Action
 
 An action of a $\mathcal{M}(M, id_0, \star)$ over a set $S$ of states is a
 function \[ M \times S \rightarrow S \]
-  
-It is equivalent to an automata
+
+It is equivalent to an automata.
 ** Preorder
 *** Preorder definition
 
@@ -101,7 +106,8 @@ It is equivalent to an automata
 *** Linear order definition
     In a linear order, either there exists a morphism from $a \rightarrow b$ or
     from $b \rightarrow a$ (not both).
-*** Meet 
+
+*** Meet
     - A *meet* (where it exists) is the unique product of two objects in a poset:
 #+BEGIN_EXPORT latex
 \begin{figure}
@@ -110,7 +116,8 @@ It is equivalent to an automata
 \end{tikzpicture}
 \end{figure}
 #+END_EXPORT
-*** Join 
+
+*** Join
     - A *join* (where it exists) is the unique coproduct of two objects in a poset:
 #+BEGIN_EXPORT latex
 \begin{figure}
@@ -127,44 +134,75 @@ It is equivalent to an automata
     | $\textbf{0}$ | {}                                |
     | $\textbf{1}$ | {$0$}                             |
     | $\textbf{2}$ | {$0 \rightarrow 1$}               |
-    | $\textbf{3}$ | {$0 \rightarrow 1 \rightarrow 2$} | 
+    | $\textbf{3}$ | {$0 \rightarrow 1 \rightarrow 2$} |
 
     The set $\textbf{0}, \ldots \textbf{n-1}$ is the object set of a *simplicial
-    category* if there are *order preserving morphisms* 
-    
+    category* if there are *order preserving morphisms*
+
     #+BEGIN_EXPORT latex
     \begin{equation}
     f_i: \textbf{n} \rightarrow \textbf{m}
     \end{equation}
     #+END_EXPORT
-    
+
     between ordinals. If we remove order preservation, we get the category *Finord*.
 
-** Lattice 
-*** Definition 
+** Lattice
+
+*** Definition
     [[https://ncatlab.org/nlab/show/lattice][A lattice]] is a poset which admits all finite meets and finite joins (of its objects).
+
 ** Groupoid / Group
-*** Definition 
+
+*** Definition
     A (small) *groupoid* is a (small) category in which all morphisms are
    *isomorphisms*. I.e., composition has a *two sided inverse*.
+
 ** Special cats
+
 *** Small Category
     Just a set.
-*** Big category 
+
+*** Big category
     A category of categories that has functors as morphisms and excludes itself.
+
+*** Set category
+- Injective functions are /monomorphisms/
+
+*** Set category
+
+- Surjective functions are /epimorphisms/
+
+- Assume three sets $A,B$ and $C$ and $f: A \rightarrow B$, and $g: B \rightarrow C$. If $f$ is not
+  surjective, there are elements in $B$ which will not participate to $g \circ f$
+  (/terra incognita/). If we take $g_1$ and $g_2$ that differ only in terms of those
+  excluded terms their composition will be the same.
+
+- So, if  $\forall g_1, g_2 ~~~g_1 \circ f = g_2 \circ f \rightarrow g_1 = g_2$ then the
+  function is surjective as there is no /terra incognita./
+
+
+
 * Functors
-*** Introduction
+** Introduction
+
+*** Functor definition
+
   A functor $F$
-  \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ where 
-  $F_o$ maps objects across categories $\mathcal{C}$ and $\mathcal{C'}$, while 
+  \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ where
+  $F_o$ maps objects across categories $\mathcal{C}$ and $\mathcal{C'}$, while
   $F_m$ maps morphisms. Laws: $F(id_o) = id_F(o)$ and $F(h \bullet g) = F(h) \bullet F(g)$
-*** Examples 
+
+*** Functor examples
+
     The powerset operator $P$ is a functor from the *Set* to *Set*:
-*** Full and faithful functors 
+
+*** Full and faithful functors
     It is easier to look at the following definitions by taking into account the maps on the Homsets:
 
     - a *full functor* $T: C \rightarrow D$ is such that, for each morphism in $D$
       there is at least one morphism in $C$ that produces it (/surjectivity/).
+
     - a *faithful functor* $T: C \rightarrow D$ is such that for each different
       morphism in $C$ we get different morphism in $D$ (/injectivity/).
 
@@ -175,4 +213,3 @@ It is equivalent to an automata
 
 [fn:1] if one has to introduce another morphism, it should take care of filling
 up the composition table. Besides, the operation should be associative.
-
