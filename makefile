@@ -1,4 +1,7 @@
 
+#
+# Use CURTGT=file.pdf make watch
+
 TARGETS=\
 	anki-cards/Algebra/Algebra.json \
 	anki-cards/Books/Books.json \
@@ -6,7 +9,7 @@ TARGETS=\
 
 all: $(TARGETS)
 
-CURTGT=Algebra.pdf
+CURTGT?=Algebra.pdf
 CURORG=$(patsubst %.pdf,%.org,$(CURTGT))
 
 anki-cards/Algebra/Algebra.json: Algebra.org
@@ -22,7 +25,7 @@ anki-cards/Books/Books.json: Books.org
 	pandoc-anki $< -j > $@
 
 %.pdf: %.org
-	org2pdf $<
+	org2pdf $< --latex-engine lualatex
 
 watch: $(CURTGT)
 	open $(CURTGT)

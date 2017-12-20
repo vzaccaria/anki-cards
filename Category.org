@@ -32,10 +32,6 @@ A  is a triple $\mathcal{C}(O, M, \bullet)$ where
 The question mark indicates that the value *has to be defined* accordingly (but
 left unspecified in the table)[fn:1].
 
-****
-     :PROPERTIES:
-     :BEAMER_COL: 0.5
-     :END:
 #+BEGIN_EXPORT latex
 \begin{figure}
 \begin{tikzpicture}[scale=0.5]
@@ -49,10 +45,6 @@ left unspecified in the table)[fn:1].
 \end{figure}
 #+END_EXPORT
 
-****
-     :PROPERTIES:
-     :BEAMER_COL: 0.5
-     :END:
 
 | $\downarrow \bullet \rightarrow$ | $id_x$ | $id_y$ | $f_x$ | $f_y$ | $a$ | $b$ |
 |----------------------------------+--------+--------+-------+-------+-----+-----|
@@ -166,20 +158,35 @@ It is equivalent to an automata.
 *** Big category
     A category of categories that has functors as morphisms and excludes itself.
 
-*** Set category
+*** Set category / Monomorphisms
 - Injective functions are /monomorphisms/
 
-*** Set category
+- *Assume* three sets $A,B$ and $C$ and $f: A \rightarrow B$, and $g_1, g_2 : C \rightarrow A$
+
+- $f$ is non-injective, then the pre-composition with g_1 and g_2 (where g_1 and g_2
+  differ only because they map the same element $z \in C$ into two different $a_1,
+  a_2$ for which $f(a_1) = f(a_2)$) will be the same: $$f \circ g_1 = f \circ g_2$$ even if those are different.
+
+- $f$ is injective if the above case can't happen, i.e., $$\neg\exists (g_1, g_2) ~~ g_1
+  \neq g_2 \wedge f \circ g_1 = f \circ g_2$$, which is the definition of monomorphism.
+
+
+*** Set category / Epimorphisms
 
 - Surjective functions are /epimorphisms/
 
-- Assume three sets $A,B$ and $C$ and $f: A \rightarrow B$, and $g: B \rightarrow C$. If $f$ is not
-  surjective, there are elements in $B$ which will not participate to $g \circ f$
-  (/terra incognita/). If we take $g_1$ and $g_2$ that differ only in terms of those
-  excluded terms their composition will be the same.
+- *Assume* three sets $A,B$ and $C$ and $f: A \rightarrow B$, and $g_1, g_2: B \rightarrow C$.
 
-- So, if  $\forall g_1, g_2 ~~~g_1 \circ f = g_2 \circ f \rightarrow g_1 = g_2$ then the
-  function is surjective as there is no /terra incognita./
+- If $f$ is not surjective, there are elements in $B$ which will not participate
+  to $g \circ f$ (/terra incognita/). There will be thus $g_1$ and $g_2$ that differ only in
+  terms of those excluded terms while their composition is the same.
+
+- However, if $f$ is an epimorphism $$\forall g_1, g_2 ~~~g_1 \circ f = g_2 \circ f \rightarrow
+  g_1 = g_2$$ then we have that $$\neg\exists (g_1, g_2) ~~ g_1 \neq g_2 \wedge g_1 \circ f = g_2 \circ
+  f$$ so $f$ will be surjective as well.
+
+
+
 
 
 
