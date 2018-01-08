@@ -223,6 +223,49 @@
     - A left regular representation $\rho: G \rightarrow GL(K(G))$
       is such that $$\rho(s)f = \rho(s)\sum_{g\in G}a_{g,f} e_g = \sum_{g\in G}a_{g,f} e_{s*g}$$
 
+*** Trivial representation
+
+    - A representation $\rho: G \rightarrow GL(E_k)$ is trivial if all $g \in G$
+      map to an identity matrix.
+
+*** Intertwining operator
+
+  - *Assume* $E_i$ are vector spaces seen as objects in a category
+
+  - *Consider* representations $\rho_i$ are homomorphisms ($E_i \rightarrow E_i$)
+
+  - *Assume* there is a functor $\Phi_{ij}: E_i \rightarrow E_j$ (i.e., *intertwining
+    operator*) that preserves representations
+
+  - *Then*, we can make the (set?) $\{\rho_i\}$ can be made into objects of a
+    category where intertwining operators are homomorphisms.
+
+  - E.g., $\rho_2 = \Phi_{12} \rho_1$
+
+*** Subrepresentations
+   - Given a subspace $F \subseteq E$, if $$\forall f \in F, ~~\rho(G)(f) \in F$$ then $(\rho, F)$ is a subrepresentation of $(\rho, E)$.
+
+   - the /space of invariants/ $E^G$ such that $\rho(g)e = e$ is the *trivial subrepresentation*.
+
+   - Subgroups define subrepresentations.
+
+*** $k$ representation
+
+  - A one-dimensional $k$ representation is a homomorphism $\chi: G \rightarrow GL(V_k)$
+    where $\chi \mapsto \lambda Id$.
+
+  - If there exists an intertwiner $\phi: V \rightarrow U$:
+
+
+\[
+\begin{array}{rcl}
+(\phi_{\chi,\rho} \lambda Id)v & = & (\rho(g) \phi_{\chi,\rho})v \\
+(\lambda \phi_{\chi,\rho})v & = & (\rho(g) \phi_{\chi,\rho})v \\
+\lambda u & = & \rho(g) u \\
+\end{array}\]
+
+  - $u$ is a common eigenvector of all representations
+
 
 * Algebraic structures with two operators
 ** Semirings
