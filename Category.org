@@ -1,11 +1,6 @@
 #+STARTUP: showall indent latexpreview entitiespretty
 #+TITLE: Category Theory
 #+LEVEL: 3
-
-#+BEAMER_HEADER: \usepackage{tikz}
-#+BEAMER_HEADER: \usetikzlibrary{graphs}
-#+BEAMER_HEADER: \usetikzlibrary{graphdrawing}
-#+BEAMER_HEADER: \usegdlibrary{layered}
 #+OPTIONS: H:3
 
 * Category theory basics
@@ -203,13 +198,6 @@ A functor \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ 
 
 A *full functor* $T: C \rightarrow D$ is an epimorphism between morphisms in $C$ and $D$.
 
-
 *** Faithful functor
 
 A faithful functor $T: C \rightarrow D$ is an epimorphism between morphisms in $C$ and $D$.
-
-
-* Footnotes
-
-[fn:1] if one has to introduce another morphism, it should take care of filling
-up the composition table. Besides, the operation should be associative.
