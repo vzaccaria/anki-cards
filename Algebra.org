@@ -223,6 +223,10 @@
     - A left regular representation $\rho: G \rightarrow GL(K(G))$
       is such that $$\rho(s)f = \rho(s)\sum_{g\in G}a_{g,f} e_g = \sum_{g\in G}a_{g,f} e_{s*g}$$
 
+*** Faithful representation
+
+    A *faithful* representation $\rho(g)$ is an *injective* map, i.e., $$\textrm{Ker}(\rho)={1_G}$$
+
 *** Trivial representation
 
     - A representation $\rho: G \rightarrow GL(E_k)$ is trivial if all $g \in G$
@@ -230,41 +234,43 @@
 
 *** Intertwining operator
 
-  - *Assume* $E_i$ are vector spaces seen as objects in a category
+  - An intertwining operator is a functor $\Phi_{ij}: E_i \rightarrow E_j$ that
+    preserves representations: $$\Phi_{ij}(\rho_i(g)v)=\rho_j(g)\Phi_{ij}(v)$$.
 
-  - *Consider* representations $\rho_i$ are homomorphisms ($E_i \rightarrow E_i$)
+  - As such, it introduces a homomorphism between representations $$\rho_2
+    = \Phi_{12} \rho_1$$ which comply with composition.
 
-  - *Assume* there is a functor $\Phi_{ij}: E_i \rightarrow E_j$ (i.e., *intertwining
-    operator*) that preserves representations
-
-  - *Then*, we can make the (set?) $\{\rho_i\}$ can be made into objects of a
-    category where intertwining operators are homomorphisms.
-
-  - E.g., $\rho_2 = \Phi_{12} \rho_1$
+  - We can thus say that any group $G$ defines a *category of representations*.
 
 *** Subrepresentations
-   - Given a subspace $F \subseteq E$, if $$\forall f \in F, ~~\rho(G)(f) \in F$$ then $(\rho, F)$ is a subrepresentation of $(\rho, E)$.
+   - Given a subspace $F \subseteq E$, if $$\forall f \in F, ~~\rho(G)(f) \in
+     F$$ then $(\rho, F)$ is a *subrepresentation* of $(\rho, E)$.
 
-   - the /space of invariants/ $E^G$ such that $\rho(g)e = e$ is the *trivial subrepresentation*.
+*** Trivial subrepresentation
 
-   - Subgroups define subrepresentations.
+   - the /space of invariants/ $E^G \subseteq E$ such that $\rho(g)e = e$ corresponds to
+     a *subrepresentation* $(\rho, E^G)$ that is trivial.
 
-*** $k$ representation
+   - in fact, $E^G$ is isomorphic to $Hom_G(1,E)$, i.e., the space of constant functions
+     over $E$.
 
-  - A one-dimensional $k$ representation is a homomorphism $\chi: G \rightarrow GL(V_k)$
-    where $\chi \mapsto \lambda Id$.
+*** One dimensional representation
 
-  - If there exists an intertwiner $\phi: V \rightarrow U$:
+  - A one-dimensional $k$ representation is built above a homomorphism $\chi: G
+    \rightarrow k^{\times}$ and corresponds to a representation $\rho_k(g) =
+    \chi(g)Id_{V}$ ($\chi$ is in fact a scalar).
 
+  - Can we determine $\lambda$? If we know an intertwiner $\phi: \rho_k
+    \rightarrow \rho$ then $\lambda$ should satisfy, for all $g$:
 
 \[
 \begin{array}{rcl}
-(\phi_{\chi,\rho} \lambda Id)v & = & (\rho(g) \phi_{\chi,\rho})v \\
-(\lambda \phi_{\chi,\rho})v & = & (\rho(g) \phi_{\chi,\rho})v \\
+(\phi \lambda Id)v & = & (\rho(g) \phi)v \\
+(\lambda \phi)v & = & (\rho(g) \phi)v \\
 \lambda u & = & \rho(g) u \\
 \end{array}\]
 
-  - $u$ is a common eigenvector of all representations
+  - $\lambda$ is thus the eigenvalue of all representations $\rho(g)$
 
 
 * Algebraic structures with two operators

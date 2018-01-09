@@ -24,7 +24,7 @@ A category is a triple $\mathcal{C}(O, M, \bullet)$ that abides these laws:
 
 *** Monoid as a category
     - A monoid $\mathcal{M}(M, id_0, \star)$ is just a category $\mathcal{C}(O, M,
-    \star)$ where O = ${ o_1 }$ and $id_0 = id_{o1}$.
+      \star)$ where O = ${ o_1 }$ and $id_0 = id_{o1}$.
 
     - The elements $M$ of a monoid are the morphisms $M$ of the corresponding
       category. As such, *associativity* holds.
@@ -125,40 +125,37 @@ A *join*
 
 ** Set category
 *** Monomorphisms (Sets)
-- Injective functions are /monomorphisms/
+- $f$ is a monomorphism if $$\neg\exists (g_1, g_2) ~~ g_1 \neq g_2 \wedge f \circ g_1 = f \circ g_2$$
 
-- *Assume* three sets $A,B$ and $C$ and $f: A \rightarrow B$, and $g_1, g_2 : C \rightarrow A$
+- Injective functions among sets can be classified as /monomorphisms/;
 
-- $f$ is non-injective, then the pre-composition with g_1 and g_2 (where g_1 and g_2
+- *Assume* three sets $A,B$ and $C$ and $f: A \rightarrow B$, and $g_1, g_2 : C \rightarrow A$.
+  If $f$ is non-injective, then the pre-composition with g_1 and g_2 (where g_1 and g_2
   differ only because they map the same element $z \in C$ into two different $a_1,
   a_2$ for which $f(a_1) = f(a_2)$) will be the same: $$f \circ g_1 = f \circ g_2$$ even if those are different.
-
-- $f$ is injective if the above case can't happen, i.e., $$\neg\exists (g_1, g_2) ~~ g_1
-  \neq g_2 \wedge f \circ g_1 = f \circ g_2$$, which is the definition of monomorphism.
 
 
 *** Epimorphisms (Sets)
 
-- Surjective functions are /epimorphisms/
+- $f$ is an epimorphism if $$\neg\exists (g_1, g_2) ~~ g_1 \neq g_2 \wedge g_1 \circ f = g_2
+  \circ f$$.
+
+- Surjective functions among sets can be classified as /epimorphisms/;
 
 - *Assume* three sets $A,B$ and $C$ and $f: A \rightarrow B$, and $g_1, g_2: B \rightarrow C$.
-
-- If $f$ is not surjective, there are elements in $B$ which will not participate
+  If $f$ is not surjective, there are elements in $B$ which will not participate
   to $g \circ f$ (/terra incognita/). There will be thus $g_1$ and $g_2$ that differ only in
   terms of those excluded terms while their composition is the same.
 
-- However, if $f$ is an epimorphism $$\forall g_1, g_2 ~~~g_1 \circ f = g_2 \circ f \rightarrow
-  g_1 = g_2$$ then we have that $$\neg\exists (g_1, g_2) ~~ g_1 \neq g_2 \wedge g_1 \circ f = g_2 \circ
-  f$$ so $f$ will be surjective as well.
 
 *** Terminal object (Sets)
 
 There is a set 1 for which, for any set $X$, there is a unique function $X \rightarrow 1$.
 This is called the *terminal object*.
 
-*** Categoriacal product (Sets)
+*** Unit of categorical product (Sets)
 
-If 1 is the terminal object, then $X \times 1 \simeq X$
+The unit of a categorical product is the terminal object, $X \times 1 \simeq X$
 
 *** Sets sharing an element (Sets)
 
