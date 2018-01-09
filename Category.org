@@ -29,7 +29,6 @@ A category is a triple $\mathcal{C}(O, M, \bullet)$ that abides these laws:
     - The elements $M$ of a monoid are the morphisms $M$ of the corresponding
       category. As such, *associativity* holds.
 
-
 *** Free Monoid
 :PROPERTIES:
 :placement: 18,0
@@ -72,7 +71,6 @@ identity arrows.
 
 - *antisimmetry*: $x \rightarrow y \rightarrow x \Rightarrow x = y$
 
-
 *** Linear order as a category
 
 A Linear order is a partial order where:
@@ -89,7 +87,6 @@ A *meet*
 
 - in boolean algebra, it can be seen as the *and* operation
 
-
 *** Join
 
 A *join*
@@ -99,7 +96,6 @@ A *join*
 - it is regarded as the maximum of two objects
 
 - in boolean algebra, it can be seen as the *or* operation
-
 
 *** Lattice as a category
 
@@ -123,6 +119,20 @@ A *join*
  - has functors as morphisms
  - excludes itself.
 
+*** Product category
+
+Given two categories $C$ and $D$, a product category $C \times D$ is such that
+
+- Objects are all possible pairs of original objects
+
+- Morphisms are all the corresponding morphisms
+
+*** Cartesian category
+
+It is a category where a product is defined for all objects.
+This product is a bifunctor $C \times C \rightarrow C$.
+
+
 ** Set category
 *** Monomorphisms (Sets)
 - $f$ is a monomorphism if $$\neg\exists (g_1, g_2) ~~ g_1 \neq g_2 \wedge f \circ g_1 = f \circ g_2$$
@@ -133,7 +143,6 @@ A *join*
   If $f$ is non-injective, then the pre-composition with g_1 and g_2 (where g_1 and g_2
   differ only because they map the same element $z \in C$ into two different $a_1,
   a_2$ for which $f(a_1) = f(a_2)$) will be the same: $$f \circ g_1 = f \circ g_2$$ even if those are different.
-
 
 *** Epimorphisms (Sets)
 
@@ -146,7 +155,6 @@ A *join*
   If $f$ is not surjective, there are elements in $B$ which will not participate
   to $g \circ f$ (/terra incognita/). There will be thus $g_1$ and $g_2$ that differ only in
   terms of those excluded terms while their composition is the same.
-
 
 *** Terminal object (Sets)
 
@@ -191,6 +199,13 @@ A functor \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ 
 
 - $F_m$ maps morphisms with laws $F(id_o) = id_F(o)$ and $F(h \bullet g) = F(h) \bullet F(g)$
 
+- It preserves composition and identity
+
+*** Functors live in a category
+
+- They compose and one can define an identity functor; they live in *Cat*.
+
+
 *** Full functor
 
 A *full functor* $T: C \rightarrow D$ is an epimorphism between morphisms in $C$ and $D$.
@@ -198,3 +213,30 @@ A *full functor* $T: C \rightarrow D$ is an epimorphism between morphisms in $C$
 *** Faithful functor
 
 A faithful functor $T: C \rightarrow D$ is an epimorphism between morphisms in $C$ and $D$.
+
+** Bifunctors
+
+*** Functors and algebraic data types
+
+The product type =(,) a b= can be made into a functor in =a= and =b= individually if
+we fix the one or the other and define the fmap correspondingly;
+
+If I have $f: a \rightarrow \alpha$, the functor's fmap would operate only on the first
+component $$fmap: (,) a b \rightarrow (a \rightarrow \alpha) \rightarrow (,) \alpha b$$.
+
+*** Bifunctors
+
+A bifunctor over $C$ and $D$ is a functor over the product category $C \times D$.
+
+It is a way to make functorial the whole product type so that we can fmap two
+functions at the same time (~bimap~). A product is thus a bifunctor.
+* Limits
+** Basic limits theory
+*** Selecting objects
+
+In any category, I can pick objects by expressing a pattern. This defined
+through another another category and a functor.
+
+Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
+
+*** Products as limit
