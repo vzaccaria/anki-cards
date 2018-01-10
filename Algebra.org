@@ -240,7 +240,9 @@
   - As such, it introduces a homomorphism between representations $$\rho_2
     = \Phi_{12} \rho_1$$ which comply with composition.
 
-  - We can thus say that any group $G$ defines a *category of representations*.
+  - We can thus say that any group $G$ defines a *category of representations* and
+    we can speak of its morphisms (intertwiner) as $Hom_G(\rho_1, \rho_2)$.
+
 
 *** Subrepresentations
    - Given a subspace $F \subseteq E$, if $$\forall f \in F, ~~\rho(G)(f) \in
@@ -258,7 +260,7 @@
 
   - A one-dimensional $k$ representation is built above a homomorphism $\chi: G
     \rightarrow k^{\times}$ and corresponds to a representation $\rho_k(g) =
-    \chi(g)Id_{V}$ ($\chi$ is in fact a scalar).
+    \chi(g)Id_{V}$ ($\chi(\cdot)$ is in fact a scalar).
 
   - Can we determine $\lambda$? If we know an intertwiner $\phi: \rho_k
     \rightarrow \rho$ then $\lambda$ should satisfy, for all $g$:
