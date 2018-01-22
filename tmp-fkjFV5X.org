@@ -214,7 +214,7 @@
        is such that $$\rho_s(x_1 \ldots x_n) = (x_{s(1)} \ldots x_{s(n)})$$.
 
 *** Sign representation
-    - If $\rho(S_n)$ is a representation, then $\textrm{det}(\rho(S_n))$ is a sign
+    - If $\rho(S_n)$ is a representation, then $\texrm{det}\rho(S_n)$ is a sign
       representation as it is either 1 or -1.
 
 *** Left regular representation
@@ -236,9 +236,6 @@
     - A representation $\rho: G \rightarrow GL(E_k)$ is trivial if all $g \in G$
       map to an identity matrix.
 
-*** Invariant representation
-     A representation $\rho(g)$ is *invariant* if $\forall v \in V \rho(g)v \subseteq V$
-
 *** Intertwining operator
 
   - An intertwining operator is a functor $\Phi_{ij}: E_i \rightarrow E_j$ that
@@ -251,13 +248,8 @@
     we can speak of its morphisms (intertwiner) as $Hom_G(\rho_1, \rho_2)$.
 
 *** Subrepresentations
-   Given a subspace $F \subseteq E$, if $$\forall f \in F, ~~\rho(G)(f) \in
+   - Given a subspace $F \subseteq E$, if $$\forall f \in F, ~~\rho(G)(f) \in
      F$$ then $(\rho, F)$ is a *subrepresentation* of $(\rho, E)$.
-
-*** Irreducible representation
-
-    An *irreducible* representation $(\rho,V)$ has as subrepresentations only
-    $(\rho,0)$ and $(\rho,V)$
 
 *** Trivial subrepresentation
 
@@ -266,12 +258,6 @@
 
    - in fact, $E^G$ is isomorphic to $Hom_G(1,E)$, i.e., the space of constant functions
      over $E$.
-
-*** Representations of Abelian groups
-
-    For an abelian group, it is possible to choose a basis to make $\rho(g)$ diagonal.
-
-    For G finite, matrices are going to be block diagonal.
 
 *** One dimensional representation
 
