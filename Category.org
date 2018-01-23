@@ -23,8 +23,7 @@ A category is a triple $\mathcal{C}(O, M, \bullet)$ that abides these laws:
 ** Monoid (Category)
 
 *** Monoid as a category
-    - A monoid $\mathcal{M}(M, id_0, \star)$ is just a category $\mathcal{C}(O, M,
-      \star)$ where O = ${ o_1 }$ and $id_0 = id_{o1}$.
+    - A monoid $\mathcal{M}(M, id_0, \star)$ is just a category $\mathcal{C}(O, M, \star)$ where O = $\{ o_1 \}$ and $id_0 = id_{o1}$.
 
     - The elements $M$ of a monoid are the morphisms $M$ of the corresponding
       category. As such, *associativity* holds.
@@ -181,9 +180,14 @@ Any object $B$ for which there exists a monomorphism $B \rightarrow X$ is a subs
 
 *** Equalizer (Sets)
 
-For any two functions ($g_1, g_2: X \rightarrow Y$), any *object* and *monomorphism* *pair* $(E,m:
- E \rightarrow X)$ is called an *equalizer*. It should be understood as the subset of
- elements of $X$ for which $g_1(x) = g_2(x)$.
+Given two functions ($g_1, g_2: X \rightarrow Y$), an equaliser is an *object* and
+ *monomorphism* *pair* $(E,m: E \rightarrow X)$ for which there hold the following properties:
+
+1. Equivalence: $g_1 \circ m = g_2 \circ m$
+2. Limit: There exists a unique morphism $O \rightarrow E$ for any other object pair
+   $(O,m_o: O \rightarrow X)$ for which the above equivalence.
+
+$E$ should be understood as the subset of elements of $X$ for which $g_1(x) = g_2(x)$, i.e., the solutions of the equation.
 
 
 
@@ -208,11 +212,11 @@ A functor \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ 
 
 *** Full functor
 
-A *full functor* $T: C \rightarrow D$ is an epimorphism between morphisms in $C$ and $D$.
+A *full functor* $T: C \rightarrow D$ is an *epimorphism* between morphisms in $C$ and $D$.
 
 *** Faithful functor
 
-A faithful functor $T: C \rightarrow D$ is an epimorphism between morphisms in $C$ and $D$.
+A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in $C$ and $D$.
 
 ** Bifunctors
 
