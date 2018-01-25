@@ -202,7 +202,6 @@
 
 
 
-** Group representations
 *** Linear group representation
 
     - A *linear group representation* of $G$ is a group homomorphism
@@ -297,10 +296,12 @@
     An *irreducible* representation $(\rho,V)$ has as subrepresentations only
     $(\rho,0)$ and $(\rho,V)$
 
+
 *** Full reducibility
 
     If $V = W_1 \oplus \ldots W_n$ and all $(\rho, W_i)$ are irreducible then
     $(\rho, V)$ is fully reducible.
+
 
 *** Representations of Abelian groups
 
@@ -338,26 +339,9 @@
 *** Representations of dual spaces
 
     Given $(\rho,V)$, one can define a representation of its dual vector space
-    $(\rho^*, V^*)$ such that $$\rho^*(g) f = f \circ \rho^{-1}(g)$$.
+    $\rho^*, V^*$ such that $$\rho^*(g) f = f \ocirc \rho^{-1}(g)$$.
 
-*** Representation of quotient spaces
 
-    If one can form $V/W$ and $(\rho,W)$ is a subrepresentation, one can build a
-    representation $$\rho_{V/W}(g)= \lambda(v).\rho(g)v + W$$ for some $W$.
-
-*** Representation of a tensor product space
-
-    Given $(\rho, V)$ and $(\rho', V')$, one can define
-    $$(\rho_{\otimes},V \otimes V') = \rho v \otimes \rho' v'$$
-
-    If input repr. are one-dimensional, tensoring becomes multiplication.
-
-*** Representation of $Hom$ spaces
-
-    Given $Hom_C(V, V') = \{ f: V \rightarrow V' \}$ linear, one can define
-    a representation from representations of $V$ and $V'$:
-
-    $$\rho_{Hom} f = \rho' \circ f \circ \rho^{-1}$$
 
 * Algebraic structures with two operators
 ** Semirings
@@ -456,13 +440,11 @@
 
     A *normed* vector space $V$ is endowed with a map $V \rightarrow R$.
 
-
 *** Inner product spaces
 
     An *inner product* space $V$ is endowed with an operation $V \times V \rightarrow R$.
 
     Hermitian products are one of the possible operations
-
 
 *** Dual Space
 
@@ -471,17 +453,6 @@
 
     If the space is an inner product space, one can define $V^*$ by defining
     $$ f = \lambda v. \langle v, w \rangle $$ for some $w$.
-
-*** Tensor product spaces
-
-    Given two vector spaces $(V,V')$, I can define their tensor product $W =V
-    \otimes V'$ by
-
-    - creating monomials (concatenations) of their bases $e_i \otimes e'_j$ as
-      a new basis for $W$
-
-    - expressing the product $v \otimes v' = \sum_{c_{ij}}c_{ij} e_i \otimes e'_j$ such
-      that the properties of a bilinear product hold.
 
 
 
@@ -495,7 +466,6 @@
       - Right distributivity: $(x + y) \times z = x \times z + y \times z$
       - Left distributivity: $x \times (y + z) = x \times y + x \times z$
       - Compatibility with scalars: $(ax) \times (by) = (ab) (x \times y)$.
-
 
 *** Group Algebra
 
