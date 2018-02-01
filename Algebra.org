@@ -424,7 +424,6 @@
     operations are understood as modular.
 
 
-
 * Algebras of vector spaces and modules
 ** Vector spaces
 
@@ -622,9 +621,16 @@ A *join*
 
 ** Special categories
 
-*** Small Category
+*** Categorical nomenclature (*small* and *large* cats)
 
- Just a set.
+    - A *class* is a collection of sets that share a property.
+
+    - Large category $C$: Either $ob(C)$ or both $ob(C)$ and $hom(C)$ are proper
+      classes (i.e., a class that is not a set).
+
+    - Locally small category $C$: $hom(C)$ is a set (*Set* is just an example)
+
+    - Small category $C$: $ob(C)$ and $hom(C)$ are sets
 
 *** Groupoid
 
@@ -711,9 +717,7 @@ $E$ should be understood as the subset of elements of $X$ for which $g_1(x) = g_
 
 
 
-
 * Functors
-
 ** Introduction
 *** Functor definition
 
@@ -729,7 +733,6 @@ A functor \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ 
 
 - They compose and one can define an identity functor; they live in *Cat*.
 
-
 *** Full functor
 
 A *full functor* $T: C \rightarrow D$ is an *epimorphism* between morphisms in $C$ and $D$.
@@ -739,7 +742,6 @@ A *full functor* $T: C \rightarrow D$ is an *epimorphism* between morphisms in $
 A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in $C$ and $D$.
 
 ** Bifunctors
-
 *** Functors and algebraic data types
 
 The product type =(,) a b= can be made into a functor in =a= and =b= individually if
@@ -764,3 +766,46 @@ through another another category and a functor.
 Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 
 *** Products as limit
+* Functor algebra
+*** Definition of algebras and co-algebras
+    - An algebraic operation on $x \in X$ maps a set of objects is some domain
+      into an object in $X$: $$ X \times A \rightarrow X$$ or $$ A \rightarrow X $$
+
+    - A co-algebraic operation maps an object $x$ into a set of observable
+      features of that object and possibly another object in the same set: $$ X
+      \rightarrow A \times X $$
+
+*** Functoriality of products, coproducts, exponential and powersets
+
+    - The product operation maps two objects into a single object $$(X,Y)
+      \mapsto X \times Y: A \times B \rightarrow C$$ and it can be made
+      functorial. Same for the coproduct.
+
+    - Fixed an object $A$ there is a functor $(-)^A: C \rightarrow C$ that maps $X$
+      into $X^A$ (the exponential object).
+
+    - The identity map is (endo-)functorial as well as the endomap that maps $X$
+      into a fixed object.
+
+*** Functoriality when combining of product and coproducts
+
+    - If we can build functors for product, coproducts we can build functors
+      also for their combination;
+
+    - For example: $T: X \mapsto X + (C \times X)$
+      can be made into a functor as well by defining a mapping for functions:
+
+      $$T(f) = f + (id_C \times f): X+(C\times X) \rightarrow X'+(C \times X')$$
+
+*** Functoriality for initial and final object isomorphisms
+
+    - $X \rightarrow 1$ is the functor that maps $X$ into the singleton set (final object)
+
+    - $X \rightarrow 0$ is the functor that maps $X$ into the emtpy set (initial object)
+
+*** Equivalence between functors
+
+    - There are isomorphisms that make some functors equivalent, e.g. $X \times
+      Y = Y \times X$ or $(X \times (Y + Z)) = (X \times Y) + (X \times Z)$.
+
+    - They follow the same rules of addition and multiplication of numbers
