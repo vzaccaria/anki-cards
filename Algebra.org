@@ -523,3 +523,244 @@
     \[
     *: K \times V \rightarrow V
     \]
+* Category theory basics
+
+** Category basics
+*** Category
+
+A category is a triple $\mathcal{C}(O, M, \bullet)$ that abides these laws:
+
+- *identity*: $\forall o \in O, \exists id_o \in M$
+
+- *composition*: '$\bullet$' composes morphisms in $M$ that share source and target :
+
+  1. $\bullet(A \rightarrow B, B \rightarrow C) = A \rightarrow C$
+
+  2. $(f \bullet g) \bullet h == f \bullet (h \bullet g)$
+
+  3. $id_x \bullet f = f \bullet id_y$
+
+** Monoid (Category)
+
+*** Monoid as a category
+    - A monoid $\mathcal{M}(M, id_0, \star)$ is just a category $\mathcal{C}(O, M, \star)$ where O = $\{ o_1 \}$ and $id_0 = id_{o1}$.
+
+    - The elements $M$ of a monoid are the morphisms $M$ of the corresponding
+      category. As such, *associativity* holds.
+
+*** Free Monoid
+:PROPERTIES:
+:placement: 18,0
+:END:
+
+- A free monoid of M is just a monoid $\mathcal{M}(List[G], [], ++)$
+
+- It has a free generator set G and all its elements are uniquely determined by
+  a fold of elements in $G$.
+
+*** Action
+
+An action of a $\mathcal{M}(M, id_0, \star)$ over a set $S$ of states is a
+function  \[ \alpha: M \times S \rightarrow S \]. The following properties should be satisfied:
+
+- identity: $\alpha(id_0, s) = s$
+
+- compatibility: $\alpha(f \star g, s) = \alpha(f, \alpha(g, s))$
+
+
+** Preorder, partial and linear order (Category)
+
+*** Preorder as a category
+
+A *preorder* is a category $\mathcal{C}(O, M, \bullet)$, where there is at most one
+morphism between objects. It has the following properties:
+
+- *reflexivity*: from identity morphisms
+
+- *transitivity*: from composition of morphisms
+
+*** Partial order as a category
+
+A *partial order* (*poset*) is a preorder where there cannot be cycles except for
+identity arrows.
+
+- *reflexivity*: from identity morphisms
+
+- *transitivity*: from composition of morphisms
+
+- *antisimmetry*: $x \rightarrow y \rightarrow x \Rightarrow x = y$
+
+*** Linear order as a category
+
+A Linear order is a partial order where:
+
+\[x \rightarrow y \in M \Rightarrow y \rightarrow x \notin M\]
+
+*** Meet
+
+A *meet*
+
+- is the unique *product* of two objects in a poset
+
+- it is regarded as the *minimum* of two objects
+
+- in boolean algebra, it can be seen as the *and* operation
+
+*** Join
+
+A *join*
+
+- is the unique *coproduct* of two objects in a poset
+
+- it is regarded as the maximum of two objects
+
+- in boolean algebra, it can be seen as the *or* operation
+
+*** Lattice as a category
+
+[[https://ncatlab.org/nlab/show/lattice][A lattice]] is a poset where *all objects* have a *meet* and a *join*
+
+** Special categories
+
+*** Small Category
+
+ Just a set.
+
+*** Groupoid
+
+ A (small) *groupoid* is a (small) category in which all morphisms are
+ *isomorphisms*. I.e., composition has a *two sided inverse*.
+
+*** Big category
+
+ A category of categories ($CAT$) that:
+
+ - has functors as morphisms
+ - excludes itself.
+
+*** Product category
+
+Given two categories $C$ and $D$, a product category $C \times D$ is such that
+
+- Objects are all possible pairs of original objects
+
+- Morphisms are all the corresponding morphisms
+
+*** Cartesian category
+
+It is a category where a product is defined for all objects.
+This product is a bifunctor $C \times C \rightarrow C$.
+
+
+** Set category
+*** Monomorphisms (Sets)
+- $f$ is a monomorphism if $$\neg\exists (g_1, g_2) ~~ g_1 \neq g_2 \wedge f \circ g_1 = f \circ g_2$$
+
+- Injective functions among sets can be classified as /monomorphisms/;
+
+- *Assume* three sets $A,B$ and $C$ and $f: A \rightarrow B$, and $g_1, g_2 : C \rightarrow A$.
+  If $f$ is non-injective, then the pre-composition with g_1 and g_2 (where g_1 and g_2
+  differ only because they map the same element $z \in C$ into two different $a_1,
+  a_2$ for which $f(a_1) = f(a_2)$) will be the same: $$f \circ g_1 = f \circ g_2$$ even if those are different.
+
+*** Epimorphisms (Sets)
+
+- $f$ is an epimorphism if $$\neg\exists (g_1, g_2) ~~ g_1 \neq g_2 \wedge g_1 \circ f = g_2
+  \circ f$$.
+
+- Surjective functions among sets can be classified as /epimorphisms/;
+
+- *Assume* three sets $A,B$ and $C$ and $f: A \rightarrow B$, and $g_1, g_2: B \rightarrow C$.
+  If $f$ is not surjective, there are elements in $B$ which will not participate
+  to $g \circ f$ (/terra incognita/). There will be thus $g_1$ and $g_2$ that differ only in
+  terms of those excluded terms while their composition is the same.
+
+*** Terminal object (Sets)
+
+There is a set 1 for which, for any set $X$, there is a unique function $X \rightarrow 1$.
+This is called the *terminal object*.
+
+*** Unit of categorical product (Sets)
+
+The unit of a categorical product is the terminal object, $X \times 1 \simeq X$
+
+*** Sets sharing an element (Sets)
+
+If:
+
+- there is a monomorphism $m: B \rightarrow X$
+
+- and there is $k: 1 \rightarrow B$ such that $x: 1 \rightarrow X$ factors through $m$, i.e.,  $x = m \circ k$
+
+then $x \in B$
+
+*** Subobject (Sets)
+
+Any object $B$ for which there exists a monomorphism $B \rightarrow X$ is a subset/subobject of $X$.
+
+*** Equalizer (Sets)
+
+Given two functions ($g_1, g_2: X \rightarrow Y$), an equaliser is an *object* and
+ *monomorphism* *pair* $(E,m: E \rightarrow X)$ for which there hold the following properties:
+
+1. *Equivalence*: $g_1 \circ m = g_2 \circ m$
+2. *Limit*: There exists a unique morphism $O \rightarrow E$ for any other object pair
+   $(O,m_o: O \rightarrow X)$ for which the above equivalence.
+
+$E$ should be understood as the subset of elements of $X$ for which $g_1(x) = g_2(x)$, i.e., the solutions of the equation.
+
+
+
+
+* Functors
+
+** Introduction
+*** Functor definition
+
+A functor \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ where
+
+- $F_o$ maps objects across categories $\mathcal{C}$ and $\mathcal{C'}$, while
+
+- $F_m$ maps morphisms with laws $F(id_o) = id_F(o)$ and $F(h \bullet g) = F(h) \bullet F(g)$
+
+- It preserves composition and identity
+
+*** Functors live in a category
+
+- They compose and one can define an identity functor; they live in *Cat*.
+
+
+*** Full functor
+
+A *full functor* $T: C \rightarrow D$ is an *epimorphism* between morphisms in $C$ and $D$.
+
+*** Faithful functor
+
+A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in $C$ and $D$.
+
+** Bifunctors
+
+*** Functors and algebraic data types
+
+The product type =(,) a b= can be made into a functor in =a= and =b= individually if
+we fix the one or the other and define the fmap correspondingly;
+
+If I have $f: a \rightarrow \alpha$, the functor's fmap would operate only on the first
+component $$fmap: (,) a b \rightarrow (a \rightarrow \alpha) \rightarrow (,) \alpha b$$.
+
+*** Bifunctors
+
+A bifunctor over $C$ and $D$ is a functor over the product category $C \times D$.
+
+It is a way to make functorial the whole product type so that we can fmap two
+functions at the same time (~bimap~). A product is thus a bifunctor.
+* Limits
+** Basic limits theory
+*** Selecting objects
+
+In any category, I can pick objects by expressing a pattern. This defined
+through another another category and a functor.
+
+Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
+
+*** Products as limit
