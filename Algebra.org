@@ -229,16 +229,6 @@
     - If $\rho(S_n)$ is a representation, then $\textrm{det}(\rho(S_n))$ is a sign
       representation as it is either 1 or -1.
 
-*** Left regular representation
-
-    - Given a group $G$ and a field $K$ we can define a group algebra $K(G)$
-      where vectors are of the form:
-
-      $$f = \sum_{g\in G}a_{g,f} e_g$$
-
-    - A left regular representation $\rho: G \rightarrow GL(K(G))$
-      is such that $$\rho(s)f = \rho(s)\sum_{g\in G}a_{g,f} e_g = \sum_{g\in G}a_{g,f} e_{s*g}$$
-
 *** Faithful representation
 
     A *faithful* representation $\rho(g)$ is an *injective* map, i.e., $$\textrm{Ker}(\rho)={1_G}$$
@@ -279,7 +269,7 @@
 *** Equivalence of representations
 
   $\rho_1, \rho_2$ are equivalent if there exists an intertwining operator $L$
-  that has an inverse.
+  that has an inverse and such that $$L \circ \rho_1 = \rho_2 \circ L$$.
 
 *** Subrepresentations
    Given a subspace $F \subseteq E$, if $$\forall f \in F, ~~\rho(G)(f) \in
@@ -359,6 +349,22 @@
 
     $$\rho_{Hom} f = \rho' \circ f \circ \rho^{-1}$$
 
+*** Regular representation of $G$
+
+    A group algebra $K[G]$ is a vector space of elements $\phi$ that can be written as
+    $$\phi: \phi(g_1)g_1 + \phi(g_2)g_2 + \ldots$$ i.e., $$K[G]=span\{g_1, g_2,
+    \ldots \}$$ The regular representation $(\rho_{K}, K[G])$ is such that
+    $$\rho_{K}(s)\phi = \rho_{K}(s) \phi(g_1)g_1 + \ldots = \phi(g_1)(s*g_1) +
+    \ldots$$
+
+*** Representation of function space over $G$
+
+    A function space $F(G) = \{ \phi: G \rightarrow K \}$ can be seen as composed
+    of members of the group algebra (similarly to the Z-transform): $$\phi:
+    \phi(g_1)g_1 + \phi(g_2)g_2 + \ldots$$ i.e., $$K[G]=span\{g_1, g_2, \ldots
+    \}$$ thus one can define a representation that is equivalent to the group
+    algebra's one.
+
 * Algebraic structures with two operators
 ** Semirings
 *** Semiring (Rig)
@@ -422,7 +428,6 @@
 *** Finite field $F_p$
     It has $p$ elements. If $p$ is prime then $F_p$ is a prime field and
     operations are understood as modular.
-
 
 * Algebras of vector spaces and modules
 ** Vector spaces
@@ -496,7 +501,20 @@
       - Compatibility with scalars: $(ax) \times (by) = (ab) (x \times y)$.
 
 
-*** Group Algebra
+*** Group Algebra as formal sum
+
+    A group algebra $K[G]$ for a group $G$ and a field $K$ is a vector space
+    that is the direct sum of copies of $K$ indexed by $G$.
+
+    In practice, the basis $e_g$ is a vector that has a dimension $|G|$ and
+    whose $g-th$ component is 1.
+
+    Each element of the algebra is thus a formal linear combination of the
+    elements of $G$ with coefficients in $K$, i.e., $$f = \sum_{g\in G}a_{g,f}
+    e_g$$ where $e_g$ are basis in $K[G]$.
+
+
+*** Group Algebra as function space
 
     Given a group $G$ and a field $K$, we can build an algebra $K[G]$ where
 
@@ -506,9 +524,6 @@
     - $(\alpha f) = g \mapsto \alpha f(g)$
     - $(f_1 \times f_2) = g \mapsto \sum_{u \in G}f_1(u)f_2(u^{-1}g)$
 
-    - Sometimes vectors $f$ are written as /linear combinations of the elements
-      of $G$ with coefficients in K/, i.e., $$f = \sum_{g\in G}a_{g,f} e_g$$ where
-      $e_g$ are basis in $K[G]$.
 
 
 *** R-Module
