@@ -349,6 +349,13 @@
 
     $$\rho_{Hom} f = \rho' \circ f \circ \rho^{-1}$$
 
+*** Representation of conjugate vector spaces
+    Given $(\rho,V)$, $\rho$ is a representation of the
+    conjugate vector space $\bar{V}$ as well.
+
+    A conjugate representation $(\rho, \bar{V})$ is *equivalent* to $(\rho, V)$
+    and to its dual representation $(\rho^*, V^*)$.
+
 *** Regular representation of $G$
 
     A group algebra $K[G]$ is a vector space of elements $\phi$ that can be written as
@@ -487,7 +494,10 @@
     - expressing the product $v \otimes v' = \sum_{c_{ij}}c_{ij} e_i \otimes e'_j$ such
       that the properties of a bilinear product hold.
 
+*** Conjugate vector spaces
 
+    Given a vector space on complex numbers $V_C$ then also $\bar{V}_C$, where
+     scalar multiplication is $\bar{z}*v$ for $z \in C$, is a vector space.
 
 *** Algebra
 
