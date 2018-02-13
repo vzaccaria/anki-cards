@@ -793,7 +793,7 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 *** Products as limit
 * Functor algebra
 *** Definition of algebras and co-algebras
-    - An algebraic operation on $x \in X$ maps a set of objects is some domain
+    - An algebraic operation on $x \in X$ maps a set of objects in some domain
       into an object in $X$: $$ X \times A \rightarrow X$$ or $$ A \rightarrow X $$
 
     - A co-algebraic operation maps an object $x$ into a set of observable
@@ -834,3 +834,20 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
       Y = Y \times X$ or $(X \times (Y + Z)) = (X \times Y) + (X \times Z)$.
 
     - They follow the same rules of addition and multiplication of numbers
+*** Functor algebra
+
+    Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
+    C$, a functor algebra for $T$ is a pair $(U,a)$:
+
+    - an object $U \in C$ (*carrier*)
+    - a morphism $a: T(U) \rightarrow U$ (*algebra structure*)
+
+    $a$ must be defined by a cotuple of several functions whose signature is
+    specified by $T$. For example, $$T(X) = 1 + X + (X \times X)$$ defines $$e:
+    1 \rightarrow U, i: X \rightarrow X, m: (X \times X) \rightarrow X$$ which
+    might encode the signature of group operations.
+
+*** Functor algebra example - natural numbers
+
+    $0$ and $S$ maps over natural numbers can be seen as a functor algebra
+    $([0,S],\mathbb{N})$ of the functor $T(X) = 1 + X$.
