@@ -605,7 +605,7 @@ morphism between objects. It has the following properties:
 
 *** Partial order as a category
 
-A *partial order* (*poset*) is a preorder where there cannot be cycles except for
+A *partial order* (*poset*) is a preorder where there cannot be loops except for
 identity arrows.
 
 - *reflexivity*: from identity morphisms
@@ -741,6 +741,21 @@ Given two functions ($g_1, g_2: X \rightarrow Y$), an equaliser is an *object* a
 $E$ should be understood as the subset of elements of $X$ for which $g_1(x) = g_2(x)$, i.e., the solutions of the equation.
 
 
+** Kleisly category
+*** Kleisly category ($C_T$) definition
+    - $C_T$ can be constructed from a category $C$ with an endofunctor $T$ (such
+      as *Set*) where any morphism $A \rightarrow_T B$ is built by picking a
+      morphism $A \rightarrow T B$ such that:
+      - Identity for any $A$ is built by picking a morphism $\eta_A: A
+        \rightarrow T A$
+      - Composition $h_T = f_T \circ g_T : A \rightarrow_T C$ is built by picking an $h: A
+        \rightarrow T C$ such that $$ h = \mu \circ T f \circ g$$ where
+        $\mu$ is a multiplication functor ($\mu: T^2 C \rightarrow T C$).
+
+
+
+
+*** Kleisly category composition
 
 * Functors
 ** Introduction
