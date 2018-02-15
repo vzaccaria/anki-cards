@@ -222,8 +222,10 @@
      - The *permutation representation* is associated with a symmetric group $G =
        S_n$ and acts on a $V_k = k^n$.
 
-     - A permutation representation $\rho: S_n \rightarrow GL(k^n)$
+     - A permutation representation $\rho_{\pi}$: S_n \rightarrow GL(k^n)$
        is such that $$\rho_s(x_1 \ldots x_n) = (x_{s(1)} \ldots x_{s(n)})$$.
+
+     - Practically speaking, gives a permutation matrix for each $g \in G$.
 
 *** Sign representation
     - If $\rho(S_n)$ is a representation, then $\textrm{det}(\rho(S_n))$ is a sign
@@ -364,6 +366,19 @@
     $$\rho_{K}(s)\phi = \rho_{K}(s) \phi(g_1)g_1 + \ldots = \phi(g_1)(s*g_1) +
     \ldots$$
 
+*** Regular representation of $G$ through Cayley
+
+    - By Caley, there is an isomorphism $\rho_C: G \rightarrow S_n$ for a group
+      $G$ of order $n$ that is given by picking a permutation $\lambda x.gx$.
+
+    - A regular representation is just the concatenation of a permutation
+      representation and the cayley isomorphism: $$\rho = \rho_{\pi} \circ
+      \rho_{C}$$ In practice, it associates a permutation to each $g \in G$.
+
+    - For example, the regular representation of a cyclic group of order $n$
+      ($\{1,x,x^2,\ldots, x^n\}$) associates to each element the power of a
+      cyclic permutation matrix $P$.
+
 *** Representation of function space over $G$
 
     A function space $F(G) = \{ \phi: G \rightarrow K \}$ can be seen as composed
@@ -393,6 +408,33 @@
     - $(R, *)$ is a monoid with identity = 1 (Semigroup)
     - multiplication distributes over addition
     - multiplication by 0 gives 0 (annihilates).
+
+*** Ring divisor of zero
+    - $a \neq 0$ is called divisor of zero if there is $b \neq 0$ such that $ab = 0$
+
+    - Z,Q,R and C do not have divisors of zero. If the product of two numbers is
+      zero then one of them should be zero.
+
+*** Ring cancellation property
+
+    - If and only if a ring does not have divisors of zero, then it has *a
+      cancellation property* whereas $$ ab = ac \rightarrow b = c $$.
+
+*** Integral domain
+    - It is a commutative ring (with multiplication commutative) that has the
+      cancellation property.
+
+    - Every field is an integral domain.
+
+*** Ring examples
+
+    - Quaternions are a subring of 2x2 matrices with unity. Each quaternion
+      $\alpha$ has a multiplicative inverse $(1/t)\bar{\alpha}$, where
+      $\bar{\alpha}$ is its conjugate and $t$ is its norm.
+
+    -
+
+
 
 *** Ideals
     An *ideal* $I$ is a special subset of a ring $R$ that respects the following properties:
