@@ -163,9 +163,10 @@
       F = End(A) = \{ f: f(a + b) = f(a) + f(b), \forall a,b \in A \}
     \]
 
-    $End(A,++,\circ, \textrm{const~} 0, \textrm{const~} 1)$ is a *ring* (of functions) where
+    $End(A,++,\circ, \textrm{const~} 0, Id)$ is a *ring* (of functions) where
 
-    - $(f ++ g)(x) = f(x) + g(x)$
+    - $(f ++ g)(x) = f(x) + g(x)$, i.e., it is a group over addition of functions. The identity of this group
+      is $x \mapsto 0$, while each function has an inverse ($f^{-1}x) = (f x)^{-1}$)
     - $(f \circ g)(x) = f(g(x))$
 
 *** Order of a group element
@@ -199,7 +200,6 @@
    - It is composed of the set of elements $$[G,G] = \{ xyx^{-1}y^{-1}, x~y \in G \}$$
 
    - It is a normal subgroup
-
 
 
 ** Group representations
@@ -431,10 +431,6 @@
     - Quaternions are a subring of 2x2 matrices with unity. Each quaternion
       $\alpha$ has a multiplicative inverse $(1/t)\bar{\alpha}$, where
       $\bar{\alpha}$ is its conjugate and $t$ is its norm.
-
-    -
-
-
 
 *** Ideals
     An *ideal* $I$ is a special subset of a ring $R$ that respects the following properties:
