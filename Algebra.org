@@ -387,6 +387,16 @@
     \}$$ thus one can define a representation that is equivalent to the group
     algebra's one.
 
+*** Shur's lemma
+     - If $(\rho, V)$ and $(\rho', V)$ are irreducible representations and there
+       is an intertwining operator $L$, *then* $$L \neq 0 \rightarrow L
+       \textrm{~is an equivalence}$$ (no middle ground).
+*** Shur's lemma - corollary for $L : V \rightarrow V$
+     For irreducible representations ($\rho,V$) all intertwining
+     operators $L: V \rightarrow V$ have the form $L=\lambda I$.
+*** Shur's lemma - corollary for $L_1, L_2$ intertwining operators
+     For irreducible representations ($\rho, V$) and ($\rho', V'$) all the intertwining
+     operators have the form $L_1 = \lambda L_2$.
 * Algebraic structures with two operators
 ** Semirings
 *** Semiring (Rig)
@@ -548,6 +558,11 @@
       - Left distributivity: $x \times (y + z) = x \times y + x \times z$
       - Compatibility with scalars: $(ax) \times (by) = (ab) (x \times y)$.
 
+*** Affine space
+    - A tuple $(A, V_k, (+): V_k \times A \rightarrow A)$ defines an /affine space/
+      $A$ if $(+)$ complies with the group action properties.
+    - Alternatively, it can be defined as $(A, V_k, (-): A \times A \rightarrow V_k)$ where
+      $(-)$ complies with Weyl's axioms
 
 *** Group Algebra as formal sum
 
