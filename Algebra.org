@@ -861,18 +861,19 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 *** Products as limit
 * Functor algebra
 *** Definition of algebras and co-algebras
-    - An algebraic operation on $x \in X$ maps a set of objects in some domain
-      into an object in $X$: $$ X \times A \rightarrow X$$ or $$ A \rightarrow X $$
+    - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
+      e.g.: $$ X \times A
+      \rightarrow X$$ or $$ A \rightarrow X $$
 
-    - A co-algebraic operation maps an object $x$ into a set of observable
-      features of that object and possibly another object in the same set: $$ X
-      \rightarrow A \times X $$
+    - A co-algebraic operation in domain $X$ is a morphism from $X$ into a tuple
+      object, possibly containing $X$: $$ X \rightarrow A \times
+      X $$
 
 *** Functoriality of products, coproducts, exponential and powersets
 
-    - The product operation maps two objects into a single object $$(X,Y)
-      \mapsto X \times Y: A \times B \rightarrow C$$ and it can be made
-      functorial. Same for the coproduct.
+    - The product operation in a category $C$ is a bi-functor $(-) \times (-): C
+      \times C \rightarrow C$ (it maps both *pairs of objects* to a *product object*
+      and *pairs of functions* to a *product function*).
 
     - Fixed an object $A$ there is a functor $(-)^A: C \rightarrow C$ that maps $X$
       into $X^A$ (the exponential object).
@@ -882,11 +883,11 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 
 *** Functoriality when combining of product and coproducts
 
-    - If we can build functors for product, coproducts we can build functors
+    - If we can build functors for products and coproducts, we can build functors
       also for their combination;
 
-    - For example: $T: X \mapsto X + (C \times X)$
-      can be made into a functor as well by defining a mapping for functions:
+    - For example: $T(X) = X + (C \times X)$
+      maps X to an object $X + (C \times X)$ but also morphisms $f: X \rightarrow X'$:
 
       $$T(f) = f + (id_C \times f): X+(C\times X) \rightarrow X'+(C \times X')$$
 
@@ -919,3 +920,9 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 
     $0$ and $S$ maps over natural numbers can be seen as a functor algebra
     $([0,S],\mathbb{N})$ of the functor $T(X) = 1 + X$.
+
+*** Homomorphisms of algebras
+
+    Given two T-functor algebras $(U, a: T(-) \rightarrow -)$ and $(V, b: T(-) \rightarrow -)$,
+    a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
+    with the operations $$ f \circ a = b \circ T(f)$$
