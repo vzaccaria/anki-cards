@@ -26,8 +26,5 @@ watch: $(CURTGT)
 	open $(CURTGT)
 	watchman $(CURORG) "make $(CURTGT)"
 
-edit:
-	emacsclient "$(CURORG)" -c
-
 clean:
 	rm -rf anki-cards *.pdf *.log tmp-*

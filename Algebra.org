@@ -793,7 +793,6 @@ Given two functions ($g_1, g_2: X \rightarrow Y$), an equaliser is an *object* a
 
 $E$ should be understood as the subset of elements of $X$ for which $g_1(x) = g_2(x)$, i.e., the solutions of the equation.
 
-
 ** Kleisly category
 *** Kleisly category ($C_T$) definition
     - $C_T$ can be constructed from a category $C$ with an endofunctor $T$ (such
@@ -806,9 +805,13 @@ $E$ should be understood as the subset of elements of $X$ for which $g_1(x) = g_
         $\mu$ is a multiplication functor ($\mu: T^2 C \rightarrow T C$).
 
 
+** Monoidal category
+*** Monoidal category definition
+   - A category $C$ is *monoidal* if all pairs of objects have a product
+     (co-product) and a terminal (initial) object.
 
-
-*** Kleisly category composition
+   - Both product and coproduct in a monoidal category are individuated by the
+     same symbol, i.e., *tensor product* ($\otimes$)
 
 * Functors
 ** Introduction
@@ -822,10 +825,6 @@ A functor \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ 
 
 - It preserves composition and identity
 
-*** Functors live in a category
-
-- They compose and one can define an identity functor; they live in *Cat*.
-
 *** Full functor
 
 A *full functor* $T: C \rightarrow D$ is an *epimorphism* between morphisms in $C$ and $D$.
@@ -834,21 +833,47 @@ A *full functor* $T: C \rightarrow D$ is an *epimorphism* between morphisms in $
 
 A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in $C$ and $D$.
 
-** Bifunctors
-*** Functors and algebraic data types
 
-The product type =(,) a b= can be made into a functor in =a= and =b= individually if
-we fix the one or the other and define the fmap correspondingly;
+*** Identity functor
+    $Id: C \rightarrow C$ is a functor that maps an object to itself and a
+    function to itself.
 
-If I have $f: a \rightarrow \alpha$, the functor's fmap would operate only on the first
-component $$fmap: (,) a b \rightarrow (a \rightarrow \alpha) \rightarrow (,) \alpha b$$.
+*** Constant $\Delta_c$ functor
+    A constant functor $\Delta_c: B \rightarrow C$ is a functor that maps every
+    object in $B$ into a single object $c \in C$.
 
 *** Bifunctors
 
-A bifunctor over $C$ and $D$ is a functor over the product category $C \times D$.
+- A bifunctor over $C$ and $D$ is a functor over pairs of objects and morphisms,
+  i.e., $C \times D \rightarrow E$
 
-It is a way to make functorial the whole product type so that we can fmap two
-functions at the same time (~bimap~). A product is thus a bifunctor.
+- Products and co-products are special bifunctors $C \times C \rightarrow C$
+
+*** Contravariant functors
+
+    A contravariant functor is a functor $C^{op} \rightarrow D$.
+
+*** Profunctors
+
+    A pro-functor is a functor $C^{op} \times C \rightarrow C$. It can be used
+    to describe the functoriality of the 'arrow' (exponential) object construction.
+
+
+*** Combination of functors
+
+    - $T(X) = X = Id$ is a functor
+
+    - $T(X) = A = \Delta_A$ is a functor
+
+    - If $F_1(X)$ and $F_2(X)$ are functors then $T(X) = F_1(X) + F_2(X)$ is a
+      functor
+    - If $F_1(X)$ and $F_2(X)$ are functors then $T(X) = F_1(X) * F_2(X)$ is a functor
+
+    - If $F_1(X)$ is a functor then $T(X) = F_1(X)^A$ is a functor
+
+
+    Thus any polynomial expression in an object $X$ can be made into a functor.
+
 * Limits
 ** Basic limits theory
 *** Selecting objects
