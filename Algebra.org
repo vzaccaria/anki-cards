@@ -334,8 +334,9 @@
 
 *** Representation of quotient spaces
 
-    If one can form $V/W$ and $(\rho,W)$ is a subrepresentation, one can build a
-    representation $$\rho_{V/W}(g)= \lambda(v).\rho(g)v + W$$ for some $W$.
+    Assume $\mu: E \rightarrow E/W$ the canonical map of $E$ into its quotient
+    vector space. Given a representation $(\rho, E)$, we can define
+    $(\rho_{E/W}, E/W)$ such that $$\rho_{E/W}(g)q = \rho(g)v' \wedge \mu v' = q, q \in E/W$$.
 
 *** Representation of a tensor product space
 
@@ -526,18 +527,15 @@
 
     $$V_1=span_k([0,1]), V_2=span_k([1,0]), V_1 \oplus V_2 = span_k([0,1],[1,0])$$
 
-
 *** Normed vector spaces
 
     A *normed* vector space $V$ is endowed with a map $V \rightarrow R$.
-
 
 *** Inner product spaces
 
     An *inner product* space $V$ is endowed with an operation $V \times V \rightarrow R$.
 
     Hermitian products are one of the possible operations
-
 
 *** Dual Space
 
@@ -579,6 +577,11 @@
       $A$ if $(+)$ complies with the group action properties.
     - Alternatively, it can be defined as $(A, V_k, (-): A \times A \rightarrow V_k)$ where
       $(-)$ complies with Weyl's axioms
+
+*** Quotient space
+    Given a vector space $V$ and a subspace $W$, the quotient space $V/W$ is the set of
+    cosets $W_v = \{ v + w | w \in W \}$.  Fixed a $v$, the coset represents the elements $y$
+    for which $\exists w \in W, x - y = w$ which is an equivalence class.
 
 *** Group Algebra as formal sum
 
