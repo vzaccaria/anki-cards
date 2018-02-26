@@ -539,11 +539,9 @@
 
 *** Dual Space
 
-    Given $V$, one can define its dual space as $V^* = \{f: V \rightarrow C \}$
-    where $f$ is linear.
+    - Given $V$, one can define its dual space as $V^* = \{f: V \rightarrow C
+      \}$ where $f$ is a linear mapping.
 
-    If the space is an inner product space, one can define $V^*$ by defining
-    $$ f = \lambda v. \langle v, w \rangle $$ for some $w$.
 
 *** Tensor product spaces
 
