@@ -901,6 +901,7 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 
 *** Products as limit
 * Functor algebra
+** Functor algebra introduction
 *** Definition of algebras and co-algebras
     - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
       e.g.: $$ X \times A
