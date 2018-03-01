@@ -158,16 +158,19 @@
 
 *** Endomorphism ring of an abelian group
 
-    Given a group $(A,+)$, we can define a set F of group homomorphisms:
+    Given a group $(G,+,0_G)$, we can define a set
     \[
-      F = End(A) = \{ f: f(a + b) = f(a) + f(b), \forall a,b \in A \}
+      End(G) = \{ f: G \rightarrow G | f(a + b) = f(a) + f(b) \}
     \]
 
-    $End(A,++,\circ, \textrm{const~} 0, Id)$ is a *ring* (of functions) where
+    The set $End(G)$ can be made into a *ring* with the following
+    operations/properties
 
-    - $(f ++ g)(x) = f(x) + g(x)$, i.e., it is a group over addition of functions. The identity of this group
-      is $x \mapsto 0$, while each function has an inverse ($f^{-1}x) = (f x)^{-1}$)
-    - $(f \circ g)(x) = f(g(x))$
+    - sum: $(f ++ g)(x) = f(x) + g(x)$
+    - sum unit: $f = x \mapsto 0$
+    - sum inverse: $f^{-1}x = (f x)^{-1}$
+    - multiplication: $(f \circ g)(x) = f(g(x))$
+    - multiplication unit: $f = x \mapsto x$
 
 *** Order of a group element
     In a group, the least integer $n$ such that $a^n=1_{*}$, then that element
@@ -222,32 +225,40 @@
      - The *permutation representation* is associated with a symmetric group $G =
        S_n$ and acts on a $V_k = k^n$.
 
-     - A permutation representation $\rho_{\pi}: S_n \rightarrow GL(k^n)$
-       is such that $$\rho_s(x_1 \ldots x_n) = (x_{s(1)} \ldots x_{s(n)})$$.
+     - Assume $v \in V_k = \sum_j a_j e_j$ with e_j basis. A permutation
+       representation $\rho_{\pi}: S_n \rightarrow GL(k^n)$ is such that $\rho_s
+       v = \sum a_j e_{s(j)}$.
 
      - Practically speaking, gives a permutation matrix for each $g \in G$.
 
+*** Character of a representation
+
+    The *character* of a representation $\rho$ is the trace of the corresponding
+    matrix: $\chi_{\rho_g} = Tr(\rho_g)$.
+
 *** Sign representation
-    - If $\rho(S_n)$ is a representation, then $\textrm{det}(\rho(S_n))$ is a sign
-      representation as it is either 1 or -1.
+    Given any representation of the permutation group $\rho(S_n)$,
+    $\textrm{det}(\rho(S_n))$ is the corresponding sign representation as well
+    and it is either 1 or -1.
 
 *** Faithful representation
 
-    A *faithful* representation $\rho(g)$ is an *injective* map, i.e., $$\textrm{Ker}(\rho)={1_G}$$
+    A *faithful* representation $\rho$ is an *injective* map, i.e., different $g$
+    are represented by distinct $\rho(g)$.
 
 *** Unitary representations
 
-    - Assume $V$ is equipped with an hermitian (scalar) product (on $C_2$).
+    - Assume $V$ is a space equipped with a hermitian dot product (on $C_2$)
+      that measures the distance between vectors (i.e., an Hilbert space).
 
-    - $(\rho,V)$ is unitary if $\langle\rho(g)v,\rho(g)w\rangle = \langle v,w \rangle$.
+    - $(\rho,V)$ is unitary (or, a unitary operator) if it preserves the
+      distance of vectors ($\langle\rho(g)v,\rho(g)w\rangle = \langle v,w
+      \rangle$).
 
-    - if $G$ is finite, one can define a new hermitian product such that $\rho$ becomes unitary:
+    - If the group is finite, then one can always build an unitary operator.
 
-      $$\langle v,w \rangle_2 = \frac{1}{G}\sum_g \langle\rho(g)v,\rho(g)w\rangle$$
+    - See [[[https://en.wikipedia.org/wiki/Unitary_representation#Complete_reducibility][complete reducibility of unitary representations]]].
 
-    - If $V$ is fully reducible, the above product could be used to decompose
-      $V=V \oplus W^{\perp}$ where $W$ is invariant and $W^{\perp}=\{ v \in V |
-      \langle v,w \rangle = 0\}$
 
 *** Trivial representation
 
