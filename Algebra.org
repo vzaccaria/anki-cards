@@ -762,6 +762,11 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
 It is a category where a product is defined for all objects.
 This product is a bifunctor $C \times C \rightarrow C$.
 
+*** Cartesian closed category
+It is a cartesian category that has exponentials and a terminal object.
+
+*** BiCartesian closed category
+It is a cartesian category that has exponentials and a terminal object and coproducts.
 
 ** Set category
 *** Monomorphisms (Sets)
@@ -819,6 +824,20 @@ Given two functions ($g_1, g_2: X \rightarrow Y$), an equaliser is an *object* a
    $(O,m_o: O \rightarrow X)$ for which the above equivalence.
 
 $E$ should be understood as the subset of elements of $X$ for which $g_1(x) = g_2(x)$, i.e., the solutions of the equation.
+
+*** Function objects (Sets)
+    - We can use a *universal construction* for a function object $f$ which represents the
+      set of functions from object $a$ to $b$; we call this object $b^a$.
+    - Ideally, $f$ is such that there exists a morphism $g: f \times a
+      \rightarrow b$ and for all other morphisms $g': (f' \times a) \rightarrow b$
+      there is a unique morphism $(h \times Id): (f' \times a) \rightarrow (f
+      \times a)$ such that $g' = g \circ (h \times Id)$.
+
+*** Currying
+    - Assume $b^a$ the function object from $a$ to $b$
+    - If $f$ is a function it can be seen as a subobject (member) of $b^a$. As
+      such, by universal construction of exponentials, there is an one to one
+      correspondence called *currying*: $$f \rightarrow (b^a) \sim (f \times a) \rightarrow b$$
 
 ** Kleisly category
 *** Kleisly category ($C_T$) definition
@@ -912,6 +931,7 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 
 *** Products as limit
 * Functor algebra
+** Functor algebra introduction
 *** Definition of algebras and co-algebras
     - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
       e.g.: $$ X \times A
