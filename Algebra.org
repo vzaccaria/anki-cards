@@ -1006,14 +1006,36 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
     - In this category, an *initial algebra* is an algebra for which there exist
       one and only one morphism from it to all the other algebras.
 
-*** Initial algebras and induction
+*** Lambek's lemma
+    if $a: T(U) \rightarrow U$ is an initial algebra then there is an
+    inverse $a^{-1}: U \rightarrow T(U)$ such that $T(U) \simeq U$.
+
+*** An initial algebra defines homomorphisms by induction (integers)
 
     - Let's indicate with $(N, [0,S]: 1 + N \rightarrow N$) the *initial* algebra of
       natural numbers.
 
     - An object $Q$ equipped with a functor algebra $$(Q, [q_0,q_S]:
-      1+Q\rightarrow Q)$$ defines one and only one algebra morphism $f: N
-      \rightarrow Q$.
+      1+Q\rightarrow Q)$$ defines, by induction, one and only one algebra
+      morphism $f: N \rightarrow Q$.
 
       - $f \circ 0 = q_0$
-      - $f \circ S = q_s \circ f$
+      - $f \circ S = q_S \circ f$
+
+      i.e, $$f = n \mapsto q_S^n(q_0)$$
+
+*** An initial algebra defines homomorphisms by induction (lists)
+
+    * Let's indicate with $(A^*, [e,c]: 1 + A \times A^* \rightarrow A^*$) the
+      *initial* algebra of lists of $A$.
+
+    * An algebra $$(Q^*, [q_e,q_c]:
+      1+A \times Q^* \rightarrow Q^*)$$ defines, by induction, one and only one algebra
+      morphism $f: A^* \rightarrow Q^*$.
+
+      - $f \circ e = q_e$
+      - $f \circ c = q_c \circ (id \times f)$
+
+    * For example, an algebra $$(\mathbb{N}, [0, S \circ \pi]: 1+A \times
+      \mathbb{N} \rightarrow \mathbb{N})$$ defines implicitly the length of a list
+      function.
