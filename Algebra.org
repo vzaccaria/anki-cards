@@ -209,9 +209,11 @@
 *** Linear group representation
 
     - A *linear group representation* of $G$ is a group homomorphism
-      $$\rho : G \rightarrow GL(V)$$
+      $$\rho : G \rightarrow Aut(V)$$
 
     - It represents the elements of $G$ as *symmetries of the vector space* $V$.
+
+    - By choosing a basis in $V$, $Aut(V) \simeq GL(V)$.
 
 *** Properties of a linear group representation
 
