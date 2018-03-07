@@ -904,7 +904,6 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     A pro-functor is a functor $C^{op} \times C \rightarrow C$. It can be used
     to describe the functoriality of the 'arrow' (exponential) object construction.
 
-
 *** Combination of functors
 
     - $T(X) = X = Id$ is a functor
@@ -919,6 +918,18 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
 
     Thus any polynomial expression in an object $X$ can be made into a functor.
+
+*** Curry-Howard-Lambek isomorphism
+
+
+    | *Logic*          | $\top$   | $\bot$  | $a \wedge b$ | $a \vee b$ | $a \Rightarrow b$ |
+    | *Types*          | ()       | Void    | (a,b)        | Either a b | $a \rightarrow b$ |
+    | *C. C. Category* | terminal | initial | $a \times b$ | $a + b$    | $b^a$             |
+
+    - Proving a logic predicate means constructing an element of a specific type
+
+    - A cartesian closed category is a model for logic and category theory
+
 
 * Limits
 ** Basic limits theory
