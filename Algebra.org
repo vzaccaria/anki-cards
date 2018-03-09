@@ -131,8 +131,13 @@
 
     This quotient group is also called *the cyclic group $Z_6$*.
 
-*** Homomorphisms of a group into a quotient group
-    Given a quotient group $G/H$, there is a homomorphism $G \rightarrow G/H$.
+*** Fundamental homomorphism theorem
+
+    - Given a quotient group $G/H$, there is a homomorphism $\mu: G \rightarrow G/H$.
+
+    - Given any homomorphism $\phi: G \rightarrow Q$ with its kernel $H$, $Q$ is
+      always isomorphic to $G/H$.
+
 
 *** How many elements has each coset of $H$ (a subgroup of $G$)?
 
@@ -471,6 +476,7 @@
 *** Ideals
     A subring $S$ of $R$ is an *ideal* of $R$ if it absorbs multiplication:
     $$\forall s \in S, \forall r \in R. sr \in S \wedge rs \in S$$
+    and it is closed under addition.
 
 *** Principal ideal
 
@@ -488,6 +494,19 @@
     - $f(a * b) = f(a) * f(b)$
     - $f(1_R) = 1_S$
 
+*** Cosets of an ideal of a ring
+
+    A coset of an ideal $I_a$, just as those of subgroups, is created with the
+    addition operation as in group theory: $$I_a = \{ a + i | i \in I\} a \in
+    R$$ We can define both addition and multiplication:
+
+    - $I_a + I_b = I_{a + b}$
+    - $I_a * I_b = I_{a * b}$
+
+*** Quotient ring
+
+    Given a ring $R$ and an ideal $I$, the set of cosets of $I$ is a ring and
+    it is called the quotient ring $R/I$.
 
 ** Fields
 
