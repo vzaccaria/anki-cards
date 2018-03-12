@@ -209,6 +209,15 @@
 
    - It is a normal subgroup
 
+*** Commutator subgroup of $S_n$
+
+    The commutator subgroup of $S_n$ is the alternating group $A_n$. It
+    is the set of all even permutations in $S_n$. Even = even number of
+    transpositions in which it can be written.
+
+*** Subgroup index
+
+    The index of a subgroup H in G is defined as the number of cosets of H in G.
 
 ** Group representations
 *** Linear group representation
@@ -324,17 +333,9 @@
     \rightarrow k^{\times}$ and corresponds to a representation $\rho_k(g) =
     \chi(g)Id_{V}$ ($\chi(\cdot)$ is in fact a scalar).
 
-  - Can we determine $\lambda$? If we know an intertwiner $\phi: \rho_k
-    \rightarrow \rho$ then $\lambda$ should satisfy, for all $g$:
-
-\[
-\begin{array}{rcl}
-(\phi \lambda Id)v & = & (\rho(g) \phi)v \\
-(\lambda \phi)v & = & (\rho(g) \phi)v \\
-\lambda u & = & \rho(g) u \\
-\end{array}\]
-
-  - $\lambda$ is thus the eigenvalue of all representations $\rho(g)$
+  - The set $\hat{G}$ of one-dimensional representations of a group $G$ is an
+    abelian group and it is isomorphic to $G/G'$ where $G'$ is the
+    commutator subgroup.
 
 *** Representations of external direct sums
 
@@ -416,6 +417,12 @@
 *** Shur's lemma - corollary for $L_1, L_2$ intertwining operators
      For irreducible representations ($\rho, V$) and ($\rho', V'$) all the intertwining
      operators have the form $L_1 = \lambda L_2$.
+*** Irreducible representations of abelian groups
+    - All irreducible representations $(\rho, V)$ of an abelian group are such that
+      $dim(V)=1$ (by Shur's lemma), i.e., they are one dimensional.
+    - To each $\rho(g)$ it corresponds a scalar $\lambda_g$, which is called *character*.
+    - If $\rho$ is not irreducible, then there exists a basis such that
+      $\rho(g)$ is diagonal.
 * Algebraic structures with two operators
 ** Semirings
 *** Semiring (Rig)
