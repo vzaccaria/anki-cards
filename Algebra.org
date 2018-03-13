@@ -236,7 +236,6 @@
     - $(\rho_g)^{-1} = \rho_{g^{-1}}$
     - $\rho_g(xv + yw) = x\rho_gv + y\rho_gw$
 
-
 *** Permutation representation
      - The *permutation representation* is associated with a symmetric group $G =
        S_n$ and acts on a $V_k = k^n$.
@@ -274,7 +273,6 @@
     - If the group is finite, then one can always build an unitary operator.
 
     - See [[[https://en.wikipedia.org/wiki/Unitary_representation#Complete_reducibility][complete reducibility of unitary representations]]].
-
 
 *** Trivial representation
 
@@ -316,6 +314,9 @@
     An *irreducible* representation $(\rho,V)$ has as subrepresentations only
     $(\rho,0)$ and $(\rho,V)$
 
+*** Maschke's theorem
+    Any representation of $(\rho: G \rightarrow V_k)$ is a direct sum of
+    irreducible pieces (constituents) if $|G|$ is not a multiple of $char(k)$.
 *** Full reducibility
 
     If $V = W_1 \oplus \ldots W_n$ and all $(\rho, W_i)$ are irreducible then
