@@ -466,7 +466,17 @@
     - It is a commutative ring (with multiplication commutative) that has the
       cancellation property.
 
+    - An integral domain with non-zero characteristic $p$ is such that $p$ is prime.
+
+*** Integral domains and fields
+
     - Every field is an integral domain.
+
+    - Every *finite* integral domain is a field, because you can find a
+      multiplicative inverse for each element of the field (this depends on the
+      fact that there are no zero divisors).
+
+    - A *finite integral domain* is just a *finite field*
 
 
 *** Quaternions
@@ -482,9 +492,11 @@
     and multiplication of $R$, then it is a subring of $R$.
 
 *** Ideals
-    A subring $S$ of $R$ is an *ideal* of $R$ if it absorbs multiplication:
-    $$\forall s \in S, \forall r \in R. sr \in S \wedge rs \in S$$
-    and it is closed under addition.
+    A subring $I$ of $R$ if
+
+    - it absorbs elements of $R$ by multiplication: $$\forall s \in I, \forall r
+      \in R. sr \in I$$
+    - it is closed under addition.
 
 *** Principal ideal
 
