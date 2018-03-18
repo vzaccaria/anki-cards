@@ -593,8 +593,13 @@
 
 *** Dual Space
 
-    - Given $V$, one can define its dual space as $V^* = \{f: V \rightarrow C
-      \}$ where $f$ is a linear mapping.
+    - Given $V$, one can define its dual space as the space of linear mappings
+      over it, i.e., $V^* = \{f: V \rightarrow C \}$.
+
+    - This space has basis $f_i^*(v_j)=\delta_{i,j}$ (kronecker deltas), i.e.,
+      $V^*=span(f_1^*, \ldots, f_n^*)$.
+
+
 
 
 *** Tensor product spaces
