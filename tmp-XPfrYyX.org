@@ -267,7 +267,7 @@
       $(\chi_{\rho},\chi_{\sigma}) = 0$. If they are equivalent then
       $(\chi_{\rho},\chi_{\sigma}) = 1$
 
-    - $dim(V^G) = (\chi_{\rho}, \chi_{triv})$
+    - $dim(V^G) = (\chi_{\rho}, \chi_{\triv})$
 *** Sign representation
     Given any representation of the permutation group $\rho(S_n)$,
     $\textrm{det}(\rho(S_n))$ is the corresponding sign representation as well
