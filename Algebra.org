@@ -1130,11 +1130,27 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 
 *** Proofs by induction with initial algebras
 
-    - Consider that, given an initial algebra $(U, a: T(U) \rightarrow U)$, any
-      homomorphism $f: U \rightarrow V$ to a second algebra $(V, b)$ is the
-      same.
+    Consider that, given an initial algebra $(U, a: T(U) \rightarrow U)$, all
+    morph. $f: (U,a) \rightarrow (V,b)$ to the same algebra $(V,b)$ are
+    equivalent. So,
 
-    - So, for example, verifying a property of $f: U \rightarrow
-      U$ can be written by demonstrating $prop_1 \circ f$ and
-      $prop_2$ are homomorphisms from the same initial into algebra into the
-      same target algebra.
+    - if we want to demonstrate that a function $\phi: U \rightarrow U$ has
+      some property and
+    - if we can factor it into an algebra homomorphism:
+      $prop_1 \circ \phi: U \rightarrow V$ and
+    - can find another expression for
+      the homomorphism $prop_2: U \rightarrow V$
+    - then they are equivalent, i.e.:
+      $$prop_1 \circ \phi = prop_2$$
+
+*** Principle of list induction
+    To show that a predicate/set $P$ is equal to the set of all lists $A*$, it is enough to
+    show the following:
+
+    - $empty \in P$
+    - $\forall a, \alpha \in P \Rightarrow cons(a,\alpha) \in P$
+
+    i.e., $P$ can be understood as an algebra $$(U, [empty,cons]: 1 + A\times U
+    \rightarrow U)$$ for which we know an initial algebra (the one of lists
+    $A^*$). If this is the case, the inclusion morphism $i: P \rightarrow A^*$ is
+    an isomorphism and $P = A^*$ or /$P$ holds for all $A^*$/.
