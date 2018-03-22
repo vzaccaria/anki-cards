@@ -249,7 +249,9 @@
 *** Character of a representation
 
     The *character* of a representation $\rho$ is the trace of the corresponding
-    matrix: $\chi_{\rho_g} = Tr(\rho_g)$.
+    matrix: $\chi_{\rho_g} = Tr(\rho_g)$. Frobenius showed there is finitely
+    many irreducible representations of G and that they are completely
+    determined by their characters.
 
     Properties:
 
@@ -259,6 +261,8 @@
     - $\chi_{\rho^*}(g) = \chi_{\rho}(g^{-1})$
 
     If $k=C$, $\chi_{\rho}(g)=\bar{\chi}_{\rho}(g^{-1})$
+
+
 *** Orthogonality relations
     Given the space of functions $F = \{ f: G \rightarrow k \}$, define the
     averaging operator $$(f_1,f_2) = \frac{1}{|G|}\sum_G f_1(g^{-1})f_2(g)$$
@@ -344,7 +348,6 @@
 
     if $|G|$ divides $char(k)$ then neither $V$ nor $W$ have a G-invariant
     complement.
-
 
 *** Full reducibility
 
@@ -560,6 +563,9 @@
     Given a ring $R$ and an ideal $I$, the set of cosets of $I$ is a ring and
     it is called the quotient ring $R/I$.
 
+*** Division ring
+    - A ring where every nonzero element a has a multiplicative inverse.
+    - Also called skew field.
 *** Integral system
     - An integral domain $A$ that is *ordered* and for which every subset $B \subseteq
       A$ has a *least element* (initial object)
@@ -595,6 +601,10 @@
     It has $p$ elements. If $p$ is prime then $F_p$ is a prime field and
     operations are understood as modular.
 
+*** Algebraically closed field
+    An algebraically closed field $F$ contains a root for every non-constant
+    polynomial in $F[x]$, the ring of polynomials in the variable $x$ with
+    coefficients in $F$.
 * Algebras of vector spaces and modules
 ** Vector spaces
 
@@ -716,6 +726,28 @@
     \[
     *: K \times V \rightarrow V
     \]
+*** Modules over division rings
+
+    - Much of the linear algebra results can be applied to modules over division
+      rings as the latter are almost fields.
+
+*** Projector
+    - A *projector* is a linear operator $P: X \rightarrow X$ for which $P^2=P$.
+
+    - Both $P$ and $(I-P)$ define a direct sum composition $$X \simeq X_1 \oplus X_2 = PX \oplus (I-P)X$$
+
+    - One typically says that *the projector $P$ projects X the invariant image $X_1$ with kernel $X_2$*
+
+*** Projector image
+      The image of a projector $P$ is an *invariant* under $P$: $$ P(PX)=(PX) \sim Pw=w$$
+
+
+*** Projector kernel
+      Given a projector $P$, $X_2 = (1-P)X$ is the kernel of $P$ by definition: $$PX_2 = P(1-P)X = (P-P^2)X = 0$$
+
+
+
+
 * Category theory basics
 
 ** Category basics
@@ -1018,7 +1050,6 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     - Proving a logic predicate means constructing an element of a specific type
 
     - A cartesian closed category is a model for logic and category theory
-
 
 * Limits
 ** Basic limits theory
