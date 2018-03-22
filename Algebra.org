@@ -560,6 +560,17 @@
     Given a ring $R$ and an ideal $I$, the set of cosets of $I$ is a ring and
     it is called the quotient ring $R/I$.
 
+*** Integral system
+    - An integral domain $A$ that is *ordered* and for which every subset $B \subseteq
+      A$ has a *least element* (initial object)
+    - The above property ensures that there are no elements $c$ such that $0<c<1$.
+    - Every element is a multiple of 1.
+*** Integral system - mathematical induction
+    If the following condition hold for a subset $K$ of an ordered integral system:
+    - $1 \in K$
+    - $k \in K \Rightarrow (k+1) \in K$
+    then $K$ is all the integers. Proof by contradiction (see Pinter).
+
 ** Fields
 
 *** Field
