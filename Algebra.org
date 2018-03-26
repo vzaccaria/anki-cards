@@ -219,6 +219,28 @@
 
     The index of a subgroup H in G is defined as the number of cosets of H in G.
 
+*** Group orbit
+    - Given a group $G$, a set $S$ and an action $\alpha: G \times S \rightarrow
+      S$ the group orbit of each element $s$ is $$G(s) = \{ \alpha(g, s) : g \in
+      G \}$$ where $G(s) \subset S$.
+    - $G(s)$ forms a group which is isomorphic to $G/G_s$ (where $G_s$ is the
+      isotropy group).
+*** Group stabilizer
+
+    - Given a group $G$, a set $S$ and an action $\alpha: G \times S \rightarrow S$,
+      a stabilizier of $s \in S$ is $$\alpha(g_s) s = s$$
+
+    - All $g_s$ form a group, the *isotropy group* $G_s$
+
+*** Group centralizer
+    The centralizer of an element $a$ of a group $G$ is the set of elements of
+    $G$ that commute with $a$: $$C_G(a) = \{ g \vert ga = ag \}$$
+
+*** Group conjugacy classes
+    - The conjugacy class of an element $a \in G$ is the set of elements:
+      $$Cl(a) = \{ gag^{-1}: g \in G \}$$
+
+    - The class number of G is the number of distinct (nonequivalent) conjugacy classes
 ** Group representations
 *** Linear group representation
 
@@ -253,7 +275,10 @@
     many irreducible representations of G and that they are completely
     determined by their characters.
 
-    Properties:
+    The character is a central or class function, it depends only on the
+    conjugacy class of $g$
+
+*** Properties of the character of a representation
 
     - $\chi_{\rho}(1) = dim(\rho)$
     - $\chi_{\rho \oplus \sigma} = \chi_{\rho} + \chi_{\sigma}$
@@ -349,6 +374,11 @@
     if $|G|$ divides $char(k)$ then neither $V$ nor $W$ have a G-invariant
     complement.
 
+*** Maschke's sum of squares
+
+    If $V = \bigoplus V_i$ and all $V_i$ are irreducible representations of $G$,
+    then $$|G| = \sum_i dim(V_i)^2$$.
+
 *** Full reducibility
 
     If $V = W_1 \oplus \ldots W_n$ and all $(\rho, W_i)$ are irreducible then
@@ -440,19 +470,21 @@
     \}$$ thus one can define a representation that is equivalent to the group
     algebra's one.
 
-*** Shur's lemma
+*** Schur's lemma
      - If $(\rho, V)$ and $(\rho', V)$ are irreducible representations and there
        is an intertwining operator $L$, *then* $$L \neq 0 \rightarrow L
        \textrm{~is an equivalence}$$ (no middle ground).
-*** Shur's lemma - corollary for $L : V \rightarrow V$
-     For irreducible representations ($\rho,V$) all intertwining
-     operators $L: V \rightarrow V$ have the form $L=\lambda I$.
-*** Shur's lemma - corollary for $L_1, L_2$ intertwining operators
+*** Schur's lemma - corollary for $L : V \rightarrow V$
+     For irreducible representations ($\rho,V$) all intertwining operators $L: V
+     \rightarrow V$ have the form $L=\lambda I$ where $\lambda$ is a scalar. In
+     fact, $\lambda$ is the root of the characteristic polynomial (an
+     eigenvalue) of $\phi$.
+*** Schur's lemma - corollary for $L_1, L_2$ intertwining operators
      For irreducible representations ($\rho, V$) and ($\rho', V'$) all the intertwining
      operators have the form $L_1 = \lambda L_2$.
 *** Irreducible representations of abelian groups
     - All irreducible representations $(\rho, V)$ of an abelian group are such that
-      $dim(V)=1$ (by Shur's lemma), i.e., they are one dimensional.
+      $dim(V)=1$ (by Schur's lemma), i.e., they are one dimensional.
     - To each $\rho(g)$ it corresponds a scalar $\lambda_g$, which is called *character*.
     - If $\rho$ is not irreducible, then there exists a basis such that
       $\rho(g)$ is diagonal.
