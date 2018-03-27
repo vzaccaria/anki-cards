@@ -1239,3 +1239,19 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
     \rightarrow U)$$ for which we know an initial algebra (the one of lists
     $A^*$). If this is the case, the inclusion morphism $i: P \rightarrow A^*$ is
     an isomorphism and $P = A^*$ or /$P$ holds for all $A^*$/.
+** Co-algebras
+*** Co-algebra
+    Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
+    C$, a functor co-algebra for $T$ is a pair $(U=
+
+    - an object $U \in C$ (*carrier*)
+    - a morphism $c: U \rightarrow T(U)$ (*co-algebra structure*)
+
+    $c$ must be defined by a tuple of several functions whose signature is
+    specified by $T$. For example, $$T(X) = A \times X$$ defines $$(value,next):
+    (U \rightarrow A, U \rightarrow U)$$ for any process $U$.
+*** Homomorphisms of co-algebras
+
+    Given two T-functor co-algebras $(U, a: - \rightarrow T(-))$ and $(V, b: - \rightarrow T(-))$,
+    a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
+    with the operations $$ T(f) \circ a = b \circ f$$
