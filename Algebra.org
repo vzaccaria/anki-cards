@@ -1093,6 +1093,28 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     - Proving a logic predicate means constructing an element of a specific type
 
     - A cartesian closed category is a model for logic and category theory
+*** Natural transformation of functors $F \rightarrow G$
+
+    It is a way of comparing functors; given two functors $F,G: C \rightarrow D$, I
+    can create compare them by :
+    - picking to objects object $c_1,c_2$ and a morphism $f: c_1 \rightarrow c_2$
+    - picking in $D$ a morphism $\alpha_{c_1}$ in $D$ that maps $Fc_1$ to $Gc_1$
+      (the family of $\alpha_c$ is called *components of the NT*).
+    - picking in $D$ a morphism $\alpha_{c_2}$ in $D$ that maps $Fc_2$ to $Gc_2$
+    How can I detect any relation between $F,G$ meaning they are similar? This
+    naturality condition is $$\alpha_{c_2} \circ F f = G f \circ \alpha_{c_1},
+    \forall c_1,c_2$$
+
+*** Natural transformation maps morphisms to ...
+
+    A natural transformation maps a morphism to a commuting diagram (*naturality
+    square*).
+
+*** Natural isomorphims
+
+    All the components of a NT are invertible
+
+
 
 * Limits
 ** Basic limits theory
@@ -1255,3 +1277,11 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
     Given two T-functor co-algebras $(U, a: - \rightarrow T(-))$ and $(V, b: - \rightarrow T(-))$,
     a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
     with the operations $$ T(f) \circ a = b \circ f$$
+** Natural transformations
+*** Natural transformations and parametric polymorphism
+    - In PP, I must use a single expression for a parametric function
+    - A lot of parametric polymorphic functions ~F a -> G a~ are natural
+      transformations by default (theorems for free) and can be used to optimize
+      code, e.g.: $$safeTail \circ fmap~f = fmap~f \circ safeTail$$
+    - Note, typeclasses represent /ad-hoc/ polymorphism.
+    - The return of a monad is a natural transformation
