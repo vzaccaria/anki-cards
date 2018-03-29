@@ -133,7 +133,9 @@
 
 *** Fundamental homomorphism theorem
 
-    - Given a quotient group $G/H$, there is a homomorphism $\mu: G \rightarrow G/H$.
+    - Given a quotient group $G/H$, there is a homomorphism $\mu: G \rightarrow
+      G/H$. This homomoprhism is called 'natural' and corresponds to assigning
+      to each $g$ its coset $H_g$.
 
     - Given any homomorphism $\phi: G \rightarrow Q$ with its kernel $H$, $Q$ is
       always isomorphic to $G/H$.
@@ -613,6 +615,11 @@
     - $k \in K \Rightarrow (k+1) \in K$
     then $K$ is all the integers. Proof by contradiction (see Pinter).
 
+*** Polynomial
+    - Take a ring $Z$ and add a new symbol $\pi$. Which other numbers should be
+      present to make it a ring? It turns out that all the numbers of the form
+      $$a_n \pi^n + \dots + a_1 \pi + a_0$$ should be present.
+    - The ring created is the polynomial ring $\mathbb{Z}[x]$.
 ** Fields
 
 *** Field
