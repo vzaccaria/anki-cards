@@ -350,6 +350,9 @@
    Given a subspace $F \subseteq E$, if $$\forall f \in F, ~~\rho(G)(f) \in
      F$$ then $(\rho, F)$ is a *subrepresentation* of $(\rho, E)$.
 
+   If a group has a subrepresentation $F \subseteq E$ then also $E/F$ is a
+   representation.
+
 *** Trivial subrepresentation
 
    - A trivial subrepresentation $(\rho, E)$ is such that $\rho(g)e = e$.
@@ -367,11 +370,8 @@
     - a repr. $(\rho,V)$
     - a subrepr $(\rho, W)$, $W \subset V$
 
-    then, if $|G|$ is not a multiple of $char(k)$, there are two representations
-    of G naturally associated with it:
-
-    - the original $(\rho, W)$ and
-    - $(\rho, V/W)$
+    then, if $|G|$ is not a multiple of $char(k)$, $V$ can be decomposed into
+    two invariant subspaces $V = W \oplus W'$
 
     if $|G|$ divides $char(k)$ then neither $V$ nor $W$ have a G-invariant
     complement.
