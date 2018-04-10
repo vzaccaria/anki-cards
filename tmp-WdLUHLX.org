@@ -1331,11 +1331,10 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 
 *** Examples of final co-algebras
     
-    | Functor            | FC Carrier                        | FC Structure         | Notes                 |
-    |--------------------+-----------------------------------+----------------------+-----------------------|
-    | $A \times X$       | $A^\mathbb{N}$                    | head($a$), tail($a$) | Infinite lists of As  |
-    | $1 + (A \times X)$ | $A^{\infty} = A^* + A^\mathbb{N}$ | possnext($a$)        | Finite and inf. lists |
-    | $1 + X$            | $\mathbb{N} \cup \{ \infty \}$    | pred($n$)            |                       |
+    | Functor            | Carrier                       | Morphisms            | Notes                 |
+    |--------------------+-------------------------------+----------------------+-----------------------|
+    | $A \times X$       | $A^\mathbb{N}$                | head($a$), tail($a$) | Infinite lists of As  |
+    | $1 + (A \times X)$ | $A^\infinite = A^* + A^\mathbb{N}$ | possnext($a$)        | Finite and inf. lists |
     
 ** Natural transformations
 *** Natural transformations and parametric polymorphism
