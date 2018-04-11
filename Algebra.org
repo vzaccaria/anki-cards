@@ -1150,7 +1150,25 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     All the components of a NT are invertible
 
 
+*** Category of functors and natural transformation
+    - If I compose the components of two natural transformations $\alpha: F a
+      \rightarrow G a$ and $\beta: G a \rightarrow H a$, do I have another
+      natural transformation? yes
+    - Is there an identity NT? yes, it is the family of identity morphisms $F a \rightarrow F a$
+    - The category of functors from $C$ into $D$ is called $D^C$
+    - In 'Cat', the morphisms between categories (functors) are not only a set but a category
 
+*** Cells 
+    - 0-cell is a category
+    - 1-cell is a morphism
+    - 2-cell is a morphism between morphisms
+*** 2-category 
+    - a category where we have morphisms between objects and also between *morphisms* (2-cells)
+    - in a 2- category 2-cells can be composed both horizontally or vertically
+    - 'Cat' is a 2-category where the morphisms between categories (functors)
+      are not only a set but a category
+    - 2-Category equivalence of morphisms is defined up to isomorphisms (it is lax)
+    
 * Limits
 ** Basic limits theory
 *** Selecting objects
