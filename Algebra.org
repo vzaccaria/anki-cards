@@ -1024,19 +1024,13 @@ $E$ should be understood as the subset of elements of $X$ for which $g_1(x) =
 g_2(x)$, i.e., the solutions of the equation.
 
 *** Function objects (Sets)
-    - We can use a *universal construction* for a function object $f$ which represents the
-      set of functions from object $a$ to $b$; we call this object $b^a$.
-    - Ideally, $f$ is such that there exists a morphism $g: f \times a
-      \rightarrow b$ and for all other morphisms $g': (f' \times a) \rightarrow b$
-      there is a unique morphism $(h \times Id): (f' \times a) \rightarrow (f
-      \times a)$ such that $g' = g \circ (h \times Id)$.
-
-*** Currying
-    - Assume $b^a$ the function object from $a$ to $b$
-    - If $f$ is a function it can be seen as a subobject (member) of $b^a$. As
-      such, by universal construction of exponentials, there is an one to one
-      correspondence called *currying*: $$f \rightarrow (b^a) \sim (f \times a) \rightarrow b$$
-
+    An object $b^a$ is an *exponential object* if
+      - there exists a morphism $eval: b^a \times a \rightarrow b$
+      - for all other objects $f$ for which there exists a morphism $e: f \times
+        a \rightarrow b$ there is a unique morphism $(h \times Id): f \times a
+        \rightarrow b^a \times a$ that makes $eval \circ (h \times Id) = e$
+      - the one to one correspondence between any moprhism $e: f \times a \rightarrow b$ and $h: f \rightarrow b^a$ 
+        is called *currying*.
 ** Kleisly category
 *** Kleisly category ($C_T$) definition
     - Assume $C$ is a category with an endofunctor $T$ and a morphism $\mu: T^2 C \rightarrow C$
@@ -1297,18 +1291,13 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 
 *** Proofs by induction with initial algebras
 
-    Consider that, given an initial algebra $(U, a: T(U) \rightarrow U)$, all
-    morph. $f: (U,a) \rightarrow (V,b)$ to the same algebra $(V,b)$ are
-    equivalent. So,
+    - All squares that start from an initial algebra commute. 
 
-    - if we want to demonstrate that a function $\phi: U \rightarrow U$ has
-      some property and
-    - if we can factor it into an algebra homomorphism:
-      $prop_1 \circ \phi: U \rightarrow V$ and
-    - can find another expression for
-      the homomorphism $prop_2: U \rightarrow V$
-    - then they are equivalent, i.e.:
-      $$prop_1 \circ \phi = prop_2$$
+    - Assume to have an action $f$ and a measure $\mu$ that are algebra
+      homomorphisms from an initial algebra $U$. Exploiting $$\mu \circ f = f' \circ \mu'$$
+      if I can build $\mu'$ and $f'$, would prove an invariant property
+      for $f$ based on $\mu$. Think about a function $f$ doubling lists and $\mu
+      = len$.
 
 *** Principle of list induction
     To show that a predicate/set $P$ is equal to the set of all lists $A*$, it is enough to
