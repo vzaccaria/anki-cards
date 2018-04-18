@@ -1042,7 +1042,15 @@ g_2(x)$, i.e., the solutions of the equation.
         the one built as $h: A \rightarrow T C$ such that $$ h = \mu
         \circ T f \circ g$$
       - Note that $T f: T B \rightarrow T^2 C$
-
+    - The relationship between $C$ and $C_T$ is an example of /adjunction/
+*** Monads 
+    Given a category $C$, A monad corresponds to the data of:
+    - an endofunctor $T: C \rightarrow C$
+    - a unit natural transformation $\eta: 1_C \Rightarrow T$ (where $1_C$ is the identity endofunctor)
+    - a multiplication natural transformation $\mu: T^2 \Rightarrow T$ 
+    so that, seeing the endofunctors as objects in the monoidal category of
+    endofunctors $C^C$, the unit and the multiplication can be used to make $T$
+    a monoid.
 
 ** Monoidal category
 *** Monoidal category definition
@@ -1051,6 +1059,11 @@ g_2(x)$, i.e., the solutions of the equation.
 
    - Both product and coproduct in a monoidal category are individuated by the
      same symbol, i.e., *tensor product* ($\otimes$)
+
+*** Monoidal category of endofunctors 
+    Endofunctors and natural transformations form a category. If there are
+    additional natural transformations of the type $T\timesT \rightarrow T$ then
+    this category is a monoidal category. These monoids are called monad.
 
 * Functors
 ** Introduction
