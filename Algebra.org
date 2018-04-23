@@ -280,6 +280,7 @@
     The character is a central or class function, it depends only on the
     conjugacy class of $g$
 
+
 *** Properties of the character of a representation
 
     - $\chi_{\rho}(1) = dim(\rho)$
@@ -289,6 +290,10 @@
 
     If $k=C$, $\chi_{\rho}(g)=\bar{\chi}_{\rho}(g^{-1})$
 
+*** Conjugacy classes and irreducible representations
+    - The number of isomorphism classes of irreducible representations of G
+      equals the number of conjugacy classes of G.
+    - The size of these representations is given by the Maschke's sum of squares
 
 *** Orthogonality relations
     Given the space of functions $F = \{ f: G \rightarrow k \}$, define the
@@ -1062,7 +1067,7 @@ g_2(x)$, i.e., the solutions of the equation.
 
 *** Monoidal category of endofunctors 
     Endofunctors and natural transformations form a category. If there are
-    additional natural transformations of the type $T\timesT \rightarrow T$ then
+    additional natural transformations of the type $T\times T \rightarrow T$ then
     this category is a monoidal category. These monoids are called monad.
 
 * Functors
