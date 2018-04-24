@@ -1362,6 +1362,12 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
     | $1 + (A \times X)$ | $A^{\infty} = A^* + A^\mathbb{N}$ | possnext($a$)        | Finite and inf. lists |
     | $1 + X$            | $\mathbb{N} \cup \{ \infty \}$    | pred($n$)            |                       |
     
+*** Bisimulation 
+    - Deals with lists and their co-algebraic structure (head,tail).
+    - It is a relation $R$ defined recursively:
+      $$R(a,b) \Rightarrow h(a) = h(b) \wedge R(t(a), t(b))$$
+    - If you find an $R$ that holds for $a,b$ then $a = b$.
+    - It is like the induction principle but on lists (and it is called co-induction)!
 ** Natural transformations
 *** Natural transformations and parametric polymorphism
     - In PP, I must use a single expression for a parametric function
