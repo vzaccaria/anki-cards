@@ -299,9 +299,9 @@
     Given the space of functions $F = \{ f: G \rightarrow k \}$, define the
     averaging operator $$(f_1,f_2) = \frac{1}{|G|}\sum_G f_1(g^{-1})f_2(g)$$
 
-    - If $(\rho, V)$ and $(\rho, W)$ are not isomorphic then
-      $(\chi_{\rho},\chi_{\sigma}) = 0$. If they are equivalent then
-      $(\chi_{\rho},\chi_{\sigma}) = 1$
+    - Assume $(\rho, V)$ and $(\sigma, W)$ be irreducible representations of a
+      group. If they are not isomorphic then $(\chi_{\rho},\chi_{\sigma}) = 0$.
+      If they are equivalent then $(\chi_{\rho},\chi_{\sigma}) = 1$
 
     - $dim(V^G) = (\chi_{\rho}, \chi_{triv})$
 *** Sign representation
@@ -426,6 +426,11 @@
     Assume $\mu: E \rightarrow E/W$ the canonical map of $E$ into its quotient
     vector space. Given a representation $(\rho, E)$, we can define
     $(\rho_{E/W}, E/W)$ such that $$\rho_{E/W}(g)q = \rho(g)v' \wedge \mu v' = q, q \in E/W$$.
+
+*** Kernel representations
+    
+    - Given a homomorphism $\mu$ between spaces $E_1 \rightarrow E_2$, the
+      representation $E_1/Ker(\mu)$ is isomorphic to $\Im(\mu)$
 
 *** Representation of a tensor product space
 
@@ -773,6 +778,15 @@
     cosets $W_v = \{ v + w | w \in W \}$.  Fixed a $v$, the coset represents the elements $y$
     for which $\exists w \in W, x - y = w$ which is an equivalence class.
 
+*** Exact sequence 
+
+    In the context of group theory, a sequence of morphisms $G_0 \rightarrow^{f_0} G_1 \rightarrow^{f_1} ... G_n$ is 
+    exact if the image of each moprhism is the kernel of the next.
+
+    - The sequence 0 -> A -> B is exact only if the map from A to B is a monomorphism
+    - The sequence B -> C -> 0 is exact only if the map from B to C is an epimorphism
+    - The sequence 0 -> A -> B -> C -> 0 is called exact if A -> B is mono and B -> C is epi
+    
 *** Group Algebra as formal sum
 
     A group algebra $K[G]$ for a group $G$ and a field $K$ is a vector space
@@ -785,7 +799,6 @@
     elements of $G$ with coefficients in $K$, i.e., $$f = \sum_{g\in G}a_{g,f}
     e_g$$ where $e_g$ are basis in $K[G]$.
 
-
 *** Group Algebra as function space
 
     Given a group $G$ and a field $K$, we can build an algebra $K[G]$ where
@@ -795,7 +808,6 @@
     - $(f_1 + f_2) = g \mapsto f_1(g) + f_2(g)$
     - $(\alpha f) = g \mapsto \alpha f(g)$
     - $(f_1 \times f_2) = g \mapsto \sum_{u \in G}f_1(u)f_2(u^{-1}g)$
-
 
 
 *** R-Module
