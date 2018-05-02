@@ -1336,17 +1336,18 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
       for $f$ based on $\mu$. Think about a function $f$ doubling lists and $\mu
       = len$.
 
-*** Principle of list induction
+*** Principle of list induction for a predicate on the set of lists
     To show that a predicate/set $P$ is equal to the set of all lists $A*$, it is enough to
     show the following:
 
     - $empty \in P$
     - $\forall a, \alpha \in P \Rightarrow cons(a,\alpha) \in P$
 
-    i.e., $P$ can be understood as an algebra $$(U, [empty,cons]: 1 + A\times U
-    \rightarrow U)$$ for which we know an initial algebra (the one of lists
-    $A^*$). If this is the case, the inclusion morphism $i: P \rightarrow A^*$ is
-    an isomorphism and $P = A^*$ or /$P$ holds for all $A^*$/.
+    i.e., 
+    - $P$ can be understood as an algebra $$(P, [empty,cons]: 1 + A\times P \rightarrow P)$$ 
+    - $P$ is a subalgebra of $A^*$ because there is a morphism $i: P \rightarrow A^*$
+    - Since $A^*$ is initial, any morphism $A^* \rightarrow A^*$ is the identity
+      (by uniqueness), so $i$ is epi and mono (iso).
 ** Co-algebras
 *** Co-algebra
     Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
