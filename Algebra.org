@@ -137,8 +137,9 @@
       G/H$. This homomoprhism is called 'natural' and corresponds to assigning
       to each $g$ its coset $H_g$.
 
-    - Given any homomorphism $\phi: G \rightarrow Q$ with its kernel $H$, $Q$ is
-      always isomorphic to $G/H$.
+    - Given any homomorphism $\phi: G \rightarrow Q$, the following sequence is
+      exact: $$ 1 \rightarrow N \rightarrow^{\iota} G \rightarrow^{\phi} [Q \cong G/N]
+      \rightarrow 1 $$ where $N$ is normal.
 
 
 *** How many elements has each coset of $H$ (a subgroup of $G$)?
@@ -693,6 +694,19 @@
     An algebraically closed field $F$ contains a root for every non-constant
     polynomial in $F[x]$, the ring of polynomials in the variable $x$ with
     coefficients in $F$.
+*** Field extensions 
+    - A field extension of field $F$ is a field $E$ s.t. $F \subseteq E$. There
+      exists always a field extension of $K$ such that any polynomial of degree
+      $n$ in $F$ has $n$ solutions in $E$.
+
+    - Given a substitution morphism $\sigma_c: F[x] \rightarrow F[c]$, there
+      exists an irreducible $p(x)$ such that this is an exact sequence:
+
+      $$1 \rightarrow \langle p(x)\rangle \rightarrow^{\iota} F[x] \rightarrow^{\sigma_c} [F[c]\cong F[x]/\langle p(x) \rangle] \rightarrow 1$$
+
+      This happens when $\langle p(x)\rangle$ is a maximal ideal. The field
+      extension we are looking for is $E = F[x]/\langle p(x)\rangle$ because it
+      will contain a root of $p(x)$.
 * Algebras of vector spaces and modules
 ** Vector spaces
 
