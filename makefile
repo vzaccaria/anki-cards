@@ -24,7 +24,7 @@ anki-cards/Books/Books.json: Books.org
 
 watch: $(CURTGT)
 	open $(CURTGT)
-	watchman $(CURORG) "make $(CURTGT)"
+	watchman-make -p $(CURORG) -t $(CURTGT)
 
 clean:
 	rm -rf anki-cards *.pdf *.log tmp-*

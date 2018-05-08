@@ -901,7 +901,6 @@ function  \[ \alpha: M \times S \rightarrow S \]. The following properties shoul
 
 - compatibility: $\alpha(f \star g, s) = \alpha(f, \alpha(g, s))$
 
-
 ** Preorder, partial and linear order (Category)
 
 *** Preorder as a category
@@ -1362,10 +1361,46 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
     - $P$ is a subalgebra of $A^*$ because there is a morphism $i: P \rightarrow A^*$
     - Since $A^*$ is initial, any morphism $A^* \rightarrow A^*$ is the identity
       (by uniqueness), so $i$ is epi and mono (iso).
+*** Fixed point functors
+    - Initial algebras for some functors are already known. If we start from a
+      generic functor $t$, the type of an initial algebra $I$ should be such
+      that $I \cong t(I)$ (Lambeck).
+    - Assuming $I \sim F~t$ we have $F~t = t~(F~t)$, which can be created
+      through a recursive data type ~Fix t = Fx t (Fix t)~. Fx encodes algebraic
+      operations $t(I) \rightarrow t$.
+*** Catamorphisms 
+    - Given an initial algebra $(I, Fx: t~I \rightarrow I)$ and a generic algebra $(E, k)$, a
+      generic morphism $g: I \rightarrow E$ can be defined as $g = k \circ (t~g) \circ unfix$
+    - We say that $g = cata(k)$
+    - Given the same expression in $I$, I can create mappings into several other
+      types by simply specifying the non-recursive $k$.
+
+*** Catamorphisms fusion law 
+    - Given an initial algebra $(I, Fx: t~I \rightarrow I)$ and a generic algebra $(E, k)$ and a
+      function $g: E \rightarrow H$ we have that $$g \circ cata(k) = cata (k \circ g)$$
+    - If $E$ is a list and $H$ is a number type, this means I can fuse two loops into one.
+      
+*** Anamorphisms
+   - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
+     $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
+
+*** Hylomoprhisms
+   - Given a initial and final algebra $A$, I can create a morphism $g: B
+     \rightarrow C$ from a coalgebra $B$ and an algebra $C$ by $$g = cata(c) \circ ana(b)$$
+
+*** Paramorphisms 
+
+    - Assume an initial algebra $I$, I can build a morphism to $Z$ from an
+      algebra $(I \times Z, f)$ with $$\pi_Z \circ cata(f) \cong cata (f \circ
+      \pi_Z)$$ 
+
+    - We call $$para(\cdot) = cata (\cdot \circ \pi_Z)$$
+      
+
 ** Co-algebras
 *** Co-algebra
     Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
-    C$, a functor co-algebra for $T$ is a pair $(U=
+    C$, a functor co-algebra for $T$ is a pair $(U, c)$
 
     - an object $U \in C$ (*carrier*)
     - a morphism $c: U \rightarrow T(U)$ (*co-algebra structure*)
