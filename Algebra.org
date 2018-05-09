@@ -103,7 +103,6 @@
     It is a partition of $(G, \star)$ and it is a group where the operation is defined as
     $$Hg_1 \star Hg_2 = H(g_1 \star g_2)$$
 
-
 *** Subgroup of an abelian group
     Every subgroup of an abelian group is normal.
 
@@ -141,7 +140,6 @@
       exact: $$ 1 \rightarrow N \rightarrow^{\iota} G \rightarrow^{\phi} [Q \cong G/N]
       \rightarrow 1 $$ where $N$ is normal.
 
-
 *** How many elements has each coset of $H$ (a subgroup of $G$)?
 
     All cosets of $H$ have *the same amount* of elements of $H$
@@ -157,7 +155,6 @@
    - *closure*: $a \in G, b \in G \rightarrow a * b \in G$
    - *identity element*: $a * 1_G = 1_G * a = a$
    - *associativity*: $(a * b) * c = a * (b * c),~~a,b,c \in G$.
-
 
 
 *** Group identity and inverse properties
@@ -280,7 +277,6 @@
 
     The character is a central or class function, it depends only on the
     conjugacy class of $g$
-
 
 *** Properties of the character of a representation
 
@@ -555,7 +551,6 @@
 
     - A *finite integral domain* is just a *finite field*
 
-
 *** Quaternions
 
     - Quaternions are a subring of 2x2 matrices with unity.
@@ -586,7 +581,6 @@
     and difference and absorbs multiplication).
 
     Every ideal in $Z$ is principal, but there are cases where an ideal is not principal.
-
 
 
 *** Ring homomorphism
@@ -658,7 +652,6 @@
     Every polynomial $a(x)$ of positive degree can be written *uniquely* as: $$a(x) = k
     p_1(x) \ldots p_n(x)$$ where $p_j(x)$ is a monic irreducible polynomial.
 
-
 *** Eisenstein irreducibility criterion
     Given a polynomial $$a(x) = a_0 + ... + a_n x^n$$ over $\mathbb{Q}$ (or
     $\mathbb{Z}$), if a prime number $p$ divides $a_1 ... a_{n-1}$ but not $a_n$
@@ -709,7 +702,6 @@
       will contain a root of $p(x)$.
 * Algebras of vector spaces and modules
 ** Vector spaces
-
 *** Vector space
 
     A pair $(V,K)$ where
@@ -750,9 +742,6 @@
 
     - This space has basis $f_i^*(v_j)=\delta_{i,j}$ (kronecker deltas), i.e.,
       $V^*=span(f_1^*, \ldots, f_n^*)$.
-
-
-
 
 *** Tensor product spaces
 
@@ -823,7 +812,6 @@
     - $(\alpha f) = g \mapsto \alpha f(g)$
     - $(f_1 \times f_2) = g \mapsto \sum_{u \in G}f_1(u)f_2(u^{-1}g)$
 
-
 *** R-Module
 
     Generalization of vector space. A pair $(V,K)$ where
@@ -850,14 +838,10 @@
 *** Projector image
       The image of a projector $P$ is an *invariant* under $P$: $$ P(PX)=(PX) \sim Pw=w$$
 
-
 *** Projector kernel
       Given a projector $P$, $X_2 = (1-P)X$ is the kernel of $P$ by definition: $$PX_2 = P(1-P)X = (P-P^2)X = 0$$
 
-
-
-
-* Category theory basics
+* Category theory - basics
 
 ** Category basics
 *** Category
@@ -956,7 +940,6 @@ A *join*
 [[https://ncatlab.org/nlab/show/lattice][A lattice]] is a poset where *all objects* have a *meet* and a *join*
 
 ** Special categories
-
 *** Categorical nomenclature (*small* and *large* cats)
 
     - A *class* is a collection of sets that share a property.
@@ -999,6 +982,18 @@ It is a cartesian category that has exponentials and a terminal object.
 
 *** BiCartesian closed category
 It is a cartesian category that has exponentials and a terminal object and coproducts.
+
+*** Monoidal category definition
+   - A category $C$ is *monoidal* if *all* pairs of objects have a product
+     (co-product) and a terminal (initial) object.
+
+   - Both product and coproduct in a monoidal category are individuated by the
+     same symbol, i.e., *tensor product* ($\otimes$)
+
+*** Monoidal category of endofunctors 
+    Endofunctors and natural transformations form a category. If there are
+    additional natural transformations of the type $T\times T \rightarrow T$ then
+    this category is a monoidal category. These monoids are called monad.
 
 ** Set category
 *** Monomorphisms (Sets)
@@ -1089,20 +1084,7 @@ g_2(x)$, i.e., the solutions of the equation.
     endofunctors $C^C$, the unit and the multiplication can be used to make $T$
     a monoid.
 
-** Monoidal category
-*** Monoidal category definition
-   - A category $C$ is *monoidal* if *all* pairs of objects have a product
-     (co-product) and a terminal (initial) object.
-
-   - Both product and coproduct in a monoidal category are individuated by the
-     same symbol, i.e., *tensor product* ($\otimes$)
-
-*** Monoidal category of endofunctors 
-    Endofunctors and natural transformations form a category. If there are
-    additional natural transformations of the type $T\times T \rightarrow T$ then
-    this category is a monoidal category. These monoids are called monad.
-
-* Functors
+* Category theory - Functors
 ** Introduction
 *** Functor definition
 
@@ -1121,7 +1103,6 @@ A *full functor* $T: C \rightarrow D$ is an *epimorphism* between morphisms in $
 *** Faithful functor
 
 A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in $C$ and $D$.
-
 
 *** Identity functor
     $Id: C \rightarrow C$ is a functor that maps an object to itself and a
@@ -1193,7 +1174,6 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
     All the components of a NT are invertible
 
-
 *** Category of functors and natural transformation
     - If I compose the components of two natural transformations $\alpha: F a
       \rightarrow G a$ and $\beta: G a \rightarrow H a$, do I have another
@@ -1213,18 +1193,7 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
       are not only a set but a category
     - 2-Category equivalence of morphisms is defined up to isomorphisms (it is lax)
     
-* Limits
-** Basic limits theory
-*** Selecting objects
-
-In any category, I can pick objects by expressing a pattern. This defined
-through another another category and a functor.
-
-Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
-
-*** Products as limit
-* Functor algebra
-** Functor algebra introduction
+** Functor algebras 
 *** Definition of algebras and co-algebras
     - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
       e.g.: $$ X \times A
@@ -1380,10 +1349,6 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
       function $g: E \rightarrow H$ we have that $$g \circ cata(k) = cata (k \circ g)$$
     - If $E$ is a list and $H$ is a number type, this means I can fuse two loops into one.
       
-*** Anamorphisms
-   - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
-     $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
-
 *** Hylomoprhisms
    - Given a initial and final algebra $A$, I can create a morphism $g: B
      \rightarrow C$ from a coalgebra $B$ and an algebra $C$ by $$g = cata(c) \circ ana(b)$$
@@ -1396,8 +1361,7 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
 
     - We call $$para(\cdot) = cata (\cdot \circ \pi_Z)$$
       
-
-** Co-algebras
+** Functor co-algebras
 *** Co-algebra
     Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
     C$, a functor co-algebra for $T$ is a pair $(U, c)$
@@ -1437,6 +1401,10 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
       $$R(a,b) \Rightarrow h(a) = h(b) \wedge R(t(a), t(b))$$
     - If you find an $R$ that holds for $a,b$ then $a = b$.
     - It is like the induction principle but on lists (and it is called co-induction)!
+*** Anamorphisms
+   - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
+     $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
+
 ** Natural transformations
 *** Natural transformations and parametric polymorphism
     - In PP, I must use a single expression for a parametric function
@@ -1445,3 +1413,28 @@ Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
       code, e.g.: $$safeTail \circ fmap~f = fmap~f \circ safeTail$$
     - Note, typeclasses represent /ad-hoc/ polymorphism.
     - The return of a monad is a natural transformation
+** Adjunctions 
+*** Adjoint functors
+    - Two categories $C$ and $D$ are equivalent if I can build two functors, one
+      going left $L: C \leftarrow D$ and $R: C \rightarrow D$ if their
+      composition is naturally isomorphic with the following natural
+      transformations $$\eta: I_D \rightarrow R \circ L$$ and $$\epsilon: L
+      \circ R \rightarrow I_C$$
+    - We say that $L$ is /left adjoint/ to R
+*** Adjoint functors and homsets
+    - It is another way of stating that two functors $L: C \leftarrow D$ and $R:
+      C \rightarrow D$ are adjoint by comparing homsets $$C(L d, c) \cong D(d, R
+      c)$$ for all $c,d$.
+    - If this happens, then $$D(d,RLd)\cong C(Ld, Ld)$$ but $D(d, RLd)$ is our
+      family of mappings/natural transformation $\eta$, if it exists. And it
+      does, because $C(Ld,Ld)$ is not empty.
+* Limits
+** Basic limits theory
+*** Selecting objects
+
+In any category, I can pick objects by expressing a pattern. This defined
+through another another category and a functor.
+
+Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
+
+*** Products as limit
