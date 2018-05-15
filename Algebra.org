@@ -237,8 +237,9 @@
     $G$ that commute with $a$: $$C_G(a) = \{ g \vert ga = ag \}$$
 
 *** Group conjugacy classes
-    - The conjugacy class of an element $a \in G$ is the set of elements:
-      $$Cl(a) = \{ gag^{-1}: g \in G \}$$
+    - Two elements $x, y$ of a group $G$ are conjugate-wise equivalent if $$\exists g. y=gxg^{-1}$$
+    - The conjugacy class of an element $x \in G$ is the set of elements:
+      $$Cl(x) = \{ gxg^{-1}: g \in G \}$$
 
     - The class number of G is the number of distinct (nonequivalent) conjugacy classes
 ** Group representations
@@ -873,6 +874,16 @@ A category is a triple $\mathcal{C}(O, M, \bullet)$ that abides these laws:
 
   3. $id_x \bullet f = f \bullet id_y$
 
+*** Section
+    - A section $s$ for a morphism $f$ is such that $$f \circ s = Id$$
+      
+    - A section is always an epimorphism
+
+*** Retraction
+    - A retraction $r$ for a morphism $f$ is such that $$r \circ f = Id$$
+    
+    - A retraction is always a monomorphism
+
 ** Monoid (Category)
 
 *** Monoid as a category
@@ -1140,8 +1151,7 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
 *** Profunctors
 
-    A pro-functor is a functor $C^{op} \times C \rightarrow C$. It can be used
-    to describe the functoriality of the 'arrow' (exponential) object construction.
+    A pro-functor is a functor $D^{op} \times C \rightarrow Set$. 
 
 *** Combination of functors
 
