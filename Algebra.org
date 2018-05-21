@@ -1335,13 +1335,11 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
 *** Proofs by induction with initial algebras
 
-    - All squares that start from an initial algebra commute. 
-
-    - Assume to have an action $f$ and a measure $\mu$ that are algebra
-      homomorphisms from an initial algebra $U$. Exploiting $$\mu \circ f = f' \circ \mu'$$
-      if I can build $\mu'$ and $f'$, would prove an invariant property
-      for $f$ based on $\mu$. Think about a function $f$ doubling lists and $\mu
-      = len$.
+    A predicate $P$ can be seen as a subset of $N$. If we can build a algebra
+    (which corresponds to induction assumptions, $0 \in P$ and $n \in P
+    \Rightarrow (n+1) \in P$) then, by initiality, the morphism $j: N
+    \rightarrow P$ and the $i: P \rightarrow N$ are section and retraction
+    respectively which means that $N=P$.
 
 *** Principle of list induction for a predicate on the set of lists
     To show that a predicate/set $P$ is equal to the set of all lists $A*$, it is enough to
@@ -1421,11 +1419,12 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     | $1 + X$            | $\mathbb{N} \cup \{ \infty \}$    | pred($n$)            |                       |
     
 *** Bisimulation 
-    - Deals with lists and their co-algebraic structure (head,tail).
-    - It is a relation $R$ defined recursively:
-      $$R(a,b) \Rightarrow h(a) = h(b) \wedge R(t(a), t(b))$$
-    - If you find an $R$ that holds for $a,b$ then $a = b$.
-    - It is like the induction principle but on lists (and it is called co-induction)!
+    - Any relation $R \subseteq Z \times Z$ that is a final co-algebra over $Z$
+      implies, by uniqueness of finality, that the pairs that belong to it are
+      of equal elements; $R$ is called a bi-simulation.
+    - If $Z=A^N$, having a bi-simulation means providing a relation $R \subseteq
+      A^N \times A^N$ for which this holds: $$R(a,b) \Rightarrow h(a) = h(b)
+      \wedge R(t(a), t(b))$$ we could say then that $a=b$.
 *** Anamorphisms
    - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
      $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
