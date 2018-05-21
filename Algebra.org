@@ -607,6 +607,11 @@
     - $I_a + I_b = I_{a + b}$
     - $I_a * I_b = I_{a * b}$
 
+*** Ring center
+
+    The center of a ring $R$ is the subring $Z(R)$ of the elements $z$ such that $$zy
+    = yz$$ for all elements $y$ in R.
+
 *** Quotient ring
 
     Given a ring $R$ and an ideal $I$, the set of cosets of $I$ is a ring and
@@ -770,21 +775,36 @@
     - expressing the product $v \otimes v' = \sum_{c_{ij}}c_{ij} e_i \otimes e'_j$ such
       that the properties of a bilinear product hold.
 
+*** Tensor product spaces (formal through quotients)
+
+    Given two vector spaces $(V,V')$, I can define their tensor product $W =V
+    \otimes V'$ by
+
+    - Taking the free vector space $F = (V \times V') = span \{(u,v)\}$
+
+    - $V \otimes V' = F(V \times V') / I$ where $I$ is an ideal generated that
+      makes $(a+b)\otimes c = a \otimes c + b \otimes c$ (and other constraints..).
+      
+
+
 *** Conjugate vector spaces
 
     Given a vector space on complex numbers $V_C$ then also $\bar{V}_C$, where
      scalar multiplication is $\bar{z}*v$ for $z \in C$, is a vector space.
 
-*** Algebra
+*** $k$-Algebra
 
-    - It is a module/vector space equipped with a bi-linear operator $$ \times: V \times V
-      \rightarrow V$$ acting as *multiplication* between vectors.
+    - It is a vector space $A$ with linear maps:
 
-    - The following axioms should hold:
+      - $m: A \otimes A \rightarrow A$ 
+      - $u: K \rightarrow A$ 
+     
+      such that associativiy diagrams for $m$ commute:
+      - $m(a \otimes m(b \otimes c)) = m(m(a \otimes b) \otimes c)$
+      - $u$ is unitary: $1 \otimes b \cong b$.
 
-      - Right distributivity: $(x + y) \times z = x \times z + y \times z$
-      - Left distributivity: $x \times (y + z) = x \times y + x \times z$
-      - Compatibility with scalars: $(ax) \times (by) = (ab) (x \times y)$.
+    - Note that $m$ makes $A$ a *ring* with multiplication $\cdot: A \times A
+      \rightarrow A$, i.e. $$ a \cdot b = m(a \otimes b)$$.
 
 *** Affine space
     - A tuple $(A, V_k, (+): V_k \times A \rightarrow A)$ defines an /affine space/
