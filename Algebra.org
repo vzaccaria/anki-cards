@@ -777,14 +777,14 @@
 
 *** Algebra
 
-    - It is a module/vector space equipped with a bi-linear operator $$ \times: V \times V
-      \rightarrow V$$ acting as *multiplication* between vectors.
+    - An algebra $A$ is a $k$-vector space and a ring at the same time. 
 
-    - The following axioms should hold:
+    - Alternatively, $A$ is a $k$-vector space equipped with a bi-linear operator
+      $$ \times: A \times A \rightarrow A$$ acting as *multiplication* between
+      vectors.
 
-      - Right distributivity: $(x + y) \times z = x \times z + y \times z$
-      - Left distributivity: $x \times (y + z) = x \times y + x \times z$
-      - Compatibility with scalars: $(ax) \times (by) = (ab) (x \times y)$.
+    - There is an inclusion homomorphism $u: k \rightarrow A$ so that elements
+      of $k$ are also elements of $A$.
 
 *** Affine space
     - A tuple $(A, V_k, (+): V_k \times A \rightarrow A)$ defines an /affine space/
