@@ -1167,7 +1167,11 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
 *** Contravariant functors
 
-    A contravariant functor is a functor $C^{op} \rightarrow D$.
+    - A contravariant functor is a functor $C^{op} \rightarrow D$. It basically
+      maps inverse arrows in $C$ to $D$.
+
+    - An example is the functor $A^{(-)}$ which takes an object to a morphism
+      starting from that object. 
 
 *** Profunctors
 
