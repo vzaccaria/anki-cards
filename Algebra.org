@@ -1156,7 +1156,8 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
 *** Constant $\Delta_c$ functor
     A constant functor $\Delta_c: B \rightarrow C$ is a functor that maps every
-    object in $B$ into a single object $c \in C$.
+    object in $B$ into a single object $c \in C$ and every morphism into the
+    identity map on $c$.
 
 *** Bifunctors
 
@@ -1478,11 +1479,24 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
       does, because $C(Ld,Ld)$ is not empty.
 * Limits
 ** Basic limits theory
-*** Selecting objects
+*** Diagram functors
 
-In any category, I can pick objects by expressing a pattern. This defined
-through another another category and a functor.
+- In any category $C$, I can pick objects by expressing a *pattern*, i.e., through
+  another (small) category $S$ and any functor $D: S \rightarrow C$ (diagram
+  functor). These functors form a category (with natural transformations as
+  morphisms).
 
-Picking two objects from $C$ means a functor $\textbf{2} \rightarrow C$.
+*** Cone
 
-*** Products as limit
+- A cone $Q_D(c): \Delta_c \Rightarrow D$ over a diagram $D$ is a natural
+  transformation between the constant functor $\Delta_c$ and $D$. 
+
+- Cones form a category as we vary $c$. Morphisms are the natural
+  transformations $\Delta_c \Rightarrow \Delta_{c'}$.
+
+*** Limiting cone
+
+- A limiting cone $Q_D(lim)$ over a diagram $D$ is the initial object in the
+  category of cones $Q_D(\cdot)$. All cones (as they are morphisms) can be
+  factored through it.
+
