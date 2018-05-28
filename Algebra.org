@@ -225,10 +225,10 @@
       G \}$$ where $G(s) \subset S$.
     - $G(s)$ forms a group which is isomorphic to $G/G_s$ (where $G_s$ is the
       isotropy group).
-*** Group stabilizer
+*** Isotropy group (aka group action stabilizer)
 
     - Given a group $G$, a set $S$ and an action $\alpha: G \times S \rightarrow S$,
-      a stabilizier of $s \in S$ is $$\alpha(g_s) s = s$$
+      a stabilizier of $s \in S$ is an element $g_s$ of $G$ such that $$\alpha(g_s) s = s$$
 
     - All $g_s$ form a group, the *isotropy group* $G_s$
 
@@ -417,7 +417,7 @@
 *** Representations of dual spaces
 
     Given $(\rho,V)$, one can define a representation of its dual vector space
-    $(\rho^*, V^*)$ such that $$\rho^*(g) f = f \circ \rho^{-1}(g)$$.
+    $(\rho^*, V^*)$ such that $$ \rho^*(g) \vec{f} = v \mapsto f (\rho^{-1}(g) \cdot v)$$.
 
 *** Representation of quotient spaces
 
@@ -780,7 +780,8 @@
     Given two vector spaces $(V,V')$, I can define their tensor product $W =V
     \otimes V'$ by
 
-    - Taking the free vector space $F = (V \times V') = span \{(u,v)\}$
+    - Taking the free vector space $F = (V \times V') = span \{(u,v) | u \in U,
+      v \in V\}$ (all elements become a basis!).
 
     - $V \otimes V' = F(V \times V') / I$ where $I$ is an ideal generated that
       makes $(a+b)\otimes c = a \otimes c + b \otimes c$ (and other constraints..).
@@ -792,7 +793,7 @@
     Given a vector space on complex numbers $V_C$ then also $\bar{V}_C$, where
      scalar multiplication is $\bar{z}*v$ for $z \in C$, is a vector space.
 
-*** $k$-Algebra
+*** $k$ -Algebra
 
     - It is a vector space $A$ with linear maps:
 
@@ -804,8 +805,15 @@
       - $u$ is unitary: $1 \otimes b \cong b$.
 
     - Note that $m$ makes $A$ a *ring* with multiplication $\cdot: A \times A
-      \rightarrow A$, i.e. $$ a \cdot b = m(a \otimes b)$$.
+      \rightarrow A$, i.e. $$ a \cdot b = m(a \otimes b)$$. Viceversa, we can
+      create an $m$ from a ring $A$, because multiplication is a bilinear map.
 
+*** Universal property of tensor products 
+    1. Assume that $\phi: V \times W \rightarrow V \oplus W$ is bi-linear
+    2. That is the universal bilinear map, i.e., any other bi-linear map $f$ can 
+       be written as $f = \bar{f} \circ \phi$ where $\bar{f}$ is unique.
+
+       
 *** Affine space
     - A tuple $(A, V_k, (+): V_k \times A \rightarrow A)$ defines an /affine space/
       $A$ if $(+)$ complies with the group action properties.
@@ -1237,8 +1245,9 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     - 1-cell is a morphism
     - 2-cell is a morphism between morphisms
 *** 2-category 
-    - a category where we have morphisms between objects and also between *morphisms* (2-cells)
-    - in a 2- category 2-cells can be composed both horizontally or vertically
+    - A category where we have morphisms  between *morphisms* (2-cells)
+    - 2-cells can be composed horizontally (mapping between 1-cell compositions) or vertically
+      (over the same pair of objects) 
     - 'Cat' is a 2-category where the morphisms between categories (functors)
       are not only a set but a category
     - 2-Category equivalence of morphisms is defined up to isomorphisms (it is lax)
