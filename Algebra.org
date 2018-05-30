@@ -1117,6 +1117,18 @@ g_2(x)$, i.e., the solutions of the equation.
         \rightarrow b^a \times a$ that makes $eval \circ (h \times Id) = e$
       - the one to one correspondence between any moprhism $e: f \times a \rightarrow b$ and $h: f \rightarrow b^a$ 
         is called *currying*.
+** Special objects
+*** Initial object
+    - Assume $C$ a locally small category, then $Hom(c,-): C \rightarrow Set$ is a functor.
+    - If $Hom(c,-)$ is naturally isomorphic to the constant functor $*: C
+      \rightarrow Set = o \mapsto \{ \cdot \}$ then $c$ is *initial*.
+*** Terminal object
+    - Assume $C$ a locally small category, then $Hom(-,c): C \rightarrow Set$ is
+      a contravariant functor.
+    - If $Hom(-,C)$ is naturally isomorphic to the constant functor $*: C^{op}
+      \rightarrow Set$ that sends every object to the singleton set, then $c$ is
+      *terminal*.
+
 ** Kleisly category
 *** Kleisly category ($C_T$) definition
     - Assume $C$ is a category with an endofunctor $T$ and a morphism $\mu: T^2 C \rightarrow C$
@@ -1138,8 +1150,7 @@ g_2(x)$, i.e., the solutions of the equation.
     endofunctors $C^C$, the unit and the multiplication can be used to make $T$
     a monoid.
 
-* Category theory - Functors
-** Introduction
+** Functors
 *** Functor definition
 
 A functor \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ where
@@ -1252,6 +1263,20 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
       are not only a set but a category
     - 2-Category equivalence of morphisms is defined up to isomorphisms (it is lax)
     
+*** Representable functors
+    - An object $c$ is said to *represent* the functor $Hom(c,-): C \rightarrow
+      Set$. For every object we have such a functor. 
+    
+    - If there is a natural transformation between $F$ and $Hom(c,-)$ we say
+      that $F$ is a functor *representable* by $c$.
+
+    - Examples: 
+      - $1_{set}: Set \rightarrow Set$ is represented by the singleton set
+      - $U: Group \rightarrow Set$ (forgetful) is represented by $Z$. 
+
+*** Universal property
+    - A universal property of an object $c$ is in fact a property associated with its $Hom(c,-)$
+
 ** Functor algebras 
 *** Definition of algebras and co-algebras
     - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
@@ -1491,7 +1516,7 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 *** Diagram functors
 
 - In any category $C$, I can pick objects by expressing a *pattern*, i.e., through
-  another (small) category $S$ and any functor $D: S \rightarrow C$ (diagram
+  another (small) *shape* category $S$ and any functor $D: S \rightarrow C$ (diagram
   functor). These functors form a category (with natural transformations as
   morphisms).
 
