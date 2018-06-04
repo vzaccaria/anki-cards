@@ -596,7 +596,8 @@
     - $f(1_R) = 1_S$
 
 *** Kernel of a ring homomorphism
-    The kernel of a ring homomorphism is an ideal, because it absorbs anything by multiplication. So this is 
+    The kernel of a ring homomorphism $f: R_0 \rightarrow R_1$ is a subring $$I_R = \{ k \in R | f(k) =
+    0$$ which is ideal, because it absorbs anything by multiplication. So this is
     an exact sequence: $$1 \rightarrow I_R \rightarrow R_0 \rightarrow R_1$$.
 *** Cosets of an ideal of a ring
 
@@ -805,15 +806,35 @@
       - $u$ is unitary: $1 \otimes b \cong b$.
 
     - Note that $m$ makes $A$ a *ring* with multiplication $\cdot: A \times A
-      \rightarrow A$, i.e. $$ a \cdot b = m(a \otimes b)$$. Viceversa, we can
+      \rightarrow A$, i.e. $$ a \cdot b = m(a \otimes b)$$ Viceversa, we can
       create an $m$ from a ring $A$, because multiplication is a bilinear map.
 
 *** Universal property of tensor products 
-    1. Assume that $\phi: V \times W \rightarrow V \oplus W$ is bi-linear
-    2. That is the universal bilinear map, i.e., any other bi-linear map $f$ can 
+    1. Assume that $\phi: V \times W \rightarrow V \otimes W$ is bi-linear
+    2. $\phi$ is the universal bilinear map, i.e., any other bi-linear map $f$ can 
        be written as $f = \bar{f} \circ \phi$ where $\bar{f}$ is unique.
 
-       
+*** Graded $k$ algebras
+
+    A $k$ -algebra is graded if it has a decomposition: $$ A = A_0 \oplus A_1 \oplus A_2 \cdots$$
+
+    where $A_i$ has homogeneous elements of degree $i$ such that $a_i a_j \in A_{i+j}$
+
+    The following formal series $$\textrm{Hilb}(A,q) = \sum_{d} \textrm{dim}(A_d)q^d$$ is 
+    a formal series representing the dimensions of a graded algebra.
+
+*** Graded algebras examples and their Hilbert series
+
+    - $K[x] = \bigoplus_d (K x^d), \textrm{Hilb}(A,q)=\sum_d q^d$ 
+    - $B[x_1 ... x_n] = \bigoplus_d B_d, B_d=K[x_1^{a_1} ... x_n^{a_n}, a_1 + ... + a_n = d], \textrm{Hilb}(B,q)=\sum_d {n+d-1 \choose d}=\sum_d (-1)^d{-n \choose d}$
+
+    # RESTART FROM HERE: https://www.youtube.com/watch?v=PPexiDR4r0Y
+
+
+*** Other properties of tensor products       
+    - A basis of $V \otimes W$ is the tensor product of the bases of $V$ and $W$.
+    - The tensor product is *associative* $(A \otimes B) \otimes C = A \otimes (B \otimes C)$
+      
 *** Affine space
     - A tuple $(A, V_k, (+): V_k \times A \rightarrow A)$ defines an /affine space/
       $A$ if $(+)$ complies with the group action properties.
