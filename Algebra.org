@@ -2,6 +2,7 @@
 #+AUTHOR: Vittorio Zaccaria
 #+LEVEL: 3
 #+OPTIONS: H:3
+#+BEAMER_HEADER: \usepackage{tikz-cd}
 
 * Algebraic structures with one operator
 ** Other structures
@@ -1464,6 +1465,23 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
     - We call $$para(\cdot) = cata (\cdot \circ \pi_Z)$$
       
+*** Definitional interpreters
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
+Assume $\widetilde{L} = \widetilde{(A (N -))}$ the initial 
+algebra of $A(N -)$. $A$ is an annotation of $N$. $P$ is the parser functor. $N$ is 
+the f-algebra of an expression:
+
+#+BEGIN_EXPORT latex
+\tiny
+\begin{tikzcd}
+N \widetilde{L} \arrow[rdd] \arrow[d] \\
+P N \widetilde{L}\arrow[d] \\
+P A N \widetilde{L} \arrow[r,"P\alpha"] & P \widetilde{L} \\
+A N (-) \arrow[u] \arrow[r,"\alpha"] & (-) \arrow[u]
+\end{tikzcd}
+#+END_EXPORT
 ** Functor co-algebras
 *** Co-algebra
     Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
