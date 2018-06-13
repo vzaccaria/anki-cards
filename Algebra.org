@@ -1320,16 +1320,17 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     - 2-Category equivalence of morphisms is defined up to isomorphisms (it is lax)
     
 *** Representable functors
-    - An object $c$ is said to *represent* the functor $Hom(c,-): C \rightarrow
-      Set$. For every object we have such a functor. 
-    
-    - If there is a natural transformation between $F$ and $Hom(c,-)$ we say
-      that $F$ is a functor *representable* by $c$.
 
-    - Examples: 
-      - $1_{set}: Set \rightarrow Set$ is represented by the singleton set
-      - $U: Group \rightarrow Set$ (forgetful) is represented by $Z$. 
+    - Given an object $d \in C$, we have a functor $d^{(-)}: C^{op} \rightarrow Set$ 
 
+    - Given a generic functor $F: C^{op} \rightarrow Set$, we say that it is
+      *representable* by $d$ if it is isomorphic to $d^{(-)}$.
+
+    - When the functor $*: C^{op} \rightarrow Set = c \mapsto \{ \star \}$ is
+      representable for some $d$, we say that $d$ is the *terminal* object of $C$.
+
+    - Remove $^{op}$ from above to get an *initial* object.
+  
 *** Universal property
     - A universal property of an object $c$ is in fact a property associated with its $Hom(c,-)$
 
@@ -1591,21 +1592,37 @@ L[\widetilde{L}] \arrow[d,"\phi",red] \arrow[r] & (P \circ L)[\widetilde{L}] \ar
 *** Diagram functors
 
 - In any category $C$, I can pick objects by expressing a *pattern*, i.e., through
-  another (small) *shape* category $S$ and any functor $D: S \rightarrow C$ (diagram
-  functor). These functors form a category (with natural transformations as
-  morphisms).
+  another (small) *index* or *shape* category $J$ and any functor $D: J \rightarrow C$ (diagram
+  functor). 
 
 *** Cone
 
-- A cone $Q_D(c): \Delta_c \Rightarrow D$ over a diagram $D$ is a natural
-  transformation between the constant functor $\Delta_c$ and $D$. 
+- A cone $Cone(c, D): \Delta_c \Rightarrow D$ over a diagram $D$ is a natural
+  transformation (i.e., a family of morphisms) between the constant functor
+  $\Delta_c$ and $D$ (both from the index category $S$).
 
-- Cones form a category as we vary $c$. Morphisms are the natural
-  transformations $\Delta_c \Rightarrow \Delta_{c'}$.
+- It corresponds to a set of commuting triangles in $C$ with apex $c$. Since there can
+  be multiple natural transformations between $\Delta_c$ and $D$, $Cone(c,D)$ is
+  actually a set of cones.
 
-*** Limiting cone
 
-- A limiting cone $Q_D(lim)$ over a diagram $D$ is the initial object in the
-  category of cones $Q_D(\cdot)$. All cones (as they are morphisms) can be
-  factored through it.
+*** Limit cone
+
+- $Cone(-,D): C^{op} \rightarrow Set$ is a functor
+
+- Cones form a category.
+
+- In fact, 
+  - any morphism $m: c' \rightarrow c$ allows to pass from a set of morphism
+    from $c$ to a set of morphisms from $c'$.
+  - Composition ensures that these morphisms are still natural
+    so $m$ is a morphism between cones.
+
+- The terminal object of the cone category is called the *limit cone*, while the
+  apex is called the *limit*. We also say that $Cone(-,D)$ is representable by
+  this limit.
+
+
+
+
 
