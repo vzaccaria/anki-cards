@@ -808,25 +808,44 @@
     Given a vector space on complex numbers $V_C$ then also $\bar{V}_C$, where
      scalar multiplication is $\bar{z}*v$ for $z \in C$, is a vector space.
 
-*** $k$ -Algebra
+*** $k$ -Algebra (with tensor products)
 
-    - It is a vector space $A$ with linear maps:
+    A vector space $A$ with linear maps:
 
       - $m: A \otimes A \rightarrow A$ 
       - $u: K \rightarrow A$ 
      
-      such that associativiy diagrams for $m$ commute:
-      - $m(a \otimes m(b \otimes c)) = m(m(a \otimes b) \otimes c)$
-      - $u$ is unitary: $1 \otimes b \cong b$.
+    such that the following hold:
 
-    - Note that $m$ makes $A$ a *ring* with multiplication $\cdot: A \times A
-      \rightarrow A$, i.e. $$ a \cdot b = m(a \otimes b)$$ Viceversa, we can
-      create an $m$ from a ring $A$, because multiplication is a bilinear map.
+      - $m(a \otimes m(b \otimes c)) = m(m(a \otimes b) \otimes c)$
+      - $\mu(u(1) \otimes x) = \mu(x \otimes u(1)) = x, \forall x$ (algebra is unitary)
+
+*** $k$ -Algebra (as a ring)
+
+    A tensor product $m: A \otimes A \rightarrow A$ makes $A$ a *ring* with
+    multiplication $\cdot: A \times A \rightarrow A$, i.e. $$ a \cdot b = m(a
+    \otimes b)$$ Viceversa, we can create an $m$ from a ring $A$, because
+    multiplication is a bilinear map.
 
 *** Universal property of tensor products 
-    1. Assume that $\phi: V \times W \rightarrow V \otimes W$ is bi-linear
-    2. $\phi$ is the universal bilinear map, i.e., any other bi-linear map $f$ can 
-       be written as $f = \bar{f} \circ \phi$ where $\bar{f}$ is unique.
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+V \times W \arrow[r, "\phi"] \arrow[rd, "h"] & V \otimes W \arrow[d, "\tilde{h}"] \\
+ & Z
+\end{tikzcd}
+#+END_EXPORT
+    - Recall a bilinear map as a function that acts linearly and separately on each of its arguments.
+
+    - All functions $\phi: V \times W \rightarrow V \otimes W$ that are
+      bi-linear are isomorphic, so $\phi$ is called the universal bilinear map.
+
+    - Any other bi-linear map $h: V \times W \rightarrow Z$ can be written as $h
+      = \tilde{h} \circ \phi$ where $\tilde{h}$ is unique.
+
+
 
 *** Graded $k$ algebras
 
