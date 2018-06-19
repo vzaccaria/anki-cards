@@ -1249,6 +1249,53 @@ g_2(x)$, i.e., the solutions of the equation.
     endofunctors $C^C$, the unit and the multiplication can be used to make $T$
     a monoid.
 
+*** Free monads (construction)
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{[-]+T[\tilde{T}[-]]} \arrow[r] \arrow[d, "{[p,f]}"] & {[-]+T[-]} \arrow[d,"{[p,f]}"] \\
+{\tilde{T}[-]} \arrow[r] & {[-]}
+\end{tikzcd}
+#+END_EXPORT
+
+ - Given a functor $T[-]$, the *free monad* $\tilde{T}$ can be built as the fixed
+   point of functor $[-]+T[-]$.
+ - The algebra of the functor is composed by the two constructor (p=pure, f=free) which
+   are natural transformation. 
+ - It is possible to show that $\tilde{T}$ is a functor and *a monad*.
+
+*** Free monads (interpretation)
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+T \arrow[r, Rightarrow, "\phi"] \arrow[d, Rightarrow, "\textrm{liftF}"'] & M \\
+\tilde{T} \arrow[ru, Rightarrow, "\textrm{run}"'] & 
+\end{tikzcd}
+#+END_EXPORT
+- A value can be built into the free monad $\tilde{T}[ ]$ 
+  with monad syntax and interpreted with a custom ~run~ into a monad $M$.
+- Some authors derive ~run~ from a natural transformation $\phi$.
+- Commands in the free monad are constructors in $T$ lifted with $liftF$.
+
+*** Free monads (composition)
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
+    
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+T \arrow[rr, "InL"] \arrow[d] &  * \arrow[d, "freeM"] & (T+G) \arrow[d] &  & G \arrow[ll, "InR"'] \arrow[d] \\
+\tilde{T} \arrow[rr] &  * & \tilde{T+G} &  & \tilde{G} \arrow[ll]
+\end{tikzcd}
+#+END_EXPORT
+
+-   Given two functors $T$ and $G$, one can build a free monad of $(T+G)$ by
+    lifting with $freeM$ the injection morphisms.
+
 ** Functors
 *** Functor definition
 
@@ -1630,8 +1677,7 @@ L[\widetilde{L}] \arrow[d,"\phi",red] \arrow[r] & (P \circ L)[\widetilde{L}] \ar
     - If this happens, then $$D(d,RLd)\cong C(Ld, Ld)$$ but $D(d, RLd)$ is our
       family of mappings/natural transformation $\eta$, if it exists. And it
       does, because $C(Ld,Ld)$ is not empty.
-* Limits
-** Basic limits theory
+** Limits theory
 *** Diagram functors
     :PROPERTIES:
     :BEAMER_opt: fragile
