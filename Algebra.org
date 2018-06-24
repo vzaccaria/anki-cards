@@ -971,9 +971,11 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 *** Projector
     - A *projector* is a linear operator $P: X \rightarrow X$ for which $P^2=P$.
 
-    - Both $P$ and $(I-P)$ define a direct sum composition $$X \simeq X_1 \oplus X_2 = PX \oplus (I-P)X$$
+    - It is characterized by the exact sequence: $$(1-P)X \rightarrow X
+      \rightarrow_P X$$ i.e., $(1-P)X$ is its kernel.
 
-    - One typically says that *the projector $P$ projects X the invariant image $X_1$ with kernel $X_2$*
+    - $P$ endows $X$ with a direct sum composition $$X \simeq X_1 \oplus X_2 =
+      PX \oplus (I-P)X$$
 
 *** Projector image
       The image of a projector $P$ is an *invariant* under $P$: $$ P(PX)=(PX) \sim Pw=w$$
@@ -1001,12 +1003,12 @@ A category is a triple $\mathcal{C}(O, M, \bullet)$ that abides these laws:
 *** Section
     - A section $s$ for a morphism $f$ is such that $$f \circ s = Id$$
       
-    - A section is always an epimorphism
+    - Every section is a mono-morphism.
 
 *** Retraction
     - A retraction $r$ for a morphism $f$ is such that $$r \circ f = Id$$
     
-    - A retraction is always a monomorphism
+    - Every retraction is an epi-morphism
 
 ** Monoid (Category)
 
@@ -1228,7 +1230,7 @@ g_2(x)$, i.e., the solutions of the equation.
       \rightarrow Set$ that sends every object to the singleton set, then $c$ is
       *terminal*.
 
-** Kleisly category
+** Kleisly category and monads
 *** Kleisly category ($C_T$) definition
     - Assume $C$ is a category with an endofunctor $T$ and a morphism $\mu: T^2 C \rightarrow C$
     - $C_T$ has the same object as $C$ but any morphism $A \rightarrow_T B$ is
@@ -1296,6 +1298,13 @@ T \arrow[rr, "InL"] \arrow[d] &  * \arrow[d, "freeM"] & (T+G) \arrow[d] &  & G \
 -   Given two functors $T$ and $G$, one can build a free monad of $(T+G)$ by
     lifting with $freeM$ the injection morphisms.
 
+*** Suspended computation and continuation monads
+    - A function ~(a -> r) -> r~ is called a suspended computation (SC). It needs a way
+      to transform its intermediate value ~a~ into its final result ~r~.
+    - Such a way is provided by means of a continuation ~a -> r~.
+    - SCs form an endofunctor $Hom(Hom(-,R),R)$; this endofunctor can be made
+      into a monad where a new ~SC b~ can be built from an ~SC a~ by specifying ~a ->
+      SC b~ (bind).
 ** Functors
 *** Functor definition
 
@@ -1541,11 +1550,15 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
 *** Proofs by induction with initial algebras
 
-    A predicate $P$ can be seen as a subset of $N$. If we can build a algebra
-    (which corresponds to induction assumptions, $0 \in P$ and $n \in P
-    \Rightarrow (n+1) \in P$) then, by initiality, the morphism $j: N
-    \rightarrow P$ and the $i: P \rightarrow N$ are section and retraction
-    respectively which means that $N=P$.
+    - A predicate $P$ can be seen as a subset of $N$ by an inclusion morphism $i$. 
+
+    - Induction assumptions ($0 \in P$ and $n \in P \Rightarrow (n+1) \in P$)
+      allow to check that the square commutes and that $i$ is actually an
+      algebra morphism (note, only for these assumptions the diagram commutes with $i$).
+
+    - Since there is only algebra morphism from $N$ to $N$ (id) this means that
+      $i$ must be an epi-morphism, as its pre-composition with the unique
+      initial morphism should give $id$ (we say that it is a retraction).
 
 *** Principle of list induction for a predicate on the set of lists
     To show that a predicate/set $P$ is equal to the set of all lists $A*$, it is enough to
