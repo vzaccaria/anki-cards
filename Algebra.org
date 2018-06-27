@@ -1418,19 +1418,30 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
       are not only a set but a category
     - 2-Category equivalence of morphisms is defined up to isomorphisms (it is lax)
     
-*** Representable functors
+*** Representable functors  
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
 
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+a \arrow[rr, "d^{(-)}", dashed] \arrow[rrr, "F(-)", dashed, bend left] &  & d^a \in \textbf{Set} \arrow[d] \arrow[r] & \cong d^a \arrow[d] \\
+b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \textbf{Set} \arrow[r] & \cong d^b
+\end{tikzcd}
+#+END_EXPORT
     - Given an object $d \in C$, we have a functor $d^{(-)}: C^{op} \rightarrow Set$ 
 
-    - Given a generic functor $F: C^{op} \rightarrow Set$, we say that it is
+    - Given a generic contravariant functor $F: C^{op} \rightarrow Set$, we say that it is
       *representable* by $d$ if it is isomorphic to $d^{(-)}$.
+
+  
+*** Universal property
 
     - When the functor $*: C^{op} \rightarrow Set = c \mapsto \{ \star \}$ is
       representable for some $d$, we say that $d$ is the *terminal* object of $C$.
 
     - Remove $^{op}$ from above to get an *initial* object.
-  
-*** Universal property
+    
     - A universal property of an object $c$ is in fact a property associated with its $Hom(c,-)$
 
 ** Functor algebras 
