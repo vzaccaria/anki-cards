@@ -703,32 +703,16 @@
 
 *** Field extensions
 
-    - Be it given an irreducible polynomial $p(x) \in F(x)$; we want to find a
-      pair $(\sigma_c, F[c])$ such that:
-
-      - $F[c]$ includes $F$
-      - $\sigma_c: F(x) \rightarrow F[c]$ acting by symbolically substituting $c
-        \in F[c]$ into $f(x) \in F[x]$
-      - $ker(\sigma_c)$ =  $\langle p(x) \rangle$
+    - Assume $\pi(x) \in F[x]$ irreducible. Can I build *a field extension* $F[c]$
+      such that $\pi(x) \in F[c][x]$ is reducible? What structure does it pose to
+      $F[c]$ and all its polynomials $p_i(c)$?
+    - Assume $\sigma_c: F[c][x] \rightarrow F[c]$ subs. c into all occurrences of $x$.
+      Assume that $\sigma_c$ maps $\pi(x)$ to 0.
+    - Then
+      - $\pi(c)=0 \in F[c]$ 
+      - All other $p_i(c)$ can be written as remainders with respect to the
+        division with $\pi(c)$. Their degree will be always less than $\pi(x)$.
       
-    - The above conditions ensure that $c$ is the root of $p(x) \in (F[c])[x]$
-      and so $F[c]$ is called *field extension* of $F$.
-
-    - $\forall t(x) \in F[x],~ \sigma_c t = \sigma_c r$ where
-      $r(x)$ is the remainder of the polynomial division $t(x)/p(x)$.
-
-*** Constructing field extensions
-
-    - $F[c]$ will contain, of course, $c$ and the base field $F$ and all the
-      other elements to make it a field. When building the multiplication table,
-      every $p(x)$ should be mapped to 0.
-
-    - Every element of $F(c)$ can be written uniquely as $r(c)$ (the remainder
-      of the division for $p(x)$ and that $r(x)$ degree will always be less than
-      $n=deg(p(x))$.
-
-
-
 *** Field extension $Z[x]/(x^2+x+1)$
     The polynomial $x^2 + x + 1$ does not have any root in $Z_2$. To
     build the field $Z_2[c]$, first identify the elements, i.e., $(0,1,c)$ and
@@ -1005,10 +989,16 @@ A category is a triple $\mathcal{C}(O, M, \bullet)$ that abides these laws:
       
     - Every section is a mono-morphism.
 
+    - A section is always paired with a retraction: $r \circ s = Id$. $r \circ s$
+      form always a pair $e \circ m$ where $e$ is epi and $m$ is mono.
+
 *** Retraction
     - A retraction $r$ for a morphism $f$ is such that $$r \circ f = Id$$
     
     - Every retraction is an epi-morphism
+
+    - A retraction is always paired with a section: $r \circ s = Id$. $r \circ s$
+      form always a pair $e \circ m$ where $e$ is epi and $m$ is mono.
 
 ** Monoid (Category)
 
@@ -1466,7 +1456,7 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
     - The identity map is (endo-)functorial as well as the endomap that maps $X$
       into a fixed object.
 
-*** Functoriality when combining of product and coproducts
+*** How to build morphisms of polynomial functors with respect to original morphism
 
     - If we can build functors for products and coproducts, we can build functors
       also for their combination;
@@ -1482,7 +1472,7 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
 
     - $X \rightarrow 0$ is the functor that maps $X$ into the emtpy set (initial object)
 
-*** Equivalence between functors
+*** Relevant (natural) identities between polynomial functors
 
     - There are isomorphisms that make some functors equivalent, e.g. $X \times
       Y = Y \times X$ or $(X \times (Y + Z)) = (X \times Y) + (X \times Z)$.
