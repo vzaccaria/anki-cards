@@ -1259,6 +1259,51 @@ g_2(x)$, i.e., the solutions of the equation.
     endofunctors $C^C$, the unit and the multiplication can be used to make $T$
     a monoid.
 
+*** Monad laws (left identity)
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
+
+        #+BEGIN_EXPORT latex
+        \begin{tikzcd}
+        {T[A]} \arrow[d, "f^o"] & A \arrow[l, "r"] \arrow[ld, "f"] \\
+        {T[B]} & 
+        \end{tikzcd}
+        #+END_EXPORT
+
+     $f^o$ is the bound function. It should commute with the return of the monad.
+
+*** Monad laws (right identity)
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
+
+
+        #+BEGIN_EXPORT latex
+        \begin{tikzcd}
+        {T[A]} \arrow[d, "r^o"] \arrow[d, "id"', bend right] & A \arrow[l, "r"] \arrow[ld, "r"] \\
+        {T[A]} & 
+        \end{tikzcd}
+        #+END_EXPORT
+     
+    Bound return equals identity.
+
+*** Monad laws (associativity)
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
+
+        
+        #+BEGIN_EXPORT latex
+        \begin{tikzcd}
+        {T[M]} \arrow[d, "f^o"] & M \arrow[ld, "f"] \\
+        {T[M']} \arrow[d, "g^o"] & M' \arrow[ld, "g"] \\
+        {T[M'']} & 
+        \end{tikzcd}
+        #+END_EXPORT
+
+     $g^o \circ f^o = (g^o \circ f)^o$
+
 *** Free monads (construction)
     :PROPERTIES:
     :BEAMER_opt: fragile
