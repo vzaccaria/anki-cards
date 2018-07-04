@@ -13,7 +13,7 @@ CURORG=$(patsubst %.pdf,%.org,$(CURTGT))
 
 anki-cards/Algebra/Algebra.json: Algebra.org
 	mkdir -p $(dir $@)
-	pandoc-anki $< -j > $@
+	pandoc-anki  $< -j -f > $@
 
 anki-cards/Books/Books.json: Books.org
 	mkdir -p $(dir $@)
