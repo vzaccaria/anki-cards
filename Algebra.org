@@ -220,18 +220,21 @@
 
     The index of a subgroup H in G is defined as the number of cosets of H in G.
 
+*** Group stabilizer 
+    - Given a group $G$, a set $S$ and an action $\curvearrowright: G \times S \rightarrow
+      S$, a *stabilizer* of $s \in S$ is an element $g_s \in G$ such that $$ s \curvearrowright^{g_s} = s$$
+    - The set $Stab(s) = \{ g_s \}$ is a sub-group of $s$ (isotropy group).
+
 *** Group orbit
-    - Given a group $G$, a set $S$ and an action $\alpha: G \times S \rightarrow
-      S$ the group orbit of each element $s$ is $$G(s) = \{ \alpha(g, s) : g \in
-      G \}$$ where $G(s) \subset S$.
-    - $G(s)$ forms a group which is isomorphic to $G/G_s$ (where $G_s$ is the
-      isotropy group).
-*** Isotropy group (aka group action stabilizer)
+    - Given a group $G$, a set $S$ and an action $\curvearrowright: G \times S
+      \rightarrow S$ the *group orbit* of each element $s$ is $$Orb(s) = \{ s
+      \curvearrowright^g: \forall g \}$$ where $Orb(s) \subset S$.
 
-    - Given a group $G$, a set $S$ and an action $\alpha: G \times S \rightarrow S$,
-      a stabilizier of $s \in S$ is an element $g_s$ of $G$ such that $$\alpha(g_s) s = s$$
+    - $Orb(s)$ forms a group which is isomorphic to $G/Stab(s)$.
 
-    - All $g_s$ form a group, the *isotropy group* $G_s$
+*** Orbit-stabilizer theorem
+    $$|Orb(s)| = [ G : Stab(s) ]$$
+
 
 *** Group centralizer
     The centralizer of an element $a$ of a group $G$ is the set of elements of
@@ -706,8 +709,8 @@
     - Assume $\pi(x) \in F[x]$ irreducible. Can I build *a field extension* $F[c]$
       such that $\pi(x) \in F[c][x]$ is reducible? What structure does it pose to
       $F[c]$ and all its polynomials $p_i(c)$?
-    - Assume $\sigma_c: F[c][x] \rightarrow F[c]$ subs. c into all occurrences of $x$.
-      Assume that $\sigma_c$ maps $\pi(x)$ to 0.
+    - Assume $\sigma_c: F[c][x] \rightarrow F[c]$ substitutes $c$ into all occurrences of $x$ and
+      $\pi(x)$ to 0.
     - Then
       - $\pi(c)=0 \in F[c]$ 
       - All other $p_i(c)$ can be written as remainders with respect to the
@@ -718,6 +721,13 @@
     build the field $Z_2[c]$, first identify the elements, i.e., $(0,1,c)$ and
     $(c+1)$ to make it closed under addition. When you build the
     multiplication table, remember to elide any addend of the type $c^2+c+1$.
+*** Field extensions as vector space
+    - An extension $F(c)$ can be seen as a vector space of elements $f_1 + f_2
+      \times c$. 
+    - The dimension $n$ of $F(c)$ is called the extension degree over
+      $F$: $$ [ F[c] : F ] = n $$ 
+    - $n$ is the degree of the minimum polynomial of $c$ that is in $F[x]$
+      (e.g., $[R(i) : R] = 2$ as $i^2 = -1$)
 * Algebras of vector spaces and modules
 ** Vector spaces
 *** Vector space
