@@ -3,6 +3,7 @@
 #+LEVEL: 3
 #+OPTIONS: H:3
 #+BEAMER_HEADER: \usepackage{tikz-cd}
+#+STARTUP: indent 
 
 * Algebraic structures with one operator
 ** Other structures
@@ -1240,15 +1241,15 @@ g_2(x)$, i.e., the solutions of the equation.
       - the one to one correspondence between any moprhism $e: f \times a \rightarrow b$ and $h: f \rightarrow b^a$ 
         is called *currying*.
 ** Special objects
-*** Initial object
-    - Assume $C$ a locally small category, then $Hom(c,-): C \rightarrow Set$ is a functor.
-    - If $Hom(c,-)$ is naturally isomorphic to the constant functor $*: C
-      \rightarrow Set = o \mapsto \{ \cdot \}$ then $c$ is *initial*.
-*** Terminal object
-    - Assume $C$ a locally small category, then $Hom(-,c): C \rightarrow Set$ is
+*** Initial object (representability)
+    - Assume $C$ a locally small category, then $d^{(-)}: C \rightarrow Set$ is a functor.
+    - If $d^{(-)}$ is naturally isomorphic to the constant functor $$*: C
+      \rightarrow Set = o \mapsto \{ \cdot \}$$ then $d$ is *initial*.
+*** Terminal object (representability)
+    - Assume $C$ a locally small category, then $d^{(-)}: C \rightarrow Set$ is
       a contravariant functor.
-    - If $Hom(-,C)$ is naturally isomorphic to the constant functor $*: C^{op}
-      \rightarrow Set$ that sends every object to the singleton set, then $c$ is
+    - If $d^({-})$ is naturally isomorphic to the constant functor $$*: C^{op}
+      \rightarrow Set$$ that sends every object to the singleton set, then $d$ is
       *terminal*.
 
 ** Kleisly category and monads
@@ -1817,9 +1818,77 @@ c' \arrow[u, "m"] \arrow[rr, "{Cone(c',D)}"] &  & \{\lambda_{c'}\} \in Set
 
 - The terminal object of the cone category is called the *limit cone*, while the
   apex is called the *limit*. We also say that $Cone(-,D)$ is representable by
-  this limit.
+  this limit. Being a limit, the morphism between any cone and the terminal
+  cone is unique.
 
+*** Products as limit 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ &  &  &  & c \arrow[d, "!\exists"] &  \\
+ &  &  &  & lim~D \arrow[ld] \arrow[rd] &  \\
+1 \arrow[rrr, "D"', dotted, bend right] \arrow[rrrru, dashed] & 2 \arrow[rrrr, dotted, bend right] \arrow[rrru, dashed] &  & i &  & j
+\end{tikzcd}
+#+END_EXPORT
 
+A product object $d$ is the limit of a diagram $D$ built over an index
+category $S$ of only two objects (and no morphisms).
 
+*** Terminal object as limit 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+c'' \arrow[rd] & c \arrow[d] & c' \arrow[ld] \\
+ & lim~D & 
+\end{tikzcd}
+#+END_EXPORT
+    
+A terminal object is the limit of apices of cones built over an empty index category.
+
+*** Equalizer as limit 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ &  &  &  & c \arrow[d, "!\exists"] &  \\
+ &  &  &  & lim~D \arrow[ld] \arrow[rd] &  \\
+1 \arrow[rrr, "D"', dotted, bend right] \arrow[rrrru, dashed] \arrow[r, bend left] \arrow[r, bend right] & 2 \arrow[rrrr, dotted, bend right] \arrow[rrru, dashed] &  & i \arrow[rr, bend left] \arrow[rr, bend right] &  & j
+\end{tikzcd}
+#+END_EXPORT 
+
+An equalizer is the limit of a diagram with two points (1 and 2) and two arrows
+from 1 to 2.
+
+*** Pullback (fibered product)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ &  &  &  & c \arrow[d] &  \\
+ & \textrm{Index Cat} &  &  & lim~D \arrow[ld, "p"] \arrow[d, "r"] \arrow[rd, "q"] &  \\
+1 \arrow[r] & 2 & 3 \arrow[l] & A \arrow[r, "f"'] & B & C \arrow[l, "g"]
+\end{tikzcd}
+#+END_EXPORT
+
+- The limit cones should be equal so $$ f \circ p = g \circ q $$ In Set, $lim~D$
+  would be a product where $g$ on second element equals to $f$ on first
+  element.
+
+- If one uses fibers in $A$ and $B$ to make $f,g$ injective then
+  $lim~D$ would be the product of fibers.
+
+*** Fiber 
+ - A *fiber* of a function $f$ and a value $b$ is the set of elements for which
+   $f(x) = b$.
+
+ - It is a way to make some arbitrary function as injective.
