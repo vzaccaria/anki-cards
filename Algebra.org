@@ -731,6 +731,28 @@
     - An extension $F(c_1, c_2)$ can be seen as a vector space of elements of
       the form $$\sum^{n_1}_i \sum^{n_2}_j f_{i,j} c_1^{i-1}c_2^{j-1}$$
     - Adjoining several $c_k$ brings to a overall extension degree $n =\Pi_k n_k$.
+*** Root field
+
+Given a polynomial $a(x)$ with roots $c_1 \ldots c_n$, the field extension
+$F(c_1 \ldots c_n)$ is its *root field*.
+
+*** Field isomorphisms
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+There exists an isomorphism $h$ between field extensions over roots $a,b$ of the
+same irreducible polynomial $p(x) \in F(x)$:
+
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+F \arrow[r, hook] \arrow[rd, hook] & F(a) \arrow[d] \\
+ & F(b) \arrow[u, "h"]
+\end{tikzcd}
+#+END_EXPORT
+
+If the above commutes (/$h$ fixes $F$/) then $h$ is an inclusion, so $F(a) =
+F(b)$. Thus there is a single root field for every irreducible polynomial, if it
+contains $a$ it should contain also $b$.
 
 * Algebras of vector spaces and modules
 ** Vector spaces
@@ -1787,17 +1809,17 @@ L[\widetilde{L}] \arrow[d,"\phi",red] \arrow[r] & (P \circ L)[\widetilde{L}] \ar
 
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
- &  &  &  &  & c \arrow[ld, "\lambda_A"] \arrow[d, "\lambda_B"] \arrow[rd, "\lambda_C"] &  \\
+ &  &  &  &  & c \arrow[ld, "\lambda_{c,A}"] \arrow[d, "\lambda_{c,B}"] \arrow[rd, "\lambda_{c,C}"] &  \\
 A \arrow[r] \arrow[rrrr, dotted, bend right] \arrow[rrrrru, "\Delta_c" description, dashed] & B \arrow[rrrr, "D"', dotted, bend right] \arrow[rrrru, dashed] & C \arrow[l] \arrow[rrrr, dotted, bend right] \arrow[rrru, dashed] &  & i \arrow[r] & j & k \arrow[l]
 \end{tikzcd}
 #+END_EXPORT
 
-- A cone over a diagram $D$ is a natural transformation $\lambda$ between the
-  constant functor $\Delta_c$ and $D$ (both from the index category $S$).
+- A cone over a diagram $D$ is built over natural transformations $\lambda$
+  between the constant functor $\Delta_c$ and $D$ (both from the index category
+  $S$).
 
-- It corresponds to a set of commuting triangles in $C$ with apex $c$. Since there can
-  be multiple natural transformations between $\Delta_c$ and $D$, we define $Cone(c,D)$ as
-  the set of cones from $c$.
+- Consider each family $\lambda_{c,-}$ of morphisms with apex $c$, we define
+  $Cone(c,D)$ as the set $\{ \lambda_{c,-} \}$ (as there can be more than one).
 
 
 *** Limit cone 
@@ -1807,19 +1829,14 @@ A \arrow[r] \arrow[rrrr, dotted, bend right] \arrow[rrrrru, "\Delta_c" descripti
 
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-c \arrow[rr, "{Cone(c,D)}"] &  & \{\lambda_{c}\} \in Set \arrow[d] \\
-c' \arrow[u, "m"] \arrow[rr, "{Cone(c',D)}"] &  & \{\lambda_{c'}\} \in Set 
+c \arrow[rr, "{Cone(c,D)}"] &  & \{\lambda_{c,-}\} \in Set \arrow[d] \\
+c' \arrow[u, "m"] \arrow[rr, "{Cone(c',D)}"] &  & \{\lambda_{c',-}\} \in Set 
 \end{tikzcd}
 #+END_EXPORT
 
 - $Cone(-,D): C^{op} \rightarrow Set$ is a functor and any morphism $m$ between
   apices is a morphism between cones. If there exists an object $d \in C$ for
   which $Cone(-,D) \cong d^{(-)}$, we say that $d$ is the limit of $D$.
-
-- The terminal object of the cone category is called the *limit cone*, while the
-  apex is called the *limit*. We also say that $Cone(-,D)$ is representable by
-  this limit. Being a limit, the morphism between any cone and the terminal
-  cone is unique.
 
 *** Products as limit 
 :PROPERTIES:
