@@ -1536,12 +1536,16 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
     - Given a generic contravariant functor $F: C^{op} \rightarrow Set$, we say that it is
       *representable* by $d$ if it is isomorphic to $d^{(-)}$.
 
-  
+*** Universal property 
+A universal property of object $X$ is a description of either $X^(-)$ or $(-)^X$ functors or
+any other functor isomorphic to them.
+
 *** Universal property of initiality and terminality
 
     - If there exists a functor $\textrm{const} \{\cdot\}: C^{op} \rightarrow
       Set$ such that $$\textrm{const} \{ \cdot \} \cong Hom(-, d)$$ for some
-      $d$, we say that $d$ is the *terminal* object of $C$.
+      $d$, we say that $d$ is the *terminal* object of $C$. This means that, the
+      set of morphisms into $x$ from any other object is singleton.
 
     - If there exists a functor $$\textrm{const} \{ \cdot \} \cong Hom(d, -)$$
       for some $d$, we say that $d$ is the *initial* object of $C$.
