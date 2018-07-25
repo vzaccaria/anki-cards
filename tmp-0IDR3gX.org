@@ -1575,9 +1575,6 @@ only for that object there is a natural transformation that makes the right
 square commute.
 
 *** Universal property encoded by the forgetful functor $U: Grp \rightarrow Set$
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
 
 Assume $U$ a forgetful functor from the group category to the set category
 (where we forget that it is possible to multiply elements and that they have an
@@ -1589,10 +1586,6 @@ G \arrow[d, "f"] \arrow[r, "U"] & S_G \arrow[d, "f_U"] \arrow[r, "\cong"] & G^? 
 H \arrow[r, "U"] & S_H \arrow[r] & H^? \arrow[l, "\cong"]
 \end{tikzcd}
 #+END_EXPORT
-
-The only value for $?$ for which the square on the right commutes (for all $G$
-and $H$) is the group $Z = (list(1), [], ++)$, i.e., the *free group on a single
-generator*.
 
 
 ** Functor algebras 
