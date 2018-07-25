@@ -945,9 +945,22 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
       
 
 *** How are related algebras and co-algebras      
-    - Given a co-algebra $C$, $C^*$ is an algebra (over $k^{*}). In fact, I can
-      build:
-      - $u: k \rightarrow C^*$. 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+Given a co-algebra $C$, $C^*$ is an algebra (over $k^{*}$). In fact, I can build
+$u$ and $m$ such that the following diagrams commute (note that $\rho$ is an
+injection):
+
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+k \arrow[r, "u"] \arrow[rd, "\cong"] & C^* & C^* \otimes C^* \arrow[r, "m"] \arrow[rd, "\rho", hook] & C^* \\
+ & K^* \arrow[u, "\epsilon^*"] &  & (C \otimes C)^* \arrow[u, "\Delta"]
+\end{tikzcd}
+#+END_EXPORT
+
+Viceversa, if $A$ is an algebra $A^*$ is a co-algebra.
+
 *** Affine space
     - A tuple $(A, V_k, (+): V_k \times A \rightarrow A)$ defines an /affine space/
       $A$ if $(+)$ complies with the group action properties.
