@@ -224,7 +224,7 @@
 *** Group stabilizer 
     - Given a group $G$, a set $S$ and an action $\curvearrowright: G \times S \rightarrow
       S$, a *stabilizer* of $s \in S$ is an element $g_s \in G$ such that $$ s \curvearrowright^{g_s} = s$$
-    - The set $Stab(s) = \{ g_s \}$ is a sub-group of $s$ (isotropy group).
+    - The set $Stab(s) = \{ g_s \}$ is a sub-group of $G$ (isotropy group).
 
 *** Group orbit
     - Given a group $G$, a set $S$ and an action $\curvearrowright: G \times S
@@ -1835,12 +1835,21 @@ L[\widetilde{L}] \arrow[d,"\phi",red] \arrow[r] & (P \circ L)[\widetilde{L}] \ar
     - Note, typeclasses represent /ad-hoc/ polymorphism.
     - The return of a monad is a natural transformation
 ** Adjunctions 
-*** Adjoint functors
+*** Adjoint functors 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+:LOGBOOK:
+CLOCK: [2018-07-26 Thu 11:19]--[2018-07-26 Thu 11:24] =>  0:05
+:END:
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+C~\textrm{with}~\epsilon: LR \rightarrow I_c \arrow[rr, "R(\textrm{ight})~\textrm{free}", bend right=49] & \bot & D~\textrm{with}~\eta: I_d \rightarrow R L \arrow[ll, "L(\textrm{eft}) ~ \textrm{frgtfl}", bend right=49]
+\end{tikzcd}
+#+END_EXPORT
     - Two categories $C$ and $D$ are equivalent if I can build two functors, one
       going left $L: C \leftarrow D$ and $R: C \rightarrow D$ if their
-      composition is naturally isomorphic with the following natural
-      transformations $$\eta: I_D \rightarrow R \circ L$$ and $$\epsilon: L
-      \circ R \rightarrow I_C$$
+      composition is naturally isomorphic through $\eta$ and $\epsilon$ 
     - We say that $L$ is /left adjoint/ to R
 *** Adjoint functors and homsets
     - It is another way of stating that two functors $L: C \leftarrow D$ and $R:
