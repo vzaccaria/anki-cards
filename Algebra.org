@@ -601,9 +601,9 @@
     - $f(1_R) = 1_S$
 
 *** Kernel of a ring homomorphism
-    The kernel of a ring homomorphism $f: R_0 \rightarrow R_1$ is a subring $$I_R = \{ k \in R | f(k) =
-    0$$ which is ideal, because it absorbs anything by multiplication. So this is
-    an exact sequence: $$1 \rightarrow I_R \rightarrow R_0 \rightarrow R_1$$.
+    The kernel of a ring homomorphism $f: R_0 \rightarrow R_1$ is a subring
+    $$I_R = \{ k \in R | f(k) = 0$$ which is ideal, because $f(a*k) = f(a)*f(k)$
+    so if $k \in R$ then also $a*k \in R$. 
 *** Cosets of an ideal of a ring
 
     A coset of an ideal $I_a$, just as those of subgroups, is created with the
@@ -625,7 +625,8 @@
 
 *** Division ring
     - A ring where every nonzero element a has a multiplicative inverse.
-    - Also called skew field.
+    - Also called *skew field*, they differ from fields because multiplication is
+      not required to be commutative.
 *** Integral system
     - An integral domain $A$ that is *ordered* and for which every subset $B \subseteq
       A$ has a *least element* (initial object)
