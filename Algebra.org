@@ -1510,7 +1510,7 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     - In 'Cat', the morphisms between categories (functors) are not only a set but a category
 
 *** Cells 
-    - 0-cell is a category
+    - 0-cell is an object
     - 1-cell is a morphism
     - 2-cell is a morphism between morphisms
 *** 2-category 
