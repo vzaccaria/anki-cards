@@ -805,7 +805,6 @@ contains $a$ it should contain also $b$.
 *** Dual spaces maps
     - Given $f: V \rightarrow W$ linear then I can build the dual $f^*: W^*
       \rightarrow V^*$, i.e., $$f^* \circ w^* \cong w^* \circ f$$
-    - In terms of *natural pairing* we have $$(f^*w^*,v) = (w^*, fv)$$.
 
 *** Dual spaces natural pairing
 
@@ -1625,7 +1624,7 @@ we map the generator.
 
       $$T(f) = f + (id_C \times f): X+(C\times X) \rightarrow X'+(C \times X')$$
 
-*** Functoriality for initial and final object isomorphisms
+*** Functors mapping to 1 and 0
 
     - $X \rightarrow 1$ is the functor that maps $X$ into the singleton set (final object)
 
