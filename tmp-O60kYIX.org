@@ -796,15 +796,15 @@ contains $a$ it should contain also $b$.
     - Also called *linear functionals* from $V$ to $k$.
 
 *** Dual spaces maps
-    - Given $f: V \rightarrow W$ linear then I can build the dual $f^*: W^* \rightarrow V^*$. 
+    - Given $f: V \rightarrow W$ linear then I can build the dual $f^*: W^*
+      \rightarrow V^*$. 
     - To do this, recall that $f^* (w^*)$ is a function $V \rightarrow K$, so
-      being not a lot of options: $$f^*(w^*)(v) = (w^*(f(v)))$$
-    - With the notation of natural pairing $(f^*(w^*),v) = (w^*, f(v))$
+      being not a lot of options: $$f^*(w^*) = w^* \ocirc f$$
 
 *** Dual spaces natural pairing
 
     - Given $v \in V_k$ and $v^* \in V^*$, there is a natural pairing $(v^*,v)$,
-      i.e., $v^*(v) \in k$. 
+      i.e., $v^*(v)$. 
 
     - The *natural pairing* is a bi-linear map (in both $v$ and $v^*$).
       
