@@ -1839,20 +1839,20 @@ CLOCK: [2018-07-26 Thu 11:19]--[2018-07-26 Thu 11:24] =>  0:05
 :END:
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-C~\textrm{with}~\epsilon: LR \rightarrow I_c \arrow[rr, "R(\textrm{ight})~\textrm{free}", bend right=49] & \bot & D~\textrm{with}~\eta: I_d \rightarrow R L \arrow[ll, "L(\textrm{eft}) ~ \textrm{frgtfl}", bend right=49]
+D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})~\textrm{free}", bend right=49] & \bot & C~\textrm{with}~\eta: I_c \rightarrow R L \arrow[ll, "L(\textrm{eft}) ~ \textrm{frgtfl}", bend right=49]
 \end{tikzcd}
 #+END_EXPORT
     - Two categories $C$ and $D$ are equivalent if I can build two functors, one
-      going left $L: C \leftarrow D$ and $R: C \rightarrow D$ if their
+      going left $L: D \leftarrow C$ and $R: D \rightarrow C$ if their
       composition is naturally isomorphic through $\eta$ and $\epsilon$ 
     - We say that $L$ is /left adjoint/ to R
 *** Adjoint functors and homsets
-    - It is another way of stating that two functors $L: C \leftarrow D$ and $R:
-      C \rightarrow D$ are adjoint by comparing homsets $$C(L d, c) \cong D(d, R
-      c)$$ for all $c,d$.
-    - If this happens, then $$D(d,RLd)\cong C(Ld, Ld)$$ but $D(d, RLd)$ is our
+    - It is another way of stating that two functors $L: D \leftarrow C$ and $R:
+      D \rightarrow C$ are adjoint by comparing homsets $$D(L c, d) \cong C(c, R
+      d)$$ for all $c,d$.
+    - If this happens, then $$C(c,RLc)\cong D(Lc, Lc)$$ but $C(c, RLc)$ is our
       family of mappings/natural transformation $\eta$, if it exists. And it
-      does, because $C(Ld,Ld)$ is not empty.
+      does, because $D(Lc,Lc)$ is not empty.
 ** Limits theory
 *** Diagram functors
     :PROPERTIES:
