@@ -1882,7 +1882,8 @@ A \arrow[r] \arrow[rrrr, dotted, bend right] \arrow[rrrrru, "\Delta_c" descripti
   $S$).
 
 - Consider each family $\lambda_{c,-}$ of morphisms with apex $c$, we define
-  $Cone(c,D)$ as the set $\{ \lambda_{c,-} \}$ (as there can be more than one).
+  $Cone(c,D)$ as the set $\{ \lambda_{c,-} \}$ (as there can be more than one
+  family).
 
 
 *** Limit cone 
