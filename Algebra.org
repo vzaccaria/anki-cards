@@ -1902,6 +1902,9 @@ c' \arrow[u, "m"] \arrow[rr, "{Cone(c',D)}"] &  & \{\lambda_{c',-}\} \in Set
   apices is a morphism between cones. If there exists an object $d \in C$ for
   which $Cone(-,D) \cong d^{(-)}$, we say that $d$ is the limit of $D$.
 
+- Alternatively, $d$ is a limit if, for each morphism that arrives to it, there
+  is a *single corresponding cone*.
+
 *** Products as limit 
 :PROPERTIES:
 :BEAMER_opt: fragile
