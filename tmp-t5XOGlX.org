@@ -663,6 +663,10 @@
     Every polynomial $a(x)$ of positive degree can be written *uniquely* as: $$a(x) = k
     p_1(x) \ldots p_n(x)$$ where $p_j(x)$ is a monic irreducible polynomial.
 
+*** Eisenstein irreducibility criterion
+    Given a polynomial $$a(x) = a_0 + ... + a_n x^n$$ over $\mathbb{Q}$ (or
+    $\mathbb{Z}$), if a prime number $p$ divides $a_1 ... a_{n-1}$ but not $a_n$
+    and $p^2$ does not divide $a_0$ then the polynomial is irreducible over $\mathbb{Q}$.
 *** Fundamental theorem of algebra
     - Every nonconstant polynomial with complex coefficients has a complex root.
     - If the coefficients are in $\mathbb{R}$ and $a+bi$ is a root, then also $a-bi$ is a root.
@@ -896,10 +900,8 @@ V \times W \arrow[r, "\phi"] \arrow[rd, "h"] & V \otimes W \arrow[d, "\tilde{h}"
 *** Tensor algebra
     A tensor algebra is a graded algebra $$TV = \bigoplus_d V^{\otimes d}$$
 *** Symmetric algebra
-    - A symmetric algebra is a quotient algebra: $$SV = TV/(v\otimes w - w
-      \otimes v)$$ The ideal is homogeneous so the resulting quotient is graded.
-    - In other words, $v\otimes w = w \otimes v$.
-
+    A symmetric algebra is a quotient algebra: $$SV = TV/(v\otimes w - w \otimes v)$$
+    The ideal is homogeneous so the resulting quotient is graded.
 *** An exterior algebra 
     An exterior algebra is a quotient algebra: $$\Lambda V = TV/(v\otimes v)$$
     The ideal is homogeneous so the resulting quotient is graded.
@@ -941,7 +943,7 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-Given a co-algebra $C$, $C^*$ is an algebra (over $k^{\star}$). In fact, I can build
+Given a co-algebra $C$, $C^*$ is an algebra (over $k^{*}$). In fact, I can build
 $u$ and $m$ such that the following diagrams commute (note that $\rho$ is an
 injection):
 
@@ -1189,15 +1191,11 @@ It is a cartesian category that has exponentials and a terminal object.
 It is a cartesian category that has exponentials and a terminal object and coproducts.
 
 *** Monoidal category definition
-   - A category $C$ is *monoidal* if: 
+   - A category $C$ is *monoidal* if *all* pairs of objects have a product
+     (co-product) and a terminal (initial) object.
 
-     1. there is a tensor product $\otimes: C \times C \rightarrow C$ defined
-        for all objects that respects associativity
-     2. there is a unit object for that product.
-
-   - A category where *all* pairs of objects have a product
-     (co-product) and a terminal (initial) object is a monoidal category.
-
+   - Both product and coproduct in a monoidal category are individuated by the
+     same symbol, i.e., *tensor product* ($\otimes$)
 
 *** Monoidal category of endofunctors 
     Endofunctors and natural transformations form a category. If there are
@@ -1905,7 +1903,7 @@ c' \arrow[u, "m"] \arrow[rr, "{Cone(c',D)}"] &  & \{\lambda_{c',-}\} \in Set
   which $Cone(-,D) \cong d^{(-)}$, we say that $d$ is the limit of $D$.
 
 - Alternatively, $d$ is a limit if, for each morphism that arrives to it, there
-  is a *single corresponding cone*.
+  is a *single corresponding cone*.
 
 *** Products as limit 
 :PROPERTIES:
