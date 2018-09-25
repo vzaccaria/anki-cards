@@ -1300,10 +1300,27 @@ g_2(x)$, i.e., the solutions of the equation.
     Given a category $C$, A monad corresponds to the data of:
     - an endofunctor $T: C \rightarrow C$
     - a unit natural transformation $\eta: 1_C \Rightarrow T$ (where $1_C$ is the identity endofunctor)
-    - a multiplication natural transformation $\mu: T^2 \Rightarrow T$ 
-    so that, seeing the endofunctors as objects in the monoidal category of
-    endofunctors $C^C$, the unit and the multiplication can be used to make $T$
-    a monoid.
+    - a multiplication natural transformation $\mu: T^2 \Rightarrow T$ arising
+      from functor composition so that, seeing the endofunctors as objects in
+      the monoidal category of endofunctors $C^C$, the unit and the
+      multiplication can be used to make $T$ a monoid. Recall that,
+      multiplication is functor composition.
+
+*** Monads from adjoint functors 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+:LOGBOOK:
+CLOCK: [2018-07-26 Thu 11:19]--[2018-07-26 Thu 11:24] =>  0:05
+:END:
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})~\textrm{free}", bend right=49] & \bot & C~\textrm{with}~\eta: I_c \rightarrow R L \arrow[ll, "L(\textrm{eft}) ~ \textrm{frgtfl}", bend right=49]
+\end{tikzcd}
+#+END_EXPORT
+    - A monad is the shadow cast by an adjunction into the domain of the left-adjoint $C$.
+    - It raises from natural transformations that one can build on the base functor $T=RL$.
+    - The adjunction ensures that $RLRL \rightarrow RL$ is natural.
 
 *** Monad laws (left identity)
     :PROPERTIES:
@@ -1841,7 +1858,7 @@ CLOCK: [2018-07-26 Thu 11:19]--[2018-07-26 Thu 11:24] =>  0:05
 :END:
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})~\textrm{free}", bend right=49] & \bot & C~\textrm{with}~\eta: I_c \rightarrow R L \arrow[ll, "L(\textrm{eft}) ~ \textrm{frgtfl}", bend right=49]
+D~\textrm{(Simple) with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})~\textrm{free}", bend right=49] & \bot & C~\textrm{(Complex) with}~\eta: I_c \rightarrow R L \arrow[ll, "L(\textrm{eft}) ~ \textrm{frgtfl}", bend right=49]
 \end{tikzcd}
 #+END_EXPORT
     - Two categories $C$ and $D$ are equivalent if I can build two functors, one
