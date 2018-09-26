@@ -1551,6 +1551,16 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
     - Given a generic contravariant functor $F: C^{op} \rightarrow Set$, we say that it is
       *representable* by $d$ if it is isomorphic to $d^{(-)}$.
 
+*** Representable functor in Haskell
+
+: class Representable f where 
+:   type Rep f :: *                 -- this is d in (-)^d
+:   tabulate :: (Rep f -> x) -> f x -- natt (-)^d -> f (-)
+:   index :: f x -> (Rep f -> x)    -- other way around
+
+Works if you think about (~Rep f)~ as the index into the container (~f x)~.
+For example streams are representable while lists are not.
+
 *** Universal property 
 A universal property of object $X$ is a description of either $X^{(-)}$ or
 $(-)^X$ functors or any other functor isomorphic to them. We say that $X$
