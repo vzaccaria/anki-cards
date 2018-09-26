@@ -415,7 +415,8 @@
 *** Representations of dual spaces
 
     Given $(\rho,V)$, one can define a representation of its dual vector space
-    $(\rho^*, V^*)$ such that $$ \rho^*(g) \vec{f} = v \mapsto f (\rho^{-1}(g) \cdot v)$$.
+    $(\rho^*, V^*)$ such that $$\rho^*(g) \vec{f} = v \mapsto f (\rho^{-1}(g)
+    \cdot v)$$.
 
 *** Representation of quotient spaces
 
@@ -784,7 +785,7 @@ contains $a$ it should contain also $b$.
     - Given a vector space $V$, one can define its dual space as the space of
       linear mappings over it, i.e., $V^* = \{f: V \rightarrow k \}$.
 
-    - $V^*=span(f_1^*, \ldots, f_n^*)$ where $f_i^*(v)=\delta_{v,e_j}$
+    - $V^*=span(f_1^*, \ldots, f_n^*)$ where $$f_i^*(\sum_j c_j e_j)=c_i$$
       and $V = span(e_1, \ldots, e_n)$.
 
     - Important property of *duality*: $(V^*)^* \cong V$
