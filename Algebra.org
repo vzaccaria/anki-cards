@@ -745,6 +745,17 @@ If the above commutes (/$h$ fixes $F$/) then $h$ is an inclusion, so $F(a) =
 F(b)$. Thus there is a single root field for every irreducible polynomial, if it
 contains $a$ it should contain also $b$.
 
+*** Automorphisms between root fields
+
+- A root field automorphism is an isomorphism over the same field (i.e., $K
+  \rightarrow K$ where $K=F(c)$).
+
+- Automorphisms between root fields of the same polynomial permute only the
+  roots. Their number is equal to the degree of $K$ over $F$. 
+
+- They are permutations and they form a group (the *Galois* group) - not all
+  permutations though because only a few determine root field automorphisms.
+
 * Algebras of vector spaces and modules
 ** Vector spaces
 *** Vector space
