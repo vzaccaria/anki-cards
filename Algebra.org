@@ -607,6 +607,9 @@
     - $I_a + I_b = I_{a + b}$
     - $I_a * I_b = I_{a * b}$
 
+    An ideal of a ring is actually a *subring*. Given a ring R and a subring I,
+    you can form the quotient ring R/I if and only if I is an ideal.
+
 *** Ring center
 
     The center of a ring $R$ is the subring $Z(R)$ of the elements $z$ such that $$zy
