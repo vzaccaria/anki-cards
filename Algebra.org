@@ -1353,12 +1353,29 @@ CLOCK: [2018-07-26 Thu 11:19]--[2018-07-26 Thu 11:24] =>  0:05
 :END:
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})~\textrm{free}", bend right=49] & \bot & C~\textrm{with}~\eta: I_c \rightarrow R L \arrow[ll, "L(\textrm{eft}) ~ \textrm{frgtfl}", bend right=49]
+D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend right=49] & \bot & C~\textrm{with}~\eta: I_c \rightarrow R L \arrow[ll, "L(\textrm{eft})", bend right=49]
 \end{tikzcd}
 #+END_EXPORT
     - A monad is the shadow cast by an adjunction into the domain of the left-adjoint $C$.
     - It raises from natural transformations that one can build on the base functor $T=RL$.
-    - The adjunction ensures that $RLRL \rightarrow RL$ is natural.
+    - The adjunction ensures that $\mu: RLRL \rightarrow RL$ is natural.
+*** Monads from adjoint functors (Maybe monad)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+:LOGBOOK:
+CLOCK: [2018-07-26 Thu 11:19]--[2018-07-26 Thu 11:24] =>  0:05
+:END:
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot & Set  \arrow[ll, "L(\textrm{eft}) ~ \textrm{free}", bend right=49]
+\end{tikzcd}
+#+END_EXPORT
+
+- The left-adjoint is *free* and takes each set $S$ (in $Set$) to the pair $(S,\bar{s}), \bar{s} \in S$. 
+- The adjunction provides a way to map a set $S$ to itself ($\eta$) and a way to
+  map two rounds of the adjunction to a single round ($\mu$). Practically
+  speaking, if you adjoin and forget two times, you end up into the same set.
 
 *** Monad laws (left identity)
     :PROPERTIES:
