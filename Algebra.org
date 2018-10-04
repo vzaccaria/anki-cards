@@ -219,7 +219,12 @@
 
 *** Subgroup index
 
-    The index of a subgroup H in G is defined as the number of cosets of H in G.
+  - The index of a subgroup H in G is defined as the number of cosets of H in G
+    (it is the number of partitions).
+
+  - It is denoted as $[G:H]$.
+
+
 
 *** Group stabilizer 
     - Given a group $G$, a set $S$ and an action $\curvearrowright: G \times S \rightarrow
@@ -711,6 +716,13 @@
       - All other $p_i(c)$ can be written as remainders with respect to the
         division with $\pi(c)$. Their degree will be always less than $\pi(x)$.
       
+*** Degree of a field extension
+- An extension $F[c]$ is a vector space that contains $F$ and combines linearly
+  its elements with $c$.
+
+- If the dimension of $F[c]$ is $n$, we say that the *degree of $F[c]$ over $F$
+  is $n$*, i.e., $$[F(c) : F]=n$$
+
 *** Field extension $Z[x]/(x^2+x+1)$
     The polynomial $x^2 + x + 1$ does not have any root in $Z_2$. To
     build the field $Z_2[c]$, first identify the elements, i.e., $(0,1,c)$ and
@@ -750,14 +762,30 @@ contains $a$ it should contain also $b$.
 
 *** Automorphisms between root fields
 
-- A root field automorphism is an isomorphism over the same field (i.e., $K
-  \rightarrow K$ where $K=F(c)$).
+- A root field automorphism is an isomorphism over the same field:
+   $$h_{p(x)}: F(c) \rightarrow F(c)$$
 
-- Automorphisms between root fields of the same polynomial permute only the
-  roots. Their number is equal to the degree of $K$ over $F$. 
+- Each $h_{p(x)}$ permutes only the roots.
+
+- The number of $h_{p(x)}$ is the degree $[F(c) : F]$
 
 - They are permutations and they form a group (the *Galois* group) - not all
-  permutations though because only a few determine root field automorphisms.
+  permutations, though because only a few determine root field automorphisms.
+
+*** Fix fields (Galois)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+F \arrow[r, hook] \arrow[rrd, hook] \arrow[rrrd, hook, bend right] \arrow[rrr, hook, bend left] & I (\textrm{fixfield of } H) \arrow[r, hook] \arrow[rd, hook] & {I[r_1]} \arrow[d] & {F[r_1]} \arrow[d] \\
+ &  & {I[r_2]} \arrow[u, "H \subseteq"'] & {F[r_2]} \arrow[u, "\mathbb{G}"]
+\end{tikzcd}
+#+END_EXPORT
+
+Each subgroup of $H$ has a fix field $I$. There is a one-to-one correspondence
+between subgroup of $G$ and intermediate fields.
 
 * Algebras of vector spaces and modules
 ** Vector spaces
