@@ -986,23 +986,53 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
       Another example is the algebra of intervals of a poset: $K[I]$. The dual
       of an algebra intended as a vector space is a co-algebra.
       
+*** Incidence co-algebra
+
+- Given a poset $P$, one can define an *interval* by choosing two points of $P$
+  (e.g., $x$ and $y$) and all the intermediates $z$: $$[x,y]=\{ z\in P: x \leq z
+  \leq y \}$$
+
+- Consider now the free vector space of all the intervals of $P$, $int(P)$. It can be
+  equipped with a tensor product (which basically creates pairs), and in turn,
+  one can define a co-multiplication: $$\Delta([x,y])=\sum_{z \in [x,y]} [x,z]
+  \times [z,y]$$ where the co-unit $\delta([x,y]) = (x=y)$.
 
 *** How are related algebras and co-algebras      
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-Given a co-algebra $C$, $C^*$ is an algebra (over $k^{\star}$). In fact, I can build
-$u$ and $m$ such that the following diagrams commute (note that $\rho$ is an
-injection):
+- Given a co-algebra $C$, $C^*$ is an algebra (over $k^{\star}$). In fact, I can
+  build $u$ and $m$ such that the following diagrams commute (note that $\rho$
+  is an injection):
 
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-k \arrow[r, "u"] \arrow[rd, "\cong"] & C^* & C^* \otimes C^* \arrow[r, "m"] \arrow[rd, "\rho", hook] & C^* \\
- & K^* \arrow[u, "\epsilon^*"] &  & (C \otimes C)^* \arrow[u, "\Delta"]
-\end{tikzcd}
-#+END_EXPORT
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  k \arrow[r, "u"] \arrow[rd, "\cong"] & C^* & C^* \otimes C^* \arrow[r, "m"] \arrow[rd, "\rho", hook] & C^* \\
+  & K^* \arrow[u, "\epsilon^*"] &  & (C \otimes C)^* \arrow[u, "\Delta"]
+  \end{tikzcd}
+  #+END_EXPORT
 
-Viceversa, if $A$ is an algebra $A^*$ is a co-algebra.
+- $C^*$ is the convolution algebra as it uses convolution to multiply functions
+  living in $C^*$.
+
+- Viceversa, if $A$ is an algebra $A^*$ is a co-algebra.
+
+*** Convolution algebra of $C = int(P)$
+
+Given an incidence co-algebra $C$, one can define its *incidence algebra* as
+the space $C^* = \{ f: C \rightarrow k \}$, where multiplication $m$ is:
+
+  $$m(\phi \otimes \psi)([x,y]) = \sum_{z \in [x,y]}\phi([x,z])\psi([z,y)$$
+
+and unit $\delta([x,y])= (x=y)$.
+
+*** Mobius function
+
+- Given an incidence algebra $C^*$, one can ask whether there exists a way to
+  build the multiplicative inverse of each function in $C^*$, and in particular of
+  the inverse of $\zeta([x,y])=1$ which we call $\mu$.
+
+- This is in fact the mobius function: $$\mu([x,y])=-\sum_{z\in[x,y]}\mu([x,z])$$
 
 *** Affine space
     - A tuple $(A, V_k, (+): V_k \times A \rightarrow A)$ defines an /affine space/
