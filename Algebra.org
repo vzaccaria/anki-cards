@@ -1995,6 +1995,15 @@ D~\textrm{(Simple) with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight
     - If this happens, then $$C(c,RLc)\cong D(Lc, Lc)$$ but $C(c, RLc)$ is our
       family of mappings/natural transformation $\eta$, if it exists. And it
       does, because $D(Lc,Lc)$ is not empty.
+*** Yoneda lemma
+- Assume a functor from $F: C \rightarrow Set$ 
+
+- For any $F$, and an object $a$, the set $\{ \alpha \}$ of natural
+  transformations is such that $$\{ \alpha : (-)^a \Rightarrow F \} \cong F a$$
+
+- Basically, for every point $p$ in $F a$ (which is a set) there is a unique
+  natural transformation $\alpha_p$.
+
 ** Limits theory
 *** Diagram functors
     :PROPERTIES:
