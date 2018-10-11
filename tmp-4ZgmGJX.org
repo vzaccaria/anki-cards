@@ -782,31 +782,16 @@ F \arrow[r, hook] \arrow[rd, hook] & F(a) \arrow[d] \\
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
 F \arrow[r, hook] \arrow[rrd, hook] \arrow[rrrd, hook, bend right] \arrow[rrr, hook, bend left] & I (\textrm{fixfield of } H) \arrow[r, hook] \arrow[rd, hook] & {I[r_1]} \arrow[d] & {F[r_1]} \arrow[d] \\
- &  & {I[r_2]} \arrow[u, "H \subseteq"'] & {F[r_2]} \arrow[u, "Gal"]
+ &  & {I[r_2]} \arrow[u, "H \subseteq"'] & {F[r_2]} \arrow[u, "Gal(F[c]:F)"]
 \end{tikzcd}
 #+END_EXPORT
 
 - Each subgroup of $H$ has a fix field $I$. There is a one-to-one correspondence
-  between the subgroups of $Gal(F(c):F)$ and the intermediate fields between $F$
-  and $F[c]$, a.k.a, *Galois correspondence*.
+  between the subgroups of $G$ and the intermediate fields.
 
 - The number of elements of $H$ is $[F:I]$.
 
-*** Normal subgroup of a Galois group.
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
 
-\begin{tikzcd}
-K \arrow[r] & {Gal(K,E)} \arrow[d, "\mu"] \\
-I \arrow[u, hook] \arrow[r] & {Gal(I,E)}
-\end{tikzcd}
-
-- Given a field $E$, its field extensions $K,I$ might be ordered according to
-  inclusion. Their Galois group are automatically endowed with a homomorphism
-  $\mu$ corresponding to a restriction of $h \in Gal(K,E)$ into $Gal(I,E)$.
-
-- This homomorphism has a kernel $Gal(K,I)$, so $Gal(I,E) \cong Gal(K,E)/Gal(K,I)$.
 
 * Algebras of vector spaces and modules
 ** Vector spaces
