@@ -1486,16 +1486,16 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
     :END:
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{[-]+T[\tilde{T}[-]]} \arrow[r] \arrow[d, "{[p,f]}"] & {[-]+T[-]} \arrow[d,"{[p,f]}"] \\
-{\tilde{T}[-]} \arrow[r] & {[-]}
+{A + T[\tilde{F}]} \arrow[d] \arrow[r] & {A+T[-]} \arrow[d] \\
+\tilde{F} \arrow[u, "\cong"] \arrow[r] & {[-]}
 \end{tikzcd}
 #+END_EXPORT
 
- - Given a functor $T[-]$, the *free monad* $\tilde{T}$ can be built as the fixed
-   point of functor $[-]+T[-]$.
- - The algebra of the functor is composed by the two constructor (p=pure, f=free) which
-   are natural transformation. 
- - It is possible to show that $\tilde{T}$ is a functor and *a monad*.
+ - Given a functor $T[-]$, the *free monad* $\tilde{F}[A]$ can be built as the fixed
+   point of functor $A+T[-]$, where $A$ is an arbitrary object.
+ - The algebra of the functor is composed by two constructors (p=pure, f=free) which
+   are natural transformations. 
+ - It is possible to show that $\tilde{F}[A]$ is a functor and *a monad* in $A$.
 
 *** Free monads (interpretation)
     :PROPERTIES:
