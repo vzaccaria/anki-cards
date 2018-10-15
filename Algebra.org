@@ -62,7 +62,7 @@
 ** Groups
 *** Group
 
-   A [[https://en.wikipedia.org/wiki/Group_(mathematics)][group]] $G$ is a monoid where for all elements $a$, the (*) operation satisfies:
+   A group $G$ is a monoid where for all elements $a$, the (*) operation satisfies:
 
    - *closure*: $a \in G, b \in G \rightarrow a * b \in G$
    - *identity element*: $a * 1_G = 1_G * a = a$
@@ -72,7 +72,7 @@
    In a group, every element has its own inverse.
 
 *** Subgroup
-   $H$ is a [[https://en.wikipedia.org/wiki/Subgroup][subgroup]] of $G$ if:
+   $H$ is a subgroup of $G$ if:
 
    - $H \subseteq G$
    - It is closed under (*).
@@ -152,7 +152,7 @@
 
 *** Semigroup
 
-    A [[https://en.wikipedia.org/wiki/Semigroup][semigroup]] $S$ is a "group without inverse".
+    A semigroup $S$ is a "group without inverse".
 
    - *closure*: $a \in G, b \in G \rightarrow a * b \in G$
    - *identity element*: $a * 1_G = 1_G * a = a$
@@ -333,7 +333,6 @@
 
     - If the group is finite, then one can always build an unitary operator.
 
-    - See [[[https://en.wikipedia.org/wiki/Unitary_representation#Complete_reducibility][complete reducibility of unitary representations]]].
 
 *** Trivial representation
 
@@ -505,7 +504,7 @@
 * Algebraic structures with two operators
 ** Semirings
 *** Semiring (Rig)
-    A [[https://en.wikipedia.org/wiki/Semiring][semiring]] $R$ consists of a set $R$ such that:
+    A semiring $R$ consists of a set $R$ such that:
 
     - $(R, +)$ is a commutative monoid with identity = 0 (note, *not a group*, it
       should not have an inverse).
@@ -516,7 +515,7 @@
 ** Rings
 *** Ring
 
-    A [[https://en.wikipedia.org/wiki/Ring_(mathematics)][ring]] $R$ consists of a set $R$ such that:
+    A ring $R$ consists of a set $R$ such that:
 
     - $(R, +)$ is a *commutative* *group* with identity=0 (note that it should have
       an inverse, so we can talk about *negative* values).
@@ -679,7 +678,7 @@
 
 *** Field
 
-    A [[https://en.wikipedia.org/wiki/Field_(mathematics)][field]] a set with two operations:
+    A field a set with two operations:
 
     - $(F, +)$ is a commutative group
     - $(F, *)$ is a commutative group
@@ -824,7 +823,7 @@ I \arrow[u, hook] \arrow[r] & {Gal(I,E)}
 
 *** Simple vectors
 
-    They are ordered sequences of elements that belong to a field ([[https://en.wikipedia.org/wiki/Scalar_(mathematics)][scalars)]].
+    They are ordered sequences of elements that belong to a field (scalars).
     Classical results of geometry apply.
 
 *** Direct sum
@@ -1265,7 +1264,7 @@ A *join*
 
 *** Lattice as a category
 
-[[https://ncatlab.org/nlab/show/lattice][A lattice]] is a poset where *all objects* have a *meet* and a *join*
+A lattice is a poset where *all objects* have a *meet* and a *join*
 
 ** Special categories
 *** Categorical nomenclature (*small* and *large* cats)
