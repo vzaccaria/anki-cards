@@ -1016,44 +1016,50 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 - Consider now the free vector space of all the intervals of $P$, $int(P)$. It can be
   equipped with a tensor product (which basically creates pairs), and in turn,
   one can define a co-multiplication: $$\Delta([x,y])=\sum_{z \in [x,y]} [x,z]
-  \times [z,y]$$ where the co-unit $\delta([x,y]) = (x=y)$.
+  \otimes [z,y]$$ where the co-unit $\delta([x,y]) = (x=y)$.
 
 *** How are related algebras and co-algebras      
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 - Given a co-algebra $C$, $C^*$ is an algebra (over $k^{\star}$). In fact, I can
-  build $u$ and $m$ such that the following diagrams commute (note that $\rho$
-  is an injection):
+  build $u,m$ and $\rho$ such that the following diagrams commute:
 
   #+BEGIN_EXPORT latex
   \begin{tikzcd}
   k \arrow[r, "u"] \arrow[rd, "\cong"] & C^* & C^* \otimes C^* \arrow[r, "m"] \arrow[rd, "\rho", hook] & C^* \\
-  & K^* \arrow[u, "\epsilon^*"] &  & (C \otimes C)^* \arrow[u, "\Delta"]
+  & K^* \arrow[u, "\epsilon^*"] &  & (C \otimes C)^* \arrow[u, "\Delta^*"]
   \end{tikzcd}
   #+END_EXPORT
 
 - $C^*$ is the convolution algebra as it uses convolution to multiply functions
-  living in $C^*$.
+  living in $C^*$. 
 
-- Viceversa, if $A$ is an algebra $A^*$ is a co-algebra.
+- Note: $(\rho(c^* \otimes d^*), c \otimes d) = (c^*, c)(d^*, d)$ is a
+  homomorphism and an injection.
+
 
 *** Convolution algebra of $C = int(P)$
 
-Given an incidence co-algebra $C$, one can define its *incidence algebra* as
-the space $C^* = \{ f: C \rightarrow k \}$, where multiplication $m$ is:
+Given an incidence co-algebra $C$, one can define its *incidence algebra* as the
+space $C^* = \{ f: C \rightarrow k \}$, where multiplication $m$ is $\Delta^*
+\circ \rho$ so:
 
-  $$m(\phi \otimes \psi)([x,y]) = \sum_{z \in [x,y]}\phi([x,z])\psi([z,y)$$
+$$m(\phi \otimes \psi)([x,y]) = (\Delta^* \circ \rho (\phi \otimes \psi), [x,y]) = $$
 
-and unit $\delta([x,y])= (x=y)$.
+$$(\rho(\phi \otimes \psi), \Delta([x,y])) = \sum_{z \in [x,y]}\phi([x,z])\psi([z,y])$$
+
+and unit $\delta([x,y])= (x=y)$. In fact, $\rho$ applies both tensored functions
+to the corresponding tensor arguments and multiplies them.
 
 *** Mobius function
 
-- Given an incidence algebra $C^*$, one can ask whether there exists a way to
+- Given an incidence algebra $\phi$, one can ask whether there exists a way to
   build the multiplicative inverse of each function in $C^*$, and in particular of
   the inverse of $\zeta([x,y])=1$ which we call $\mu$.
 
-- This is in fact the mobius function: $$\mu([x,y])=-\sum_{z\in[x,y]}\mu([x,z])$$
+- This is in fact the mobius function which we define recursively:
+  $$\mu([x,y])=-\sum_{z\in[x,y]}\mu([x,z])$$
 
 *** Affine space
     - A tuple $(A, V_k, (+): V_k \times A \rightarrow A)$ defines an /affine space/
