@@ -935,6 +935,11 @@ V \times W \arrow[r, "\phi"] \arrow[rd, "h"] & V \otimes W \arrow[d, "\tilde{h}"
 
     - The tensor product is *associative* $(A \otimes B) \otimes C = A \otimes (B \otimes C)$
 
+*** Tensor products and R-Modules
+
+In the case of R-modules $V$ and $W$, $V \otimes W$ is a group (abelian). Every
+map from $V \otimes W$ into a group can be factored through it.
+
 *** Graded $k$ algebras
 
     A $k$ -algebra is graded if it has a decomposition: $$ A = A_0 \oplus A_1 \oplus A_2 \cdots$$
@@ -954,7 +959,6 @@ V \times W \arrow[r, "\phi"] \arrow[rd, "h"] & V \otimes W \arrow[d, "\tilde{h}"
       {n+d-1 \choose d}q^d=(1-q)^{-n}$$
 
     # RESTART FROM HERE: https://www.youtube.com/watch?v=PPexiDR4r0Y
-
 
 *** Tensor algebra
     A tensor algebra is a graded algebra $$TV = \bigoplus_d V^{\otimes d}$$
@@ -1036,7 +1040,6 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 
 - Note: $(\rho(c^* \otimes d^*), c \otimes d) = (c^*, c)(d^*, d)$ is a
   homomorphism and an injection.
-
 
 *** Convolution algebra of $C = int(P)$
 
@@ -1132,6 +1135,25 @@ to the corresponding tensor arguments and multiplies them.
 
 *** Projector kernel
       Given a projector $P$, $X_2 = (1-P)X$ is the kernel of $P$ by definition: $$PX_2 = P(1-P)X = (P-P^2)X = 0$$
+
+*** Representation of algebras
+Given an algebra $A_k$ and a vector space $V_k$ ($k$ is a field), a
+representation of $A$ is a homomorphism: $$T: A \rightarrow Hom_k(V, V)$$
+
+which satisfies: 
+
+- $T(a_1 + a_2) = T(a_1) + T(a_2)$
+- $T(a_1a_2)=T(a_1)T(a_2)$
+- $T(\alpha a)=\alpha T(a)$
+
+*** A-Module
+
+A representation of an $A$ algebra can be used to create a sort of scalar
+multiplication: $$*: A \times V \rightarrow V$$ in the sense that we use the
+representation of $A$: $$*: GL(A) \times V \rightarrow V$$
+
+We can define thus define $A$ module from $A$ and $V$ where, in place of a ring
+or a field, we use use algebras.
 
 * Category theory - basics
 
