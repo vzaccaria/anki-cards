@@ -2044,13 +2044,32 @@ D~\textrm{(Simple) with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight
       family of mappings/natural transformation $\eta$, if it exists. And it
       does, because $D(Lc,Lc)$ is not empty.
 *** Yoneda lemma
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\textbf{C} & \textbf{Set} &  \\
+a \arrow[rr, "F a"] &  & \phi \cong \{ \alpha_{c\in C} \} \\
+x \arrow[d] \arrow[r, "(-)^a"'] \arrow[rr, "F(-)", bend left] & x^a \arrow[d] \arrow[r, "\alpha_x"] & Fx \arrow[d] \\
+y \arrow[r] \arrow[rr, bend right] & y^a \arrow[r, "\alpha_y"] & Fy
+\end{tikzcd}
+#+END_EXPORT
+
 - Assume a functor from $F: C \rightarrow Set$ 
 
-- For any $F$, and an object $a$, the set $\{ \alpha \}$ of natural
-  transformations is such that $$\{ \alpha : (-)^a \Rightarrow F \} \cong F a$$
+- Basically, for every point $p$ in $\phi = F a$ (which is a set) there is a unique
+  natural transformation $\alpha_p: (-)^a \rightarrow F$.
 
-- Basically, for every point $p$ in $F a$ (which is a set) there is a unique
-  natural transformation $\alpha_p$.
+*** Cayley's through yoneda
+
+- Take $C = \{ * \}$ the category with a single object.
+
+- Consider that $F = (-)^*$ so we have that $$(*)^* \cong Nat((-)^*, (-)^*)$$.
+
+- But, $(*)^*$ is actually a group $G$ and it can be shown that $Nat(...)$ is actually a subgroup of permutations in
+  $S_n$.
 
 ** Limits theory
 *** Diagram functors

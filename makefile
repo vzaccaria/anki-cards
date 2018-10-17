@@ -26,5 +26,9 @@ watch: $(CURTGT)
 	open $(CURTGT)
 	watchman-make -p $(CURORG) -t $(CURTGT)
 
+watch-linux: $(CURTGT)
+	zathura $(CURTGT) &
+	watchman-make -p $(CURORG) -t $(CURTGT)
+
 clean:
 	rm -rf anki-cards *.pdf *.log tmp-*
