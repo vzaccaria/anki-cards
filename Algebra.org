@@ -729,8 +729,9 @@
     multiplication table, remember to elide any addend of the type $c^2+c+1$.
 *** Field extensions as vector space
     - An extension $F(c)$ can be seen as a vector space of elements of the form $$\sum^n_i f_i c^{i-1}$$
-    - $n$ is the degree of the minimum polynomial of $c$ that is in $F[x]$
-      (e.g., $i$ is the root of $x^2 - 1$, so n = 2). 
+    - $n$ is the degree of the minimum polynomial of $c$ over $F$
+    - if $c$ is the root of $x^2+1 \in R(x)$ then
+      $c+1 \notin R$ but $c^2 + 1 \in R$ so n = 2.
     - $n$ is called the *extension degree* over $F$: $$ [ F(c) : F ] = n $$
 *** Multiple field extensions as vector space
     - An extension $F(c_1, c_2)$ can be seen as a vector space of elements of
@@ -790,6 +791,28 @@ F \arrow[r, hook] \arrow[rrd, hook] \arrow[rrrd, hook, bend right] \arrow[rrr, h
   and $F[c]$, a.k.a, *Galois correspondence*.
 
 - The number of elements of $H$ is $[F:I]$.
+
+*** Galois correspondence example
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+- Consider $Q(i,a)$ where $a$ is the root of 2. 
+
+- $Gal(Q(i,a) : Q) = \{ \epsilon=id, \alpha=(\sigma_i id_a), \beta=(id_i \sigma_a), \gamma=(\sigma_i
+  \sigma_a) \}$ using transpositions to represent permutations.
+
+- Then we have the following Galois correspondence:
+
+  #+BEGIN_EXPORT latex
+  \tiny
+  \begin{tikzcd}
+  & {\{\epsilon,\alpha,\beta,\gamma\}} &  &  & {Q(i,a)} &  \\
+  {\{\epsilon,\alpha\}} \arrow[ru] & {\{\epsilon,\beta\}} \arrow[u] & {\{\epsilon,\gamma\}} \arrow[lu] & Q(a) \arrow[ru] & Q(i) \arrow[u] & Q(ia) \arrow[lu] \\
+  & \{\epsilon\} \arrow[lu] \arrow[u] \arrow[ru] &  &  & Q \arrow[lu] \arrow[u] \arrow[u] \arrow[ru] & 
+  \end{tikzcd}
+  #+END_EXPORT
+
 
 *** Normal subgroup of a Galois group.
 :PROPERTIES:
