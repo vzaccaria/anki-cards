@@ -1053,7 +1053,7 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 
   #+BEGIN_EXPORT latex
   \begin{tikzcd}
-  k \arrow[r, "u"] \arrow[rd, "\cong"] & C^* & C^* \otimes C^* \arrow[r, "m"] \arrow[rd, "\rho", hook] & C^* \\
+  K \arrow[r, "u"] \arrow[rd, "\phi"] & C^* & C^* \otimes C^* \arrow[r, "m"] \arrow[rd, "\rho", hook] & C^* \\
   & K^* \arrow[u, "\epsilon^*"] &  & (C \otimes C)^* \arrow[u, "\Delta^*"]
   \end{tikzcd}
   #+END_EXPORT
@@ -1063,6 +1063,8 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 
 - Note: $(\rho(c^* \otimes d^*), c \otimes d) = (c^*, c)(d^*, d)$ is a
   homomorphism and an injection.
+
+- $\phi$ is a linear function that maps $K$ to functions on $K$. 
 
 *** Convolution algebra of $C = int(P)$
 
@@ -1085,6 +1087,28 @@ to the corresponding tensor arguments and multiplies them.
 
 - This is in fact the mobius function which we define recursively:
   $$\mu([x,y])=-\sum_{z\in[x,y]}\mu([x,z])$$
+
+*** Sweedler notation for co-algebras
+
+- Assume you want to write a formula for $\Delta: C \rightarrow C \otimes C$; this 
+  actually corresponds to a linear combination of tensors:
+  $$\Delta(c) = \sum_i \lambda_i (c_{1,i} \otimes c_{2,i}) \cong \sum_i (c_{1,i} \otimes c_{2,i})$$
+  $$ = \sum_{(c)} (c_{(1)} \otimes c_{(2)})$$
+
+  where $\lambda_i$ is absorbed and subscript notation is removed.
+- Extension:
+  $$\Delta_2 = (\Delta \otimes id) \circ \Delta = \sum_{(c)} c_{(1)} \otimes c_{(2)} \otimes c_{(3)}$$
+
+*** Sweedler notation  and multilinear functions
+- Given $f: C \times C \times ... \rightarrow V$ we get $\phi: C \otimes C
+  \otimes ... \rightarrow V$ (fundamental property of tensors)
+- We thus write: $$f = \phi \circ \Delta_{n-1} = \sum_{(c)} \phi (c_{(1)} \otimes c_{(2)} ...) $$
+
+  for example: $$\sum_c \Delta(c_1) \otimes c_2 = \sum_c (\Delta \otimes id)(c_1
+  \otimes c_2) = (\Delta \otimes id)\Delta$$
+
+- Co-associativity law: $\sum_c \Delta(c_1)\otimes c_2 = \sum_c c_1\otimes \Delta(c_2)$
+- Co-unit law: $\sum_c \epsilon(c_1)\otimes c_2 = c = \sum_c c_1 \otimes \epsilon(c_2)$
 
 *** Affine space
     - A tuple $(A, V_k, (+): V_k \times A \rightarrow A)$ defines an /affine space/
