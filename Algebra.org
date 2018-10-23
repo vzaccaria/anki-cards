@@ -1581,16 +1581,53 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
     :END:
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{A + T[\tilde{F}]} \arrow[d] \arrow[r] & {A+T[X]} \arrow[d] \\
-\tilde{F} \arrow[u, "\cong"] \arrow[r] & {X}
+{A + T[\tilde{F}[A]]} \arrow[d] \arrow[r] & {A+T[X]} \arrow[d] \\
+\tilde{F}[A] \arrow[u, "\pi + \phi"] \arrow[r] & {X}
 \end{tikzcd}
 #+END_EXPORT
 
  - Given a functor $T[-]$, the *free monad* $\tilde{F}[A]$ can be built as the fixed
    point of functor $A+T[-]$, where $A$ is an arbitrary object.
- - The algebra of the functor is composed by two constructors (p=pure, f=free) which
-   are natural transformations. 
  - It is possible to show that $\tilde{F}[A]$ is a functor and *a monad* in $A$.
+
+*** Free monads (construction)
+
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+1 \arrow[rd, "k_1", dotted] & A \arrow[d, "k_2", dotted] & S \rightarrow A \arrow[ld, "k_3", dotted] \\
+ & {T[A]} \arrow[d, "\textrm{liftF}"] &  \\
+ & {\tilde{F}[A]} & 
+\end{tikzcd}
+#+END_EXPORT
+
+- Define commands $k_1, ..., k_n$ as constructors for values in functor $T[A]$
+  and compose with ~liftF~ to create a monadic value.
+
+- $A$ must be interpreted as the value that should be passed to the next
+  computation. Example:
+
+  : data ConsoleF a =
+  :      PutStrLn String a      -- k_1: A -> T[A]
+  :    | GetLine (String -> a)  -- k_2: (S -> A) -> T[a]
+  :    deriving (Functor)
+
+*** Free monads (bind)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{T[\tilde{F}[A]]} \arrow[r] \arrow[d, "Tf^o"] & {\tilde{F}[A]} \arrow[d, "f^o"] \arrow[r, "\pi"] \arrow[l, "\phi"] & A \arrow[ld, "f", dashed] \arrow[l] \\
+{T[\tilde{F}[B]]} \arrow[r] & {\tilde{F}[B]} \arrow[l, "\phi"] & 
+\end{tikzcd}
+#+END_EXPORT
+
+- binding a function $f$ (i.e., $f^o$) depends on whether it comes from a pure
+  $\pi$ or a free $\phi$: $$f^o = \begin{cases} f \circ \pi^{-1} \\ \phi\circ
+  Tf^o \phi^{-1}\\ \end{cases}$$
+
+
 
 *** Free monads (interpretation)
     :PROPERTIES:
@@ -1605,7 +1642,6 @@ T \arrow[r, Rightarrow, "\phi"] \arrow[d, Rightarrow, "\textrm{liftF}"'] & M \\
 - A value can be built into the free monad $\tilde{T}[ ]$ 
   with monad syntax and interpreted with a custom ~run~ into a monad $M$.
 - Some authors derive ~run~ from a natural transformation $\phi$.
-- Commands in the free monad are constructors in $T$ lifted with $liftF$.
 
 *** Free monads (composition)
     :PROPERTIES:
