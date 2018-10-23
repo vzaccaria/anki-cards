@@ -1581,8 +1581,8 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
     :END:
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{A + T[\tilde{F}]} \arrow[d] \arrow[r] & {A+T[-]} \arrow[d] \\
-\tilde{F} \arrow[u, "\cong"] \arrow[r] & {[-]}
+{A + T[\tilde{F}]} \arrow[d] \arrow[r] & {A+T[X]} \arrow[d] \\
+\tilde{F} \arrow[u, "\cong"] \arrow[r] & {X}
 \end{tikzcd}
 #+END_EXPORT
 
