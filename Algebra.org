@@ -513,6 +513,23 @@ This construction is a *functor*.
     - To each $\rho(g)$ it corresponds a scalar $\lambda_g$, which is called *character*.
     - If $\rho$ is not irreducible, then there exists a basis such that
       $\rho(g)$ is diagonal.
+
+*** Multiplicative group of roots of unity
+
+Set of points whose angles are a rational multiples of $\pi$:
+$$\mu = \{ \forall kn. e^{2\pi i k/n}\}$$
+
+*** Dual group
+ - The dual group of $G$ (i.e., $\hat{G}$) is the set of all homomorphisms from
+   $G$ into $T$, the multiplicative group of all roots of unity, i.e., :
+   $$\hat{G} = Hom(G,T)$$
+ - Functions in $\hat{G}$ are called characters
+ - Multiplication in $\hat{G}$ is the multiplication of characters 
+ - Examples: $\hat{\mathbb{Z}} \cong T$
+
+
+   
+
 * Algebraic structures with two operators
 ** Semirings
 *** Semiring (Rig)
