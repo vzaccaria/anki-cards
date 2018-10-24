@@ -2084,11 +2084,21 @@ L[\widetilde{L}] \arrow[d,"\phi",red] \arrow[r] & (P \circ L)[\widetilde{L}] \ar
     | $1 + X$            | $\mathbb{N} \cup \{ \infty \}$    | pred($n$)            |                       |
     
 *** Bisimulation 
-    - Any relation $R \subseteq Z \times Z$ that is a final co-algebra over $Z$
-      implies, by uniqueness of finality, that the pairs that belong to it are
-      of equal elements; $R$ is called a bi-simulation.
-    - If $Z=A^N$, having a bi-simulation means providing a relation $R \subseteq
-      A^N \times A^N$ for which this holds: $$R(a,b) \Rightarrow h(a) = h(b)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ & S \times S &  \\
+S \arrow[d, "\xi"] & R \arrow[u, hook] \arrow[l, "\pi_1"] \arrow[r, "\pi_2"] \arrow[d, "\gamma"] & S \arrow[d, "\xi"] \\
+P(A \times S) & P(A \times R) \arrow[l] \arrow[r] & P(A \times S)
+\end{tikzcd}
+#+END_EXPORT
+    - Assume a final co-algebra $\xi$ (e.g., $T(S) =A \times S$ or $T(S) = P(A
+      \times S)$). If one can build a $\gamma$ such that the above commutes then
+      $\pi_1=\pi_2$ any pair $(\alpha,\beta) \in R$ implies $\alpha=\beta$.
+    - If $S=A^N$, having a bi-simulation means providing a relation $R \subseteq
+      A^N \times A^N$ for which this holds: $$\gamma: R(a,b) \Rightarrow h(a) = h(b)
       \wedge R(t(a), t(b))$$ we could say then that $a=b$.
 *** Anamorphisms
    - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
