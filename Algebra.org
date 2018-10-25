@@ -517,18 +517,62 @@ This construction is a *functor*.
 *** Multiplicative group of roots of unity
 
 Set of points whose angles are a rational multiples of $\pi$:
-$$\mu = \{ \forall kn. e^{2\pi i k/n}\}$$
+$$\mathbb{T} = \{ \forall kn. e^{2\pi i k/n}\}$$
 
 *** Dual group
  - The dual group of $G$ (i.e., $\hat{G}$) is the set of all homomorphisms from
    $G$ into $T$, the multiplicative group of all roots of unity, i.e., :
-   $$\hat{G} = Hom(G,T)$$
- - Functions in $\hat{G}$ are called characters
- - Multiplication in $\hat{G}$ is the multiplication of characters 
- - Examples: $\hat{\mathbb{Z}} \cong T$
+   $$\hat{G} = Hom(G,\mathbb{T})$$
+ - Functions in $\chi \in \hat{G}$ are called characters and multiplication in
+   $\hat{G}$ is the multiplication of characters
 
+*** Dual group examples
+ - $\hat{\mathbb{Z}}   = \{ \chi(z) = \chi(1)^z \}$ (for a choice of $\chi(1)$)
+ - $\widehat{\mathbb{Z}/n} = \{ \chi(z) = \xi_n^{z} \}$ (where $\xi_n$ is the
+   n-th root of unity commonly chosen as $\xi_n = 2^{2\pi i/n}$)
+ - $\hat{\mathbb{T}}   = \{ \chi(t) = t^n \}$ for a choice of $n$
+ - $\hat{\mathbb{R}}   = \{ \chi(r) = e^{i\theta r} \}$ for a choice of $\theta$.
 
+*** Fourier transform of a group
+Given a function $f: G \rightarrow \mathbb{C}$ and a representation $\rho(g)$ of
+$G$ over $\mathbb{C}$, we define the transform as: $$\hat{f}(\rho) = \sum_{g\in
+G}f(g)\rho(g)$$
+
+Note that since $\rho$ is a matrix of dimension $d \times d$, also $\hat{f}$ is
+a matrix $d \times d$.
    
+
+*** Inverse Fourier transform of a group
+Given a transform $\hat{f}: GL(\mathbb{C}) \rightarrow \mathbb{C}$, the original
+function can be derived from all its original representations: 
+$$f(g) = \frac{1}{|G|}\sum_i d_i\textrm{Tr}(\rho_i(g^-1)\hat{f}(\rho_i))$$
+where $d_i$ is the dimension of each representation
+
+*** Convolution of two group functions and their Fourier transform
+
+The convolution of two functions $f,g:G\rightarrow {\mathbb {C}}$: $$(f\ast
+g)(a)=\sum _{{b\in G}}f(ab^{{-1}})g(b)$$ is such that $$\widehat {f\ast
+g}(\varrho )=\widehat {f}(\varrho )\widehat {g}(\varrho )$$
+
+*** Fourier transform of Abelian groups
+If $G$ is an abelian group:
+
+- all $\rho_i$ are monodimensional and they correspond to the irreducible
+  characters $\chi_i$ of the group.
+
+- these characters form a group structure $\hat{G}$ (called the Pontryagin dual
+  of $G$)
+
+- the transform of a function over the group can be written as: 
+  $$f(g)={\frac {1}{|G|}}\sum_{\chi_i}{\widehat {f}}(\chi_i)\chi_i (g)$$
+
+  which means that $f$ can be constructed from its base characters $\chi_i$.
+
+*** Fourier transform of the quotient group $\mathbb{Z}/n$
+
+For $G=\mathbb{Z}/n$, we have $n$ irreducible representations that can be
+"generated" $k\in Z$: $$\chi_k(z)=z \mapsto e^{k\frac{2i\pi}{n}z}$$
+
 
 * Algebraic structures with two operators
 ** Semirings
