@@ -16,6 +16,7 @@
 #+BEAMER_HEADER: \newcommand{\BB}{\mathbb{B}}
 #+BEAMER_HEADER: \newcommand{\NN}{\mathbb{N}}
 #+BEAMER_HEADER: \newcommand{\RR}{\mathbb{R}}
+#+BEAMER_HEADER: \newcommand{\np}[2]{\langle #1, #2 \rangle}
 #+STARTUP: indent 
 
 * Algebraic structures with one operator
@@ -93,7 +94,10 @@
    The *trivial subgroup* of any group is the subgroup ${e}$ consisting of just the identity element.
 
 *** Normal subgroup
-    $H$ is a normal subgroup of $G$ iff $$\forall h \in H \wedge g \in G, ghg^{-1} \in H$$
+  - $H$ is a normal subgroup of $G$ iff $$\forall h \in H \wedge g \in G, ghg^{-1} \in H$$
+
+  - It is a subgroup invariant to the action of the inner automorphisms $I(G)$,
+    the set of inner automorphisms on $G$.
 
 *** Kernel of a group homomorphism
     The *kernel* $\textrm{ker}(f)$ of a group homomorphism $f: (G,\star)
@@ -110,13 +114,14 @@
     - $\forall r \in R, \exists g \in G \textrm{~s.t.~} r = f(g)$
 
 *** Coset
-    Given a subgroup $(H, \star) \subseteq (G, \star)$, we define the *left coset* of $H$ as
-    $$H_g = \{g \star h : h \in H\}$$
+- Given a subgroup $(H, \star) \subseteq (G, \star)$, we define the *left coset*
+  of $H$ as the orbit of an element $g$ relative to $H$ active by left
+  multiplication:
+          
+                 $$H_g = \{g \star h : h \in H\}$$
 
-*** What is the set of cosets of a normal subgroup $H$ of $G$?
 
-    It is a partition of $(G, \star)$ and it is a group where the operation is defined as
-    $$Hg_1 \star Hg_2 = H(g_1 \star g_2)$$
+- Orbits are disjoint subset of $G$: $\bigcup_g H_g = G$
 
 *** Subgroup of an abelian group
     Every subgroup of an abelian group is normal.
@@ -155,14 +160,6 @@
       exact: $$ 1 \rightarrow N \rightarrow^{\iota} G \rightarrow^{\phi} [Q \cong G/N]
       \rightarrow 1 $$ where $N$ is normal.
 
-*** How many elements has each coset of $H$ (a subgroup of $G$)?
-
-    All cosets of $H$ have *the same amount* of elements of $H$
-
-*** What is the size of a group $G$ with respect to the size of the cosets of its subgroup $H$?
-
-    The size of $G$ is a multiple of the size of $H$ (and in turn, also of the size of its cosets).
-
 *** Semigroup
 
     A semigroup $S$ is a "group without inverse".
@@ -170,7 +167,6 @@
    - *closure*: $a \in G, b \in G \rightarrow a * b \in G$
    - *identity element*: $a * 1_G = 1_G * a = a$
    - *associativity*: $(a * b) * c = a * (b * c),~~a,b,c \in G$.
-
 
 *** Group identity and inverse properties
 
@@ -239,23 +235,35 @@
 
 
 
-*** Group stabilizer 
+*** Stabilizer of a group element's action
     - Given a group $G$, a set $S$ and an action $\curvearrowright: G \times S \rightarrow
-      S$, a *stabilizer* of $s \in S$ is an element $g_s \in G$ such that $$ s \curvearrowright^{g_s} = s$$
-    - The set $Stab(s) = \{ g_s \}$ is a sub-group of $G$ (isotropy group).
+      S$, a *stabilizer* of $s \in S$ is an element $g_s \in G$ such that $$ {g_s} \curvearrowright s = s$$
+    - For each $s \in S$ one can define a group $Stab(s) = \{ g_s \}$ which is a
+      sub-group of $G$ (it is called /isotropy group/).
 
-*** Group orbit
-    - Given a group $G$, a set $S$ and an action $\curvearrowright: G \times S
-      \rightarrow S$ the *group orbit* of each element $s$ is $$Orb(s) = \{ s
-      \curvearrowright^g: \forall g \}$$ where $Orb(s) \subset S$.
+*** Orbit in a set $S$ relative to a group $H$
+- Given an action $\curvearrowright: H \times S \rightarrow S$ the *group orbit*
+  of $s \in S$ is a subset of $S$ defined as $$H_s = \{h \curvearrowright s:
+  \forall h \in H \}$$
 
-    - $Orb(s)$ forms a group which is isomorphic to $G/Stab(s)$.
+- Orbits are disjoint subset of $S$: $\bigcup_s H_s = S$ and define an $H-$ 
+  equivalence relation over $S$.
+
+*** Invariance relative to a group $H$
+
+- An element $t \in S$ is /invariant/ relative to $H$ if the orbit associated to
+  it is a singleton: $$H_t = \{ t \}$$
+
+- A subset $\{ t \} \subset S$ is invariant relative to $H$ if $H_t \subset \{ t
+  \} \forall t$
+
+
+# - $Orb(s)$ forms a group which is isomorphic to $G/Stab(s)$.
 
 *** Orbit-stabilizer theorem
     $$|Orb(s)| = [ G : Stab(s) ]$$
 
-
-*** Group centralizer
+*** Centralizer of a group element
     The centralizer of an element $a$ of a group $G$ is the set of elements of
     $G$ that commute with $a$: $$C_G(a) = \{ g \vert ga = ag \}$$
 
@@ -277,6 +285,29 @@ This construction is a *functor*.
 *** Free group universal property
 - Any function from a set $S$ to a group $G$ can be factored through a unique
   $\phi: F_S \rightarrow G$ wher $F_S$ is the free group associated with $S$.
+*** Group automorphism
+
+- It is a morphism $\alpha: G \rightarrow G$ that respects multiplication:
+  $$\alpha(g_1g_2) = \alpha(g_1)\alpha(g_2)$$
+
+- The set $A(G)=\{ \alpha \}$ is a subgroup of $P(G)$, i.e., the group of
+  permutations of $G$ elements.
+
+*** Inner automorphisms
+- For each $g \in G$, one can define an inner automorphism $i_g = \gamma \mapsto 
+  g\gamma g^{-1}$
+
+- These automorphisms are permutations that form a group $I(G) \subset A(G)$.
+
+*** Center of a group
+- The center of a group $G$ is $$C(G) = \{ g: \gamma g = g \gamma, \forall \gamma\}$$
+
+- It is the kernel of the homomorphism $G \rightarrow I(G)$: $$g \mapsto (\gamma
+  \mapsto g \gamma g^{-1})$$ because all the elements in the center are mapped to 
+  an identity.
+
+- So, by the FHT, $I(G) = G/C(G)$
+
 ** Group representations
 *** Linear group representation
 
@@ -969,15 +1000,30 @@ I \arrow[u, hook] \arrow[r] & {Gal(I,E)}
 
     - Also called *linear functionals* from $V$ to $k$.
 
-*** Dual spaces maps
-    - Given $f: V \rightarrow W$ linear then I can build the dual $f^*: W^* \rightarrow V^*$. 
-    - To do this, recall that $f^* (w^*)$ is a function $V \rightarrow K$, so
-      being not a lot of options: $$f^*(w^*)(v) = (w^*(f(v)))$$
-    - With the notation of natural pairing $(f^*(w^*),v) = (w^*, f(v))$
+*** Functor between spaces and dual spaces
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_EXPORT latex
+\begin{center}
+\begin{tikzcd}
+V \arrow[d, "f"] \arrow[r, "K^{(-)}"] & K^V \\
+W \arrow[r] & K^W \arrow[u, "f^*"]
+\end{tikzcd}
+\end{center}
+#+END_EXPORT
+
+- It is a contravariant functor represented by $\KK$ and maps a linear $f: V
+  \rightarrow W$ to its dual $f^*: W^* \rightarrow V^*$.
+- The following identity holds:
+  $$f^*(w^*)(v) = w^*(f(v))$$
+- With the notation of natural pairing $\np{f^*(w^*)}{v} = \np{w^*}{f(v)}$
 
 *** Dual spaces natural pairing
 
-    - Given $v \in V_k$ and $v^* \in V^*$, there is a natural pairing $(v^*,v)$,
+
+    - Given $v \in V_k$ and $v^* \in V^*$, there is a natural pairing $\np{v^*}{v}$,
       i.e., $v^*(v) \in k$. 
 
     - The *natural pairing* is a bi-linear map (in both $v$ and $v^*$).
@@ -1060,12 +1106,9 @@ map from $V \otimes W$ into a group can be factored through it.
 ** Algebras and co-algebras
 *** $k$ algebra (with tensor products)
 
-    A vector space $A$ with linear maps:
-
-      - $m: A \otimes A \rightarrow A$ 
-      - $u: K \rightarrow A$ 
-     
-    such that the following hold:
+    It is a triple $(A,m,u)$, where $A$ is a vector space and with linear maps
+    $m: A \otimes A \rightarrow A$ and $u: K \rightarrow A$ such that the
+    following hold:
 
       - $m(a \otimes m(b \otimes c)) = m(m(a \otimes b) \otimes c)$
       - $\mu(u(1) \otimes x) = \mu(x \otimes u(1)) = x, \forall x$ (algebra is unitary)
@@ -1113,7 +1156,7 @@ map from $V \otimes W$ into a group can be factored through it.
       \otimes v)$$ The ideal is homogeneous so the resulting quotient is graded.
     - In other words, $v\otimes w = w \otimes v$.
 
-*** An exterior algebra 
+*** Exterior algebra 
     An exterior algebra is a quotient algebra: $$\Lambda V = TV/(v\otimes v)$$
     The ideal is homogeneous so the resulting quotient is graded.
 *** $k$ -Coalgebra 
@@ -1121,27 +1164,25 @@ map from $V \otimes W$ into a group can be factored through it.
     :BEAMER_opt: fragile
     :END:
 
-      It is a vector space $A$ with linear maps:
-
-      - $\Delta: C \rightarrow C \otimes C$ 
-      - $\epsilon: C \rightarrow k$ 
-     
-      such that coassociativiy diagrams for $\Delta$ commute (same diagrams as
-      $k$ -algebra but reversed):
+It is a triple $(C, \Delta, \epsilon)$ where $C$ is a vector space,
+$\Delta: C \rightarrow C \otimes C$, and $\epsilon: C \rightarrow k$
+such that coassociativiy diagrams for $\Delta$ commute (same diagrams as
+$k$ -algebra but reversed):
 
 #+BEGIN_EXPORT latex
+\begin{center}
 \begin{tikzcd}
 C \arrow[r, "\Delta"] \arrow[d, "\Delta"] & C \otimes C \arrow[d, "id \otimes \Delta"] \\
 C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 \end{tikzcd}
-#+END_EXPORT
 
-#+BEGIN_EXPORT latex
 \begin{tikzcd}
  & C \arrow[d, "\Delta"] \arrow[ld] \arrow[rd] &  \\
 \mathbb{F} \otimes C & C \otimes C \arrow[l, "\epsilon \otimes id"] \arrow[r, "id \otimes \epsilon"] & C \otimes \mathbb{F}
 \end{tikzcd}
+\end{center}
 #+END_EXPORT
+
 
 *** Deriving a $k$ algebra from a $k$ co-algebra      
 :PROPERTIES:
@@ -1169,7 +1210,7 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 - One can build a co-algebra on polynomials them selves, when each basis of the
   tensor space built over $\KK[x]$ can be decomposed through comultiplication
   as: $$\Delta(x^n) = \sum_i x^i \otimes x^{n-i}$$
-- and $$e(x^n) = (n==0)$$
+- and co-unit $\epsilon: \KK[x] \rightarrow \KK$ as $$\epsilon = x^n \mapsto (n==0)$$
  
 *** Example coalgebra: Incidence coalgebra $C = int(P)$
 
@@ -1180,20 +1221,25 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 - Consider now the free vector space of all the intervals of $P$, $int(P)$. It can be
   equipped with a tensor product (which basically creates pairs), and in turn,
   one can define a co-multiplication: $$\Delta([x,y])=\sum_{z \in [x,y]} [x,z]
-  \otimes [z,y]$$ where the co-unit $\delta([x,y]) = (x=y)$.
+  \otimes [z,y]$$ where the co-unit $\epsilon([x,y]) = (x=y)$.
 
 *** Example algebra: algebra $A = (int(P))^*$ derived from an incidence algebra
 
-Given an incidence co-algebra $C$, one can define its *incidence algebra* as the
-space $C^* = \{ f: C \rightarrow k \}$, where multiplication $m$ is $\Delta^*
-\circ \rho$ so:
+- Given an incidence co-algebra $C$, one can define its *incidence algebra* as the
+  space $C^* = \{ f: C \rightarrow k \}$, where multiplication $m$ is $\Delta^*
+  \circ \rho$ so:
 
-$$m(\phi \otimes \psi)([x,y]) = (\Delta^* \circ \rho (\phi \otimes \psi), [x,y]) = $$
+  #+BEGIN_EXPORT latex
+  \begin{equation}
+  \begin{split}
+  m(\phi \otimes \psi)([x,y]) & = \np{\Delta^* \circ \rho (\phi \otimes \psi)}{[x,y]} \\
+  & = \np{\rho(\phi \otimes \psi)}{\Delta([x,y])} \\
+  & = \sum_{z \in [x,y]}\phi([x,z])\psi([z,y]) 
+  \end{split}
+  \end{equation}
+  #+END_EXPORT
 
-$$(\rho(\phi \otimes \psi), \Delta([x,y])) = \sum_{z \in [x,y]}\phi([x,z])\psi([z,y])$$
-
-and unit $\delta([x,y])= (x=y)$. In fact, $\rho$ applies both tensored functions
-to the corresponding tensor arguments and multiplies them.
+- The unit $u: k \rightarrow C^*$ is the linear extension of $$u(1) = [x,y] \mapsto x == y $$
 
 *** Mobius function
 
