@@ -17,6 +17,8 @@
 #+BEAMER_HEADER: \newcommand{\NN}{\mathbb{N}}
 #+BEAMER_HEADER: \newcommand{\RR}{\mathbb{R}}
 #+BEAMER_HEADER: \newcommand{\np}[2]{\langle #1, #2 \rangle}
+#+BEAMER_HEADER: \newcommand{\ladjof}{\dashv}
+#+BEAMER_HEADER: \newcommand{\radjof}{\vdash}
 #+STARTUP: indent 
 
 * Algebraic structures with one operator
@@ -402,7 +404,7 @@ This construction is a *functor*.
 *** Intertwining operator
 
   - An intertwining operator is a functor $\Phi_{ij}: E_i \rightarrow E_j$ that
-    preserves representations: $$\Phi_{ij}(\rho_i(g)v)=\rho_j(g)\Phi_{ij}(v)$$.
+    preserves representations: $$\Phi_{ij}(\rho_i(g)v)=\rho_j(g)\Phi_{ij}(v)$$
 
   - As such, it introduces a homomorphism between representations $$\rho_2
     = \Phi_{12} \rho_1$$ which comply with composition.
@@ -1813,11 +1815,19 @@ T \arrow[rr, "InL"] \arrow[d] &  * \arrow[d, "freeM"] & (T+G) \arrow[d] &  & G \
 
 A functor \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ where
 
-- $F_o$ maps objects across categories $\mathcal{C}$ and $\mathcal{C'}$, while
+- $F_o$ maps *each object* in $\mathcal{C}$ into an object in $\mathcal{C'}$, while
 
-- $F_m$ maps morphisms with laws $F(id_o) = id_F(o)$ and $F(h \bullet g) = F(h) \bullet F(g)$
+- $F_m$ maps *each morphism* in $\mathcal{C}$ with laws 
 
-- It preserves composition and identity
+#+BEGIN_EXPORT latex
+\begin{equation}
+\begin{split}
+  F(h \bullet g) & = F(h) \bullet F(g) \\
+  F(id_o) & = id_F(o) \\
+\end{split}
+\end{equation}
+#+END_EXPORT
+
 
 *** Full functor
 
@@ -1974,14 +1984,19 @@ This means that, the set of morphisms into $X$ from any other object is singleto
 :BEAMER_opt: fragile
 :END:
 
+Take $1_{Set}$ as the *identity functor* in the category $Set$ then, in the
+following diagram:
+
+#+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-x \arrow[d, "f"] \arrow[r, "1_{Set}"] & x \arrow[d, "f"] \arrow[r, "\cong"] & x^? \arrow[l] \arrow[d, "f_*"] \\
+x \in Set \arrow[d, "f"] \arrow[r, "1_{Set}"] & x \arrow[d, "f"] \arrow[r, "\cong"] & x^? \arrow[l] \arrow[d, "f_*"] \\
 y \arrow[r, "1_{Set}"] & y \arrow[r] & y^? \arrow[l, "\cong"]
 \end{tikzcd}
 #+END_EXPORT
+#+END_CENTER
 
-The singleton set is the only value for (?) that represents $1_{Set}$ because
+The *singleton set* is the only value for (?) that represents $1_{Set}$ because
 only for that object there is a natural transformation that makes the right
 square commute.
 
@@ -2247,6 +2262,39 @@ P(A \times S) & P(A \times R) \arrow[l] \arrow[r] & P(A \times S)
    - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
      $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
 
+** Monad algebras
+*** Drawbacks of F-algebras
+
+- Given an algebra $(X, \theta: T(X) \rightarrow X)$, with $T(X) = 1 + X^2$ we
+  know that $\theta$ has the same signature of a monoid but it should not abide
+  by its laws. Not every such algebra is a monoid.
+
+- Monad algebras can help enforce additional structure on functor algebras
+
+*** Monad algebras
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Given a monad $(T,\eta,\mu)$, a *monad algebra* is an algebra of the underlying functor $(X,\theta)$ where,
+additionally, the following diagrams commute:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+T(T(X)) \arrow[d, "T\theta"] \arrow[r, "\mu"] & T(X) \arrow[d, "\theta"] & X \arrow[l, "\eta"'] \arrow[ld] \\
+T(X) \arrow[r, "\theta"] & X \arrow[ru, "\cong"] & 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- The *Eilenberg-Moore* category is built with object $(X,\theta)$ that respect
+  the above laws (morphisms are F-algebra morphisms).
+
+- Practically, a monad algebra enforce monoidal laws on $\theta$.
+
+
+
 ** Natural transformations
 *** Natural transformations and parametric polymorphism
     - In PP, I must use a single expression for a parametric function
@@ -2265,7 +2313,7 @@ CLOCK: [2018-07-26 Thu 11:19]--[2018-07-26 Thu 11:24] =>  0:05
 :END:
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-D~\textrm{(Simple) with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})~\textrm{free}", bend right=49] & \bot & C~\textrm{(Complex) with}~\eta: I_c \rightarrow R L \arrow[ll, "L(\textrm{eft}) ~ \textrm{frgtfl}", bend right=49]
+D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend right=49] & \bot & C~\textrm{with}~\eta: I_c \rightarrow R L \arrow[ll, "L(\textrm{eft})", bend right=49]
 \end{tikzcd}
 #+END_EXPORT
     - Two categories $C$ and $D$ are equivalent if I can build two functors, one
@@ -2279,6 +2327,28 @@ D~\textrm{(Simple) with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight
     - If this happens, then $$C(c,RLc)\cong D(Lc, Lc)$$ but $C(c, RLc)$ is our
       family of mappings/natural transformation $\eta$, if it exists. And it
       does, because $D(Lc,Lc)$ is not empty.
+
+*** List monad from adjoint functors
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+- Consider the following functors, where $U$ is the forgetful functor while $L$
+  maps a set $X$ into the monoid of finite lists that can be built with the
+  elements of $X$.
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  \textbf{Mon} \arrow[r, "U"', bend right] & \textbf{Set} \arrow[l, "L"', bend right]
+  \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
+
+- The adjunction $L \ladjof U$ produces the list monad $T=LU$ over set, with the unit that maps an element 
+  into the singleton list and the multiplication that sends a list of lists into a list.
+
+
 *** Yoneda lemma
 :PROPERTIES:
 :BEAMER_opt: fragile
@@ -2372,8 +2442,15 @@ c' \arrow[u, "m"] \arrow[rr, "{Cone(c',D)}"] &  & \{\lambda_{c',-}\} \in Set
 \end{tikzcd}
 #+END_EXPORT
 
-A product object $d$ is the limit of a diagram $D$ built over an index
-category $S$ of only two objects (and no morphisms).
+- Consider a discrete category of only two object as the index category $S$.
+
+- Any functor $D: S \rightarrow C$ *indexes a generic pair* of objects $(i,j)$
+  (there are no choices in terms of morphisms to map) so we can speak of /the/
+  functor $D$. MacLane goes as far as saying that $D$ *is a pair of objects*
+  $(i,j)$.
+
+- A product object $i \times j$ is the limit of a diagram $D$ built over the 
+  above index category.
 
 *** Terminal object as limit 
 :PROPERTIES:
