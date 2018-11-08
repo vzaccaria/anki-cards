@@ -1601,13 +1601,25 @@ $E$ should be understood as the subset of elements of $X$ for which $g_1(x) =
 g_2(x)$, i.e., the solutions of the equation.
 
 *** Function objects (Sets)
-    An object $b^a$ is an *exponential object* if
-      - there exists a morphism $eval: b^a \times a \rightarrow b$
-      - for all other objects $f$ for which there exists a morphism $e: f \times
-        a \rightarrow b$ there is a unique morphism $(h \times Id): f \times a
-        \rightarrow b^a \times a$ that makes $eval \circ (h \times Id) = e$
-      - the one to one correspondence between any moprhism $e: f \times a \rightarrow b$ and $h: f \rightarrow b^a$ 
-        is called *currying*.
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+    - The object-morphism pair $(b^a, eval: b^a \times a \rightarrow b)$ makes an
+      *exponential object* $b^a$ if for all other object-morphism pair $(f, e: f \times a
+      \rightarrow b)$ the following diagram commutes:
+
+      #+BEGIN_CENTER
+      #+BEGIN_EXPORT latex
+      \begin{tikzcd}
+      f \times a \arrow[rd, "e"] \arrow[r, "h \times id_a"] & b^a \times a \arrow[d, "eval"] \\
+      & b
+      \end{tikzcd}
+      #+END_EXPORT
+      #+END_CENTER
+
+    - the mapping $\lambda(e)$ from $e: f \times a \rightarrow b$ and $h: f \rightarrow b^a$ 
+      is called *currying* of $e$.
 ** Special objects
 *** Initial object (representability)
     - Assume $C$ a locally small category, then $d^{(-)}: C \rightarrow Set$ is a functor.
@@ -1954,8 +1966,52 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
 :   tabulate :: (Rep f -> x) -> f x -- natt (-)^d -> f (-)
 :   index :: f x -> (Rep f -> x)    -- other way around
 
-Works if you think about (~Rep f)~ as the index into the container (~f x)~.
-For example streams are representable while lists are not.
+- Works if you think about (~Rep f)~ as the index into the container (~f x)~.
+  For example streams are representable while lists are not.
+
+- Another example is the matrix functor that is representable by a pair of integers.
+
+*** Universal arrow
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+- A universal arrow of object $c \in C$ allows to factor moprhisms from $c$ to
+  all other objects in the codomain of incoming functor $S: D \rightarrow C$.
+
+- It is an object/morphism pair $(r_c,u_c)$ such that the following diagrams commute
+  (left is $D$ and right is $C$).
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  & c \arrow[d, "\textbf{u}_c"] \arrow[dd, "f", bend left] \\
+  \textbf{r}_c \arrow[d, "f'"'] & S\textbf{r}_c \arrow[d, "Sf'"'] \\
+  d & Sd
+  \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
+
+*** Universal arrow example / bases of vector spaces
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ & X \arrow[d, "j_X"] \arrow[dd, "g", bend left=49] \\
+V_X \arrow[d, "f (\textrm{linear})"] & UV_X \arrow[d, "Uf"] \\
+W & UW
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- $U$ is forgetful from Vect to Set. $V_X = span(X)$.
+- Any (linear) $V_X \rightarrow W$ might be defined uniquely through the
+  *extension* of $g: X \rightarrow UW$, exploiting the fact that 
+  $j_X$ (that embeds the basis into the whole set $UV_x$) is universal, i.e.,
+  $$Uf \circ j_X = g$$
+
 
 *** Universal property 
 A universal property of object $X$ is a description of either $X^{(-)}$ or
@@ -2366,7 +2422,7 @@ y \arrow[r] \arrow[rr, bend right] & y^a \arrow[r, "\alpha_y"] & Fy
 - Assume a functor from $F: C \rightarrow Set$ 
 
 - Basically, for every point $p$ in $\phi = F a$ (which is a set) there is a unique
-  natural transformation $\alpha_p: (-)^a \rightarrow F$.
+  component of the natural transformation $\alpha_p: (-)^a \rightarrow F$.
 
 *** Cayley's through yoneda
 
