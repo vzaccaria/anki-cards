@@ -1261,7 +1261,14 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 
   where $\lambda_i$ is absorbed and subscript notation is removed.
 - Extension:
-  $$\Delta_2 = (\Delta \otimes id) \circ \Delta = \sum_{(c)} c_{(1)} \otimes c_{(2)} \otimes c_{(3)}$$
+
+  \begin{equation}
+  \begin{split}
+  \Delta_2 = (\Delta \otimes id) \circ \Delta & = \sum_{(c)} c_{(1)} \otimes c_{(2)} \otimes c_{(3)} [: C \times C \rightarrow C \otimes C \otimes C ]\\ 
+  \Delta_{n-1} & = \sum_{(c)} c_{(1)} \otimes \ldots \otimes c_{(n)} [: C^{n-1} \rightarrow \oplus^n C ] \\
+  \end{split}  
+  \end{equation}
+
 
 *** Sweedler notation  and multilinear functions
 - Given $f: C \times C \times ... \rightarrow V$ we get $\phi: C \otimes C
