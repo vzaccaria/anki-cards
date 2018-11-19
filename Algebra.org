@@ -1285,22 +1285,39 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 
   \begin{equation}
   \begin{split}
-  \Delta_2 = (\Delta \otimes id) \circ \Delta & = \sum_{(c)} c_{(1)} \otimes c_{(2)} \otimes c_{(3)} [: C \times C \rightarrow C \otimes C \otimes C ]\\ 
-  \Delta_{n-1} & = \sum_{(c)} c_{(1)} \otimes \ldots \otimes c_{(n)} [: C^{n-1} \rightarrow \oplus^n C ] \\
+  \Delta_2 (c) = (\Delta \otimes id) \circ \Delta & = \sum_{(c)} c_{(1)} \otimes c_{(2)} \otimes c_{(3)} [: C  \rightarrow C \otimes C \otimes C ]\\ 
+  \Delta_{n-1}(c) & = \sum_{(c)} c_{(1)} \otimes \ldots \otimes c_{(n)} [: C \rightarrow \otimes^n C ] \\
   \end{split}  
   \end{equation}
 
 
 *** Sweedler notation  and multilinear functions
-- Given $f: C \times C \times ... \rightarrow V$ we get $\phi: C \otimes C
-  \otimes ... \rightarrow V$ (fundamental property of tensors)
-- We thus write: $$f = \phi \circ \Delta_{n-1} = \sum_{(c)} \phi (c_{(1)} \otimes c_{(2)} ...) $$
+- Given $f: C \times C \times ... \rightarrow V$ that descends to $\phi: C \otimes C
+  \otimes ... \rightarrow V$ (fundamental property of tensors) we can write
+  $$\phi \circ \Delta_{n-1} (c) = \sum_{(c)} \phi (c_{(1)}
+  \otimes c_{(2)} ...) = \sum_{(c)} f(c_{1}, c_{2}, \ldots) $$
 
-  for example: $$\sum_c \Delta(c_1) \otimes c_2 = \sum_c (\Delta \otimes id)(c_1
-  \otimes c_2) = (\Delta \otimes id)\Delta$$
+  for example: $$(\Delta \otimes id)\Delta = \sum_c (\Delta \otimes id)(c_1
+  \otimes c_2) = \sum_c \Delta(c_1) \otimes c_2$$
 
 - Co-associativity law: $\sum_c \Delta(c_1)\otimes c_2 = \sum_c c_1\otimes \Delta(c_2)$
 - Co-unit law: $\sum_c \epsilon(c_1)\otimes c_2 = c = \sum_c c_1 \otimes \epsilon(c_2)$
+
+*** $k$ algebras homomorphisms
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+ #+BEGIN_CENTER
+ #+BEGIN_EXPORT latex
+ \begin{tikzcd}
+A \otimes A \arrow[r, "f \otimes f"] \arrow[d, "m_A"] & B \otimes B \arrow[d, "m_B"] \\
+A \arrow[r, "f"] & B \\
+ & K \arrow[lu, "u_A"] \arrow[u, "u_B"]
+\end{tikzcd}
+ #+END_EXPORT
+ #+END_CENTER
+
+If $f$ is linear and it respects the above commutative diagrams then it is a homomorphism.
 
 *** Group Algebra as formal sum
 
@@ -1557,6 +1574,7 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
+
 
 *** Monoidal category 
    - A category $C$ is *monoidal* if: 
