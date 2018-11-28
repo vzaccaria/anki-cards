@@ -1264,7 +1264,16 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 
 - The unit $u: k \rightarrow C^*$ is the linear extension of $$u(1) = [x,y] \mapsto x == y $$
 
-*** Mobius function
+*** Example co-algebra: co-algebra of set 
+Take a set $S$, we have that the formal sums of the set's elements $C = K[S]$ is
+a co-algebra with $\Delta_C(s)= s \otimes s$ and $\epsilon(s) = 1$.
+
+*** Example of co-algebra: set of subsets ordered 
+
+Given a set $S$, one can define the a poset over it, ordered by inclusion: $$2^S
+= \{ T \subset S \}$$ Given this poset, one can build an incidence co-algebra $C=int(2^S)$
+
+*** Mobius function                                                                 :noanki:
 
 - Given an incidence algebra $\phi$, one can ask whether there exists a way to
   build the multiplicative inverse of each function in $C^*$, and in particular of
@@ -1318,6 +1327,43 @@ A \arrow[r, "f"] & B \\
  #+END_CENTER
 
 If $f$ is linear and it respects the above commutative diagrams then it is a homomorphism.
+
+*** $k$ co-algebra homomorphisms
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+C\otimes C &  & D \otimes D \arrow[ll, "f \otimes f"] \\
+C \arrow[u, "\Delta_C"] \arrow[rrd, "\epsilon_C"] &  & D \arrow[u, "\Delta_D"] \arrow[ll, "f"] \arrow[d, "\epsilon_D"] \\
+ &  & K
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+In Sweedler notation: $$\sum_{(d)} f(d_{(1)}) \otimes f(d_{(2)}) = \sum_{f(d)} f(d)_{(1)} \otimes f(d)_{(2)}$$
+
+*** Co-algebra homomorphism $kS \rightarrow int(2^S)$ where $S$ is a set
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+- Given a generator of $kS$ (i.e., an element $s \in S$) it maps to an interval
+  in $int(2^S)$
+
+- One can try with $f: s \mapsto [ \{s\}, \{s\}]$ and in fact it respects
+  co-associativity and co-unit.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{[\{s\},\{s\}] \otimes [\{s\},\{s\}]} &  & s \otimes s \arrow[ll, "f \otimes f"] \\
+{[\{s\},\{s\}]} \arrow[u, "\Delta_{Int(2^S)}"] &  & s \arrow[u, "\Delta_{KS}"] \arrow[ll, "f"]
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
 *** Group Algebra as formal sum
 
@@ -1597,7 +1643,7 @@ It is a cartesian category that has exponentials.
     additional natural transformations of the type $T\times T \rightarrow T$ then
     this category is a monoidal category. These monoids are called monad.
 
-*** Category of objects under object $b$
+*** Category of objects under object $b$ (coslice category)
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -1615,10 +1661,22 @@ c \arrow[rr, "h"] &  & c'
 #+END_EXPORT
 #+END_CENTER
 
-One example is the category of pointed sets $(\star \downarrow Set)$ where $\star$ is the singleton set.
 
 One might define also the category of /objects over $a$/ called $(C \downarrow a)$
 by taking the opposite arrows.
+
+*** Category of pointed sets $Set_{\star}$ (example of co-slice category)
+
+In this category, 
+
+- An object is a pointed set $(A \in Set,\nu_a)$ with a distinguished point $\nu_a \in A$.
+
+- A morphism $f: A \rightarrow B$ is a morphism that is /point preserving/ if
+  $f(\nu_a) = \nu_b$
+
+- This category corresponds to $(\star \downarrow Set)$ where $\star$ is the
+  singleton set, as arrows between $\star$ and any set corresponds to picking
+  element $\nu_A$ in it.
 
 *** Category of objects (functor)-under object $b$
 :PROPERTIES:
@@ -1784,10 +1842,13 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
 \end{tikzcd}
 #+END_EXPORT
 
-- The left-adjoint is *free* and takes each set $S$ (in $Set$) to the pair $(S,\bar{s}), \bar{s} \in S$. 
-- The adjunction provides a way to map a set $S$ to itself ($\eta$) and a way to
-  map two rounds of the adjunction to a single round ($\mu$). Practically
-  speaking, if you adjoin and forget two times, you end up into the same set.
+- The left-adjoint is *free* and takes each set $S$ (in $Set$) to the pair $(S \cup \{\nu_S\}, \nu_S)$. 
+  while morphisms $f: A \rightarrow B$ are mapped to point preserving functions $Lf (\nu_A) = \nu_B$
+- The right-adjoint just returns $S \cup \{\nu_S\}$
+- $\eta = LR$ adds a new basepoint to the set and the natural transformation is given
+  by natural inclusion.
+- $\mu = LRLR$ map the two new points (because we have to LR in series) to a single
+  given by $LR$.
 
 *** Monad laws (left identity)
     :PROPERTIES:
