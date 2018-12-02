@@ -17,6 +17,7 @@
 #+BEAMER_HEADER: \newcommand{\NN}{\mathbb{N}}
 #+BEAMER_HEADER: \newcommand{\RR}{\mathbb{R}}
 #+BEAMER_HEADER: \newcommand{\np}[2]{\langle #1, #2 \rangle}
+#+BEAMER_HEADER: \newcommand{\ang}[1]{\langle #1 \rangle}
 #+BEAMER_HEADER: \newcommand{\ladjof}{\dashv}
 #+BEAMER_HEADER: \newcommand{\radjof}{\vdash}
 #+STARTUP: indent 
@@ -166,10 +167,9 @@
 
 *** Semigroup
 
-    A semigroup $S$ is a "group without inverse".
+    A semigroup $S$ is a group *without inverse and identity element*.
 
    - *closure*: $a \in G, b \in G \rightarrow a * b \in G$
-   - *identity element*: $a * 1_G = 1_G * a = a$
    - *associativity*: $(a * b) * c = a * (b * c),~~a,b,c \in G$.
 
 *** Group identity and inverse properties
@@ -1780,17 +1780,6 @@ g_2(x)$, i.e., the solutions of the equation.
 
     - the mapping $\lambda(e)$ from $e: f \times a \rightarrow b$ and $h: f \rightarrow b^a$ 
       is called *currying* of $e$.
-** Special objects
-*** Initial object (representability)
-    - Assume $C$ a locally small category, then $d^{(-)}: C \rightarrow Set$ is a functor.
-    - If $d^{(-)}$ is naturally isomorphic to the constant functor $$*: C
-      \rightarrow Set = o \mapsto \{ \cdot \}$$ then $d$ is *initial*.
-*** Terminal object (representability)
-    - Assume $C$ a locally small category, then $d^{(-)}: C \rightarrow Set$ is
-      a contravariant functor.
-    - If $d^({-})$ is naturally isomorphic to the constant functor $$*: C^{op}
-      \rightarrow Set$$ that sends every object to the singleton set, then $d$ is
-      *terminal*.
 
 ** Kleisly category and monads
 *** Kleisly category ($C_T$) definition
@@ -2003,7 +1992,6 @@ A functor \[ F : \mathcal{C} \rightarrow \mathcal{C'} \] is a pair $(F_o, F_m)$ 
 \end{equation}
 #+END_EXPORT
 
-
 *** Full functor
 
 A *full functor* $T: C \rightarrow D$ is an *epimorphism* between morphisms in $C$ and $D$.
@@ -2152,7 +2140,8 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
 - Works if you think about (~Rep f)~ as the index into the container (~f x)~.
   For example streams are representable while lists are not.
 
-- Another example is the matrix functor that is representable by a pair of integers.
+- Another example is the matrix functor that is representable by a pair of integers. 
+  A morphism from ~(int,int) -> a~ is one on one with a matrix ~Matrix a~.
 
 *** Universal arrow
 :PROPERTIES:
@@ -2207,7 +2196,8 @@ If there exists an object $X$ for which $(-)^X$ is isomorphic to the functor
 
 $$\textrm{sing} : (-) \mapsto \{ \cdot \}$$ 
 
-that maps objects to the singleton set, then we say that $X$ is initial.
+that maps objects to the singleton set, then we say that $X$ is *initial.* We also
+say that sing is representable by $X$.
 
 *** Universal property of finality 
 
@@ -2289,7 +2279,7 @@ we map the generator.
 
       $$T(f) = f + (id_C \times f): X+(C\times X) \rightarrow X'+(C \times X')$$
 
-*** Functors mapping to 1 and 0
+*** Functors mapping to 1 and 0                                    :noanki:
 
     - $X \rightarrow 1$ is the functor that maps $X$ into the singleton set (final object)
 
@@ -2572,9 +2562,10 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
 :BEAMER_opt: fragile
 :END:
 
-- Consider the following functors, where $U$ is the forgetful functor while $L$
-  maps a set $X$ into the monoid of finite lists that can be built with the
-  elements of $X$.
+- $L$ maps a set $X = \{ x_i \}$ into the free monoid of words built 
+  by mapping each element into a letter $\ang{x_i}$.
+- $U$ is the forgetful functor that produces a set of words $\{ \ang{a},
+  \ang{b}, \ang{ab} \dots\}$ forgetting multiplication.
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
@@ -2584,8 +2575,12 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
   #+END_EXPORT
   #+END_CENTER
 
-- The adjunction $L \ladjof U$ produces the list monad $T=LU$ over set, with the unit that maps an element 
-  into the singleton list and the multiplication that sends a list of lists into a list.
+- The adjunction $L \ladjof U$ produces the list monad $T=UL$ over set where:
+
+  - $\eta_X$ maps each $x \in X$ to $\ang{x}$ in $ULX$ (the set produced by the
+    forgetful functor).
+  - $\mu_X$ flattens the list, e.g., $\mu_X(\ang{a\ang{ab}}) = \ang{aab}$
+
 
 
 *** Yoneda lemma
