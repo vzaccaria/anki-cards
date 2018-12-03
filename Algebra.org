@@ -18,6 +18,9 @@
 #+BEAMER_HEADER: \newcommand{\RR}{\mathbb{R}}
 #+BEAMER_HEADER: \newcommand{\np}[2]{\langle #1, #2 \rangle}
 #+BEAMER_HEADER: \newcommand{\ang}[1]{\langle #1 \rangle}
+#+BEAMER_HEADER: \newcommand{\ds}{d^*}
+#+BEAMER_HEADER: \newcommand{\es}{e^*}
+#+BEAMER_HEADER: \newcommand{\fs}{f^*}
 #+BEAMER_HEADER: \newcommand{\ladjof}{\dashv}
 #+BEAMER_HEADER: \newcommand{\radjof}{\vdash}
 #+STARTUP: indent 
@@ -1206,6 +1209,23 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 \end{center}
 #+END_EXPORT
 
+*** Example algebra: algebra $A = (int(P))^*$ derived from an incidence algebra
+
+- Given an incidence co-algebra $C$, one can define its *incidence algebra* as the
+  space $C^* = \{ f: C \rightarrow k \}$, where multiplication $m$ is $\Delta^*
+  \circ \rho$ so:
+
+  #+BEGIN_EXPORT latex
+  \begin{equation}
+  \begin{split}
+  m(\phi \otimes \psi)([x,y]) & = \np{\Delta^* \circ \rho (\phi \otimes \psi)}{[x,y]} \\
+  & = \np{\rho(\phi \otimes \psi)}{\Delta([x,y])} \\
+  & = \sum_{z \in [x,y]}\phi([x,z])\psi([z,y]) 
+  \end{split}
+  \end{equation}
+  #+END_EXPORT
+
+- The unit $u: k \rightarrow C^*$ is the linear extension of $$u(1) = [x,y] \mapsto x == y $$
 
 *** Deriving a $k$ algebra from a $k$ co-algebra      
 :PROPERTIES:
@@ -1246,32 +1266,49 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
   one can define a co-multiplication: $$\Delta([x,y])=\sum_{z \in [x,y]} [x,z]
   \otimes [z,y]$$ where the co-unit $\epsilon([x,y]) = (x=y)$.
 
-*** Example algebra: algebra $A = (int(P))^*$ derived from an incidence algebra
-
-- Given an incidence co-algebra $C$, one can define its *incidence algebra* as the
-  space $C^* = \{ f: C \rightarrow k \}$, where multiplication $m$ is $\Delta^*
-  \circ \rho$ so:
-
-  #+BEGIN_EXPORT latex
-  \begin{equation}
-  \begin{split}
-  m(\phi \otimes \psi)([x,y]) & = \np{\Delta^* \circ \rho (\phi \otimes \psi)}{[x,y]} \\
-  & = \np{\rho(\phi \otimes \psi)}{\Delta([x,y])} \\
-  & = \sum_{z \in [x,y]}\phi([x,z])\psi([z,y]) 
-  \end{split}
-  \end{equation}
-  #+END_EXPORT
-
-- The unit $u: k \rightarrow C^*$ is the linear extension of $$u(1) = [x,y] \mapsto x == y $$
-
-*** Example co-algebra: co-algebra of set 
+*** Example coalgebra: Coalgebra of set 
 Take a set $S$, we have that the formal sums of the set's elements $C = K[S]$ is
 a co-algebra with $\Delta_C(s)= s \otimes s$ and $\epsilon(s) = 1$.
 
-*** Example of co-algebra: set of subsets ordered 
+*** Example coalgebra: Set of subsets ordered 
 
 Given a set $S$, one can define the a poset over it, ordered by inclusion: $$2^S
 = \{ T \subset S \}$$ Given this poset, one can build an incidence co-algebra $C=int(2^S)$
+
+*** Sub-algebra 
+Given: 
+
+- $B$ is an algebra
+- $A \subseteq B$ (subspace) 
+
+then:
+
+- $A$ is a *sub-algebra* if $m(A \otimes A) \subseteq A$ and $1_B \in A$
+- $A$ is an ideal if $m(A \otimes B) \subseteq A$ (and viceversa, if you want a
+  *two sided ideal*).
+
+*** Sub-coalgebra 
+
+Given:
+
+- D co-algebra 
+- $C \subseteq D$ (subspace)
+
+then 
+
+- $C$ is a sub-coalgebra if $\Delta(C) \subseteq C \otimes C$
+- $C$ is a co-ideal if $\Delta(C) \subseteq C \otimes D + D \otimes C$
+
+*** Duality of homomorphisms
+
+Proposition: given $f: C \rightarrow D$ a co-algebra homomorphism, $f^*: D^*
+\rightarrow C^*$ is an algebra homomorphism.
+
+One should prove that $f^*$ is multiplicative: $$f^*(d^* e^*) = f^*(d^*)f^*(e^*)$$
+
+because: $$\np{\fs(\ds\es)}{c} = \np{\ds\es}{f(c)}$$
+
+*CONTUNUE FROM HERE, NOT FINISHED*
 
 *** Mobius function                                                                 :noanki:
 
@@ -1298,7 +1335,6 @@ Given a set $S$, one can define the a poset over it, ordered by inclusion: $$2^S
   \Delta_{n-1}(c) & = \sum_{(c)} c_{(1)} \otimes \ldots \otimes c_{(n)} [: C \rightarrow \otimes^n C ] \\
   \end{split}  
   \end{equation}
-
 
 *** Sweedler notation  and multilinear functions
 - Given $f: C \times C \times ... \rightarrow V$ that descends to $\phi: C \otimes C
