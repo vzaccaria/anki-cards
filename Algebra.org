@@ -495,7 +495,7 @@ This construction is a *functor*.
 *** Kernel representations
     
     - Given a homomorphism $\mu$ between spaces $E_1 \rightarrow E_2$, the
-      representation $E_1/Ker(\mu)$ is isomorphic to $\Im(\mu)$
+      representation $E_1/Ker(\mu)$ is isomorphic to $Im(\mu)$
 
 *** Representation of a tensor product space
 
@@ -624,7 +624,6 @@ If $G$ is an abelian group:
 
 For $G=\mathbb{Z}/n$, we have $n$ irreducible representations that can be
 "generated" $k\in Z$: $$\chi_k(z)=z \mapsto e^{k\frac{2i\pi}{n}z}$$
-
 
 * Algebraic structures with two operators
 ** Semirings
@@ -1146,37 +1145,95 @@ map from $V \otimes W$ into a group can be factored through it.
     \otimes b)$$ Viceversa, we can create an $m$ from a ring $A$, because
     multiplication is a bilinear map.
 
-*** Graded $k$ algebras
+*** Direct sum of abelian groups 
 
-    A $k$ -algebra is graded if it has a decomposition: $$ A = A_0 \oplus A_1
-    \oplus A_2 \cdots$$
+Given two abelian groups $A, B$, their direct sum $A \oplus B$ is the set of
+pairs $(a,b)$ where the product is defined as $$(a_1, b_1) + (a_2, b_2) =
+(a_1 + a_2, b_1 + b_2)$$
 
-    where $A_i$ has homogeneous elements of degree $i$ such that $a_i a_j \in A_{i+j}$
+*** S-Graded object
+- Given a set $S$ and a category $C$, a graded object is a functor $S
+  \rightarrow C$, where the set $S$ is treated as a discrete category. 
+  It can be seen as a family of objects $\{ C_{s\in S} \}$
+- These families form a category $C^G$ where natural transformations between $X,
+  Y: S \rightarrow C$ are morphisms.
+- If $S$ is a monoid then $C^G$ can be equipped with a monoidal tensor product 
+  $$(X \otimes Y)_s = \coprod_{u+v = s} (X_u \times Y_v)$$
+
+*** Graded vector space
+
+It is a vector space whose underlying abelian group can be seen as a direct sum
+of other abelian groups (each one making up its own vector space)
+
+$$V = \bigoplus_{n \in \mathbb{N}} V_n$$
+
+where each $V_n$ is a vector space. For a given $n$ the
+elements of $V_n$ are then called homogeneous elements of
+degree $n$.
+
+*** Graded ring
+
+A graded ring is a ring that is a direct sum of abelian groups $R_i$ such that
+$R_i R_j \subseteq R_{i+j}$, i.e., the product takes $R_{g} \times R_{g'} \rightarrow
+R_{g g'}$
+
+*** Graded module
+
+A module $M$ is graded over a graded ring $R$ if 
+
+- $M=\bigoplus M_i$ and
+- $R_iM_j \subseteq M_{i+j}$
+
+Examples: 
+
+- A graded vector space is a graded module where $R$ has trivial grading.
+- A graded ring is a graded module over itself.
+
+*** Graded algebra
+
+- A $k$ algebra $A$ is graded a graded module (over the ring $k$) where $\mu: A
+  \otimes A \to A$ preserves the degree.
+
+- It has a vector space decomposition: $$A = A_0 \oplus A_1 \oplus A_2 \cdots$$
+
+- $A_i$ has homogeneous elements of degree $i$ such that $a_i \otimes a_j \in
+  A_{i+j}$
 
 *** Hilbert series of the dimensions of a $k$ algebra.
 
     The following formal series $$\textrm{Hilb}(A,q) = \sum_{d} \textrm{dim}(A_d)q^d$$ is 
     a formal series representing the dimensions of a graded algebra.
 
-*** Polynomial $k$ algebra
-- Polynomials $\KK[x]$ form a vector space that can be equipped with a
-  tensor product and a multiplication $$\mu: \KK[x] \otimes \KK[x]
-  \rightarrow \KK[x]$$ that works as polynomial multiplication.
+*** Example algebra: polynomials
+- Polynomials $\KK[x]$ form a vector space with basis vectors $1, x, x^2,
+  \ldots$ that can be equipped with a tensor product and a multiplication $$\mu:
+  \KK[x] \otimes \KK[x] \rightarrow \KK[x]$$ that works as polynomial
+  multiplication (e.g., $\mu(x^2 \otimes 3x) = 3x^3$) with $u(1) = 1$
 
 - for $\KK[x] = \bigoplus_d (\KK[x^d])$ we have $$ \textrm{Hilb}(\KK,q)=\sum_d
   q^d$$
 
-*** Graded $k$ algebras examples and their Hilbert series
-
+*** Example $k$ algebra: polynomials in more than one variable
 
     - for $B[x_1 ... x_n] = \bigoplus_d B_d$ where $$B_d=\KK[x_1^{a_1} ...
       x_n^{a_n}, a_1 + ... + a_n = d]$$ we have $$\textrm{Hilb}(B,q)=\sum_d
       {n+d-1 \choose d}q^d=(1-q)^{-n}$$
 
-    # RESTART FROM HERE: https://www.youtube.com/watch?v=PPexiDR4r0Y
+    # RESTART FROM HERE: https://www.youtube.com/watch?v=Extra4r0Y
+
+*** Example $k$ algebra: group Algebra 
+
+    - A group algebra $\KK[G]$ for a group $G$ and a field $\KK$ is a vector space
+      where every vector has the form $$z_1g_1 + z_2g_2 + \ldots$$
+
+    - Multiplication defined on the basis elements is the group product
+      $$\mu(g_i \otimes g_j) = g_ig_j$$ while $u(1)=e$
 
 *** Tensor algebra
-    A tensor algebra is a graded algebra $$TV = \bigoplus_d V^{\otimes d}$$
+ - A tensor algebra is a graded algebra $$T[V] = \bigoplus_d V^{\otimes d}$$
+
+ - It is is also called the *free algebra on the vector space V*, and is functorial. 
+
 *** Symmetric algebra
     - A symmetric algebra is a quotient algebra: $$SV = TV/(v\otimes w - w
       \otimes v)$$ The ideal is homogeneous so the resulting quotient is graded.
@@ -1275,6 +1332,14 @@ a co-algebra with $\Delta_C(s)= s \otimes s$ and $\epsilon(s) = 1$.
 Given a set $S$, one can define the a poset over it, ordered by inclusion: $$2^S
 = \{ T \subset S \}$$ Given this poset, one can build an incidence co-algebra $C=int(2^S)$
 
+*** Example coalgebra: group co-algebra 
+
+    - A group coalgebra $\KK[G]$ for a group $G$ and a field $\KK$ is a vector
+      space where every vector has the form $$z_1g_1 + z_2g_2 + \ldots$$ and where 
+      $$\Delta(g) = g \otimes g, \epsilon(g)=1 \forall g$$.
+
+    - Multiplication defined on the basis elements is the group product
+      $$\mu(g_i \otimes g_j) = g_ig_j$$ while $u(1)=e$
 *** Sub-algebra 
 Given: 
 
@@ -1465,14 +1530,11 @@ which satisfies:
 - $T(a_1a_2)=T(a_1)T(a_2)$
 - $T(\alpha a)=\alpha T(a)$
 
-*** A-Module
+*** A-Module 
 
-A representation of an $A$ algebra can be used to create a sort of scalar
-multiplication: $$*: A \times V \rightarrow V$$ in the sense that we use the
-representation of $A$: $$*: GL(A) \times V \rightarrow V$$
-
-We can define thus define $A$ module from $A$ and $V$ where, in place of a ring
-or a field, we use use algebras.
+An $A$ module is a vector space where in place of a ring or a field, we use use
+an algebra. The multiplication $$*: A \times V \rightarrow V$$ is just the
+uncurried representation of $A$ $$\rho_A: A \rightarrow (V \rightarrow V)$$
 
 * Category theory - basics
 
@@ -1833,7 +1895,10 @@ g_2(x)$, i.e., the solutions of the equation.
       #+END_CENTER
 
     - the mapping $\lambda(e): q \rightarrow r^{p}$ is called the called
-      *currying* of $e$.
+      *currying* of $e$. 
+
+    - a cartesian closed category is equipped with an isomorphism between $Hom(Q
+      \times P, R) \cong Hom(Q, R^P)$
 
 ** Kleisly category and monads
 *** Kleisly category ($C_T$) definition
@@ -2217,7 +2282,24 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
   #+END_EXPORT
   #+END_CENTER
 
-*** Universal arrow example / bases of vector spaces
+*** Universal arrow (comma category view definition)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+Given the functor $S: D \rightarrow C$, we can define a universal arrow from
+object $c$ to $S$ as the initial object $\np{r}{u}$ in the comma category $(c
+\downarrow S)$
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ & c \arrow[ld, "u",red] \arrow[rd, "f'"] &  \\
+Sr \arrow[rr, "Sh"] &  & Sd
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** Universal arrow example / defining functions from free vector spaces
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2225,18 +2307,17 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
- & X \arrow[d, "j_X"] \arrow[dd, "g", bend left=49] \\
-V_X \arrow[d, "f (\textrm{linear})"] & UV_X \arrow[d, "Uf"] \\
-W & UW
+                      & X \arrow[ld, "j_x",red] \arrow[rd, "g"] &  \\
+U\KK[X] \arrow[rr, "Uf"] &                                         & UW \\
+\KK[X] \arrow[rr, "f (\textrm{linear})"] & & W \\
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- $U$ is forgetful from Vect to Set. $V_X = span(X)$.
-- Any (linear) $V_X \rightarrow W$ might be defined uniquely through the
-  *extension* of $g: X \rightarrow UW$, exploiting the fact that 
-  $j_X$ (that embeds the basis into the whole set $UV_x$) is universal, i.e.,
-  $$Uf \circ j_X = g$$
+- $U\KK[X]$ is the set of vectors in $\KK[X] = span(X)$.
+- $j_X$ injects the basis into the whole set $U\KK[X]$. It is universal.
+- Any (linear) $f: \KK[X] \rightarrow W$ can be defined by choosing $g$ (*extending
+  it*) $$Uf \circ j_X = g$$
 
 
 *** Universal property 
@@ -2518,7 +2599,6 @@ n*z & \textrm{otherwise}\\
 \end{equation}
 #+END_EXPORT
 
-      
 *** Prepromorphisms
 :PROPERTIES:
 :BEAMER_opt: fragile
@@ -2530,15 +2610,46 @@ $e$: $$x = prepro(k, e)$$ to make the following diagram commute:
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-t~I \arrow[r, "e"] \arrow[rr, "t~(cata~(Fx\circ e))", bend left] & t~I \arrow[d, "Fx"] \arrow[r] & t~E \arrow[d, "k"] \\
+t~I \arrow[r, "e", blue] \arrow[rr, "t~(cata~(Fx\circ e))", bend left] & t~I \arrow[d, "Fx"] \arrow[r] & t~E \arrow[d, "k", blue] \\
 I \arrow[r, "cata~(Fx \circ e)"] \arrow[u, "unfix"] \arrow[rr, "x", bend right] & I \arrow[r, "x"] & E \\
  & § & 
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-Assume $t[-] = 1 + Int \times [-]$; a natural transformation might filter data
-based on the value of the integer (e.g., by mapping those values to the empty list).
+*** Prepromorphism example: filtering data
+Assume to have a list functor $t[-] = 1 + R \times [-]$ and consider a natural
+transformation $e$ that filters data based on the value of an integer $r \in R$:
+
+
+*** Expression data types as functors
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+- Not a functor (recursive data type, needs an explicitly recursive 
+  function.
+
+  #+BEGIN_EXAMPLE
+  data Exp = Const Int | Neg Exp | Add Exp Exp 
+  #+END_EXAMPLE
+
+- Functor (non-recursive data type)
+  
+  #+BEGIN_EXAMPLE
+  data ExprF e = Const Int | Neg e | Add e e deriving functor
+  type Expr = Fix ExprF
+  #+END_EXAMPLE
+
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  1 \arrow[r, "const"] & {ExprF[Expr]} \arrow[d, "Fx"] \arrow[r] & {ExprF[Int]} \arrow[d, "rules"] \\
+  Expr \times Expr \arrow[ru, "Add", bend left=49] & Expr \arrow[r, "eval"] \arrow[u, "Neg", bend left=60] & Int
+  \end{tikzcd}
+  #+END_EXPORT
+
+  Build expressions in ~Expr~ with original type constructors, evaluate with ~eval
+  = cata rules~.
 
 *** Parsers with recursion schemes interpreters
     :PROPERTIES:
@@ -2864,3 +2975,63 @@ from 1 to 2.
    $f(x) = b$.
 
  - It is a way to make some arbitrary function as injective.
+* Type theory
+** Dependent types
+*** Dependent pair
+
+- Pair of two terms $(a,b)$ where $a: A$ and $b: B_a$. 
+- Also called dependent sum because its type can be seen as
+
+  $$(a,b) : \{a_1\} \times B_{a_1} + \{a_2\} \times B_{a_2} \ldots = \sum_{x:A} B_x$$
+
+*** Existential type
+
+Let us now assume that
+
+- $\{ a_i \}$ is the type of the witness that $a_i$ exists.
+- $B_{a_i}$ is the type of the witnesses for a proposition that depends on $a_i$.
+
+then the expression of the dependent pair:
+
+$$(a,b) : \{a_1\} \times B_{a_1} + \{a_2\} \times B_{a_2} \ldots $$
+
+can be interpreted in logic as
+
+$$(\exists a_1 \wedge B_{a_1}) \vee  (\exists a_2 \wedge B_{a_2}) \ldots \sim \exists x.B(x)$$
+
+Which explains why dependent pairs are used to express existentially quantified
+predicates.
+
+
+*** Dependent pair example in Haskell
+
+#+BEGIN_EXAMPLE
+type family   B (x :: Bool)
+type instance B 'True = Int
+type instance B 'False = String
+
+data BoolPair where
+  (:*:) :: forall x. Sing x -> B x -> BoolPair
+
+f :: BoolPair -> String
+f (STrue :*: n) = show n
+f (SFalse :*: s) = s
+#+END_EXAMPLE
+
+- ~Bool~ is a kind which corresponds to a set of two sets (types) ~'True~ and
+  ~'False~. We can't however pattern match on those. To enable matching they 
+  must be mapped to a singleton type with is own value constructor.
+
+*** Dependent product
+
+A dependent product is a function from a value $a : A$ into a value $b: B(a)$:
+$$ \lambda x.\Phi : \Pi_{x:A} B_x $$ 
+
+- If $A = \{ x_1 \}$ were a singleton type the function would have a constant
+  type: $B_{x_1}^{\{x_1\}}$.
+
+- If $A$ were more than one element we would end up with: $$ \Pi_{x:A} B_x =
+  B_{x_1}^{\{x_1\}} \times B_{x_2}^{\{x_2\}} \times \ldots $$ 
+
+- If $B$ were constant, we would obtain a simple exponential $$B^{\sum x_i} \sim
+  B^A$$
