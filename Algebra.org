@@ -1210,7 +1210,7 @@ Examples:
     The following formal series $$\textrm{Hilb}(A,q) = \sum_{d} \textrm{dim}(A_d)q^d$$ is 
     a formal series representing the dimensions of a graded algebra.
 
-*** Example algebra: polynomials
+*** Example $k$ algebra: polynomials
 - Polynomials $\KK[x]$ form a vector space with basis vectors $1, x, x^2,
   \ldots$ that can be equipped with a tensor product and a multiplication $$\mu:
   \KK[x] \otimes \KK[x] \rightarrow \KK[x]$$ that works as polynomial
@@ -1312,13 +1312,13 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 
 - $\phi$ is a linear function that maps $K$ to functions on $K$. 
 
-*** Example coalgebra: Polynomial co-algebra
+*** Example $k$ coalgebra: Polynomial co-algebra
 - One can build a co-algebra on polynomials them selves, when each basis of the
   tensor space built over $\KK[x]$ can be decomposed through comultiplication
   as: $$\Delta(x^n) = \sum_i x^i \otimes x^{n-i}$$
 - and co-unit $\epsilon: \KK[x] \rightarrow \KK$ as $$\epsilon = x^n \mapsto (n==0)$$
  
-*** Example coalgebra: Incidence coalgebra $C = int(P)$
+*** Example $k$ coalgebra: Incidence coalgebra $C = int(P)$
 
 - Given a poset $P$, one can define an *interval* by choosing two points of $P$
   (e.g., $x$ and $y$) and all the intermediates $z$: $$[x,y]=\{ z\in P: x \leq z
@@ -1329,16 +1329,16 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
   one can define a co-multiplication: $$\Delta([x,y])=\sum_{z \in [x,y]} [x,z]
   \otimes [z,y]$$ where the co-unit $\epsilon([x,y]) = (x=y)$.
 
-*** Example coalgebra: Coalgebra of set 
+*** Example $k$ coalgebra: Coalgebra of set 
 Take a set $S$, we have that the formal sums of the set's elements $C = K[S]$ is
 a co-algebra with $\Delta_C(s)= s \otimes s$ and $\epsilon(s) = 1$.
 
-*** Example coalgebra: Set of subsets ordered 
+*** Example $k$ coalgebra: Set of subsets ordered 
 
 Given a set $S$, one can define the a poset over it, ordered by inclusion: $$2^S
 = \{ T \subset S \}$$ Given this poset, one can build an incidence co-algebra $C=int(2^S)$
 
-*** Example coalgebra: group co-algebra 
+*** Example $k$ coalgebra: group co-algebra 
 
     - A group coalgebra $\KK[G]$ for a group $G$ and a field $\KK$ is a vector
       space where every vector has the form $$z_1g_1 + z_2g_2 + \ldots$$ and where 
@@ -1370,7 +1370,7 @@ then
 - $C$ is a sub-coalgebra if $\Delta(C) \subseteq C \otimes C$
 - $C$ is a co-ideal if $\Delta(C) \subseteq C \otimes D + D \otimes C$
 
-*** Duality of homomorphisms
+*** Duality of homomorphisms                                       :noanki:
 
 Proposition: given $f: C \rightarrow D$ a co-algebra homomorphism, $f^*: D^*
 \rightarrow C^*$ is an algebra homomorphism.
@@ -1493,6 +1493,29 @@ In Sweedler notation: $$\sum_{(d)} f(d_{(1)}) \otimes f(d_{(2)}) = \sum_{f(d)} f
     - $(f_1 + f_2) = g \mapsto f_1(g) + f_2(g)$
     - $(\alpha f) = g \mapsto \alpha f(g)$
     - $(f_1 \times f_2) = g \mapsto \sum_{u \in G}f_1(u)f_2(u^{-1}g)$
+
+*** Bi-algebras
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+A \otimes A \arrow[d, "\mu"] \arrow[r, "\Delta \otimes \Delta"] & A \otimes A \otimes A \otimes A \arrow[d, "\mu_{A \otimes A} "] \\
+A \arrow[r, "\Delta"] & A \otimes A
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- A bi-algebra is a vector space that is both an algebra and a coalgebra.
+
+- Algebra and co-algebra should be compatible, i.e. $\Delta$ and $\epsilon$
+  should be algebra morphisms. This means the above diagram must commute.
+
+  Note that one must define $\mu_{A \otimes A} = (\mu \otimes \mu) \circ (id \otimes \tau
+  \otimes id)$ where $\tau$ is the twist map.
+
 
 ** Modules
 *** R-Module
@@ -2272,7 +2295,7 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-- A *universal arrow of object $c \in C$* allows to factor morphisms from $c$ to
+- A *universal arrow of object* $c \in C$ allows to factor morphisms from $c$ to
   all other objects in the codomain of incoming functor $S: D \rightarrow C$.
 
 - It is an object/morphism pair $(r_c,u_c)$ such that the following diagrams commute
