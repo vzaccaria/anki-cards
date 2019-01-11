@@ -2295,21 +2295,21 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-- A *universal arrow of object* $c \in C$ allows to factor morphisms from $c$ to
-  all other objects in the codomain of incoming functor $S: D \rightarrow C$.
+- A *universal arrow of object* $c \in C$ allows to factor all morphisms $f'$ 
+  through morphisms in the codomain of incoming functor $S: D \rightarrow C$.
 
-- It is an object/morphism pair $(r_c,u_c)$ such that the following diagrams commute
-  (left is $D$ and right is $C$).
+- It is an object/morphism pair $(r, u)$ such that the following diagrams commute.
 
-  #+BEGIN_CENTER
-  #+BEGIN_EXPORT latex
-  \begin{tikzcd}
-  & c \arrow[d, "\textbf{u}_c", red] \arrow[dd, "f", bend left] \\
-  \textbf{r}_c  \arrow[d, "f'"'] & S\textbf{r}_c \arrow[d, "Sf'"'] \\
-  d & Sd
-  \end{tikzcd}
-  #+END_EXPORT
-  #+END_CENTER
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                    & c \arrow[ld, "u",red] \arrow[rd, "f'"] &  \\
+Sr \arrow[rr, "Sh"] &                                        & Sd \\
+r \arrow[rr, "h"]   &                                        & d \\
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
 
 *** Universal arrow (comma category view definition)
 :PROPERTIES:
@@ -2322,8 +2322,9 @@ object $c$ to $S$ as the initial object $\np{r}{u}$ in the comma category $(c
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
- & c \arrow[ld, "u",red] \arrow[rd, "f'"] &  \\
-Sr \arrow[rr, "Sh"] &  & Sd
+                    & c \arrow[ld, "u",red] \arrow[rd, "f'"] &  \\
+Sr \arrow[rr, "Sh"] &                                        & Sd
+r \arrow[rr, "h"]   &                                        & d \\
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -2333,20 +2334,26 @@ Sr \arrow[rr, "Sh"] &  & Sd
 :BEAMER_opt: fragile
 :END:
 
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-                      & X \arrow[ld, "j_x",red] \arrow[rd, "g"] &  \\
-U\KK[X] \arrow[rr, "Uf"] &                                         & UW \\
-\KK[X] \arrow[rr, "f (\textrm{linear})"] & & W \\
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
 
 - $U\KK[X]$ is the set of vectors in $\KK[X] = span(X)$.
 - $j_X$ injects the basis into the whole set $U\KK[X]$. It is universal.
 - Any (linear) $f: \KK[X] \rightarrow W$ can be defined by choosing $g$ (*extending
   it*) $$Uf \circ j_X = g$$
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                                         & X \arrow[ld, "j_x",red] \arrow[rd, "g"] &  \\
+U\KK[X] \arrow[rr, "Uf"]                 &                                         & UW \\
+\KK[X] \arrow[rr, "f (\textrm{linear})"] &                                         & W \\
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+$j_X$ could be thought of as the cases where the input parameter of $U_x$ are
+just those in $X$. If $f$ is linear, it suffices to specify its value only for
+those cases.
+
 
 
 *** Universal property 
@@ -2409,6 +2416,68 @@ The only value for $?$ is the group $Z$. i.e., the *free group on a single
 generator*. So $Z$ represents $U$. In fact, the set $G^Z$ is the set of
 homomorphisms from $Z$ to $G$ whose size depends on which of the elements of $G$
 we map the generator.
+
+*** Universal element 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\mathbb{SET} & \{ \ldots u \ldots \} \arrow[rr, "Hf_x"] & & \{ \ldots x \ldots \} \\
+\mathbb{U}   & U \arrow[rr, "!\exists f_x"]             & & X
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+$(U, u)$ is a universal element of $H$ if, for every $(X,x)$ there exists a
+unique $f$ such that $Hf_x(u) = x$.
+
+*** Universal element (Sets and equivalence relations)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Given: 
+
+- a functor $H=(-)_E^S$ giving the set of functions starting from $S$ into $[-]$
+  where $sEs' \implies fs = fs'$.
+
+- a function $p$ that is the familiar mapping $S \rightarrow S/E$
+
+Then, $(S/E,p)$ is the universal element of $H$ so, if $f$ respects equivalence,
+there exists a unique $f'$ such that $f=f'p$.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\mathbb{SET} & \{ \ldots p: S \rightarrow S/E \ldots \} \arrow[rr, "Hf'"] &  & \{ \ldots f : S \rightarrow X \ldots \} \\
+\mathbb{SET} & S/E \arrow[rr, "!\exists f'"] &  & X
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** Universal element (Groups and quotients) 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Given a functor $H=(-)^G_N$ giving the sets of homomorphisms from $G$ for which
+$fN=1$ and $p$ as the mapping into cosets $G \rightarrow G/N$ then $(G/N,p)$ are
+a universal element of $H$.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\mathbb{SET} & \{ \ldots p: G \rightarrow G/N \ldots \} \arrow[rr, "Hf'"] &  & \{ \ldots f : G \rightarrow G' \ldots \} \\
+\mathbb{GRP} & G/N \arrow[rr, "!\exists f'"] &  & G'
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+
+
 
 
 ** Functor algebras 
@@ -2854,7 +2923,6 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
   - $\mu_X$ flattens the list, e.g., $\mu_X(\ang{a\ang{ab}}) = \ang{aab}$
 
 
-
 *** Yoneda lemma
 :PROPERTIES:
 :BEAMER_opt: fragile
@@ -3013,6 +3081,7 @@ from 1 to 2.
    $f(x) = b$.
 
  - It is a way to make some arbitrary function as injective.
+
 * Type theory
 ** Dependent types
 *** Dependent pair
