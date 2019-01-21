@@ -602,9 +602,9 @@ where $d_i$ is the dimension of each representation
 
 *** Convolution of two group functions and their Fourier transform
 
-The convolution of two functions $f,g:G\rightarrow {\mathbb {C}}$: $$(f\ast
+The convolution of two functions $f,g:G\rightarrow {\mathbb{C}}$: $$(f\ast
 g)(a)=\sum _{{b\in G}}f(ab^{{-1}})g(b)$$ is such that $$\widehat {f\ast
-g}(\varrho )=\widehat {f}(\varrho )\widehat {g}(\varrho )$$
+g}(\rho )=\widehat {f}(\rho )\widehat {g}(\rho )$$
 
 *** Fourier transform of Abelian groups
 If $G$ is an abelian group:
@@ -1136,13 +1136,25 @@ map from $V \otimes W$ into a group can be factored through it.
     
 ** Algebras and co-algebras
 *** $k$ algebra (with tensor products)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-    It is a triple $(A,m,u)$, where $A$ is a vector space and with linear maps
-    $m: A \otimes A \rightarrow A$ and $u: K \rightarrow A$ such that the
-    following hold:
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+K \otimes A \arrow[r, "u \otimes 1"] \arrow[rd] & A \otimes A \arrow[d, "\mu"] & A \otimes K \arrow[l, "1 \otimes u"'] \arrow[ld, "\cong"] \\
+ & A \arrow[lu, "\cong"] \arrow[ru] & 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
-      - $m(a \otimes m(b \otimes c)) = m(m(a \otimes b) \otimes c)$
-      - $\mu(u(1) \otimes x) = \mu(x \otimes u(1)) = x, \forall x$ (algebra is unitary)
+It is a triple $(A,\mu,u)$, where $A$ is a vector space and with linear maps
+$\mu: A \otimes A \rightarrow A$ and $u: K \rightarrow A$ such that the
+following hold:
+
+  - $m(a \otimes m(b \otimes c)) = m(m(a \otimes b) \otimes c)$
+  - $\mu(u(1) \otimes x) = \mu(x \otimes u(1)) = x, \forall x$ (algebra is unitary)
 
 *** $k$ algebra (as a ring)
 
@@ -1342,10 +1354,13 @@ Given a set $S$, one can define the a poset over it, ordered by inclusion: $$2^S
 
     - A group coalgebra $\KK[G]$ for a group $G$ and a field $\KK$ is a vector
       space where every vector has the form $$z_1g_1 + z_2g_2 + \ldots$$ and where 
-      $$\Delta(g) = g \otimes g, \epsilon(g)=1 \forall g$$.
+      $$\Delta(g) = g \otimes g, \epsilon(g)=1 \forall g$$
 
-    - Multiplication defined on the basis elements is the group product
+    - Note that $\KK[G]$ is also an algebra; this makes it a bi-algebra. Multiplication defined on the basis elements is the group product:
+
       $$\mu(g_i \otimes g_j) = g_ig_j$$ while $u(1)=e$
+
+
 *** Sub-algebra 
 Given: 
 
@@ -1502,19 +1517,62 @@ In Sweedler notation: $$\sum_{(d)} f(d_{(1)}) \otimes f(d_{(2)}) = \sum_{f(d)} f
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-A \otimes A \arrow[d, "\mu"] \arrow[r, "\Delta \otimes \Delta"] & A \otimes A \otimes A \otimes A \arrow[d, "\mu_{A \otimes A} "] \\
+A \otimes A \arrow[d, "\mu"] \arrow[r, "\Delta \otimes \Delta"] & A \otimes A
+\otimes A \otimes A \arrow[d, "\mu_{2} "] \\
 A \arrow[r, "\Delta"] & A \otimes A
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- A bi-algebra is a vector space that is both an algebra and a coalgebra.
+- Both an algebra and a coalgebra. $\Delta$ and $\epsilon$ should be algebra morphisms.
+  Equationally: 
 
-- Algebra and co-algebra should be compatible, i.e. $\Delta$ and $\epsilon$
-  should be algebra morphisms. This means the above diagram must commute.
+  $$\Delta(a_1 \cdot a_2) = \Delta(a_1) \cdot \Delta(a_2)$$
 
-  Note that one must define $\mu_{A \otimes A} = (\mu \otimes \mu) \circ (id \otimes \tau
-  \otimes id)$ where $\tau$ is the twist map.
+- For a group algebra, $\mu_2$ must be defined as:
+
+  $$\sum (g_ig_j \otimes g_ig_j) = \sum \mu_2(g_i \otimes g_i \otimes g_j \otimes g_j)$$
+
+  i.e., $\mu_2 = (\mu \otimes \mu) \circ (id \otimes \tau \otimes id)$.
+
+
+#  Note that one must define $\mu_{A \otimes A} = (\mu \otimes \mu) \circ (id \otimes \tau
+#  \otimes id)$ where $\tau$ is the twist map.
+
+*** Hopf algebra - convolution
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+C \arrow[r, "\Delta"] & C \otimes C \arrow[r, "f \otimes h"] & A \otimes A \arrow[r, "\mu"] & A
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+In a bi-algebra, we can define the convolution operator $$\star: A^C \times A^C
+\rightarrow A^C$$ such that $$f \star h = \mu \circ (f \otimes h) \circ \Delta$$
+
+*** Hopf algebra - antipode 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+An antipode $S$ is the morphism $C \rightarrow A$ for which the following commutes:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ & K \arrow[rrd, "u"] &  &  \\
+C \arrow[ru, "\epsilon"] \arrow[r, "\Delta"] & C \otimes C \arrow[r, "Id \otimes S"] & A \otimes A \arrow[r, "\mu"] & A
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+For example, the antipode $S$ for a group algebra is such that $$\mu \circ (Id
+\otimes S) (g \otimes g) = u(1)$$ i.e., $S(g) = g^{-1}$.
 
 
 ** Modules
@@ -2291,70 +2349,6 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
 - Another example is the matrix functor that is representable by a pair of integers. 
   A morphism from ~(int,int) -> a~ is one on one with a matrix ~Matrix a~.
 
-*** Universal arrow
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-- A *universal arrow of object* $c \in C$ allows to factor all morphisms $f'$ 
-  through morphisms in the codomain of incoming functor $S: D \rightarrow C$.
-
-- It is an object/morphism pair $(r, u)$ such that the following diagrams commute.
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-                    & c \arrow[ld, "u",red] \arrow[rd, "f'"] &  \\
-Sr \arrow[rr, "Sh"] &                                        & Sd \\
-r \arrow[rr, "h"]   &                                        & d \\
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-
-*** Universal arrow (comma category view definition)
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-Given the functor $S: D \rightarrow C$, we can define a universal arrow from
-object $c$ to $S$ as the initial object $\np{r}{u}$ in the comma category $(c
-\downarrow S)$
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-                    & c \arrow[ld, "u",red] \arrow[rd, "f'"] &  \\
-Sr \arrow[rr, "Sh"] &                                        & Sd
-r \arrow[rr, "h"]   &                                        & d \\
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-*** Universal arrow example / defining functions from free vector spaces
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-
-- $U\KK[X]$ is the set of vectors in $\KK[X] = span(X)$.
-- $j_X$ injects the basis into the whole set $U\KK[X]$. It is universal.
-- Any (linear) $f: \KK[X] \rightarrow W$ can be defined by choosing $g$ (*extending
-  it*) $$Uf \circ j_X = g$$
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-                                         & X \arrow[ld, "j_x",red] \arrow[rd, "g"] &  \\
-U\KK[X] \arrow[rr, "Uf"]                 &                                         & UW \\
-\KK[X] \arrow[rr, "f (\textrm{linear})"] &                                         & W \\
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-$j_X$ could be thought of as the cases where the input parameter of $U_x$ are
-just those in $X$. If $f$ is linear, it suffices to specify its value only for
-those cases.
-
-
 
 *** Universal property 
 A universal property of object $X$ is a description of either $X^{(-)}$ or
@@ -2417,6 +2411,70 @@ generator*. So $Z$ represents $U$. In fact, the set $G^Z$ is the set of
 homomorphisms from $Z$ to $G$ whose size depends on which of the elements of $G$
 we map the generator.
 
+
+*** Universal arrow from object
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+- A *universal arrow from object* $c \in C$ allows to factor all morphisms $f'$ 
+  through morphisms in the codomain of incoming functor $S: D \rightarrow C$.
+
+- It is an object/morphism pair $(r, u)$ such that the following diagrams commute.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                    & c \arrow[ld, "u",red] \arrow[rd, "f'"] &  \\
+Sr \arrow[rr, "Sh"] &                                        & Sd \\
+r \arrow[rr, "h"]   &                                        & d \\
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** Universal arrow from object (comma category view definition)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+Given the functor $S: D \rightarrow C$, we can define a universal arrow from
+object $c$ to $S$ as the initial object $\np{r}{u}$ in the comma category $(c
+\downarrow S)$
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                    & c \arrow[ld, "u",red] \arrow[rd, "f'"] &  \\
+Sr \arrow[rr, "Sh"] &                                        & Sd \\
+r \arrow[rr, "h"]   &                                        & d \\
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** Universal arrow from object / defining functions from free vector spaces
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+
+- $U\KK[X]$ is the set of vectors in $\KK[X] = span(X)$.
+- $j_X$ injects the basis into the whole set $U\KK[X]$. It is universal.
+- Any (linear) $f: \KK[X] \rightarrow W$ can be defined by choosing $g$ (*extending
+  it*) $$Uf \circ j_X = g$$
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                                         & X \arrow[ld, "j_x",red] \arrow[rd, "g"] &  \\
+U\KK[X] \arrow[rr, "Uf"]                 &                                         & UW \\
+\KK[X] \arrow[rr, "f (\textrm{linear})"] &                                         & W \\
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+$j_X$ could be thought of as the cases where the input parameter of $U_x$ are
+just those in $X$. If $f$ is linear, it suffices to specify its value only for
+those cases.
+
+
 *** Universal element 
 :PROPERTIES:
 :BEAMER_opt: fragile
@@ -2431,8 +2489,8 @@ we map the generator.
 #+END_EXPORT
 #+END_CENTER
 
-$(U, u)$ is a universal element of $H$ if, for every $(X,x)$ there exists a
-unique $f$ such that $Hf_x(u) = x$.
+Assume a functor $H: \mathbb{U} \rightarrow \mathbb{SET}$, we define $(U, u)$ is a universal element of $H$ if, for every $(X,x)$ there exists a
+unique $f_x$ such that $Hf_x(u) = x$.
 
 *** Universal element (Sets and equivalence relations)
 :PROPERTIES:
@@ -2478,6 +2536,43 @@ a universal element of $H$.
 
 
 
+
+
+*** Universal arrow vs universal element
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ & * \arrow[ld] \arrow[rd] &  \\
+HU = \{ ... u ... \} \arrow[rr, "Hf"] &  & HX=\{...x...\} \\
+U \arrow[rr, "f"] &  & X
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+Considering the category of pointed sets and a generic functor, a universal
+element $(U,u)$ is exactly a universal arrow from $*$ to $H$.
+
+*** Universal arrow to object
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+- A *universal arrow to object* $c \in C$ from $S$ is an object/morphism pair $(r,
+  v)$ such that, in the following diagram, for any $f$ there is an $f'$ such
+  that it commutes
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ & c &  \\
+Sr \arrow[rr, "Hf'"] \arrow[ru, "v"] &  & Sd \arrow[lu, "f"] \\
+r &  & d \arrow[ll, "f'"]
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
 
 ** Functor algebras 
@@ -2711,15 +2806,14 @@ n*z & \textrm{otherwise}\\
 :BEAMER_opt: fragile
 :END:
 
-A prepromorphism $x$ is built with an algebra $k$ and a natural transformation
-$e$: $$x = prepro(k, e)$$ to make the following diagram commute:
+A prepromorphism $c$ is built with an algebra $f$ and a natural transformation
+$e$: $$c = prepro(f, e)$$ to make the following diagram commute ($\epsilon=embed, \pi=project, \kappa=cata$):
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\begin{tikzcd}
-t~I \arrow[r, "e", blue] \arrow[rr, "t~(cata~(Fx\circ e))", bend left] & t~I \arrow[d, "Fx"] \arrow[r] & t~E \arrow[d, "k", blue] \\
-I \arrow[r, "cata~(Fx \circ e)"] \arrow[u, "unfix"] \arrow[rr, "x", bend right] & I \arrow[r, "x"] & E \\
- & § & 
+\begin{tikzcd} 
+t~I \arrow[r] \arrow[rr, "t (c \circ \kappa (\epsilon \circ e))", bend left] & t~I \arrow[d, "\epsilon \circ e" description] \arrow[r] & t~E \arrow[d, "f"] \\
+I \arrow[u, "\pi" description] \arrow[r, "\kappa (\epsilon \circ e)"] & I \arrow[lu, "\pi" description] \arrow[r, "c"] & E
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -2734,14 +2828,15 @@ transformation $e$ that filters data based on the value of an integer $r \in R$:
 :BEAMER_opt: fragile
 :END:
 
-- Not a functor (recursive data type, needs an explicitly recursive 
-  function.
+Two ways to build them, 
+
+1. recursive data type which needs an explicitly recursive function to interpret it.
 
   #+BEGIN_EXAMPLE
   data Exp = Const Int | Neg Exp | Add Exp Exp 
   #+END_EXAMPLE
 
-- Functor (non-recursive data type)
+- Using a non-recursive data type
   
   #+BEGIN_EXAMPLE
   data ExprF e = Const Int | Neg e | Add e e deriving functor
@@ -2758,6 +2853,28 @@ transformation $e$ that filters data based on the value of an integer $r \in R$:
   Build expressions in ~Expr~ with original type constructors, evaluate with ~eval
   = cata rules~.
 
+*** Parser combinators
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+- A /parser/ of A ($P[A]$), is an object $A^S$ which takes a string (type $S$) and returns a value $A$.
+
+- A parser combinator, is a /higher order function/ that takes two or more parsers
+  and returns a new parser (e.g., $alt: P[A]\times P[B] \rightarrow P[A+B]$ and
+  $seq: P[A]\times P[B] \rightarrow P[A\times B]$):
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  A^S \times B^S \arrow[d, "alt"] & A^S \times B^S \arrow[d, "seq"] \\
+  (A+B)^S & (A \times B)^S
+  \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
+
+- $P[A]$ is a functor in $A$; You can get a parser $PB$ for object $B$ if you have $P[A]$ and $A \rightarrow B$.
+
 *** Parsers with recursion schemes interpreters
     :PROPERTIES:
     :BEAMER_opt: fragile
@@ -2771,12 +2888,15 @@ transformation $e$ that filters data based on the value of an integer $r \in R$:
 - Here we show the case for $n_2[\widetilde{L}]:
   \widetilde{L}\times\widetilde{L} \rightarrow N \widetilde{L}$
 
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-L[\widetilde{L}] \arrow[d,"\phi",red] \arrow[r] & (P \circ L)[\widetilde{L}] \arrow[d,"P \phi"]  & (P \circ N)[\widetilde{L}] \arrow[l,"\gamma",red] \arrow[ld, "P\phi \circ \gamma"] \\
-\widetilde{L} \arrow[r]   & P [\widetilde{L}] & P [\widetilde{L}] \times P [\widetilde{L}] \arrow[u, "Pn_2"] \arrow[l, "P\phi\circ\gamma \circ P n_2", blue]
-\end{tikzcd}
-#+END_EXPORT
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  L[\widetilde{L}] \arrow[d,"\phi",red] \arrow[r] & (P \circ L)[\widetilde{L}] \arrow[d,"P \phi"]  & (P \circ N)[\widetilde{L}] \arrow[l,"\gamma",red] \arrow[ld, "P\phi \circ \gamma"] \\
+  \widetilde{L} \arrow[r]   & P [\widetilde{L}] & P [\widetilde{L}] \times P [\widetilde{L}] \arrow[u, "Pn_2"] \arrow[l, "P\phi\circ\gamma \circ P n_2", blue]
+  \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
+
 ** Functor co-algebras
 *** Co-algebra
     Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
