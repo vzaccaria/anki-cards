@@ -2314,6 +2314,7 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 - 1-cell is a morphism
 - 2-cell is a morphism between morphisms
 
+
 *** 2-category 
 - A class of 0-cells (objects): $A,B,C$ 
 
@@ -2322,27 +2323,35 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
   - objects are the morphisms between $A$ and $B$ (called 1-cell)
   - morphisms are morphisms between morprhisms and are called 2-cells.
 
-*** 2-category vertical composition
+- Example: CAT, where 1-cells are functors and 2-cells are natural transformations
 
-- one of the two ways in which 2-cells can be composed;
-  
-- the composition in $C(A,B)$, indicated with $\circ_1$, defines a new morphism
-  between morphisms between $A$ and $B$.
+*** 2-category vertical composition
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ A \arrow[r, "\Downarrow \alpha"', bend left=49] \arrow[r] \arrow[r, "\Downarrow \beta", bend right=49] &  B & \implies \exists  & A \arrow[r, "\Downarrow \alpha \circ \beta"', bend left=49] \arrow[r, bend right=49] & B
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+This is the canonical composition of natural transformations
 
 *** 2-category horizontal composition
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-- one of the two ways in which 2-cells can be composed;
-
-  #+BEGIN_CENTER
-  #+BEGIN_EXPORT latex
-  \begin{tikzcd}
-  A \arrow[r] \arrow[r, "\Downarrow \alpha"', bend left=49] \arrow[r, "\Downarrow \beta", bend right=49] & B \arrow[r] \arrow[r, "\Downarrow \gamma"', bend left=49] \arrow[r, "\Downarrow \delta", bend right=49] & C = & A \arrow[r] \arrow[r, "\Downarrow (\gamma \circ_1 \alpha)"', bend left=49] \arrow[r, "\Downarrow (\delta \circ_1 \beta)", bend right=49] & C
-  \end{tikzcd}
-  #+END_EXPORT
-  #+END_CENTER
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+A \arrow[r] \arrow[r, "\Downarrow \alpha"', bend left=49] \arrow[r, "\Downarrow \beta", bend right=49] & B \arrow[r] \arrow[r, "\Downarrow \gamma"', bend left=49] \arrow[r, "\Downarrow \delta", bend right=49] & C \implies & A \arrow[r] \arrow[r, "\Downarrow (\gamma \circ_1 \alpha)"', bend left=49] \arrow[r, "\Downarrow (\delta \circ_1 \beta)", bend right=49] & C
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
 
 
