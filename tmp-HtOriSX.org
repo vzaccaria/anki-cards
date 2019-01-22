@@ -2835,21 +2835,16 @@ n*z & \textrm{otherwise}\\
 :END:
 
 A prepromorphism $c$ is built with an algebra $f$ and a natural transformation
-$e$: $c = prepro(f, e)$ to make the following diagram commute ($\epsilon=embed, \pi=project, \kappa=cata$):
+$e$: $$c = prepro(f, e)$$ to make the following diagram commute ($\epsilon=embed, \pi=project, \kappa=cata$):
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\begin{tikzcd}    
-t~I \arrow[r] \arrow[rr, green, "t (c \circ \kappa (\epsilon \circ e))", bend left=70] & t~I \arrow[loop, looseness=3, "e", red] \arrow[d, "\epsilon \circ e" description] \arrow[r] & t~E \arrow[d, "f", red] \\
-I \arrow[u, "\pi" description] \arrow[r, "\kappa (\epsilon \circ e)"] & I \arrow[lu, green, "\pi" description] \arrow[r, "c", blue] & E
+\begin{tikzcd} 
+t~I \arrow[r] \arrow[rr, "t (c \circ \kappa (\epsilon \circ e))", bend left] & t~I \arrow[loop up]{u} \arrow[d, "\epsilon \circ e" description] \arrow[r] & t~E \arrow[d, "f"] \\
+I \arrow[u, "\pi" description] \arrow[r, "\kappa (\epsilon \circ e)"] & I \arrow[lu, "\pi" description] \arrow[r, "c"] & E
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
-
-$c = cata (f \circ e) = f \circ Tc \circ e \circ \pi$. However, $e$ implies a
-I-endomorphism $\eta(e) = \kappa (\epsilon \circ e)$. TBC
-
-
 
 *** Prepromorphism example: filtering data
 Assume to have a list functor $t[-] = 1 + R \times [-]$ and consider a natural
