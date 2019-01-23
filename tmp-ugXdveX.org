@@ -2627,8 +2627,8 @@ a & c \arrow[u, "h"] \arrow[l, "f"] \arrow[r, "g"'] & b & \Delta (a \times b) \a
 #+END_EXPORT
 #+END_CENTER
 
-Projection functions $\ang{p, q}$ from the product $a \times b$ (and the product itself) are
-the universal arrow from the functor $\Delta(c) = \ang{c,c}$ to the object $\ang{a,b}$.
+Projection functions $\np{p,q}$ from the product $a \times b$ (and the product itself) are
+the universal arrow from the functor $\Delta(c) = \ng{c,c}$ to the object $\ng{a,b}$.
 
 ** Functor algebras 
 *** Definition of algebras and co-algebras
