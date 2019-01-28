@@ -1120,10 +1120,6 @@ V \times W \arrow[r, "\phi"] \arrow[rd, "h"] & V \otimes W \arrow[d, "\tilde{h}"
 
     - The tensor product is *associative* $(A \otimes B) \otimes C = A \otimes (B \otimes C)$
 
-*** Tensor products and R-Modules
-
-In the case of R-modules $V$ and $W$, $V \otimes W$ is a group (abelian). Every
-map from $V \otimes W$ into a group can be factored through it.
 
 *** Exact sequence 
 
