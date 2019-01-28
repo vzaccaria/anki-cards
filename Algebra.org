@@ -1509,7 +1509,7 @@ In Sweedler notation: $$\sum_{(d)} f(d_{(1)}) \otimes f(d_{(2)}) = \sum_{f(d)} f
     - $(\alpha f) = g \mapsto \alpha f(g)$
     - $(f_1 \times f_2) = g \mapsto \sum_{u \in G}f_1(u)f_2(u^{-1}g)$
 
-*** Bi-algebras
+*** $k$ Bialgebra
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -1539,15 +1539,15 @@ A \arrow[r, "\Delta"] & A \otimes A
 #  Note that one must define $\mu_{A \otimes A} = (\mu \otimes \mu) \circ (id \otimes \tau
 #  \otimes id)$ where $\tau$ is the twist map.
 
-*** Hopf algebra - convolution
+*** $k$ Bialgebra - convolution
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\begin{tikzcd}
-C \arrow[r, "\Delta"] & C \otimes C \arrow[r, "f \otimes h"] & A \otimes A \arrow[r, "\mu"] & A
+\begin{tikzcd} 
+C \arrow[rrr, "f \star g", bend left] \arrow[r, "\Delta"] & C \otimes C \arrow[r, "f \otimes h"] & A \otimes A \arrow[r, "\mu"] & A
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -1555,12 +1555,13 @@ C \arrow[r, "\Delta"] & C \otimes C \arrow[r, "f \otimes h"] & A \otimes A \arro
 In a bi-algebra, we can define the convolution operator $$\star: A^C \times A^C
 \rightarrow A^C$$ such that $$f \star h = \mu \circ (f \otimes h) \circ \Delta$$
 
-*** Hopf algebra - antipode 
+*** $k$ Bialgebra - antipode 
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-An antipode $S$ is the morphism $C \rightarrow A$ for which the following commutes:
+An antipode $S$ is the morphism $C \rightarrow A$ for which $id 
+\star S = u \circ e$, i.e., the following commutes:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
