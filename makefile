@@ -22,13 +22,9 @@ anki-cards/Books/Books.json: Books.org
 %.pdf: %.org
 	org2pdf $<  -r
 
-watch: $(CURTGT)
-	open $(CURTGT)
-	watchman-make -p $(CURORG) -t $(CURTGT)
+watch: 
+	org2pdf  $(CURORG) -r --open --watch
 
-watch-linux: $(CURTGT)
-	zathura $(CURTGT) &
-	watchman-make -p $(CURORG) -t $(CURTGT)
 
 clean:
 	rm -rf anki-cards *.pdf *.log tmp-*

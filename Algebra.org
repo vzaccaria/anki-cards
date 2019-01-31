@@ -573,17 +573,20 @@ $$\mathbb{T} = \{ \forall kn. e^{2\pi i k/n}\}$$
 
 *** Dual group
  - The dual group of $G$ (i.e., $\hat{G}$) is the set of all homomorphisms from
-   $G$ into $T$, the multiplicative group of all roots of unity, i.e., :
+   $G$ into $T$, the multiplicative group of all roots of unity, i.e.:
    $$\hat{G} = Hom(G,\mathbb{T})$$
- - Functions in $\chi \in \hat{G}$ are called characters and multiplication in
-   $\hat{G}$ is the multiplication of characters
+ - Functions in $\chi \in \hat{G}$ are called *characters* on the group (which are
+   not, in general, the characters of the representation) and multiplication in
+   $\hat{G}$ is the multiplication of characters.
+ - Just as $K$ represents the functor $(-)^V$, $\mathbb{T}$ represents $(-)^G$
+   and the set is just the dual group.
 
 *** Dual group examples
- - $\hat{\mathbb{Z}}   = \{ \chi(z) = \chi(1)^z \}$ (for a choice of $\chi(1)$)
- - $\widehat{\mathbb{Z}/n} = \{ \chi(z) = \xi_n^{z} \}$ (where $\xi_n$ is the
-   n-th root of unity commonly chosen as $\xi_n = 2^{2\pi i/n}$)
- - $\hat{\mathbb{T}}   = \{ \chi(t) = t^n \}$ for a choice of $n$
- - $\hat{\mathbb{R}}   = \{ \chi(r) = e^{i\theta r} \}$ for a choice of $\theta$.
+| Name                     | Parameterized element     | Parameter range                                     |
+|--------------------------+---------------------------+-----------------------------------------------------|
+| $\hat{\mathbb{Z}}$       | $z \mapsto t^z$           | $\forall t \in \mathbb{T}$                          |
+| $\widehat{\mathbb{Z}/n}$ | $z \mapsto \xi_n^{a*z}$   | $\forall a \in \{0 ... n-1\}, \xi_n = e^{2\pi i/n}$ |
+| $\hat{\mathbb{R}}$       | $r \mapsto e^{i\theta r}$ | $\forall \theta \in \mathbb{R}$                     |
 
 *** Fourier transform of a group
 Given a function $f: G \rightarrow \mathbb{C}$ and a representation $\rho(g)$ of
