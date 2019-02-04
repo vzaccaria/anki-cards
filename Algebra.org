@@ -417,6 +417,13 @@ This construction is a *functor*.
   - We can thus say that any group $G$ defines a *category of representations* and
     we can speak of its morphisms (intertwiner) as $Hom_G(\rho_1, \rho_2)$.
 
+*** Morphisms of representations
+
+- A morphism between vector spaces $F \rightarrow E$ can be a morphism of
+  representations if it is an intertwiner.
+
+- The inclusion morphism between vector spaces is an intertwiner if it is invariant.
+
 *** Equivalence of representations
 
   $\rho_1, \rho_2$ are equivalent if there exists an intertwining operator $L$
@@ -431,10 +438,14 @@ This construction is a *functor*.
 
 *** Trivial subrepresentation
 
-   - A trivial subrepresentation $(\rho, E)$ is such that $\rho(g)e = e$.
+   - A trivial subrepresentation $E^G$ of $\rho$ is the set of $e \in E$ such that $\rho(g)e = e$.
 
-   - in fact, $E^G$ is isomorphic to $Hom_G(1,E)$, i.e., the space of constant functions
-     over $E$.
+   - Any non-zero vector in $E^G$ produces a one-dimensional representation.
+
+*** Functoriality of representations
+
+For any endo-functor $T$ in **Vect**, a representation $\rho$ of on a space $E$ can be used 
+to derive a representation $\pi = T\rho$ on $TE$.
 
 *** Irreducible representation
 
@@ -489,8 +500,11 @@ This construction is a *functor*.
 *** Representation of quotient spaces
 
     Assume $\mu: E \rightarrow E/W$ the canonical map of $E$ into its quotient
-    vector space. Given a representation $(\rho, E)$, we can define
-    $(\rho_{E/W}, E/W)$ such that $$\rho_{E/W}(g)q = \rho(g)v' \wedge \mu v' = q, q \in E/W$$.
+    vector space $E/W$ and that $W$ is a subrepresentation. Then 
+
+    - The inclusion map $W \rightarrow E$ is a morphism of representations
+    - One can show that also $\mu$ is a morphism of representations
+
 
 *** Kernel representations
     
