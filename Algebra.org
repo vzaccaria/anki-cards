@@ -1246,10 +1246,34 @@ Examples:
     - Multiplication defined on the basis elements is the group product
       $$\mu(g_i \otimes g_j) = g_ig_j$$ while $u(1)=e$
 
+*** Tensor product of algebras
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+If $A$ and $B$ are $k$ algebras, so is $A \otimes B$ with $$\mu_{A \otimes B}(a_1 \otimes
+b_1 \otimes a_2 \otimes b_2) = \mu_A(a_1 \otimes a_2)\otimes\mu_B(b_1 \otimes b_2)$$ 
+
+in other words: 
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+A \otimes B \otimes A \otimes B \arrow[rr, "id \otimes \tau \otimes id"] \arrow[rrrr, "\mu_{A \otimes B}", bend left] &  & A \otimes A \otimes B \otimes B \arrow[rr, "m_A \otimes m_B"] &  & A \otimes B
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+
+
 *** Tensor algebra
  - A tensor algebra is a graded algebra $$T[V] = \bigoplus_d V^{\otimes d}$$
+   where $V^{\otimes d}$ is $V$ tensored with it self $d$ times (itself an
+   algebra). Multiplication $T(V) \otimes T(V) \rightarrow T(V)$ is
+   juxtaposition extended linearly. 
 
  - It is is also called the *free algebra on the vector space V*, and is functorial. 
+
+ - It is also a bi-algebra with $\Delta(v) = v \otimes 1 + 1 \otimes v$
 
 *** Symmetric algebra
     - A symmetric algebra is a quotient algebra: $$SV = TV/(v\otimes w - w
@@ -1341,8 +1365,9 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
   \otimes [z,y]$$ where the co-unit $\epsilon([x,y]) = (x=y)$.
 
 *** Example $k$ coalgebra: Coalgebra of set 
-Take a set $S$, we have that the formal sums of the set's elements $C = K[S]$ is
-a co-algebra with $\Delta_C(s)= s \otimes s$ and $\epsilon(s) = 1$.
+Take a set $S$, we have that the formal sums of the set's elements $C = \KK[S]$
+(or $C=span(S)$) is a co-algebra with $\Delta_C(s)= s \otimes s \forall s \in S$ and
+$\epsilon(s) = 1 \forall s \in S$.
 
 *** Example $k$ coalgebra: Set of subsets ordered 
 
