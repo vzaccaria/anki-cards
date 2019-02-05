@@ -2853,15 +2853,60 @@ I \arrow[u] \arrow[r, "g"] & E
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-t ~ I \arrow[r, "t~(cata~k)"] \arrow[d, "Fx~(unfix)"] & t~E \arrow[d, "k"] \\
-I \arrow[u] \arrow[r, "cata~k"] \arrow[rd, "cata~(g \circ k)"'] & E \arrow[d, "g"] \\
- & H
+tI \arrow[r, "t(\kappa f)"] \arrow[d] & tE \arrow[d, "f"] \arrow[r, "th"] & tH \arrow[d, "g"] \\
+I \arrow[r, "\kappa f"] \arrow[rr, "\kappa g"', bend right] & E \arrow[r, "h"] & H
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
-    - Given an initial algebra $(I, Fx: t~I \rightarrow I)$ and a generic algebra $(E, k)$ and a
-      function $g: E \rightarrow H$ we have that $$g \circ cata(k) = cata (g \circ k)$$
-    - If $E$ is a list and $H$ is a number type, this means I can fuse two loops into one.
+
+- if you must compose $h$ with a catamorphism $\kappa f$, and $h$ is an $(E,f) \rightarrow (H,g)$ algebra
+  homomorphism, then you can take directly the catamorphism of the second
+  algebra $g$: $$ h \circ \kappa f = \kappa g $$
+
+- This amounts to say that $h$ must be a morphism in the (comma) category of objects under $I$.
+- You bypass the intermediate structure $E$ (which might be a list) to generate
+  directly the output $H$ (e.g., an integer).
+
+
+*** Catamorphism compose law 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+gI \arrow[r] \arrow[d] & gI \arrow[r, "h", red] \arrow[rd, "Fix \circ h" description] & tI \arrow[rd, "f", red] \arrow[d, "Fix" description] &  \\
+I \arrow[rr, "\kappa(Fix \circ h)", blue] &  & I \arrow[r, blue, "\kappa f"'] & I
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+Defined as $$\kappa f \circ \kappa(Fix \circ h) = \kappa (f \circ h)$$ Note,
+this should be a prepromorphism, e.g., if $h$ is a nat. transf. such that
+$\kappa (Fix \circ h)$ filters something then you could compose it directly with
+the algebra $f$ instead of applying two times the catamorphism.
+
+
+*** Catamorphism compose law example (optimizing expressions)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+gI \arrow[r] \arrow[d] & gI \arrow[r, "unFix~\circ~h"] \arrow[rd, "h" description] & tI \arrow[rd, "f"] \arrow[d, "Fix" description] &  \\
+I \arrow[rr, "\kappa h"'] &  & I \arrow[r, "\kappa f"'] \arrow[u, "unFix" description, bend right=49] & I
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+If $I$ is an expression type, and $h$ and $f$ are optimizations expressed as
+F-algebras, you can do a single optimization pass by composing their algebras:
+$$\kappa f \circ \kappa h = \kappa (f \circ unFix \circ h)$$
+
+
       
 *** Hylomoprhisms
    - Given a initial and final algebra $A$, I can create a morphism $g: B
@@ -2895,31 +2940,7 @@ n*z & \textrm{otherwise}\\
 \end{equation}
 #+END_EXPORT
 
-*** Prepromorphisms
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
 
-A prepromorphism $c$ is built with an algebra $f$ and a natural transformation
-$e$: $c = prepro(f, e)$ to make the following diagram commute ($\epsilon=embed, \pi=project, \kappa=cata$):
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}    
-t~I \arrow[r] \arrow[rr, green, "t (c \circ \kappa (\epsilon \circ e))", bend left=70] & t~I \arrow[loop, looseness=3, "e", red] \arrow[d, "\epsilon \circ e" description] \arrow[r] & t~E \arrow[d, "f", red] \\
-I \arrow[u, "\pi" description] \arrow[r, "\kappa (\epsilon \circ e)"] & I \arrow[lu, green, "\pi" description] \arrow[r, "c", blue] & E
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-$c = cata (f \circ e) = f \circ Tc \circ e \circ \pi$. However, $e$ implies a
-I-endomorphism $\eta(e) = \kappa (\epsilon \circ e)$. TBC
-
-
-
-*** Prepromorphism example: filtering data
-Assume to have a list functor $t[-] = 1 + R \times [-]$ and consider a natural
-transformation $e$ that filters data based on the value of an integer $r \in R$:
 
 
 *** Expression data types as functors
