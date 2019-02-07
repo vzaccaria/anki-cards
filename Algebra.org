@@ -2586,6 +2586,7 @@ those cases.
 Assume a functor $H: \mathbb{U} \rightarrow \mathbb{SET}$, we define $(U, u)$ is a universal element of $H$ if, for every $(X,x)$ there exists a
 unique $f_x$ such that $Hf_x(u) = x$.
 
+
 *** Universal element (Sets and equivalence relations)
 :PROPERTIES:
 :BEAMER_opt: fragile
@@ -2649,6 +2650,9 @@ U \arrow[rr, "f"] &  & X
 
 Considering the category of pointed sets and a generic functor, a universal
 element $(U,u)$ is exactly a universal arrow from $*$ to $H$.
+
+Seeing this as a comma category $(1 \downarrow Set)$, every morphism $1 \rightarrow HX$ is 
+in direct correspondence with $f_x$ if it makes the comma category diagram commute.
 
 *** Universal arrow to object
 :PROPERTIES:
