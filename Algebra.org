@@ -602,15 +602,26 @@ $$\mathbb{T} = \{ \forall kn. e^{2\pi i k/n}\}$$
 | $\widehat{\mathbb{Z}/n}$ | $z \mapsto \xi_n^{a*z}$   | $\forall a \in \{0 ... n-1\}, \xi_n = e^{2\pi i/n}$ |
 | $\hat{\mathbb{R}}$       | $r \mapsto e^{i\theta r}$ | $\forall \theta \in \mathbb{R}$                     |
 
+*** Group representations and modules
+- A /representation/ is a group hom. $G \rightarrow Aut(V)$ (i.e.,
+  they have inverse).
+- It extends to hom. of rings $K[G] \rightarrow End(V)$, where $End(V)$ is the
+  endomorphism ring.
+- The latter is an $R[G]-module$ which means that $R[G]$ modules and 
+  representations of groups are the same thing.
+- Irreducible representations correspond to a simple module $R[G]-module$. 
 *** Fourier transform of a group
-Given a function $f: G \rightarrow \mathbb{C}$ and a representation $\rho(g)$ of
-$G$ over $\mathbb{C}$, we define the transform as: $$\hat{f}(\rho) = \sum_{g\in
-G}f(g)\rho(g)$$
 
-Note that since $\rho$ is a matrix of dimension $d \times d$, also $\hat{f}$ is
-a matrix $d \times d$.
+- It derives from the Peter-weyl theorem that states that $C[G]
+  \simeq \bigoplus_i GL(V_i)$.
+
+- Given a function $f: G \rightarrow \mathbb{C}$ and a representation $\rho(g)$ of
+  $G$ over $\mathbb{C}$, we define the transform as: $$\hat{f}(\rho) = \sum_{g\in
+  G}f(g)\rho(g)$$
+
+  Note that since $\rho$ is a matrix of dimension $d \times d$, also $\hat{f}$ is
+  a matrix $d \times d$.
    
-
 *** Inverse Fourier transform of a group
 Given a transform $\hat{f}: GL(\mathbb{C}) \rightarrow \mathbb{C}$, the original
 function can be derived from all its original representations: 
@@ -838,6 +849,9 @@ given prime number,
 *** Fundamental theorem of algebra
     - Every nonconstant polynomial with complex coefficients has a complex root.
     - If the coefficients are in $\mathbb{R}$ and $a+bi$ is a root, then also $a-bi$ is a root.
+
+*** Semisimple ring
+A ring is semisimple if (as its left or right module) is semisimple.
 ** Fields
 
 *** Field
@@ -1009,11 +1023,6 @@ F \arrow[r, hook] & {F[p_1]} \arrow[r, hook] & {F[p_1,p_2]} \\
     \[
     *: K \times V \rightarrow V
     \]
-
-*** Simple vectors
-
-    They are ordered sequences of elements that belong to a field (scalars).
-    Classical results of geometry apply.
 
 *** Direct sum
 
@@ -1626,10 +1635,19 @@ For example, the antipode $S$ for a group algebra is such that $$\mu \circ (Id
     \[
     *: K \times V \rightarrow V
     \]
+
 *** Modules over division rings
 
     - Much of the linear algebra results can be applied to modules over division
       rings as the latter are almost fields.
+
+*** Simple module
+
+It is a module that does not have non-zero proper submodules
+
+*** Semisimple module
+A module is semisimple if it is the direct sum of simple (irreducible)
+submodules
 
 *** Projector
     - A *projector* is a linear operator $P: X \rightarrow X$ for which $P^2=P$.
