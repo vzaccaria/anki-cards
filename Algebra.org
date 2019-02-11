@@ -1377,15 +1377,26 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 - and co-unit $\epsilon: \KK[x] \rightarrow \KK$ as $$\epsilon = x^n \mapsto (n==0)$$
  
 *** Example $k$ coalgebra: Incidence coalgebra $C = int(P)$
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-- Given a poset $P$, one can define an *interval* by choosing two points of $P$
-  (e.g., $x$ and $y$) and all the intermediates $z$: $$[x,y]=\{ z\in P: x \leq z
-  \leq y \}$$
+Let $int(P)$ be the free vector space of intervals. Define a
+co-multiplication: $$\Delta([x,y])=\sum_{z \in [x,y]} [x,z] \otimes [z,y], ~~
+\epsilon([x,y]) = (x=y)$$
 
-- Consider now the free vector space of all the intervals of $P$, $int(P)$. It can be
-  equipped with a tensor product (which basically creates pairs), and in turn,
-  one can define a co-multiplication: $$\Delta([x,y])=\sum_{z \in [x,y]} [x,z]
-  \otimes [z,y]$$ where the co-unit $\epsilon([x,y]) = (x=y)$.
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ & g &  \\
+e \arrow[ru] & b \arrow[u] & f \arrow[lu] \\
+c \arrow[u] \arrow[ru] & d \arrow[u] \arrow[ru] &  \\
+a \arrow[ru] \arrow[u] &  & 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+we have $\Delta([a,g]) = [a,b] \otimes [b,g] + [a,d] \otimes [d,g] + \ldots$
 
 *** Example $k$ coalgebra: Coalgebra of set 
 Take a set $S$, we have that the formal sums of the set's elements $C = \KK[S]$
@@ -1772,14 +1783,14 @@ x,y,i \in P$. For example, here:
 
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-a &  \\
-z_1 \arrow[u] & z_2 \arrow[lu] \\
-z_3 \arrow[u, "m_1"] & z_4 \arrow[u, "m_2"] \\
-b \arrow[u] \arrow[ru] & 
+ & g &  \\
+e \arrow[ru] & b \arrow[u] & f \arrow[lu] \\
+c \arrow[u] \arrow[ru,red] & d \arrow[u,red] \arrow[ru] &  \\
+a \arrow[ru,red] \arrow[u,red] &  & 
 \end{tikzcd}
 #+END_EXPORT
 
-we can see at least 3 intervals: $\{ \{ a, b, z_1, z_2 \}, \{a, b, z_1, z_2, z_3, z_4\}, \{a,b,z_3, z_4 \} \}$.
+Red represents $I_{a,b}$ 
 
 *** Linear order as a category
 
