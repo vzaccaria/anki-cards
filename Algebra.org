@@ -2929,8 +2929,8 @@ the algebra $f$ instead of applying two times the catamorphism.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-gI \arrow[r] \arrow[d] & gI \arrow[r, "unFix~\circ~h"] \arrow[rd, "h" description] & tI \arrow[rd, "f"] \arrow[d, "Fix" description] &  \\
-I \arrow[rr, "\kappa h"'] &  & I \arrow[r, "\kappa f"'] \arrow[u, "unFix" description, bend right=49] & I
+gI \arrow[r] \arrow[d] & gI \arrow[r, "unFix~\circ~h"] \arrow[rd, "h" description, red] & tI \arrow[rd, "f", red] \arrow[d, "Fix" description] &  \\
+I \arrow[rr, "\kappa h"', blue] &  & I \arrow[r, "\kappa f"',blue] \arrow[u, "unFix" description, bend right=49, red] & I
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -2939,11 +2939,43 @@ If $I$ is an expression type, and $h$ and $f$ are optimizations expressed as
 F-algebras, you can do a single optimization pass by composing their algebras:
 $$\kappa f \circ \kappa h = \kappa (f \circ unFix \circ h)$$
 
+*** Combining algebras (banana split)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Given $\phi: fa \rightarrow a$ and $\psi: fb \rightarrow b$ produce $f (a \times b) \rightarrow (a \times b)$.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+f~i \arrow[d] \arrow[r] \arrow[rr, bend left] \arrow[rrr, bend left] & fa \arrow[d, "\phi", red] & fb \arrow[d, "\psi", red] & f(a \times b) \arrow[d, "(f~fst \times f~snd) \circ split" description, blue] \\
+i \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[rrr, bend right] & a & b & fa \times fb \arrow[d, "\phi \times \psi" description, blue] \\
+ &  &  & {a \times b}
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
 
       
 *** Hylomoprhisms
-   - Given a initial and final algebra $A$, I can create a morphism $g: B
-     \rightarrow C$ from a coalgebra $B$ and an algebra $C$ by $$g = cata(c) \circ ana(b)$$
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+- Given a initial and final algebra $F$ (with the same functor)
+      $$hylo = cata(\phi) \circ ana(\psi)$$
+
+- This is the basis for deforestation, it eliminates intermediate data structures.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+a \arrow[d, "\phi"] \arrow[r, "\alpha \phi"] \arrow[rr, "{hylo~(\psi, \phi)}", bend left] & F \arrow[d] \arrow[r, "\kappa\psi"] & b \\
+f a \arrow[rr, "{f(hylo (\psi,\phi))}", bend right] & fF \arrow[u] & fb \arrow[u, "\psi"]
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
 
 *** Paramorphisms 
 :PROPERTIES:
@@ -3104,6 +3136,26 @@ P(A \times S) & P(A \times R) \arrow[l] \arrow[r] & P(A \times S)
 *** Anamorphisms
    - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
      $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
+
+   - Anamorphisms are called co-recursion.
+
+*** Streams as co-inductive data types
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+A stream is a final co-algebra of $s \mapsto a \times s$.  Here, we use an anamorphism to create a stream of incremental data from $\phi$, a function that
+specifies an initial value and then how to produce successive values through $f$.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+a \arrow[d, "\phi = Id \times f"] \arrow[rr, "\alpha \phi", bend left] & s \arrow[r, "\alpha \psi"] \arrow[d, "\psi"] & S(a) \arrow[d, "Cofix", bend left] \\
+a \times a & a \times s & a \times S(a) \arrow[u, "unCofix", bend left]
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
 
 ** Monad algebras
 *** Drawbacks of F-algebras
