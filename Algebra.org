@@ -16,6 +16,7 @@
 #+BEAMER_HEADER: \newcommand{\BB}{\mathbb{B}}
 #+BEAMER_HEADER: \newcommand{\NN}{\mathbb{N}}
 #+BEAMER_HEADER: \newcommand{\RR}{\mathbb{R}}
+#+BEAMER_HEADER: \newcommand{\ZZ}{\mathbb{Z}}
 #+BEAMER_HEADER: \newcommand{\np}[2]{\langle #1, #2 \rangle}
 #+BEAMER_HEADER: \newcommand{\ang}[1]{\langle #1 \rangle}
 #+BEAMER_HEADER: \newcommand{\ds}{d^*}
@@ -764,6 +765,11 @@ given prime number,
     - $f(a + b) = f(a) + f(b)$
     - $f(a * b) = f(a) * f(b)$
     - $f(1_R) = 1_S$
+
+*** $\ZZ$ ring homomorphism
+
+For every ring $R$, there is a unique ring homomorphism $\ZZ \rightarrow R$. This says that the
+ring of integers is an initial object in the category of rings.
 
 *** Kernel of a ring homomorphism
     The kernel of a ring homomorphism $f: R_0 \rightarrow R_1$ is a subring
@@ -1690,6 +1696,12 @@ which satisfies:
 An $A$ module is a vector space where in place of a ring or a field, we use use
 an algebra. The multiplication $$*: A \times V \rightarrow V$$ is just the
 uncurried representation of $A$ $$\rho_A: A \rightarrow (V \rightarrow V)$$
+
+*** Z-Module
+
+A module is a ring homomorphism into the endomorphism ring of an abelian group. Since $Z$ is the 
+initial object in the category of rings, there is a single $Z$-module for each abelian group.
+
 
 * Category theory - basics
 
