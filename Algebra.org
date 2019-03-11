@@ -498,13 +498,32 @@ to derive a representation $\pi = T\rho$ on $TE$.
     $(\rho^*, V^*)$ such that $$\rho^*(g) \vec{f} = v \mapsto f (\rho^{-1}(g)
     \cdot v)$$.
 
-*** Representation of quotient spaces
+*** Representation of quotient spaces.
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-    Assume $\mu: E \rightarrow E/W$ the canonical map of $E$ into its quotient
-    vector space $E/W$ and that $W$ is a subrepresentation. Then 
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+F \arrow[d, "\rho(g)"] \arrow[r, "i", hook] & E \arrow[d, "\rho(g)"] \arrow[r, "\phi"] & H = E/F \arrow[d, "\rho_h(g)"] \\
+F \arrow[r, "i", hook]                      & E \arrow[r, "\phi"]                      & H                             
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
-    - The inclusion map $W \rightarrow E$ is a morphism of representations
-    - One can show that also $\mu$ is a morphism of representations
+Assume $\phi: E \rightarrow E/F$ the canonical map of $E$ into its quotient
+vector space $E/F$ and that $(\rho,F)$ is a subrepresentation of $(\rho,E)$. 
+Then we can say that: 
+
+- $i: F \rightarrow E$ is a morphism of representations 
+- $\phi$ is a morphism of representations $\rho \rightarrow \rho_h$.
+
+In general, the kernel and the image of a morphism between spaces $E_1
+\rightarrow E_2$ are subrepresentations of the $E_1$ and $E_2$ respectively.
+
+ 
+
 
 
 *** Kernel representations
@@ -629,11 +648,6 @@ function can be derived from all its original representations:
 $$f(g) = \frac{1}{|G|}\sum_i d_i\textrm{Tr}(\rho_i(g^-1)\hat{f}(\rho_i))$$
 where $d_i$ is the dimension of each representation
 
-*** Convolution of two group functions and their Fourier transform
-
-The convolution of two functions $f,g:G\rightarrow {\mathbb{C}}$: $$(f\ast
-g)(a)=\sum _{{b\in G}}f(ab^{{-1}})g(b)$$ is such that $$\widehat {f\ast
-g}(\rho )=\widehat {f}(\rho )\widehat {g}(\rho )$$
 
 *** Fourier transform of Abelian groups
 If $G$ is an abelian group:
@@ -644,7 +658,7 @@ If $G$ is an abelian group:
 - these characters form a group structure $\hat{G}$ (called the Pontryagin dual
   of $G$)
 
-- the transform of a function over the group can be written as: 
+- the original function $f$ over the group can be re-written as: 
   $$f(g)={\frac {1}{|G|}}\sum_{\chi_i}{\widehat {f}}(\chi_i)\chi_i (g)$$
 
   which means that $f$ can be constructed from its base characters $\chi_i$.
@@ -710,10 +724,18 @@ For $G=\mathbb{Z}/n$, we have $n$ irreducible representations that can be
 
 *** Quaternions
 
-    - Quaternions are a subring of 2x2 matrices with unity.
+    - The set of $H$ quaternions is a 4-dimensional vector space over $\mathbb{R}$.
 
-    - Each quaternion $\alpha$ has a multiplicative inverse $(1/t)\bar{\alpha}$,
-      where $\bar{\alpha}$ is its conjugate and $t$ is its norm.
+    - As it can be equipped with a multiplication (Hamiltonian mult.), it is
+      a $k$ *algebra* (which is non-commutative).
+
+    - It is possible to divide quaternions so they form a division algebra
+
+    - The basis form a group under multiplication which is called quaternion group.
+
+    - In the terminology of abstract algebra, there are injective homomorphisms
+      from $H$ to the matrix rings $M(2, C)$ and $M(4, R)$
+
 
 *** Subring
 
@@ -2752,12 +2774,6 @@ the universal arrow from the functor $\Delta(c) = \ang{c,c}$ to the object $\ang
 
     - $X \rightarrow 0$ is the functor that maps $X$ into the emtpy set (initial object)
 
-*** Relevant (natural) identities between polynomial functors
-
-    - There are isomorphisms that make some functors equivalent, e.g. $X \times
-      Y = Y \times X$ or $(X \times (Y + Z)) = (X \times Y) + (X \times Z)$.
-
-    - They follow the same rules of addition and multiplication of numbers
 *** Functor algebra
 
     Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
