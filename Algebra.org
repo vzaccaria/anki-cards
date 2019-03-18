@@ -2,28 +2,7 @@
 #+AUTHOR: Vittorio Zaccaria
 #+LEVEL: 3
 #+OPTIONS: H:3
-#+BEAMER_HEADER: \usepackage{tikz-cd}
-#+BEAMER_HEADER: \usepackage{libertine-type1}
-#+BEAMER_HEADER: \usepackage{biolinum-type1}
-#+BEAMER_HEADER: \usepackage[libertine]{newtxmath}
-#+BEAMER_HEADER: \usepackage{amssymb,amsmath}
-
-#+BEAMER_HEADER: \usepackage[T1]{fontenc}
-#+BEAMER_HEADER: \usepackage{inconsolata}
-#+BEAMER_HEADER: \newcommand{\kk}{\mathbb{k}}
-#+BEAMER_HEADER: \newcommand{\KK}{\mathbb{K}}
-#+BEAMER_HEADER: \newcommand{\CC}{\mathbb{C}}
-#+BEAMER_HEADER: \newcommand{\BB}{\mathbb{B}}
-#+BEAMER_HEADER: \newcommand{\NN}{\mathbb{N}}
-#+BEAMER_HEADER: \newcommand{\RR}{\mathbb{R}}
-#+BEAMER_HEADER: \newcommand{\ZZ}{\mathbb{Z}}
-#+BEAMER_HEADER: \newcommand{\np}[2]{\langle #1, #2 \rangle}
-#+BEAMER_HEADER: \newcommand{\ang}[1]{\langle #1 \rangle}
-#+BEAMER_HEADER: \newcommand{\ds}{d^*}
-#+BEAMER_HEADER: \newcommand{\es}{e^*}
-#+BEAMER_HEADER: \newcommand{\fs}{f^*}
-#+BEAMER_HEADER: \newcommand{\ladjof}{\dashv}
-#+BEAMER_HEADER: \newcommand{\radjof}{\vdash}
+#+BEAMER_HEADER: \input{header.tex}
 #+STARTUP: indent 
 
 * Algebraic structures with one operator

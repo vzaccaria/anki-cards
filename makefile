@@ -3,21 +3,17 @@
 # Use CURTGT=file.pdf make watch
 
 TARGETS=\
-	anki-cards/Algebra/Algebra.json \
-	anki-cards/Books/Books.json
+	anki-cards/Algebra/Algebra.json 
 
 all: $(TARGETS)
 
 CURTGT?=Algebra.pdf
 CURORG=$(patsubst %.pdf,%.org,$(CURTGT))
 
-anki-cards/Algebra/Algebra.json: Algebra.org
+anki-cards/Algebra/Algebra.json: Algebra.org header.tex
 	mkdir -p $(dir $@)
-	pandoc-anki  $< -j -f > $@
+	pandoc-anki  $< -j -f -r header.tex > $@
 
-anki-cards/Books/Books.json: Books.org
-	mkdir -p $(dir $@)
-	pandoc-anki $< -j > $@
 
 %.pdf: %.org
 	org2pdf $<  -r
