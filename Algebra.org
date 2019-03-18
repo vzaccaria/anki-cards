@@ -103,8 +103,9 @@
 *** Normal subgroup
   - $H$ is a normal subgroup of $G$ iff $$\forall h \in H \wedge g \in G, ghg^{-1} \in H$$
 
-  - It is a subgroup invariant to the action of the inner automorphisms $I(G)$,
-    the set of inner automorphisms on $G$.
+*** Normal subgroup and action of inner automorphisms
+
+  - The normal subgroup is an invariant to the action of the inner automorphisms $I(G)$
 
 *** Kernel of a group homomorphism
     The *kernel* $\textrm{ker}(f)$ of a group homomorphism $f: (G,\star)
@@ -113,7 +114,9 @@
     - $K \subseteq G$
     - $\forall k \in K, f(k) = 1_{*}$
 
-    It is a /normal subgroup of $G$/, because $$\forall g \in G.f(gkg^{-1})=f(g)f(g^{-1})=1_*$$
+*** Kernel of a group hom. with respect to $G$
+
+It is a /normal subgroup of $G$/, because $$\forall g \in G.f(gkg^{-1})=f(g)f(g^{-1})=1_*$$
 
 *** Range of a group homomorphism
     The *range* $\textrm{range}(f)$ of a homomorphism  $f: (G,\star)
@@ -130,7 +133,9 @@
                  $$H_g = \{g \star h : h \in H\}$$
 
 
-- Orbits are disjoint subset of $G$: $\bigcup_g H_g = G$
+*** Orbits in a group $G$ relative to a group $H$
+
+Orbits in $G$ relative to $H$ are disjoint subsets of $G$: $\bigcup_g H_g = G$
 
 *** Subgroup of an abelian group
     Every subgroup of an abelian group is normal.
@@ -244,10 +249,11 @@
 
 
 *** Stabilizer of a group element's action
-    - Given a group $G$, a set $S$ and an action $\curvearrowright: G \times S \rightarrow
-      S$, a *stabilizer* of $s \in S$ is an element $g_s \in G$ such that $$ {g_s} \curvearrowright s = s$$
-    - For each $s \in S$ one can define a group $Stab(s) = \{ g_s \}$ which is a
-      sub-group of $G$ (it is called /isotropy group/).
+    - Given a group $H$, a set $S$ and an action $\curvearrowright: H \times S
+      \rightarrow S$, a *stabilizer* of $s \in S$ is an element $h_s \in H$ such
+      that $$ {h_s} \curvearrowright s = s$$
+    - For each $s \in S$ one can define a group $Stab(s) = \{ h_s \}$ which is a
+      sub-group of $H$ (it is called /isotropy group/).
 
 *** Orbit in a set $S$ relative to a group $H$
 - Given an action $\curvearrowright: H \times S \rightarrow S$ the *group orbit*
@@ -269,7 +275,11 @@
 # - $Orb(s)$ forms a group which is isomorphic to $G/Stab(s)$.
 
 *** Orbit-stabilizer theorem
-    $$|Orb(s)| = [ G : Stab(s) ]$$
+
+- Remember that $Stab(s)$ is a subgroup (isotropy group) of $H$; thus one can talk 
+  about the cosets of $Stab(s)$ in $H$, so we have:
+
+    $$|H_s| = [ H : Stab(s) ]$$
 
 *** Centralizer of a group element
     The centralizer of an element $a$ of a group $G$ is the set of elements of
@@ -279,6 +289,8 @@
     - Two elements $x, y$ of a group $G$ are conjugate-wise equivalent if $$\exists g. y=gxg^{-1}$$
     - The conjugacy class of an element $x \in G$ is the set of elements:
       $$Cl(x) = \{ gxg^{-1}: g \in G \}$$
+
+*** Class number of a group $G$
 
     - The class number of G is the number of distinct (nonequivalent) conjugacy classes
 *** Free group 
@@ -298,6 +310,8 @@ This construction is a *functor*.
 - It is a morphism $\alpha: G \rightarrow G$ that respects multiplication:
   $$\alpha(g_1g_2) = \alpha(g_1)\alpha(g_2)$$
 
+*** Group automorphisms' group 
+
 - The set $A(G)=\{ \alpha \}$ is a subgroup of $P(G)$, i.e., the group of
   permutations of $G$ elements.
 
@@ -309,6 +323,8 @@ This construction is a *functor*.
 
 *** Center of a group
 - The center of a group $G$ is $$C(G) = \{ g: \gamma g = g \gamma, \forall \gamma\}$$
+
+*** Center of a group as a kernel 
 
 - It is the kernel of the homomorphism $G \rightarrow I(G)$: $$g \mapsto (\gamma
   \mapsto g \gamma g^{-1})$$ because all the elements in the center are mapped to 
@@ -1442,9 +1458,6 @@ Given a set $S$, one can define the a poset over it, ordered by inclusion: $$2^S
       space where every vector has the form $$z_1g_1 + z_2g_2 + \ldots$$ and where 
       $$\Delta(g) = g \otimes g, \epsilon(g)=1 \forall g$$
 
-    - Note that $\KK[G]$ is also an algebra; this makes it a bi-algebra. Multiplication defined on the basis elements is the group product:
-
-      $$\mu(g_i \otimes g_j) = g_ig_j$$ while $u(1)=e$
 
 
 *** Sub-algebra 
@@ -1610,20 +1623,29 @@ A \arrow[r, "\Delta"] & A \otimes A
 #+END_EXPORT
 #+END_CENTER
 
-- Both an algebra and a coalgebra. $\Delta$ and $\epsilon$ should be algebra morphisms.
-  Equationally: 
+- A bialgebra is both an algebra and a coalgebra where $\Delta$ and $\epsilon$
+  are algebra ($A \rightarrow A \otimes A$) morphisms. Equationally:
 
-  $$\Delta(a_1 \cdot a_2) = \Delta(a_1) \cdot \Delta(a_2)$$
+  $$\Delta(a_1 \cdot_{\mu} a_2) = \Delta(a_1) \cdot_{\mu_2} \Delta(a_2)$$
 
-- For a group algebra, $\mu_2$ must be defined as:
-
-  $$\sum (g_ig_j \otimes g_ig_j) = \sum \mu_2(g_i \otimes g_i \otimes g_j \otimes g_j)$$
-
-  i.e., $\mu_2 = (\mu \otimes \mu) \circ (id \otimes \tau \otimes id)$.
+  where $a \cdot_{\mu} b = \mu(a \otimes b)$ and $\mu_2$ is the multiplication
+  over $A \otimes A$ implied by $A$, i.e. $$\mu_2 = (\mu \otimes \mu)(id \otimes
+  \tau \otimes id)$$
 
 
-#  Note that one must define $\mu_{A \otimes A} = (\mu \otimes \mu) \circ (id \otimes \tau
-#  \otimes id)$ where $\tau$ is the twist map.
+*** $k$ Bialgebra example: group bialgebra
+
+The group algebra $\KK[G]$ where $$\mu(g_i \otimes g_j) = g_ig_j, ~~ u(1)=e_G$$
+
+is also a co-algebra with $$\Delta(g) = g \otimes g, \epsilon(g)=1 \forall g$$
+
+It can be shown that 
+ #+BEGIN_EXPORT latex
+ \begin{align*}
+  \Delta(g_i \cdot_{\mu} g_j) & = \sum (g_ig_j \otimes g_ig_j) \\
+                   & = \sum \mu_2(g_i \otimes g_i \otimes g_j \otimes g_j) = \Delta(g_i) \cdot_{\mu_2} \Delta(g_j)
+ \end{align*}
+ #+END_EXPORT
 
 *** $k$ Bialgebra - convolution
 :PROPERTIES:
