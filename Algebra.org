@@ -2939,16 +2939,17 @@ I \arrow[r, "\kappa f"] \arrow[rr, "\kappa g"', bend right] & E \arrow[r, "h"] &
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-gI \arrow[r] \arrow[d] & gI \arrow[r, "h", red] \arrow[rd, "Fix \circ h" description] & tI \arrow[rd, "f", red] \arrow[d, "Fix" description] &  \\
-I \arrow[rr, "\kappa(Fix \circ h)", blue] &  & I \arrow[r, blue, "\kappa f"'] & I
+gI \arrow[rr] \arrow[dd]           &                         & gI \arrow[d, "h"] \arrow[ldd, "Fix \circ h" description] \\
+                                   &                         & tI \arrow[d, "f"] \arrow[ld, "Fix" description]          \\
+I \arrow[r, "\kappa(Fix \circ h)"] & I \arrow[r, "\kappa f"] & I                                                       
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-Defined as $$\kappa f \circ \kappa(Fix \circ h) = \kappa (f \circ h)$$ Note,
-this should be a prepromorphism, e.g., if $h$ is a nat. transf. such that
-$\kappa (Fix \circ h)$ filters something then you could compose it directly with
-the algebra $f$ instead of applying two times the catamorphism.
+If $h$ is a natural tranformation and $f$ an algebra, then the following is
+always true:
+$$\kappa f \circ \kappa(Fix \circ h) = \kappa (f \circ h)$$ For example
+$\kappa (Fix \circ h)$ could filter away data. Instead of two catamorphism you get only one.
 
 
 *** Catamorphism compose law example (optimizing expressions)
@@ -2959,8 +2960,9 @@ the algebra $f$ instead of applying two times the catamorphism.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-gI \arrow[r] \arrow[d] & gI \arrow[r, "unFix~\circ~h"] \arrow[rd, "h" description, red] & tI \arrow[rd, "f", red] \arrow[d, "Fix" description] &  \\
-I \arrow[rr, "\kappa h"', blue] &  & I \arrow[r, "\kappa f"',blue] \arrow[u, "unFix" description, bend right=49, red] & I
+gI \arrow[rr] \arrow[dd] &                                                                            & gI \arrow[d, "Unfix \circ h"] \arrow[ldd, "h" description] \\
+                         &                                                                            & tI \arrow[d, "f"] \arrow[ld, "\tiny Fix" description]      \\
+I \arrow[r, "\kappa h"'] & I \arrow[r, "\kappa f"'] \arrow[ru, "\tiny unFix" description, bend right] & I
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
