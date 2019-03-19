@@ -2623,14 +2623,17 @@ those cases.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-\mathbb{SET} & \{ \ldots u \ldots \} \arrow[rr, "Hf_x"] & & \{ \ldots x \ldots \} \\
-\mathbb{U}   & U \arrow[rr, "!\exists f_x"]             & & X
+             &                               & {*} \arrow[ld, "u"] \arrow[rd, "x_k"] &    \\
+\mathbb{SET} & HU \arrow[rr]                 & *                                     & HX \\
+\mathbb{U}   & U \arrow[rr, "!\exists f_k"'] & * \arrow[u]                           & X
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-Assume a functor $H: \mathbb{U} \rightarrow \mathbb{SET}$, we define $(U, u)$ is a universal element of $H$ if, for every $(X,x)$ there exists a
-unique $f_x$ such that $Hf_x(u) = x$.
+Assume a functor $H: \mathbb{U} \rightarrow \mathbb{SET}$.
+$(U, u)$ is a universal element of $H$ if, for every element $x_k$ in $HX$
+there exists a unique $f_k$ such that the above diagram commutes. 
+Practically, it enables a unique correspondence between elements of a set and morphisms.
 
 
 *** Universal element (Sets and equivalence relations)
@@ -2638,21 +2641,19 @@ unique $f_x$ such that $Hf_x(u) = x$.
 :BEAMER_opt: fragile
 :END:
 
-Given: 
+- Given an equivalence relation $E$ over $f$, the familiar mapping $p: S
+  \rightarrow S/E$ is a /universal element/ of the functor 
+  $H_{/E}$ which maps to morphisms of maps preserving the equivalence relation.
 
-- a functor $H=(-)_E^S$ giving the set of functions starting from $S$ into $[-]$
-  where $sEs' \implies fs = fs'$.
-
-- a function $p$ that is the familiar mapping $S \rightarrow S/E$
-
-Then, $(S/E,p)$ is the universal element of $H$ so, if $f$ respects equivalence,
-there exists a unique $f'$ such that $f=f'p$.
+- $p$ is universal, because for any element $x_k$ there exists a unique $f_k$
+  such that this diagram commutes:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-\mathbb{SET} & \{ \ldots p: S \rightarrow S/E \ldots \} \arrow[rr, "Hf'"] &  & \{ \ldots f : S \rightarrow X \ldots \} \\
-\mathbb{SET} & S/E \arrow[rr, "!\exists f'"] &  & X
+                               & \{*\} \arrow[ld, "p"] \arrow[rd, "x_k(s)"] &          \\
+(S/E)^S_{/E} \arrow[rr]        &  *                                         & X^S_{/E} \\
+S/E \arrow[rr, "\exists!f_k"'] &  * \arrow[u, "H_{/E}", dotted]               & X
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER

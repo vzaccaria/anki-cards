@@ -16,7 +16,7 @@ anki-cards/Algebra/Algebra.json: Algebra.org header.tex
 
 
 %.pdf: %.org
-	org2pdf $<  -r
+	JSLATEX_COPYPB=true org2pdf $<  -r
 
 watch: 
 	org2pdf  $(CURORG) -r --open --watch
