@@ -2589,7 +2589,7 @@ r \arrow[rr, "h"]   &                                        & d \\
 #+END_EXPORT
 #+END_CENTER
 
-*** Universal arrow from object / defining functions from free vector spaces
+*** Universal arrow from object (free vector spaces)
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2613,6 +2613,40 @@ U\KK[X] \arrow[rr, "Uf"]                 &                                      
 $j_X$ could be thought of as the cases where the input parameter of $U_x$ are
 just those in $X$. If $f$ is linear, it suffices to specify its value only for
 those cases.
+
+*** Universal arrow from object (Groups and quotients) 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+$(\pi_{G,N}, G/N)$ is the universal arrow to $H: Grp \rightarrow Set$ (maps
+respecting the kernel). Any mapping $x_k: S_G \rightarrow S_X$ can be fixed with
+$f_k$.
+
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                               & S_G \arrow[ld, "{\pi_{G,N}}"] \arrow[rd, "x_k(g)"] &     \\
+S_{(G/N)} \arrow[rr]           & *                                                  & S_X \\
+G/N \arrow[rr, "\exists!f_k"'] & * \arrow[u, "H_{/N}", dotted]                      & X  
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** Universal arrow from object to forgetful $Set_* \rightarrow Set$
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                               & S \arrow[ld, "i"] \arrow[rd, "x_k(g)"] &    \\
+U(S^*) \arrow[rr]              & *                                      & UX \\
+S^* \arrow[rr, "\exists!f_k"'] & * \arrow[u, "H_{*}", dotted]           & X 
+\end{tikzcd}
+#+END_EXPORT
+
 
 
 *** Universal element 
@@ -2663,15 +2697,16 @@ S/E \arrow[rr, "\exists!f_k"'] &  * \arrow[u, "H_{/E}", dotted]               & 
 :BEAMER_opt: fragile
 :END:
 
-Given a functor $H=(-)^G_N$ giving the sets of homomorphisms from $G$ for which
+Given a functor $H=(-)^G_N : Grp \rightarrow Set$ giving the sets of homomorphisms from $G$ for which
 $fN=1$ and $p$ as the mapping into cosets $G \rightarrow G/N$ then $(G/N,p)$ are
 a universal element of $H$.
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-\mathbb{SET} & \{ \ldots p: G \rightarrow G/N \ldots \} \arrow[rr, "Hf'"] &  & \{ \ldots f : G \rightarrow G' \ldots \} \\
-\mathbb{GRP} & G/N \arrow[rr, "!\exists f'"] &  & G'
+                               & \{*\} \arrow[ld, "p"] \arrow[rd, "x_k(g)"] &          \\
+(G/N)^G_{/N} \arrow[rr]        & *                                          & X^G_{/N} \\
+G/N \arrow[rr, "\exists!f_k"'] & * \arrow[u, "H_{/N}", dotted]              & X       
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
