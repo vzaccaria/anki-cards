@@ -16,7 +16,7 @@ anki-cards/Algebra/Algebra.json: Algebra.org header.tex
 
 
 %.pdf: %.org
-	JSLATEX_COPYPB=true org2pdf $<  -r
+	JSLATEX_COPYPB=true org2pdf $<  -r -k
 
 watch: 
 	org2pdf  $(CURORG) -r --open --watch
@@ -24,3 +24,6 @@ watch:
 
 clean:
 	rm -rf anki-cards *.pdf *.log tmp-*
+
+minor: 
+	git add . && git commit -m "updates to cards" && git push
