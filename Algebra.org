@@ -1542,17 +1542,10 @@ because: $$\np{\fs(\ds\es)}{c} = \np{\ds\es}{f(c)}$$
   \end{split}  
   \end{equation}
 
-*** Sweedler notation  and multilinear functions
-- Given $f: C \times C \times ... \rightarrow V$ that descends to $\phi: C \otimes C
-  \otimes ... \rightarrow V$ (fundamental property of tensors) we can write
-  $$\phi \circ \Delta_{n-1} (c) = \sum_{(c)} \phi (c_{(1)}
-  \otimes c_{(2)} ...) = \sum_{(c)} f(c_{1}, c_{2}, \ldots) $$
-
-  for example: $$(\Delta \otimes id)\Delta = \sum_c (\Delta \otimes id)(c_1
-  \otimes c_2) = \sum_c \Delta(c_1) \otimes c_2$$
-
-- Co-associativity law: $\sum_c \Delta(c_1)\otimes c_2 = \sum_c c_1\otimes \Delta(c_2)$
-- Co-unit law: $\sum_c \epsilon(c_1)\otimes c_2 = c = \sum_c c_1 \otimes \epsilon(c_2)$
+*** Co-algebra laws in sweedler notation 
+- Co-associativity law: $$\sum_c \Delta(c_1)\otimes c_2 = \sum_c c_1\otimes \Delta(c_2) =: \Delta_2(c)$$
+- Co-unit law: $$\sum_c \epsilon(c_1)\otimes c_2 = \sum_c c_1 \otimes \epsilon(c_2) = c$$
+- If $f = \phi \circ \Delta_i$ then $$\sum_c \phi(c_1 \otimes c_2 \ldots) = \sum_c f(c_1) \otimes c_2 \otimes \ldots$$
 
 *** $k$ algebras homomorphisms
 :PROPERTIES:
