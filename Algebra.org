@@ -3045,7 +3045,8 @@ $$\kappa f \circ \kappa h = \kappa (f \circ unFix \circ h)$$
 :BEAMER_opt: fragile
 :END:
 
-Given $\phi: fa \rightarrow a$ and $\psi: fb \rightarrow b$ produce $f (a \times b) \rightarrow (a \times b)$.
+Given $\phi: fa \rightarrow a$ and $\psi: fb \rightarrow b$ produce $\beta: f (a \times b) \rightarrow (a \times b)$ as
+$$\beta = (\phi \times \psi) \circ (f~fst \times f~snd) \circ split$$
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
@@ -3059,24 +3060,44 @@ i \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[rrr, bend right] & a & b & f
 
 
       
-*** Hylomoprhisms
+*** Hylomorphisms
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-- Given a initial and final algebra $F$ (with the same functor)
-      $$hylo = cata(\phi) \circ ana(\psi)$$
+- Given a initial and final algebra of $F$ (the same functor!)
+      $$hylo(\psi,\phi) = cata(\phi) \circ ana(\psi)$$
 
 - This is the basis for deforestation, it eliminates intermediate data structures.
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-a \arrow[d, "\phi"] \arrow[r, "\alpha \phi"] \arrow[rr, "{hylo~(\psi, \phi)}", bend left] & F \arrow[d] \arrow[r, "\kappa\psi"] & b \\
+a \arrow[d, "\phi"] \arrow[r, "\alpha \phi",red] \arrow[rr, "{hylo~(\psi, \phi)}", bend left,blue] & F \arrow[d] \arrow[r, "\kappa\psi",red] & b \\
 f a \arrow[rr, "{f(hylo (\psi,\phi))}", bend right] & fF \arrow[u] & fb \arrow[u, "\psi"]
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
+- allows to exploit parallelism? substituting recursive control with a data structure
+
+*** Hylomorphism example: mergesort
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+L_A \arrow[d, "\phi"] \arrow[r, "\alpha \phi",red] \arrow[rr, "{hylo~(\psi, \phi)}", bend left,blue] & F_A \arrow[d] \arrow[r, "\kappa\psi",red] & L_A \\
+f L_A \arrow[rr, "{f(hylo (\psi,\phi))}", bend right] & fF_A \arrow[u] & fL_A \arrow[u, "\psi"]
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- Consider the functor $f[X] = A + X \times X$, its initial algebra $F_A$ being a binary tree of $A$'s.
+- Consider $L_A$ as a list of A's. One could implement merge sort $\mu: L_A
+  \rightarrow L_A$ as $hylo(\psi,\phi)$, where $\phi$ constructs the tree by splitting
+  lists in two while $\psi$ merges two lists into one (by reordering them).
 
 *** Paramorphisms 
 :PROPERTIES:
@@ -3086,26 +3107,15 @@ f a \arrow[rr, "{f(hylo (\psi,\phi))}", bend right] & fF \arrow[u] & fb \arrow[u
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-t~I \arrow[d] \arrow[r] & t~(I \times Z) \arrow[d, "f"] \\
-I \arrow[r, "cata(f)"] \arrow[rd, "para(f)"'] \arrow[u] & I \times Z \arrow[d, "\pi_Z"] \\
- & Z
+t~I \arrow[dd, "Fix" description] \arrow[r]    & t~(I \times Z) \arrow[d, "(t~fst \times f) \circ split"] \\
+                                               & t I \times Z \arrow[d, "Fix \times id"]                  \\
+I \arrow[r, "cata(..)"] \arrow[rd, "para(f)"'] & I \times Z \arrow[d, "\pi_Z"]                            \\
+                                               & Z                                                       
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- Given $t(N) = 1 + N$ (initial algebra is nats), the factorial is
-  $para(f)$ with 
-
-#+BEGIN_EXPORT latex
-\begin{equation}
-f(n,z)
-\begin{cases}
-1   & n=0\\
-n*z & \textrm{otherwise}\\
-\end{cases}
-\end{equation}
-#+END_EXPORT
-
+Example, for factorial $f(i,z) = i~?~z*i:1$. Exercise, try to devise a para for sliding window.
 
 
 
