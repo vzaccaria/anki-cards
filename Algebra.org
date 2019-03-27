@@ -2590,7 +2590,7 @@ we map the generator.
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-- A *universal arrow from object* $c \in C$ allows to factor all morphisms $f'$ 
+- A *universal arrow from object* $c \in C$ to $S$ allows to factor all morphisms $f'$ 
   through morphisms in the codomain of incoming functor $S: D \rightarrow C$.
 
 - It is an object/morphism pair $(r, u)$ such that the following diagrams commute.
@@ -2622,6 +2622,26 @@ r \arrow[rr, "h"]   &                                        & d \\
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
+
+*** Universal arrow from object (bijection of homsets)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+- $(r, u)$ is universal for $(S,c)$ if and only if $D(r,d) \simeq C(c,Sd)$.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                    & c \arrow[ld, "u",red] \arrow[rd, "f'"] &  \\
+Sr \arrow[rr, "Sh"] &                                        & Sd \\
+r \arrow[rr, "h"]   &                                        & d \\
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- $(S-)^c$ is represented by $r$ if $(r,u)$ is universal for $(S,c)$  
+- $(K-)^*:=K$ is represented by $r$ if $(r, u: * \rightarrow Kr)$ is universal for $(K,*)$.
+
 
 *** Universal arrow from object (free vector spaces)
 :PROPERTIES:
