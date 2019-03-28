@@ -312,6 +312,24 @@ This construction is a *functor*.
 - So, by the FHT, $I(G) = G/C(G)$
 
 ** Group representations
+*** Category of representations
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+Assume $BG$ is the category with one object associated with group $G$. The category
+of representations $Rep(G)$ is the functor category $Vect^{BG}$ where
+- objects are functors $BG \rightarrow Vect$ and correspond to representations $\rho$
+- morphisms are natural transformations $\Phi$ (with a single component $\phi$).
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\bullet \arrow[d, "g_1", bend right] \arrow[r, "\rho_E", dotted] \arrow[rrr, "\rho_F", dotted, bend left] & E \arrow[d] \arrow[rr, "\phi_E"] & * \arrow[d, "\Phi", dashed] & F \arrow[d] \\
+\bullet                                                                                                   & E \arrow[rr, "\phi_E"']          & *                           & F          
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
 *** Linear group representation
 
     - A *linear group representation* of $G$ is a group homomorphism
