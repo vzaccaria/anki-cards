@@ -1679,40 +1679,45 @@ It can be shown that
  \end{align*}
  #+END_EXPORT
 
-*** $k$ Bialgebra - convolution
+*** $k$ Bialgebra - algebra $A^C$
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd} 
-C \arrow[rrr, "f \star g", bend left] \arrow[r, "\Delta"] & C \otimes C \arrow[r, "f \otimes h"] & A \otimes A \arrow[r, "\mu"] & A
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-In a bi-algebra, we can define the convolution operator $$\star: A^C \times A^C
+Given $A$ and $C$ respectively an algebra and a co-algebra, $A^C$ is an algebra with 
+product $$\star: A^C \times A^C
 \rightarrow A^C$$ such that $$f \star h = \mu \circ (f \otimes h) \circ \Delta$$
-
-*** $k$ Bialgebra - antipode 
+and unit $u \circ \epsilon$.
+*** $k$ Bialgebra - antipode (Hopf algebra)
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-An antipode $S$ is the morphism $C \rightarrow A$ for which $id 
-\star S = u \circ e$, i.e., the following commutes:
+An antipode $S$ is the morphism $A \rightarrow A$ for which 
+the following commutes:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
- & K \arrow[rrd, "u"] &  &  \\
-C \arrow[ru, "\epsilon"] \arrow[r, "\Delta"] & C \otimes C \arrow[r, "Id \otimes S"] & A \otimes A \arrow[r, "\mu"] & A
+A \otimes A \arrow[d, "id \otimes S"] & A \arrow[d, "u \circ \epsilon"] \arrow[l, "\Delta"] \arrow[r, "\Delta"] & A \otimes A \arrow[d, "S \otimes id"] \\
+A \otimes A \arrow[r, "\mu"]          & A                                                                       & A \otimes A \arrow[l, "\mu"]         
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-For example, the antipode $S$ for a group algebra is such that $$\mu \circ (Id
+In Sweedler notation, $$u(\epsilon(a)) = \sum a_1S(a_2) = \sum S(a_1)a_2$$
+
+*** $k$ Bialgebra - antipode as the inverse of an identity
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Given $A$ a bi-algebra with antipode $S$, $S$ is the inverse of $id_A$ in the 
+$(A^A, \star, u \circ \epsilon)$ algebra.
+
+*** $k$ Bialgebra - antipode for a group algebra
+
+The antipode $S$ for a group algebra is such that $$\mu \circ (Id
 \otimes S) (g \otimes g) = u(1)$$ i.e., $S(g) = g^{-1}$.
 
 
