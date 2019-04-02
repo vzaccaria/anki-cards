@@ -235,6 +235,18 @@ Orbits in $G$ relative to $H$ are disjoint subsets of $G$: $\bigcup_g H_g = G$
       sub-group of $H$ (it is called /isotropy group/).
 
 *** Orbit in a set $S$ relative to a group $H$
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                                                               & (h_0 \curvearrowright s) \in S  \arrow[ld, no head, dotted, bend right]              &                                                           \\
+h_1 \curvearrowright s \arrow[rd, no head, dotted, bend right] & s \in S                                                                              & h_{|H|} \curvearrowright s \arrow[lu, dotted, bend right] \\
+                                                               & h_2 \curvearrowright s \arrow[ru, "\ldots" description, no head, dotted, bend right] &                                                          
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 - Given an action $\curvearrowright: H \times S \rightarrow S$ the *group orbit*
   of $s \in S$ is a subset of $S$ defined as $$H_s = \{h \curvearrowright s:
   \forall h \in H \}$$
@@ -1051,17 +1063,17 @@ F \arrow[r, hook] & {F[p_1]} \arrow[r, hook] & {F[p_1,p_2]} \\
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-F \arrow[r, hook] & {F[p_1]} \arrow[r, hook] & {F[p_1,p_2]} \\
-\{id\} \arrow[r, hook] & {Gal(F[p_1] : F)} \arrow[r, hook] \arrow[l, "\mu_1", bend left] & {Gal(F[p_1,p_2] : F)} \arrow[l, "\mu_{12}", bend left]
+{A = F[p_1, p_2]}          & F^A = Gal(A:F) \arrow[d, "h"]  & B^A = Ker(h) \arrow[l, hook] \\
+{B=F[p_1]} \arrow[u, hook] & F^B \arrow[u, hook, bend left] &                             
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- Given a field $F$, its field extensions $F[p_1],F[p_1,p_2]$ might be ordered according to
-  inclusion. Their Galois group are automatically endowed with a homomorphism
-  $\mu$ corresponding to a restriction of $h \in Gal(F[p_1,p_2]:F)$ into $Gal(F[p_1]:F)$.
+- Given a field $F$, its field extensions $B=F[p_1], A=F[p_1,p_2]$ might be ordered according to
+  inclusion. Their Galois group $F^A$ and $F^B$ are automatically endowed with a homomorphism
+  $h$ corresponding to a restriction of any $f \in F^A$ into $F^B$.
 
-- This homomorphism has a kernel $K = Gal(F[p_1,p_2]:F[p_1])$, so $Gal(F[p_1]:F) \cong Gal(F[p_1,p_2],F)/Gal(F[p_1,p_2],F[p_1])$.
+- This homomorphism has a kernel the group $B^A$, so $F^B = F^A/B^A$
 
 *** Finite Field - order 
 - The number of elements of a finite field is called its order.
@@ -3298,17 +3310,24 @@ P(A \times S) & P(A \times R) \arrow[l] \arrow[r] & P(A \times S)
 :BEAMER_opt: fragile
 :END:
 
-A stream is a final co-algebra of $s \mapsto a \times s$.  Here, we use an anamorphism to create a stream of incremental data from $\phi$, a function that
-specifies an initial value and then how to produce successive values through $f$.
+A stream $S_A$ is a final co-algebra of $s \mapsto a \times s$. One can build a stream from
+a seed value $a \in A$ by using $ana((Id \times \nu)\circ\Delta)$ where $\nu$ specifies how to 
+generate the next value.
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-a \arrow[d, "\phi = Id \times f"] \arrow[rr, "\alpha \phi", bend left] & s \arrow[r, "\alpha \psi"] \arrow[d, "\psi"] & S(a) \arrow[d, "Cofix", bend left] \\
-a \times a & a \times s & a \times S(a) \arrow[u, "unCofix", bend left]
+A \times A \arrow[rr, "Id \times \phi"]                                                                &  & A \times S_A \arrow[dd, "scons = -_A \cdot -_{S_A}", bend left] \\
+A \times A \arrow[u, "Id \times \nu" description]                                                      &  &                                                                 \\
+A \arrow[u, "\Delta" description] \arrow[rr, "\phi = \alpha f"] \arrow[uu, "f" description, bend left] &  & S_A \arrow[uu, "cofix"]                                        
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
+
+We have that $\phi(a) = scons(a, \phi(\nu(a)) = a \cdot \nu(a) \cdot \nu^2(a) \cdot \ldots$
+
+
+
 
 
 ** Monad algebras
