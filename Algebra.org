@@ -2662,20 +2662,40 @@ r \arrow[rr, "h"]   &                                        & d \\
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-- $(r, u)$ is universal for $(S,c)$ if and only if $D(r,d) \simeq C(c,Sd)$.
+$(r, u)$ is universal for $(S,c)$ if and only if $D(r,-) \simeq C(c,S-)$. When
+this happens we say that $(S-)^c$ *is represented* by $r$. 
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-                    & c \arrow[ld, "u",red] \arrow[rd, "f'"] &  \\
-Sr \arrow[rr, "Sh"] &                                        & Sd \\
-r \arrow[rr, "h"]   &                                        & d \\
+                    & c \arrow[ld, "u",red] \arrow[rd, "f' \in (S-)^c \cong r^-"] &  \\
+Sr \arrow[rr, "Sh"] &                                        & S- \\
+r \arrow[rr, "h"]   &                                        & - \\
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- $(S-)^c$ is represented by $r$ if $(r,u)$ is universal for $(S,c)$  
-- $(K-)^*:=K$ is represented by $r$ if $(r, u: * \rightarrow Kr)$ is universal for $(K,*)$.
+*** Universal arrow from object (Yoneda lemma)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+Any functor $(K-)^*:=K$ is *represented* by $r$ if $(r, u: * \rightarrow Kr)$ is
+universal for $(K,*)$.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                    & * \arrow[ld, "u",red] \arrow[rd, "f' \in (K-)^* \cong r^-"] &  \\
+Kr \arrow[rr, "Kh"] &                                        & K- \\
+r \arrow[rr, "h"]   &                                        & - \\
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+Yoneda: the components of the natt $r^- \cong K-$ are one to one with the
+elements of $Kr$.
+
+
 
 
 *** Universal arrow from object (free vector spaces)
