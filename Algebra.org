@@ -2277,28 +2277,7 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
    point of functor $A+T[-]$, where $A$ is an arbitrary object.
  - It is possible to show that $\tilde{F}[A]$ is a functor and *a monad* in $A$.
 
-*** Free monads (construction)
-
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-1 \arrow[rd, "k_1", dotted] & A \arrow[d, "k_2", dotted] & S \rightarrow A \arrow[ld, "k_3", dotted] \\
- & {T[A]} \arrow[d, "\textrm{liftF}"] &  \\
- & {\tilde{F}[A]} & 
-\end{tikzcd}
-#+END_EXPORT
-
-- Define commands $k_1, ..., k_n$ as constructors for values in functor $T[A]$
-  and compose with ~liftF~ to create a monadic value.
-
-- $A$ must be interpreted as the value that should be passed to the next
-  computation. Example:
-
-  : data ConsoleF a =
-  :      PutStrLn String a      -- k_1: A -> T[A]
-  :    | GetLine (String -> a)  -- k_2: (S -> A) -> T[a]
-  :    deriving (Functor)
-
-*** Free monads (bind)
+*** Free monads (construction - bind)
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2314,36 +2293,73 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
   $\pi$ or a free $\phi$: $$f^o = \begin{cases} f \circ \pi^{-1} \\ \phi\circ
   Tf^o \phi^{-1}\\ \end{cases}$$
 
+*** Free monads (underlying functor commands)
 
+We are building an AST tree through constructors
 
-*** Free monads (interpretation)
-    :PROPERTIES:
-    :BEAMER_opt: fragile
-    :END:
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-T \arrow[r, Rightarrow, "\phi"] \arrow[d, Rightarrow, "\textrm{liftF}"'] & M \\
-\tilde{T} \arrow[ru, Rightarrow, "\textrm{run}"'] & 
-\end{tikzcd}
-#+END_EXPORT
-- A value can be built into the free monad $\tilde{T}[ ]$ 
-  with monad syntax and interpreted with a custom ~run~ into a monad $M$.
-- Some authors derive ~run~ from a natural transformation $\phi$.
+  : data ConsoleF a =
+  :      _______________....... k_1: A -> T[A]
+  :      PutStrLn String a    
+  :      _______............... k_2: (S -> A) -> T[A]
+  :      GetLine (String -> a)  
+  :      ___                    k_3: () -> T[A]
+  :      End                    
+  : ...
+  : ast = Getline (\x => (PutStrLn ("Hi" ++ x) End))
+
+*** Free monads (building monad commands from functor ones)
+
+To build the AST tree through a Free monad
+
+: type Console = Free ConsoleF
+
+we need to lift the functor commands:
+
+$$\kappa_i~x = \phi (fmap~\pi~(k_i~x)) = liftF~(k_i~x)$$
+
+: tell :: String -> Console ()
+: tell s = liftF (PutStrLn s ())
+
+: getline :: Console String
+: getline = liftF (GetLine id)
 
 *** Free monads (composition)
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
-    
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-T \arrow[rr, "InL"] \arrow[d] &  * \arrow[d, "freeM"] & (T+G) \arrow[d] &  & G \arrow[ll, "InR"'] \arrow[d] \\
-\tilde{T} \arrow[rr] &  * & \tilde{T+G} &  & \tilde{G} \arrow[ll]
-\end{tikzcd}
-#+END_EXPORT
 
--   Given two functors $T$ and $G$, one can build a free monad of $(T+G)$ by
-    lifting with $freeM$ the injection morphisms.
+Given two functors $T$ and $G$, one can build a free monad of $(T+G)$ 
+
+: data (f :+: g) a = Inl f a | Inr g a
+: instance (Functor f, Functor g) => Functor (f :+: g) where
+:   fmap k (Inl fa) = fmap k fa 
+:   fmap k (Inr ga) = fmap k ga
+
+This is a way to compose functors which manage different effects into a single
+monad.
+
+*** Free monads (interpretation)
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
+An interpreter is a natural transformation between the original functor 
+and the monad:
+
+: class (Functor f, Monad m) => Interpret f where
+:     intp :: f a -> m a
+
+: instance (Interpret f m, Interpret g m) =>
+:    Interpret (f :+: g) m where
+:      intp (Inl fa) = intp fa
+:      intp (Inr ga) = intp ga
+
+You can then build the interpreter from the free monad with:
+
+: interpret :: Interpret f m => Free f a -> m a
+: interpret (Return a) = return a
+: interpret (Join fa) = join $ intp (interpret <$> fa)
+
+(consistent with Tweagio's and Hopkins's free monads)
 
 *** Suspended computation and continuation monads
     - A function ~(a -> r) -> r~ is called a suspended computation (SC). It needs a way
