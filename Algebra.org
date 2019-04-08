@@ -1705,7 +1705,8 @@ and unit $u \circ \epsilon$.
 :BEAMER_opt: fragile
 :END:
 
-An antipode $S$ is the morphism $A \rightarrow A$ for which 
+An Hopf algebra is a bi-algebra with an antipode.
+An *antipode* $S$ is the morphism $A \rightarrow A$ for which 
 the following commutes:
 
 #+BEGIN_CENTER
@@ -1731,6 +1732,24 @@ $(A^A, \star, u \circ \epsilon)$ algebra.
 
 The antipode $S$ for a group algebra is such that $$\mu \circ (Id
 \otimes S) (g \otimes g) = u(1)$$ i.e., $S(g) = g^{-1}$.
+*** Opposite algebras and co-algebras
+
+- Given an algebra $A$, the opposite co-algebra $\bar{A}$ is the same as A but with multiplication inverted.
+
+- Given a co-algebra $C$, the opposite co-algebra $\widetilde{C}$ is the same as
+  C but with co-multiplication such that: $$\Delta_{\widetilde{C}} := \tau \circ \Delta_C$$
+
+- Given a bi-algebra $B$, $\widetilde{\bar{B}}$ is a bi-algebra.
+
+*** Antipode as a morphism of Hopf algebras
+
+Given an Hopf algebra $H$, the antipode $S$ is a morphism $H \rightarrow
+\widetilde{\bar{H}}$ (the latter is the /opcop/ algebra). This means that it is
+both an algebra morphism: $$ S(x \otimes_1 y)=S(x) \otimes_2 S(y), S \circ u_1 =
+u_2$$ and a co-algebra morphism:
+$$(S \otimes S)\circ\Delta_1 = \Delta_2 \circ S, \epsilon_2 \circ f = \epsilon_1$$
+
+
 
 
 ** Modules
@@ -1795,6 +1814,7 @@ uncurried representation of $A$ $$\rho_A: A \rightarrow (V \rightarrow V)$$
 A module is a ring homomorphism into the endomorphism ring of an abelian group. Since $Z$ is the 
 initial object in the category of rings, there is a single $Z$-module for each abelian group.
 
+  
 * Category theory 
 
 ** Category basics
