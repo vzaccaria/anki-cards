@@ -203,6 +203,51 @@ Orbits in $G$ relative to $H$ are disjoint subsets of $G$: $\bigcup_g H_g = G$
 
      - An action $g * x$ is the same as a group homomorphism $G \rightarrow \textrm{Aut}(X)$
 
+*** Group action (categoric view)
+     - A group action from $G$ into $S$ is a functor $BG \rightarrow Set$ ($BG$ is the  
+      one object category). 
+
+    - The existence of a functor implies that the morphisms $g_*$ in $Set$ are 
+      automorphisms that have an inverse and that $(g_*)^{-1} = (g^{-1})_*$.
+
+*** G-Equivariant maps  
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+ Given two actions of a group $G$ (interpreted as functors) over two sets $X$
+ and $Y$, a natural transformation among them is called a $G$ equivariant map
+ $\alpha$
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\bullet (BG) \arrow[r, dotted] \arrow[d] & X \arrow[d, "g_*"] \arrow[r, "\alpha"] & Y \arrow[d, "g_*"] \\
+\bullet  (BG) \arrow[r, dotted]           & X \arrow[r, "\alpha"]                  & Y                 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** $G$ equivariant maps over the same group $G$
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+$G$ can be seen as an object in set over which $G$ acts by left or right
+multiplication ($g\times -$). 
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\bullet (BG) \arrow[r, dotted] \arrow[d] & G \arrow[d, "(g \times -)"] \arrow[r, "\alpha"] & Y \arrow[d, "g_*"] \\
+\bullet  (BG) \arrow[r, dotted]           & G \arrow[r, "\alpha"]                  & Y                 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+A natural transformation $\alpha$ with another action over $Y$ is
+such that $\alpha(g \times h) = g^*(\alpha(h))$ thus $\alpha(g)=g^*(\alpha(1))$ which is
+completely determined by $\alpha(1)$. $G$ equivariant maps correspond bijectively to elements of $X$.
+
 *** Commutator subgroup
 
    - A commutator subgroup $[G,G]$ is an abelian group that can be built from a
@@ -2721,14 +2766,14 @@ universal for $(K,*)$.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-                    & * \arrow[ld, "u",red] \arrow[rd, "f' \in (K-)^* \cong r^-"] &  \\
+                    & * \arrow[ld, "u",red] \arrow[rd, "f' \in (K-)^* \cong -^r"] &  \\
 Kr \arrow[rr, "Kh"] &                                        & K- \\
 r \arrow[rr, "h"]   &                                        & - \\
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-Yoneda: the components of the natt $r^- \cong K-$ are one to one with the
+Yoneda: the components of the natural transformation $r^- \cong K-$ are one to one with the
 elements of $Kr$.
 
 
