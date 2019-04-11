@@ -369,7 +369,7 @@ This construction is a *functor*.
 - So, by the FHT, $I(G) = G/C(G)$
 
 ** Group representations
-*** Category of representations
+*** Category of linear representations
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -387,15 +387,6 @@ of representations $Rep(G)$ is the functor category $Vect^{BG}$ where
 #+END_EXPORT
 #+END_CENTER
 
-*** Linear group representation
-
-    - A *linear group representation* of $G$ is a group homomorphism
-      $$\rho : G \rightarrow Aut(V)$$
-
-    - It represents the elements of $G$ as *symmetries of the vector space* $V$.
-
-    - By choosing a basis in $V$, $Aut(V) \simeq GL(V)$.
-
 *** Properties of a linear group representation
 
     - $\rho_g \rho_h = \rho_{gh}$
@@ -404,14 +395,13 @@ of representations $Rep(G)$ is the functor category $Vect^{BG}$ where
     - $\rho_g(xv + yw) = x\rho_gv + y\rho_gw$
 
 *** Permutation representation
-     - The *permutation representation* is associated with a symmetric group $G =
-       S_n$ and acts on a $V_k = k^n$.
+     - The *permutation representation* is the representation of a symmetric group
+       $S_n$ acting on $V_k = k^n$.
+     
+     - It gives the following permutation matrix for each $s \in S_n$, i.e., 
+       if $v \in V_k = \sum_j a_j e_j$: $$\rho_s
+       v = \sum a_j e_{s(j)}$$
 
-     - Assume $v \in V_k = \sum_j a_j e_j$ with e_j basis. A permutation
-       representation $\rho_{\pi}: S_n \rightarrow GL(k^n)$ is such that $\rho_s
-       v = \sum a_j e_{s(j)}$.
-
-     - Practically speaking, gives a permutation matrix for each $g \in G$.
 
 *** Character of a representation
 
@@ -471,47 +461,53 @@ of representations $Rep(G)$ is the functor category $Vect^{BG}$ where
 
 *** Trivial representation
 
-    - A representation $\rho: G \rightarrow GL(E_k)$ is trivial if all $g \in G$
-      map to an identity matrix.
+    - A representation $\rho: G \rightarrow GL(E_k)$ is trivial if $\rho_g = I \forall g$.
 
 *** Invariant representation
-     A representation $\rho(g)$ is *invariant* if $\forall v \in V \rho(g)v \subseteq V$
+     A representation $\rho(g)$ is *invariant* if $\forall v \in V. \rho(g)v \subseteq V$
 
 *** Intertwining operator
 
-  - An intertwining operator is a functor $\Phi_{ij}: E_i \rightarrow E_j$ that
-    preserves representations: $$\Phi_{ij}(\rho_i(g)v)=\rho_j(g)\Phi_{ij}(v)$$
+  - An intertwining operator is a natural transformation between 
+    representations interpreted as functors from $BG$.
 
-  - As such, it introduces a homomorphism between representations $$\rho_2
-    = \Phi_{12} \rho_1$$ which comply with composition.
-
-  - We can thus say that any group $G$ defines a *category of representations* and
-    we can speak of its morphisms (intertwiner) as $Hom_G(\rho_1, \rho_2)$.
-
-*** Morphisms of representations
-
-- A morphism between vector spaces $F \rightarrow E$ can be a morphism of
-  representations if it is an intertwiner.
-
-- The inclusion morphism between vector spaces is an intertwiner if it is invariant.
-
-*** Equivalence of representations
-
-  $\rho_1, \rho_2$ are equivalent if there exists an intertwining operator $L$
-  that has an inverse and such that $$L \circ \rho_1 = \rho_2 \circ L$$.
+ - Two representations are equivalent if there exists a natural isomorphism between
+   the corresponding functors.
 
 *** Subrepresentations
-   Given a subspace $F \subseteq E$, if $$\forall f \in F, ~~\rho(G)(f) \in
-     F$$ then $(\rho, F)$ is a *subrepresentation* of $(\rho, E)$.
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-   If a group has a subrepresentation $F \subseteq E$ then also $E/F$ is a
-   representation.
+Given $E \subseteq F$, a representation $(\rho_E,E)$ is a sub-representation of
+$(\rho_F,F)$ if $\rho_F \circ i = i \circ \rho_E$ (i.e., the inclusion map is
+an intertwiner):
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\bullet \arrow[d, "g"] \arrow[r, dotted] \arrow[rrr, dotted, bend left] & E \arrow[d, "\rho_E(g)"] \arrow[rr, hook] & * \arrow[d, "\Phi", dashed] & F \arrow[d, "\rho_F(g)"] \\
+\bullet                                                                 & F \arrow[rr, hook]                        & *                           & F                       
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
 
 *** Trivial subrepresentation
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-   - A trivial subrepresentation $E^G$ of $\rho$ is the set of $e \in E$ such that $\rho(g)e = e$.
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\bullet \arrow[d, "g"] \arrow[r, dotted] \arrow[rrr, dotted, bend left] & F^G \arrow[d, "\rho_{F^G}(g) \simeq I"] \arrow[rr, hook] & * \arrow[d, "\Phi", dashed] & F \arrow[d, "\rho_F(g)"] \\
+\bullet                                                                 & F^G \arrow[rr, hook]                                     & *                           & F                       
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
-   - Any non-zero vector in $E^G$ produces a one-dimensional representation.
+A trivial subrepresentation $F^G$ is an identity map that is intertwined by inclusion.
 
 *** Functoriality of representations
 
@@ -1006,6 +1002,11 @@ A ring is semisimple if (as its left or right module) is semisimple.
 
 - If the dimension of $F[c]$ is $n$, we say that the *degree of $F[c]$ over $F$
   is $n$*, i.e., $$[F(c) : F]=n$$
+
+*** Transcendental vs algebraic field extensions
+
+- A field extension $F[c]$ is *transcendental* if some element in $F[c]$ is not a root
+  of a polynomial in $F[x]$ otherwise it is algebraic.
 
 *** Field extension $Z[x]/(x^2+x+1)$
     The polynomial $x^2 + x + 1$ does not have any root in $Z_2$. To
