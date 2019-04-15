@@ -868,6 +868,15 @@ given prime number,
     - $f(a * b) = f(a) * f(b)$
     - $f(1_R) = 1_S$
 
+*** Ring anti-homomorphism
+
+    If $R$ and $S$ are rings, a ring anti-homomorphism $f: R \rightarrow S$ is a
+    total function such that (note that multiplication order is inverted):
+
+    - $f(a + b) = f(a) + f(b)$
+    - $f(a * b) = f(b) * f(a)$
+    - $f(1_R) = 1_S$
+
 *** $\ZZ$ ring homomorphism
 
 For every ring $R$, there is a unique ring homomorphism $\ZZ \rightarrow R$. This says that the
@@ -1850,10 +1859,27 @@ which satisfies:
 - $T(\alpha a)=\alpha T(a)$
 
 *** A-Module 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-An $A$ module is a vector space where in place of a ring or a field, we use use
-an algebra. The multiplication $$*: A \times V \rightarrow V$$ is just the
-uncurried representation of $A$ $$\rho_A: A \rightarrow (V \rightarrow V)$$
+An $A$ module is a vector space $V$ where in place of a ring or a field, we use
+use an algebra. The multiplication $\lambda: A \times V \rightarrow V$ is just
+the uncurried representation of a ring homomorphism $A$ $$\rho_A: A \rightarrow
+(V \rightarrow V)$$
+The operation $\lambda$ is such that the following commutes:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+A \otimes A \otimes V \arrow[d, "m \otimes id"] \arrow[r, "id \otimes \lambda"] & A \otimes V \arrow[d, "\lambda"] & k \otimes V \arrow[ld, "s"] \arrow[l, "u \otimes id"] \\
+A \otimes V \arrow[r, "\lambda"]                                                & V                                &                                                      
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+
+
 
 *** Z-Module
 
@@ -2124,6 +2150,21 @@ $x$ into the underlying set of $g$. Among them, we find the objects
 $\np{F(x)}{\eta}$ where $\eta$ maps $x$ into the underlying set of the free
 group $F(x)$.
 
+*** Product and permutation category (PROP)
+
+- A PROP is a symmetric monoidal category with objects the natural numbers, where
+  the monoidal operator $\oplus$ is addition. 
+
+- They are used to describe a given sort of algebraic structure. Every object is
+  of the form $$x^{\otimes n} = x \otimes x \otimes \cdots \otimes x$$
+
+*** Symmetric monoidal theory
+
+- A *symmetric monoidal theory* (or /presentation/) for a prop $G$ is a pair
+  $(\Sigma, E)$ where $\Sigma$ is the set of generators $n \rightarrow m$ ($n,m$
+  integers) while $E$ is an equality relation on them.
+- The generated prop $G$ is the set of expressions that one can construct with
+  elements in $\Sigma$ quotiented over $E$.
 
 
 ** Set category
