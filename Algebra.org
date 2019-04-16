@@ -3347,6 +3347,30 @@ Two ways to build them,
   Build expressions in ~Expr~ with original type constructors, evaluate with ~eval
   = cata rules~.
 
+*** Expression data types as functors - templating
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{A + T[\widetilde{Q}_A^T]} \arrow[d] \arrow[r]       & {A+T[\widetilde{T}]} \arrow[d, "\phi + Fix_T"] \\
+\widetilde{Q}_A^T \arrow[r, "\kappa(\phi + Fix_T)"'] & \widetilde{T}                                 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- Assume $T[-]$ is a functor with $\wtt$ as its initial algebra representing an AST.
+
+- Then $Q_A^T= A + T[-]$ is such that $\wtq_A^T$ is a tree similar to $\wtt$
+  where leafs are $A$ while $T$ merges them into the tree itself. 
+- For templating $A=String$ referencing the name of a variable.
+
+- Given $\phi: A \rightarrow \wtt$ you can build a complete $\wtt$ from
+  $\wtq_A^T$ with $\kappa(\phi + Fix_T)$ (acting as /template substitution/).
+
+
 *** Parser combinators
 :PROPERTIES:
 :BEAMER_opt: fragile
