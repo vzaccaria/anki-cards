@@ -210,43 +210,6 @@ Orbits in $G$ relative to $H$ are disjoint subsets of $G$: $\bigcup_g H_g = G$
     - The existence of a functor implies that the morphisms $g_*$ in $Set$ are 
       automorphisms that have an inverse and that $(g_*)^{-1} = (g^{-1})_*$.
 
-*** G-Equivariant maps  
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
- Given two actions of a group $G$ (interpreted as functors) over two sets $X$
- and $Y$, a natural transformation among them is called a $G$ equivariant map
- $\alpha$
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-\bullet (BG) \arrow[r, dotted] \arrow[d] & X \arrow[d, "g_*"] \arrow[r, "\alpha"] & Y \arrow[d, "g_*"] \\
-\bullet  (BG) \arrow[r, dotted]           & X \arrow[r, "\alpha"]                  & Y                 
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-*** $G$ equivariant maps over the same group $G$
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-$G$ can be seen as an object in set over which $G$ acts by left or right
-multiplication ($g\times -$). 
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-\bullet (BG) \arrow[r, dotted] \arrow[d] & G \arrow[d, "(g \times -)"] \arrow[r, "\alpha"] & Y \arrow[d, "g_*"] \\
-\bullet  (BG) \arrow[r, dotted]           & G \arrow[r, "\alpha"]                  & Y                 
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-A natural transformation $\alpha$ with another action over $Y$ is
-such that $\alpha(g \times h) = g^*(\alpha(h))$ thus $\alpha(g)=g^*(\alpha(1))$ which is
-completely determined by $\alpha(1)$. $G$ equivariant maps correspond bijectively to elements of $X$.
 
 *** Commutator subgroup
 
@@ -955,18 +918,6 @@ ring of integers is an initial object in the category of rings.
 
     We say that $F[x]$ is a *unique factorization domain*.
 
-*** Algebraic element and minimal polynomial
-- Given an extension $F[x]$, $a$ is called an algebraic element over $F$ if:
-  $$\exists g(x). g(a) = 0$$ where $g(x)$ has coefficients in $F$.
-
-- The lowest degree polynomial $g(x)$ of such form is called /minimal polynomial/ of $a$.
-
-- Fields that do not allow algebraic elements over them are called /algebraically closed/.
-
-*** Fundamental theorem of algebra
-    - Every nonconstant polynomial with complex coefficients has a complex root.
-    - If the coefficients are in $\mathbb{R}$ and $a+bi$ is a root, then also $a-bi$ is a root.
-
 *** Semisimple ring
 A ring is semisimple if (as its left or right module) is semisimple.
 ** Fields
@@ -986,10 +937,7 @@ A ring is semisimple if (as its left or right module) is semisimple.
     The following relation is found to hold: $$ n > 0 \leftrightarrow
     \textrm{prime}(n)$$
 
-*** Algebraically closed field
-    An algebraically closed field $F$ contains a root for every non-constant
-    polynomial in $F[x]$, the ring of polynomials in the variable $x$ with
-    coefficients in $F$.
+
 
 *** Field extensions 
 
@@ -1012,10 +960,44 @@ A ring is semisimple if (as its left or right module) is semisimple.
 - If the dimension of $F[c]$ is $n$, we say that the *degree of $F[c]$ over $F$
   is $n$*, i.e., $$[F(c) : F]=n$$
 
-*** Transcendental vs algebraic field extensions
 
-- A field extension $F[c]$ is *transcendental* if some element in $F[c]$ is not a root
-  of a polynomial in $F[x]$ otherwise it is algebraic.
+*** Algebraic element and minimal polynomial
+- Given an extension $F$ of a field $K$, $a \in F$ is called an *algebraic
+  element* over $K$ if: $$\exists k(x). k(a) = 0$$ where $k(x)$ has coefficients
+  in $K$. Otherwise they are called transcendental over $K$. The lowest degree
+  polynomial $g(x)$ of such form is called /minimal polynomial/ of $a$.
+
+- Examples: 
+  - $\sqrt(2) \in \RR$ is algebraic over $\QQ$ with minimal polynomial $x^2-2$
+  - $\pi \in \RR$ is trancendental over $\QQ$, while it is algebraic over $\RR$
+  - $i \in \CC$ is algebraic over $\RR$ with polynomial $x^2+1$
+
+
+*** Algebraically closed field
+  
+  - An algebraically closed field $K$ contains a root for every non-constant
+    polynomial in $K[x]$, the ring of polynomials in the variable $x$ with
+    coefficients in $K$.
+
+  - In practice, roots can be found within it, no need for an extension
+    introducing new elements that are algebraic and not contained in $K$. Complex
+    numbers are an example.
+
+  - Any field has an algebraic extension that is closed
+
+*** Algebraic field extension
+
+- An extension $L$ of $K$ is algebraic if every element of $L$ is algebraic over $K$. 
+
+- $\CC/\RR$ is algebraic because a complex number can be always seen as a root of a polynomial
+  with real coefficients.
+
+*** Transcendental field extension
+
+- A field extension $L$ of $K$ is *transcendental* if some element in $L$ are not a root
+  of a polynomial in $K$.
+
+- For example, $\RR/\QQ$ is transcendental because it has, for example, $\pi$.
 
 *** Field extension $Z[x]/(x^2+x+1)$
     The polynomial $x^2 + x + 1$ does not have any root in $Z_2$. To
@@ -1159,6 +1141,10 @@ expressed as powers of a single element called a primitive element of the field.
   less than n. 
 - Except in the construction of GF(4), there are several possible choices for P,
   which produce isomorphic results.
+
+*** Fundamental theorem of algebra
+    - Every nonconstant polynomial with complex coefficients has a complex root.
+    - If the coefficients are in $\mathbb{R}$ and $a+bi$ is a root, then also $a-bi$ is a root.
 
 * Algebras of vector spaces and modules
 ** Vector spaces
@@ -2798,25 +2784,6 @@ r \arrow[rr, "h"]   &                                        & - \\
 #+END_EXPORT
 #+END_CENTER
 
-*** Universal arrow from object (Yoneda lemma)
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-Any functor $(K-)^*:=K$ is *represented* by $r$ if $(r, u: * \rightarrow Kr)$ is
-universal for $(K,*)$.
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-                    & * \arrow[ld, "u",red] \arrow[rd, "f' \in (K-)^* \cong -^r"] &  \\
-Kr \arrow[rr, "Kh"] &                                        & K- \\
-r \arrow[rr, "h"]   &                                        & - \\
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-Yoneda: the components of the natural transformation $r^- \cong K-$ are one to one with the
-elements of $Kr$.
 
 
 
@@ -3593,20 +3560,95 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
 :BEAMER_opt: fragile
 :END:
 
+#+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-\textbf{C} & \textbf{Set} &  \\
-a \arrow[rr, "F a"] &  & \phi \cong \{ \alpha_{c\in C} \} \\
-x \arrow[d] \arrow[r, "(-)^a"'] \arrow[rr, "F(-)", bend left] & x^a \arrow[d] \arrow[r, "\alpha_x"] & Fx \arrow[d] \\
-y \arrow[r] \arrow[rr, bend right] & y^a \arrow[r, "\alpha_y"] & Fy
+x \arrow[d] & x^c \arrow[d] \arrow[r, "\alpha_x"] & Fx \arrow[d] \\
+y  & y^c \arrow[r, "\alpha_y"] & Fy
 \end{tikzcd}
 #+END_EXPORT
+#+END_CENTER
 
-- Assume a functor from $F: C \rightarrow Set$ 
+For any functor $F: C \rightarrow Set$ and any object $c$,
+for every point $p$ in $F c$ (which is a set) there is a unique
+natural transformation $\alpha_p: (-)^c \rightarrow F$, i.e., 
+$$Hom((-)^c,F) \simeq Fc$$
 
-- Basically, for every point $p$ in $\phi = F a$ (which is a set) there is a unique
-  component of the natural transformation $\alpha_p: (-)^a \rightarrow F$.
 
+*** Yoneda Lemma - G-Equivariant maps  
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+ Given two actions of a group $G$ (interpreted as functors) over two sets $X$
+ and $Y$, a natural transformation among them is called a *$G$ equivariant map*
+ $\alpha$
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\bullet (BG)  \arrow[d] & X \arrow[d, "g_*"] \arrow[r, "\alpha"] & Y \arrow[d, "g_*"] \\
+\bullet  (BG)            & X \arrow[r, "\alpha"]                  & Y                 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** Yoneda Lemma - Functor from $BG$ to $G$ 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+$G$ can be seen as an object in Set over which $BG$ acts functorially by left or right
+multiplication ($g\times -$), call this functor $f_G$. 
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\bullet (BG)  \arrow[d] & G \arrow[d, "(g \times -)"]  \\
+\bullet (BG)           & G                 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+Note that $G \simeq (-)^{\bullet}$ so the functor $f_G$ is a represented one.
+
+*** Yoneda lemma - $G$ equivariant maps determined by identity
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\bullet (BG)  \arrow[d] & (-)^{\bullet} \arrow[d, "(g \times -)"] \arrow[r, "\alpha"] & F\bullet \arrow[d, "g_*"] \\
+\bullet (BG)           & (-)^{\bullet} \arrow[r, "\alpha"]                  &  F\bullet
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+A natural transformation $\alpha$ with another action $F$ over $F\bullet$ is such that
+$\alpha(g \times h) = g^*(\alpha(h))$ thus $\alpha(g)=g^*(\alpha(1))$ which is
+completely determined by $\alpha(1)$. Thus, $G$ equivariant maps correspond
+bijectively to elements of $F\bullet$: $$Hom((-)^\bullet,F) \simeq F\bullet$$
+
+*** Yoneda as a universal arrow from object 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+Any functor $(K-)^*:=K$ is *represented* by $r$ if $(r, u: * \rightarrow Kr)$ is
+universal for $(K,*)$.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                    & * \arrow[ld, "u",red] \arrow[rd, "f' \in (K-)^* \cong -^r"] &  \\
+Kr \arrow[rr, "Kh"] &                                        & K- \\
+r \arrow[rr, "h"]   &                                        & - \\
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+Yoneda: the components of the natural transformation $r^- \cong K-$ are one to one with the
+elements of $Kr$.
 *** Cayley's through yoneda
 
 - Take $C = \{ * \}$ the category with a single object.
