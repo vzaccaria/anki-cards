@@ -5,13 +5,19 @@
 #+BEAMER_HEADER: \input{header.tex}
 #+STARTUP: indent 
 
-* Algebraic structures with one operator
+* Abstract Algebra 
 ** Other structures
 *** Magma                                                                 :noanki:
     A magma is set $M$ equipped with a single binary operation,
     $(*): M \times M \rightarrow M$ that satisfies:
 
    - *closure*: $a \in M, b \in M \rightarrow a * b \in M$
+
+*** Indexed families 
+
+A /family of elements of $X$ indexed by $I$/ is a function $$f: I \mto X$$ It 
+can be written as $$(x_i)_{i\in I}$$ An $n$ -tuple of set $X$ is one such special
+function $$(x_i)_{i = \{1 \ldots n\}}$$
 
 ** Monoids
 *** Monoid                                                                 :noanki:
@@ -330,6 +336,19 @@ This construction is a *functor*.
   an identity.
 
 - So, by the FHT, $I(G) = G/C(G)$
+ 
+*** Group theoretic term and n-ary operations                       :focus:
+- A *group theoretic term* $t$ is a formal expression using formal group
+  operations $(\cdot, ^{-1}, e)$ and a set of symbols $X=\{x,y,z\}$.
+
+- The above identifies a group element once one is given a function $f: X
+  \mto |G|$ (or $f \in |G|^X$). The set of group theoretic terms $T$ and $|G|^X$
+  are endowed with a unique evaluation map $$T \mto |G|^X \mto |G|$$
+
+- If $X$ has $n$ elements, fixing $t \in T$, one gets a /substitution/ $$s: |G|^X
+  \mto |G|$$ called *derived $n$ ary operation* of $G$ (or /term operation/).
+  Note that $t_1,t_2$ might produce the same substitution; for example $(x \cdot
+  y) \cdot z$ and $x \cdot (y \cdot z)$ are the same for groups.
 
 ** Group representations
 *** Category of linear representations
@@ -710,8 +729,7 @@ Given a set $X$ and a function assigning a set of subsets $\mathbf{N}(x) = \{ N_
 - $N_i \cap N_j \in \mathbf{N}(x)$
 - $N_i  = \{ \ldots e \ldots \}$ $N_i \subseteq N_j \implies N_j \in \mathbf{N}(e)$.
 
-
-* Algebraic structures with two operators
+  
 ** Semirings
 *** Semiring (Rig)
     A semiring $R$ consists of a set $R$ such that:
@@ -1146,7 +1164,6 @@ expressed as powers of a single element called a primitive element of the field.
     - Every nonconstant polynomial with complex coefficients has a complex root.
     - If the coefficients are in $\mathbb{R}$ and $a+bi$ is a root, then also $a-bi$ is a root.
 
-* Algebras of vector spaces and modules
 ** Vector spaces
 *** Vector space                                                                 :noanki:
 
