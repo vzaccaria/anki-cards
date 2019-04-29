@@ -2155,19 +2155,41 @@ group $F(x)$.
 
 *** Product and permutation category (PROP)
 
-- A PROP is a symmetric monoidal category with objects the natural numbers, where
+- A PROP is a symmetric monoidal category with objects the natural numbers,
   the monoidal operator $\oplus$ is addition. 
 
 - They are used to describe a given sort of algebraic structure. Every object is
   of the form $$x^{\otimes n} = x \otimes x \otimes \cdots \otimes x$$
 
+*** Product and permutation category *FinSet*
+
+*FinSet* is a PROP where morphisms $f: m \mto n$ are functions from the set $\ubr{m} = \{1
+\ldots m\}$ to the set $\ubr{n}=\{1 \ldots n\}$.
+
+The monoidal product of two morphism is obtained by pasting one above the other
+the two original morphism and the inputs and output set.
+
+*** Product and permutation Bij
+
+A Prop *Bij* has morphisms $f: m \mto n$ bijections $\ubr{m} \mto \ubr{n}$. Note
+that for $m \neq n$ the homset is empty. The morphisms are just permutations.
+
+*** Product and permutation $Rel_{Fin}$
+
+Morphisms $m \mto n$ are relations $R \subseteq \ubr{m} \times \ubr{n}$. The
+composition $R.S$ ($S \subseteq) \ubr{n} \times \ubr{p}$ is the set of pairs
+$(i,k) \in \ubr{m} \times \ubr{p}$ for which $$\exists j, (i,j) \in R (j,k) \wedge
+\in S$$
+
 *** Symmetric monoidal theory
 
-- A *symmetric monoidal theory* (or /presentation/) for a prop $G$ is a pair
-  $(\Sigma, E)$ where $\Sigma$ is the set of generators $n \rightarrow m$ ($n,m$
-  integers) while $E$ is an equality relation on them.
-- The generated prop $G$ is the set of expressions that one can construct with
-  elements in $\Sigma$ quotiented over $E$.
+- A *symmetric monoidal theory* (or /presentation/) for any PROP $G$ is a pair
+  $(\Sigma, E)$ where $\Sigma$ is the set of morphisms (generators) of type $n
+  \rightarrow m$ ($n,m$ integer=objects) while $E$ is a set of equations over
+  $\Sigma$.
+- A $\Sigma$ term is any morphism that can be built by composing the generators. 
+- A prop $G$ is generated as the set of expressions that one can construct with
+  elements in $\Sigma$ quotiented over $E$ (and the axioms of PROP)
 
 
 ** Set category
