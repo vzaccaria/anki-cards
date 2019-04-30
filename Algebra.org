@@ -2402,13 +2402,14 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
     :END:
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{A + T[\tilde{F}[A]]} \arrow[d] \arrow[r] & {A+T[X]} \arrow[d] \\
-\tilde{F}[A] \arrow[u, "\pi + \phi"] \arrow[r] & {X}
+{A_{\pi} + T[\tilde{F}[A]]_{\phi}} \arrow[d] \arrow[r] & {A+T[X]} \arrow[d] \\
+\tilde{F}[A] \arrow[u, "\cong"] \arrow[r] & {X}
 \end{tikzcd}
 #+END_EXPORT
 
- - Given a functor $T[-]$, the *free monad* $\tilde{F}[A]$ can be built as the fixed
-   point of functor $A+T[-]$, where $A$ is an arbitrary object.
+ - Given a functor $T[-]$, the *free monad* $\tilde{F}[A]$ can be built as the
+   fixed point of functor $A+T[-]$ (constructed with $\pi$ and $\phi$), where
+   $A$ is an arbitrary object.
  - It is possible to show that $\tilde{F}[A]$ is a functor and *a monad* in $A$.
 
 *** Free monads (construction - bind)
@@ -2440,14 +2441,22 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
   \mapsto (print~("hi" x) (end)))$$ of type $T[T[T[C]]]$
  
 *** Free monads (building monad commands from functor ones)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-To build the AST tree through a Free monad
+Remember that $T[C]$ is a representation of a sequence of commands. To build the
+AST tree through a Free monad, e.g., ~type Console = Free ConsoleF~, we need to
+lift single commands as they were sequences of one command alone.
 
-: type Console = Free ConsoleF
-
-we need to lift the functor commands:
-
-$$\kappa_i~x = \phi (fmap~\pi~(k_i~x)) = liftF~(k_i~x)$$
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{T[\widetilde{T}[A]]} \arrow[d, "\phi"] & {T[A]} \arrow[l, "T\pi"] \arrow[ld, "liftF"] \\
+{\widetilde{T}[A]}                      &                                             
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
 : tell :: String -> Console ()
 : tell s = liftF (PutStrLn s ())
