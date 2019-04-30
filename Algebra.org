@@ -90,7 +90,9 @@ function $$(x_i)_{i = \{1 \ldots n\}}$$
 
 *** Normal subgroup and action of inner automorphisms
 
-  - The normal subgroup is an invariant to the action of the inner automorphisms $I(G)$
+- For each $g \in G$, one can define an inner automorphism $i_g(x) = g x g^{-1}$
+- A normal subgroup $H$ is invariant to the action of the inner automorphisms
+  $I(G)$, because, for any $g$, $i_g(h) \in H$.
 
 *** Kernel of a group homomorphism
     The *kernel* $\textrm{ker}(f)$ of a group homomorphism $f: (G,\star)
@@ -321,8 +323,8 @@ This construction is a *functor*.
   permutations of $G$ elements.
 
 *** Inner automorphisms
-- For each $g \in G$, one can define an inner automorphism $i_g = \gamma \mapsto 
-  g\gamma g^{-1}$
+- For each $g \in G$, one can define an inner automorphism $i_g(x) = 
+  g x g^{-1}$
 
 - These automorphisms are permutations that form a group $I(G) \subset A(G)$.
 
@@ -2425,20 +2427,18 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
   $\pi$ or a free $\phi$: $$f^o = \begin{cases} f \circ \pi^{-1} \\ \phi\circ
   Tf^o \phi^{-1}\\ \end{cases}$$
 
-*** Free monads (underlying functor commands)
+*** Free monads (underlying commands from functor)
 
-We are building an AST tree through constructors
+- Assume $C$ is the type of some sequence of commands. 
 
-  : data ConsoleF a =
-  :      _______________....... k_1: A -> T[A]
-  :      PutStrLn String a    
-  :      _______............... k_2: (S -> A) -> T[A]
-  :      GetLine (String -> a)  
-  :      ___                    k_3: () -> T[A]
-  :      End                    
-  : ...
-  : ast = Getline (\x => (PutStrLn ("Hi" ++ x) End))
+- The data costructor/functor $$T[C] = (S \times C)_{print} + (S \mto
+  C)_{getline} + 1_{end}$$ represents the actions with which one can extend that
+  sequence, e.g., printing something then $C$ ($print$) or how to
+  produce $C$ from a string ($getline$).
 
+- It is a way to build backwards a sequence of commands, e.g., $$getline~(x
+  \mapsto (print~("hi" x) (end)))$$ of type $T[T[T[C]]]$
+ 
 *** Free monads (building monad commands from functor ones)
 
 To build the AST tree through a Free monad
@@ -3442,10 +3442,6 @@ Two ways to build them,
       every coalgebra $c: U \rightarrow T(U)$ there exists a unique map of
       co-algebras $f: (U,c) \rightarrow (W,d)$
 
-    - Note: we have *initial algebras* and *final* *co-algebras*
-    - Example: the final algebra of $T(X) = A \times X$ is $(A^\mathbb{N}, <h,
-      t>)$ where $A^\mathbb{N}$ is the set of infinite sequences over $A$, while
-      $h,t$ are the *head* and *tail* functions.
 
 *** Examples of final co-algebras
     
