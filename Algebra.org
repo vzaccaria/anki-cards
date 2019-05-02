@@ -421,17 +421,17 @@ of representations $Rep(G)$ is the functor category $Vect^{BG}$ where
       If they are equivalent then $(\chi_{\rho},\chi_{\sigma}) = 1$
 
     - $dim(V^G) = (\chi_{\rho}, \chi_{triv})$
-*** Sign representation
+*** Sign representation                                                                 :noanki:
     Given any representation of the permutation group $\rho(S_n)$,
     $\textrm{det}(\rho(S_n))$ is the corresponding sign representation as well
     and it is either 1 or -1.
 
-*** Faithful representation
+*** Faithful representation                                                                 :noanki:
 
     A *faithful* representation $\rho$ is an *injective* map, i.e., different $g$
     are represented by distinct $\rho(g)$.
 
-*** Unitary representations
+*** Unitary representations                                                                 :noanki:
 
     - Assume $V$ is a space equipped with a hermitian dot product (on $C_2$)
       that measures the distance between vectors (i.e., an Hilbert space).
@@ -442,10 +442,6 @@ of representations $Rep(G)$ is the functor category $Vect^{BG}$ where
 
     - If the group is finite, then one can always build an unitary operator.
 
-
-*** Trivial representation
-
-    - A representation $\rho: G \rightarrow GL(E_k)$ is trivial if $\rho_g = I \forall g$.
 
 *** Invariant representation
      A representation $\rho(g)$ is *invariant* if $\forall v \in V. \rho(g)v \subseteq V$
@@ -1394,7 +1390,7 @@ Examples:
 - $A_i$ has homogeneous elements of degree $i$ such that $a_i \otimes a_j \in
   A_{i+j}$
 
-*** Hilbert series of the dimensions of a $k$ algebra.
+*** Hilbert series of the dimensions of a $k$ algebra.                                                                 :noanki:
 
     The following formal series $$\textrm{Hilb}(A,q) = \sum_{d} \textrm{dim}(A_d)q^d$$ is 
     a formal series representing the dimensions of a graded algebra.
