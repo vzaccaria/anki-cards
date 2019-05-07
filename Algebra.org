@@ -2151,7 +2151,7 @@ $x$ into the underlying set of $g$. Among them, we find the objects
 $\np{F(x)}{\eta}$ where $\eta$ maps $x$ into the underlying set of the free
 group $F(x)$.
 
-*** Product and permutation category (PROP)                                                                  :focus:
+*** Product and permutation category (PROP)
 
 - A PROP is a symmetric monoidal category with objects the natural numbers,
   the monoidal operator $\oplus$ is addition. 
@@ -2159,7 +2159,7 @@ group $F(x)$.
 - They are used to describe a given sort of algebraic structure. Every object is
   of the form $$x^{\otimes n} = x \otimes x \otimes \cdots \otimes x$$
 
-*** Product and permutation category *FinSet*                                                                  :focus:
+*** Product and permutation category *FinSet*
 
 - *FinSet* is a PROP where morphisms $f: m \mto n$ are functions from the set
   $\ubr{m} = \{1 \ldots m\}$ to the set $\ubr{n}=\{1 \ldots n\}$.
@@ -2167,12 +2167,12 @@ group $F(x)$.
 - The monoidal product of two morphism is obtained by pasting one above the
   other the two original morphism and the inputs and output set.
 
-*** Product and permutation Bij                                                                  :focus:
+*** Product and permutation Bij
 
 A Prop *Bij* has morphisms $f: m \mto n$ bijections $\ubr{m} \mto \ubr{n}$. Note
 that for $m \neq n$ the homset is empty. The morphisms are just permutations.
 
-*** Product and permutation $Rel_{Fin}$                                                                  :focus:
+*** Product and permutation $Rel_{Fin}$
 
 Morphisms $m \mto n$ are relations $R \subseteq \ubr{m} \times \ubr{n}$. The
 composition $R.S$ ($S \subseteq \ubr{n} \times \ubr{p}$) is the set of pairs
@@ -2438,7 +2438,7 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
 
      $g^o \circ f^o = (g^o \circ f)^o$
 
-*** Free monads (construction)
+*** Free monads (construction)                                                                  :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -2454,7 +2454,7 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
    $A$ is an arbitrary object.
  - It is possible to show that $\tilde{F}[A]$ is a functor and *a monad* in $A$.
 
-*** Free monads (construction - bind)
+*** Free monads (construction - bind)                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2470,7 +2470,7 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
   $\pi$ or a free $\phi$: $$f^o = \begin{cases} f \circ \pi^{-1} \\ \phi\circ
   Tf^o \phi^{-1}\\ \end{cases}$$
 
-*** Free monads (underlying commands from functor)
+*** Free monads (underlying commands from functor)                                                                  :focus:
 
 - Assume $C$ is the type of some sequence of commands. 
 
@@ -2482,7 +2482,7 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
 - It is a way to build backwards a sequence of commands, e.g., $$getline~(x
   \mapsto (print~("hi" x) (end)))$$ of type $T[T[T[C]]]$
  
-*** Free monads (building monad commands from functor ones)
+*** Free monads (building monad commands from functor ones)                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2506,7 +2506,7 @@ lift single commands as they were sequences of one command alone.
 : getline :: Console String
 : getline = liftF (GetLine id)
 
-*** Free monads (composition)
+*** Free monads (composition)                                                                  :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -2521,7 +2521,7 @@ Given two functors $T$ and $G$, one can build a free monad of $(T+G)$
 This is a way to compose functors which manage different effects into a single
 monad.
 
-*** Free monads (interpretation)
+*** Free monads (interpretation)                                                                  :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -3404,7 +3404,7 @@ Two ways to build them,
   Build expressions in ~Expr~ with original type constructors, evaluate with ~eval
   = cata rules~.
 
-*** Expression data types as functors - templating
+*** Expression data types as functors - templating (free monad)     :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3426,6 +3426,48 @@ Two ways to build them,
 
 - Given $\phi: A \rightarrow \wtt$ you can build a complete $\wtt$ from
   $\wtq_A^T$ with $\kappa(\phi + Fix_T)$ (acting as /template substitution/).
+
+
+*** Expression data types as functors - annotation (cofree comonad) :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{(A \times T[\widetilde{Q}_A^T])_{AnnF}} \arrow[d, "Fix", no head] \arrow[r] & {(A \times T[\widetilde{T}])_{AnnF}} \arrow[d, "{\phi = \lambda(-,t).Fix_T t}"] \\
+\widetilde{Q}_A^T \arrow[r, "\kappa(\phi)"']                          & \widetilde{T}                                                         
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- Assume $T[-]$ is a functor with $\wtt$ as its initial algebra representing an AST.
+
+- Then $Q_A^T= A \times T[-]$ is such that $\wtq_A^T$ is a tree similar to $\wtt$
+  where all nodes have been annotated with values of type $A$.
+
+- One can strip annotations by running a $\kappa(\phi)$
+
+*** Expression data types as functors - adding annotations  :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{T[\widetilde{T}]} \arrow[r] \arrow[dd, no head] & {T[\widetilde{Q}_A^T]} \arrow[d, "(f \circ T\alpha)\& id"] \arrow[dd, "\phi"', bend right=49] &   \\
+                                        & {A \times T[\widetilde{Q}_A^T]} \arrow[d, "Fix . AnnF"]                                    &   \\
+\widetilde{T} \arrow[r, "\kappa(\phi)"] & \widetilde{Q}_A^T \arrow[r, "\alpha"]                                                      & A
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- Assume $\alpha$ allows to strip annotations from annotated trees $\widetilde{Q}_A^T$. 
+- Assume $f$ is a $T$ algebra that allows to compute a new $A$ from the set of underlying tree's $A$
+- Then $\kappa \phi$ can be used to annotate a tree
+
 
 
 *** Parser combinators
@@ -3450,7 +3492,7 @@ Two ways to build them,
 
 - $P[A]$ is a functor in $A$; You can get a parser $PB$ for object $B$ if you have $P[A]$ and $A \rightarrow B$.
 
-*** Parsers with recursion schemes interpreters
+*** Parsers with recursion schemes interpreters                     :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
