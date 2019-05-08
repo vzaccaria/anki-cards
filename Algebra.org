@@ -1307,6 +1307,27 @@ V \times W \arrow[r, "\phi"] \arrow[rd, "h"] & V \otimes W \arrow[d, "\tilde{h}"
     - The sequence B -> C -> 0 is exact only if the map from B to C is an epimorphism
     - The sequence 0 -> A -> B -> C -> 0 is called exact if A -> B is mono and B -> C is epi
     
+*** Metric space                                                    :focus:
+
+A metric space is a vector space possessing an inner product $\np{v}{w}$ that
+allows length and angle to be measured. The inner product
+
+- is conjugate symmetric: $\np{x}{y} = \overline{\np{y}{x}}$
+- is conjugate linear $\langle x,ay_{1}+by_{2}\rangle ={\bar {a}}\langle x,y_{1}\rangle +{\bar {b}}\langle x,y_{2}\rangle$
+- is positive definite $\np{x}{x} > 0 \iff x \neq 0$
+
+The length (or norm) of $x$ is defined as $|x|=\sqrt{\np{x}{x}}$. The distance
+$d(x,y)$ is the norm of the difference, i.e., $|x-y|$.
+
+*** Hilbert space                                                   :focus:
+
+A Hilbert space is a metric space which is also *complete*, i.e., every sequence
+of vectors $u_k$ is such that $$\sum_k^{\infty}|u_k|<\infty$$
+
+Concerning completeness, note, for example, that the set of rational numbers is not
+complete, because e.g. ${\sqrt {2}}$ is "missing" from it, even though one can
+construct a Cauchy sequence of rational numbers that converges to it.
+
 ** Algebras and co-algebras
 *** $k$ algebra (with tensor products)
 :PROPERTIES:
@@ -2080,9 +2101,37 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
 
      2. there is a unit object for that product.
 
-*** Cartesian category
-It is a monoidal category where the tensor product is a normal product defined
-for all objects and the unit is the terminal object.
+   - A category with finite products can always be made into a monoidal category
+     by choosing a specific product to be the tensor product
+
+*** Cartesian category                                              :focus:
+- It is a monoidal category where the tensor product is a normal product defined
+  for all objects and the unit is the terminal object.
+
+- In a cartesian category, we can "duplicate and delete information" through the
+  duplication morphism $\Delta_X: X \rightarrow X \times X$ and the map into the
+  terminal object $!_X: X \mto 1$
+
+*** Closed category                                                 :focus:
+
+- In a closed category there is also an object representing *all* the morphisms
+  from $X$ to $Y$ denoted $Y^X$.
+
+- In a closed category, we have: $$hom(X \otimes Y, Z) \cong hom(Y, Z^X)$$ The
+  natural isomorphism is called *currying*.
+
+*** Compact closed category                                         :focus:
+
+- A compact closed category (CCC) is such that $$Y^X \cong X' \otimes Y$$
+
+- $X'$ is the dual and it is such that $$\epsilon: X \otimes X' \cong I$$ where $I$ is the
+  unit object in $C$ while $\epsilon$ is the *co-unit*. Similarly one can define the unit
+  $i: I \mto X' \otimes X$
+
+- The dual of an object is typically a reversed arrow, while co-unit and unit are 
+  represented by cup and cap.
+
+
 
 *** Cartesian closed category
 It is a cartesian category that has exponentials.
