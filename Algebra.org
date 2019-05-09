@@ -300,7 +300,7 @@ h_1 \curvearrowright s \arrow[rd, no head, dotted, bend right] & s \in S        
 *** Class number of a group $G$
 
     - The class number of G is the number of distinct (nonequivalent) conjugacy classes
-*** Free group 
+*** Free group construction
 The free group $F_S$ with free generating set $S$ can be constructed as follows.
 - Consider $S$ is a set of symbols and suppose for every $s \in S$ there is a
   corresponding $s^{-1}$. 
@@ -309,9 +309,25 @@ The free group $F_S$ with free generating set $S$ can be constructed as follows.
 - The free group $F_S$ is the group of all reduced ($\forall x. xx^{-1} \rightarrow
   \cdot$) words in $S$ with *concatenation* as group operation.
 This construction is a *functor*.
-*** Free group universal property
-- Any function from a set $S$ to a group $G$ can be factored through a unique
-  $\phi: F_S \rightarrow G$ wher $F_S$ is the free group associated with $S$.
+
+*** Free group universal property                                   :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+A free group $X^{*}$ of $X$ is a universal arrow from $X$ to the group forgetful
+functor. It is a pair $(X^{*}, u)$ such that for any function $v: X \mto |G|$, 
+there is a unique group homomorphism $f$ for which the diagram below commutes. 
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                                         & X \arrow[ld, "u",red] \arrow[rd, "v"] &  \\
+\vert X^* \vert \arrow[rr, "\vert f \vert"]                 &                                         & \vert G \vert \\
+X^* \arrow[rr, "f"] &                                         & G \\
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
 *** Group automorphism
 
 - It is a morphism $\alpha: G \rightarrow G$ that respects multiplication:
@@ -339,18 +355,36 @@ This construction is a *functor*.
 
 - So, by the FHT, $I(G) = G/C(G)$
  
-*** Group theoretic term and n-ary operations                       
-- A *group theoretic term* $t$ is a formal expression using formal group
+*** Group theoretic term and n-ary operations                       :focus:
+- A *group theoretic term* $t_X$ is a formal expression using formal group
   operations $(\cdot, ^{-1}, e)$ and a set of symbols $X=\{x,y,z\}$.
 
 - The above identifies a group element once one is given a function $f: X
-  \mto |G|$ (or $f \in |G|^X$). The set of group theoretic terms $T$ and $|G|^X$
-  are endowed with a unique evaluation map $$T \mto |G|^X \mto |G|$$
+  \mto |G|$ (or $f \in |G|^X$). The set of group theoretic terms $T_X$ and $|G|^X$
+  are endowed with a unique evaluation map $$T_X \mto |G|^X \mto |G|$$
 
-- If $X$ has $n$ elements, fixing $t \in T$, one gets a /substitution/ $$s: |G|^X
-  \mto |G|$$ called *derived $n$ ary operation* of $G$ (or /term operation/).
-  Note that $t_1,t_2$ might produce the same substitution; for example $(x \cdot
-  y) \cdot z$ and $x \cdot (y \cdot z)$ are the same for groups.
+*** Derived operations on groups                                    :focus:
+
+- Given a set $X$ of $n$ elements, fixing $t \in T_X$, one gets a /substitution/ $$s: |G|^n
+  \mto |G|$$ called *derived $n$ -ary operation* of $G$ (or /term operation/).
+
+- Examples: 
+
+  - $t_{x,y} = y^{-1}xy$ provides a substitution called /conjugation/
+  - $t_{x,y} = x^{-1}y^{-1}xy$ provides /commutator/
+ 
+- Note that given two group theoretic terms one can have the same substitution;
+  for example $(x \cdot y) \cdot z$ and $x \cdot (y \cdot z)$ are the same for
+  groups.
+
+*** Omega algebra                                                   :focus:
+
+- Let $\Omega$ be a pair $(|Omega|, n)$ where $|\Omega|$ is a set of symbols
+  $\omega$ representing operations and $n: |\Omega| \mto \NN$ associates an
+  arity to each operation $\omega$.
+
+- An $\Omega$ algebra is a tuple $(|A|, (\alpha_{\omega})_{\omega \in |\Omega|}))$ where
+  $$\alpha_{\omega} : |A|^{n(\omega)} \mto |A|$$
 
 ** Group representations
 *** Category of linear representations
@@ -1307,7 +1341,7 @@ V \times W \arrow[r, "\phi"] \arrow[rd, "h"] & V \otimes W \arrow[d, "\tilde{h}"
     - The sequence B -> C -> 0 is exact only if the map from B to C is an epimorphism
     - The sequence 0 -> A -> B -> C -> 0 is called exact if A -> B is mono and B -> C is epi
     
-*** Metric space                                                    :focus:
+*** Metric space
 
 A metric space is a vector space possessing an inner product $\np{v}{w}$ that
 allows length and angle to be measured. The inner product
@@ -1319,7 +1353,7 @@ allows length and angle to be measured. The inner product
 The length (or norm) of $x$ is defined as $|x|=\sqrt{\np{x}{x}}$. The distance
 $d(x,y)$ is the norm of the difference, i.e., $|x-y|$.
 
-*** Hilbert space                                                   :focus:
+*** Hilbert space
 
 A Hilbert space is a metric space which is also *complete*, i.e., every sequence
 of vectors $u_k$ is such that $$\sum_k^{\infty}|u_k|<\infty$$
@@ -2104,7 +2138,7 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
    - A category with finite products can always be made into a monoidal category
      by choosing a specific product to be the tensor product
 
-*** Cartesian category                                              :focus:
+*** Cartesian category
 - It is a monoidal category where the tensor product is a normal product defined
   for all objects and the unit is the terminal object.
 
@@ -2112,7 +2146,7 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
   duplication morphism $\Delta_X: X \rightarrow X \times X$ and the map into the
   terminal object $!_X: X \mto 1$
 
-*** Closed category                                                 :focus:
+*** Closed category
 
 - In a closed category there is also an object representing *all* the morphisms
   from $X$ to $Y$ denoted $Y^X$.
@@ -2120,7 +2154,7 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
 - In a closed category, we have: $$hom(X \otimes Y, Z) \cong hom(Y, Z^X)$$ The
   natural isomorphism is called *currying*.
 
-*** Compact closed category                                         :focus:
+*** Compact closed category
 
 - A compact closed category (CCC) is such that $$Y^X \cong X' \otimes Y$$
 
@@ -2228,7 +2262,7 @@ composition $R.S$ ($S \subseteq \ubr{n} \times \ubr{p}$) is the set of pairs
 $(i,k) \in \ubr{m} \times \ubr{p}$ for which $$\exists j. (i,j) \in R \wedge (j,k) 
 \in S$$
 
-*** Symmetric monoidal theory                                                                  :focus:
+*** Symmetric monoidal theory
 
 - A *symmetric monoidal theory* (or /presentation/) for any PROP $G$ is a pair
   $(\Sigma, E)$ where $\Sigma$ is the set of morphisms (generators) of type $n
@@ -2238,7 +2272,7 @@ $(i,k) \in \ubr{m} \times \ubr{p}$ for which $$\exists j. (i,j) \in R \wedge (j,
 - A prop $G$ is generated as the set of expressions that one can construct with
   elements in $\Sigma$ quotiented over $E$ (and the axioms of PROP)
 
-*** SMT for a monoid                                                :focus:
+*** SMT for a monoid
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2253,7 +2287,7 @@ $(i,k) \in \ubr{m} \times \ubr{p}$ for which $$\exists j. (i,j) \in R \wedge (j,
   #+END_CENTER
 
 
-*** SMT for a co-monoid                                             :focus:
+*** SMT for a co-monoid
 
 For a co-monoid, black dot is $\Delta$
 
@@ -2263,7 +2297,7 @@ For a co-monoid, black dot is $\Delta$
 #+END_EXPORT
 #+END_CENTER
 
-*** SMT for a bi-algebra                                            :focus:
+*** SMT for a bi-algebra
 
 The operations of a co-monoid are monoid morphisms:
 
@@ -2274,7 +2308,7 @@ The operations of a co-monoid are monoid morphisms:
 #+END_CENTER
 
 
-*** SMT for a special frobenius algebra                             :focus:
+*** SMT for a special frobenius algebra
 
 A Frobenius algebra is a second way (other than bi-algebra) to combine a monoid 
 and a co-monoid:
@@ -2487,7 +2521,7 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
 
      $g^o \circ f^o = (g^o \circ f)^o$
 
-*** Free monads (construction)                                                                  :focus:
+*** Free monads (construction)
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -2503,7 +2537,7 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
    $A$ is an arbitrary object.
  - It is possible to show that $\tilde{F}[A]$ is a functor and *a monad* in $A$.
 
-*** Free monads (construction - bind)                                                                  :focus:
+*** Free monads (construction - bind)
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2519,7 +2553,7 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
   $\pi$ or a free $\phi$: $$f^o = \begin{cases} f \circ \pi^{-1} \\ \phi\circ
   Tf^o \phi^{-1}\\ \end{cases}$$
 
-*** Free monads (underlying commands from functor)                                                                  :focus:
+*** Free monads (underlying commands from functor)
 
 - Assume $C$ is the type of some sequence of commands. 
 
@@ -2531,7 +2565,7 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
 - It is a way to build backwards a sequence of commands, e.g., $$getline~(x
   \mapsto (print~("hi" x) (end)))$$ of type $T[T[T[C]]]$
  
-*** Free monads (building monad commands from functor ones)                                                                  :focus:
+*** Free monads (building monad commands from functor ones)
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2555,7 +2589,7 @@ lift single commands as they were sequences of one command alone.
 : getline :: Console String
 : getline = liftF (GetLine id)
 
-*** Free monads (composition)                                                                  :focus:
+*** Free monads (composition)
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -2570,7 +2604,7 @@ Given two functors $T$ and $G$, one can build a free monad of $(T+G)$
 This is a way to compose functors which manage different effects into a single
 monad.
 
-*** Free monads (interpretation)                                                                  :focus:
+*** Free monads (interpretation)
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -3453,7 +3487,7 @@ Two ways to build them,
   Build expressions in ~Expr~ with original type constructors, evaluate with ~eval
   = cata rules~.
 
-*** Expression data types as functors - templating (free monad)     :focus:
+*** Expression data types as functors - templating (free monad)
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3477,7 +3511,7 @@ Two ways to build them,
   $\wtq_A^T$ with $\kappa(\phi + Fix_T)$ (acting as /template substitution/).
 
 
-*** Expression data types as functors - annotation (cofree comonad) :focus:
+*** Expression data types as functors - annotation (cofree comonad)
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3498,7 +3532,7 @@ Two ways to build them,
 
 - One can strip annotations by running a $\kappa(\phi)$
 
-*** Expression data types as functors - adding annotations  :focus:
+*** Expression data types as functors - adding annotations
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3541,7 +3575,7 @@ Two ways to build them,
 
 - $P[A]$ is a functor in $A$; You can get a parser $PB$ for object $B$ if you have $P[A]$ and $A \rightarrow B$.
 
-*** Parsers with recursion schemes interpreters                     :focus:
+*** Parsers with recursion schemes interpreters
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
