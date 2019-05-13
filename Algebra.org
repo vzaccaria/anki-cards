@@ -2234,7 +2234,7 @@ $x$ into the underlying set of $g$. Among them, we find the objects
 $\np{F(x)}{\eta}$ where $\eta$ maps $x$ into the underlying set of the free
 group $F(x)$.
 
-*** Product and permutation category (PROP)
+*** Product and permutation category (PROP)                         :focus:
 
 - A PROP is a symmetric monoidal category with objects the natural numbers,
   the monoidal operator $\oplus$ is addition. 
@@ -2242,7 +2242,7 @@ group $F(x)$.
 - They are used to describe a given sort of algebraic structure. Every object is
   of the form $$x^{\otimes n} = x \otimes x \otimes \cdots \otimes x$$
 
-*** Product and permutation category *FinSet*
+*** Product and permutation category *FinSet*                         :focus:
 
 - *FinSet* is a PROP where morphisms $f: m \mto n$ are functions from the set
   $\ubr{m} = \{1 \ldots m\}$ to the set $\ubr{n}=\{1 \ldots n\}$.
@@ -2250,29 +2250,29 @@ group $F(x)$.
 - The monoidal product of two morphism is obtained by pasting one above the
   other the two original morphism and the inputs and output set.
 
-*** Product and permutation Bij
+*** Product and permutation Bij                                     :focus:
 
-A Prop *Bij* has morphisms $f: m \mto n$ bijections $\ubr{m} \mto \ubr{n}$. Note
+A PROP *Bij* has morphisms $f: m \mto n$ bijections $\ubr{m} \mto \ubr{n}$. Note
 that for $m \neq n$ the homset is empty. The morphisms are just permutations.
 
-*** Product and permutation $Rel_{Fin}$
+*** Product and permutation $Rel_{Fin}$                             :focus:
 
 Morphisms $m \mto n$ are relations $R \subseteq \ubr{m} \times \ubr{n}$. The
 composition $R.S$ ($S \subseteq \ubr{n} \times \ubr{p}$) is the set of pairs
 $(i,k) \in \ubr{m} \times \ubr{p}$ for which $$\exists j. (i,j) \in R \wedge (j,k) 
 \in S$$
 
-*** Symmetric monoidal theory
+*** Symmetric monoidal theory                                       :focus:
 
 - A *symmetric monoidal theory* (or /presentation/) for any PROP $G$ is a pair
   $(\Sigma, E)$ where $\Sigma$ is the set of morphisms (generators) of type $n
   \rightarrow m$ ($n,m$ integer=objects) while $E$ is a set of equations over
   $\Sigma$.
 - A $\Sigma$ term is any morphism that can be built by composing the generators. 
-- A prop $G$ is generated as the set of expressions that one can construct with
+- A *freely generated PROP* $G$ is the set of expressions that one can construct with
   elements in $\Sigma$ quotiented over $E$ (and the axioms of PROP)
 
-*** SMT for a monoid
+*** SMT for a monoid                                                :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2286,8 +2286,10 @@ $(i,k) \in \ubr{m} \times \ubr{p}$ for which $$\exists j. (i,j) \in R \wedge (j,
   #+END_EXPORT
   #+END_CENTER
 
+- The freely generated PROP $\MM$ is isomorphic with FinSet, so we say that
+  the theory of commutative monoids *presents* FinSet. 
 
-*** SMT for a co-monoid
+*** SMT for a co-monoid                                             :focus:
 
 For a co-monoid, black dot is $\Delta$
 
@@ -2297,7 +2299,7 @@ For a co-monoid, black dot is $\Delta$
 #+END_EXPORT
 #+END_CENTER
 
-*** SMT for a bi-algebra
+*** SMT for a bi-algebra                                            :focus:
 
 The operations of a co-monoid are monoid morphisms:
 
@@ -2307,8 +2309,11 @@ The operations of a co-monoid are monoid morphisms:
 #+END_EXPORT
 #+END_CENTER
 
+For example, (A7) is $\epsilon(m(a \otimes b)) = \epsilon a \otimes \epsilon b$,
+or (A8) is $$\Delta \circ m = (m \otimes m) \circ (id \otimes \tau
+\otimes id) \circ (\Delta \otimes \Delta )$$
 
-*** SMT for a special frobenius algebra
+*** SMT for a special frobenius algebra                             :focus:
 
 A Frobenius algebra is a second way (other than bi-algebra) to combine a monoid 
 and a co-monoid:
@@ -2318,6 +2323,9 @@ and a co-monoid:
 \includegraphics[width=10cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/frobenius.png}
 #+END_EXPORT
 #+END_CENTER
+
+For example, (F1) is $$\Delta \circ m = (m \otimes id) \circ (id \otimes
+\Delta)$$ while co-multiplication factorises the original element (F2).
 
 ** Set category
 *** Monomorphisms (Sets)                                                                 :noanki:
