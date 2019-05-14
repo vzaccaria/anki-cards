@@ -3445,7 +3445,7 @@ f L_A \arrow[rr, "{f(hylo (\psi,\phi))}", bend right] & fF_A \arrow[u] & fL_A \a
   \rightarrow L_A$ as $hylo(\psi,\phi)$, where $\phi$ constructs the tree by splitting
   lists in two while $\psi$ merges two lists into one (by reordering them).
 
-*** Paramorphisms 
+*** Paramorphisms                                                   :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3519,7 +3519,7 @@ Two ways to build them,
   $\wtq_A^T$ with $\kappa(\phi + Fix_T)$ (acting as /template substitution/).
 
 
-*** Expression data types as functors - annotation (cofree comonad)
+*** Expression data types as functors - annotation (cofree comonad) :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3533,14 +3533,15 @@ Two ways to build them,
 #+END_EXPORT
 #+END_CENTER
 
+- Useful because it can reuse $T$ algebras (e.g., printing)
+
 - Assume $T[-]$ is a functor with $\wtt$ as its initial algebra representing an AST.
 
-- Then $Q_A^T= A \times T[-]$ is such that $\wtq_A^T$ is a tree similar to $\wtt$
-  where all nodes have been annotated with values of type $A$.
+- Then $Q_A^T= A \times T[-]$ is such that $\wtq_A^T$ is a tree similar to
+  $\wtt$ where all nodes have been annotated with values of type $A$, and one
+  can strip annotations by running a $\kappa(\phi)$.
 
-- One can strip annotations by running a $\kappa(\phi)$
-
-*** Expression data types as functors - adding annotations
+*** Expression data types as functors - adding annotations bottom-up :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3555,9 +3556,12 @@ Two ways to build them,
 #+END_EXPORT
 #+END_CENTER
 
-- Assume $\alpha$ allows to strip annotations from annotated trees $\widetilde{Q}_A^T$. 
-- Assume $f$ is a $T$ algebra that allows to compute a new $A$ from the set of underlying tree's $A$
-- Then $\kappa \phi$ can be used to annotate a tree
+- Assume $\alpha$ allows to get an annotation from the root of the tree $\widetilde{Q}_A^T$. 
+- Assume $f: T A \mto A$ is a $T$ algebra that allows to compute a new $A$ from
+  the set of underlying tree's $A$ then $\kappa \phi$ can be used to annotate a
+  tree.
+- For example $f = (+1) \circ sum_T$ can be used to annotate a root with the sum
+  of $T$ childs (bottom-up annotation).
 
 
 
