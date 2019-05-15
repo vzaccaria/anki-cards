@@ -2146,24 +2146,61 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
   duplication morphism $\Delta_X: X \rightarrow X \times X$ and the map into the
   terminal object $!_X: X \mto 1$
 
-*** Closed category
+*** Closed category                                                 :focus:
 
 - In a closed category there is also an object representing *all* the morphisms
-  from $X$ to $Y$ denoted $Y^X$.
+  from $X$ to $Y$ denoted $Y^X$. In a closed category, we have: $$hom(X \otimes
+  Y, Z) \cong hom(Y, Z^X)$$ The natural isomorphism is called *currying*.
+- Visually, the object $Z^X$ is visualized as a /clasp/ and these diagrams are
+  equivalent:
 
-- In a closed category, we have: $$hom(X \otimes Y, Z) \cong hom(Y, Z^X)$$ The
-  natural isomorphism is called *currying*.
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{figure}
+  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/cchom1.pdf}}
+  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/cchom3.pdf}}
+  \end{figure}
+  #+END_EXPORT
+  #+END_CENTER 
 
-*** Compact closed category
+*** Compact category                                                :focus:
 
-- A compact closed category (CCC) is such that $$Y^X \cong X' \otimes Y$$
+A compact (or /autonomous/) category is such that every object $X$ has a dual $X'$: 
 
-- $X'$ is the dual and it is such that $$\epsilon: X \otimes X' \cong I$$ where $I$ is the
-  unit object in $C$ while $\epsilon$ is the *co-unit*. Similarly one can define the unit
-  $i: I \mto X' \otimes X$
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/compactdual.pdf}
+#+END_EXPORT
+#+END_CENTER
 
-- The dual of an object is typically a reversed arrow, while co-unit and unit are 
-  represented by cup and cap.
+and there are unit $i_X: I \cong X \otimes X'$ and co-unit $\epsilon_X: X
+\otimes X' \cong I$ natural transformations that satisfy the zigzag equations:
+
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/zigzag.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+
+*** Compact Closed category                                         :focus:
+
+- A compact category is automatically closed, i.e., the exponential object be
+  defined as $$Y^X = X' \otimes Y$$ and it can be shown that it satisfies
+  currying. The currying isomorphism assumes a particular form as the following
+  two diagrams are equivalent:
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{figure}
+  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/cchom1.pdf}}
+  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/cchom2.pdf}}
+  \end{figure}
+  #+END_EXPORT
+  #+END_CENTER 
+
+
 
 
 
