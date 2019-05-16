@@ -328,6 +328,9 @@ X^* \arrow[rr, "f"] &                                         & G \\
 #+END_EXPORT
 #+END_CENTER
 
+In practice, any substitution $v$ of a set $X$ can be factorized through its
+free group.
+
 *** Group automorphism
 
 - It is a morphism $\alpha: G \rightarrow G$ that respects multiplication:
@@ -361,12 +364,26 @@ X^* \arrow[rr, "f"] &                                         & G \\
 
 - The above identifies a group element once one is given a function $f: X
   \mto |G|$ (or $f \in |G|^X$). The set of group theoretic terms $T_X$ and $|G|^X$
-  are endowed with a unique evaluation map $$T_X \mto |G|^X \mto |G|$$
+  are endowed with a unique evaluation map $$ev: T_X \mto |G|^X \mto |G|$$
+
+*** Group theoretic relation                                        :focus:
+
+- A /group theoretic relation/ is a subset of $T_X \times T_X$ composed of all
+  pairs $(e_1, e_2)$ such that $$\exists s. ev(e_1, s) = ev(e_2, s)$$ (write
+  $e_1 \sim_s e_2$). Note for example that $(ab)'=a'b'$ for all elements of a
+  group but only some elements satisfy $ab = ba^2$
+
+- Given a group homomorphism $h: F \mto G$, $$e_1 \sim_{s_F} e_2 \implies e_1
+  \sim_{s_G} e_2$$ where $s_G$ substitutes the images of $h$ over the same
+  elements substituted by $s_F$.
+
+
 
 *** Derived operations on groups                                    :focus:
 
-- Given a set $X$ of $n$ elements, fixing $t \in T_X$, one gets a /substitution/ $$s: |G|^n
-  \mto |G|$$ called *derived $n$ -ary operation* of $G$ (or /term operation/).
+- Given a set $X$ of $n$ elements, fixing $t \in T_X$ (the set of group
+  theoretic terms), one gets a /substitution/ $$s: |G|^n \mto |G|$$ called *derived
+  $n$ -ary operation* of $G$ (or /term operation/).
 
 - Examples: 
 
