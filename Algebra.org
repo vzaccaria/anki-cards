@@ -2583,39 +2583,43 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
 
      $g^o \circ f^o = (g^o \circ f)^o$
 
-*** Free monads (construction)
+*** Free monads (construction)                                      :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
+#+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
 {A_{\pi} + T[\tilde{F}[A]]_{\phi}} \arrow[d] \arrow[r] & {A+T[X]} \arrow[d] \\
 \tilde{F}[A] \arrow[u, "\cong"] \arrow[r] & {X}
 \end{tikzcd}
 #+END_EXPORT
+#+END_CENTER
 
  - Given a functor $T[-]$, the *free monad* $\tilde{F}[A]$ can be built as the
    fixed point of functor $A+T[-]$ (constructed with $\pi$ and $\phi$), where
    $A$ is an arbitrary object.
  - It is possible to show that $\tilde{F}[A]$ is a functor and *a monad* in $A$.
 
-*** Free monads (construction - bind)
+*** Free monads (construction - bind)                               :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
+#+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
 {T[\tilde{F}[A]]} \arrow[r] \arrow[d, "Tf^o"] & {\tilde{F}[A]} \arrow[d, "f^o"] \arrow[r, "\pi"] \arrow[l, "\phi"] & A \arrow[ld, "f", dashed] \arrow[l] \\
 {T[\tilde{F}[B]]} \arrow[r] & {\tilde{F}[B]} \arrow[l, "\phi"] & 
 \end{tikzcd}
 #+END_EXPORT
+#+END_CENTER
 
-- binding a function $f$ (i.e., $f^o$) depends on whether it comes from a pure
-  $\pi$ or a free $\phi$: $$f^o = \begin{cases} f \circ \pi^{-1} \\ \phi\circ
-  Tf^o \phi^{-1}\\ \end{cases}$$
+- binding a function $f$ (i.e., $f^o$) depends on whether its argument comes
+  from a pure $\pi$ or a free $\phi$: $$f^o = \begin{cases} f \circ \pi^{-1}
+  \\ \phi\circ Tf^o \phi^{-1}\\ \end{cases}$$
 
-*** Free monads (underlying commands from functor)
+*** Free monads (underlying commands from functor)                  :focus:
 
 - Assume $C$ is the type of some sequence of commands. 
 
@@ -2627,7 +2631,7 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
 - It is a way to build backwards a sequence of commands, e.g., $$getline~(x
   \mapsto (print~("hi" x) (end)))$$ of type $T[T[T[C]]]$
  
-*** Free monads (building monad commands from functor ones)
+*** Free monads (building monad commands from functor ones)         :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2643,13 +2647,19 @@ lift single commands as they were sequences of one command alone.
 {\widetilde{T}[A]}                      &                                             
 \end{tikzcd}
 #+END_EXPORT
-#+END_CENTER
+#+END_CENTER 
 
-: tell :: String -> Console ()
-: tell s = liftF (PutStrLn s ())
+#+BEGIN_EXPORT latex
+\footnotesize
+\begin{minted}{haskell}
+tell :: String -> Console ()
+tell s = liftF (PutStrLn s ())
 
-: getline :: Console String
-: getline = liftF (GetLine id)
+getline :: Console String
+getline = liftF (GetLine id)
+\end{minted}
+#+END_EXPORT
+
 
 *** Free monads (composition)
     :PROPERTIES:
@@ -3519,7 +3529,7 @@ Example, for factorial $f(i,z) = i~?~z*i:1$. Exercise, try to devise a para for 
 
 
 
-*** Expression data types as functors
+*** Expression data types as functors                               :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3549,7 +3559,7 @@ Two ways to build them,
   Build expressions in ~Expr~ with original type constructors, evaluate with ~eval
   = cata rules~.
 
-*** Expression data types as functors - templating (free monad)
+*** Expression data types as functors - templating (free monad)     :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3571,7 +3581,6 @@ Two ways to build them,
 
 - Given $\phi: A \rightarrow \wtt$ you can build a complete $\wtt$ from
   $\wtq_A^T$ with $\kappa(\phi + Fix_T)$ (acting as /template substitution/).
-
 
 *** Expression data types as functors - annotation (cofree comonad) :focus:
 :PROPERTIES:
@@ -3610,14 +3619,40 @@ Two ways to build them,
 #+END_EXPORT
 #+END_CENTER
 
-- Assume $\alpha$ allows to get an annotation from the root of the tree $\widetilde{Q}_A^T$. 
-- Assume $f: T A \mto A$ is a $T$ algebra that allows to compute a new $A$ from
-  the set of underlying tree's $A$ then $\kappa \phi$ can be used to annotate a
-  tree.
-- For example $f = (+1) \circ sum_T$ can be used to annotate a root with the sum
-  of $T$ childs (bottom-up annotation).
+- Assume $\alpha$ allows to get an annotation from the root of the tree
+  $\widetilde{Q}_A^T$ and $f: T A \mto A$ is a $T$ algebra that allows to
+  compute a new $A$ from the set of underlying tree's $A$
+- then $\kappa \phi$ can be used to annotate a tree; for example $f = (+1) \circ
+  sum_T$ can be used to annotate a root with the sum of $T$ childs (bottom-up
+  annotation).
 
 
+*** Expression data types as functors - evaluating into a monad     :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+Useful to attach monadic actions to expressions; in general you would need an
+algebra ~f (m a) -> m a~ but that would be difficult to specify. You can do
+instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~.
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{F[\widetilde{F}]} \arrow[d, no head] \arrow[rr] & *                           & {M[FA]} \arrow[r, ">=>", no head, dotted] & FA \arrow[ld, "algM"] \\
+\widetilde{F} \arrow[rr, "\kappa M(algM)"']      & * \arrow[u, "mapM", dotted] & MA                                        &                      
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+#+BEGIN_EXPORT latex
+\tiny
+\begin{minted}{haskell}
+eval' :: Env -> Expr -> Maybe Int
+eval'env = ('runReaderT' env) . cataM algM where
+  algM :: ExprF Int -> ReaderT Env Maybe Int
+  algM (Const c) = return c
+  algM (Var i) = ask >>= lift . M.lookup i
+\end{minted}
+#+END_EXPORT
 
 *** Parser combinators
 :PROPERTIES:
@@ -3750,7 +3785,7 @@ We have that $\phi(a) = scons(a, \phi(\nu(a)) = a \cdot \nu(a) \cdot \nu^2(a) \c
 
 - Monad algebras can help enforce additional structure on functor algebras
 
-*** Monad algebras
+*** Monad algebras                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
