@@ -2649,16 +2649,11 @@ lift single commands as they were sequences of one command alone.
 #+END_EXPORT
 #+END_CENTER 
 
-#+BEGIN_EXPORT latex
-\footnotesize
-\begin{minted}{haskell}
-tell :: String -> Console ()
-tell s = liftF (PutStrLn s ())
-
-getline :: Console String
-getline = liftF (GetLine id)
-\end{minted}
-#+END_EXPORT
+: tell :: String -> Console ()
+: tell s = liftF (PutStrLn s ())
+: 
+: getline :: Console String
+: getline = liftF (GetLine id)
 
 
 *** Free monads (composition)
@@ -3643,16 +3638,11 @@ instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~.
 #+END_EXPORT
 #+END_CENTER
 
-#+BEGIN_EXPORT latex
-\tiny
-\begin{minted}{haskell}
-eval' :: Env -> Expr -> Maybe Int
-eval'env = ('runReaderT' env) . cataM algM where
-  algM :: ExprF Int -> ReaderT Env Maybe Int
-  algM (Const c) = return c
-  algM (Var i) = ask >>= lift . M.lookup i
-\end{minted}
-#+END_EXPORT
+: eval' :: Env -> Expr -> Maybe Int
+: eval'env = ('runReaderT' env) . cataM algM where
+:   algM :: ExprF Int -> ReaderT Env Maybe Int
+:   algM (Const c) = return c
+:   algM (Var i) = ask >>= lift . M.lookup i
 
 *** Parser combinators
 :PROPERTIES:
