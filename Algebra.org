@@ -2320,8 +2320,8 @@ $(i,k) \in \ubr{m} \times \ubr{p}$ for which $$\exists j. (i,j) \in R \wedge (j,
 
 - A *symmetric monoidal theory* (or /presentation/) for any PROP $G$ is a pair
   $(\Sigma, E)$ where $\Sigma$ is the set of morphisms (generators) of type $n
-  \rightarrow m$ ($n,m$ integer=objects) while $E$ is a set of equations over
-  $\Sigma$.
+  \rightarrow m$ other than $id$ and $\sigma$, 
+  while $E$ is a set of equations over $\Sigma$.
 - A $\Sigma$ term is any morphism that can be built by composing the generators. 
 - A *freely generated PROP* $G$ is the set of expressions that one can construct with
   elements in $\Sigma$ quotiented over $E$ (and the axioms of PROP)
@@ -2363,9 +2363,9 @@ The operations of a co-monoid are monoid morphisms:
 #+END_EXPORT
 #+END_CENTER
 
-For example, (A7) is $\epsilon(m(a \otimes b)) = \epsilon a \otimes \epsilon b$,
-or (A8) is $$\Delta \circ m = (m \otimes m) \circ (id \otimes \tau
-\otimes id) \circ (\Delta \otimes \Delta )$$
+- (A7) is $\epsilon(m(a \otimes b)) = \epsilon a \otimes \epsilon b$
+- (A8) is $\Delta \circ m = (m \otimes m) \circ (id \otimes \tau \otimes id)
+  \circ (\Delta \otimes \Delta )$
 
 *** SMT for a special frobenius algebra                             :focus:
 
@@ -2378,9 +2378,9 @@ and a co-monoid:
 #+END_EXPORT
 #+END_CENTER
 
-For example, (F1) is $$\Delta \circ m = (m \otimes id) \circ (id \otimes
-\Delta)$$ while co-multiplication factorises the original element (F2).
-
+- (F1) $\Delta \circ m = (m \otimes id) \circ (id \otimes \Delta)$
+- (F2) says that co-multiplication factorises the original element
+  
 ** Set category
 *** Monomorphisms (Sets)                                                                 :noanki:
 :PROPERTIES:
@@ -2444,7 +2444,7 @@ Any object $B$ for which there exists a monomorphism $B \rightarrow X$ is a subs
 
 *** Equalizer (Sets)
 
-Given two functions ($g_1, g_2: X \rightarrow Y$), an equaliser is an *object* and
+Given two functions ($g_1, g_2: X \rightarrow Y$), *their equaliser* is an *object* and
 *monomorphism* *pair* $(E,m: E \rightarrow X)$ for which the following
 properties hold:
 
@@ -3981,7 +3981,6 @@ elements of $Kr$.
   functor). 
 
 
-
 *** Cone
     :PROPERTIES:
     :BEAMER_opt: fragile
@@ -4002,8 +4001,7 @@ A \arrow[r] \arrow[rrrr, dotted, bend right] \arrow[rrrrru, "\Delta_c" descripti
   $Cone(c,D)$ as the set $\{ \lambda_{c,-} \}$ (as there can be more than one
   family).
 
-
-*** Limit cone 
+*** Limit cone                                                      :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -4021,6 +4019,9 @@ c' \arrow[u, "m"] \arrow[rr, "{Cone(c',D)}"] &  & \{\lambda_{c',-}\} \in Set
 
 - Alternatively, $d$ is a limit if, for each morphism that arrives to it, there
   is a *single corresponding cone*.
+
+- In Set, elements of $d^1$ are in a one to one correspondence with cones $Cone(1,D)$
+  so this can be used as a definition.
 
 *** Products as limit 
 :PROPERTIES:
@@ -4059,7 +4060,7 @@ c'' \arrow[rd] & c \arrow[d] & c' \arrow[ld] \\
     
 A terminal object is the limit of apices of cones built over an empty index category.
 
-*** Equalizer as limit 
+*** Equalizer as limit                                              :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4068,32 +4069,51 @@ A terminal object is the limit of apices of cones built over an empty index cate
 \begin{tikzcd}
  &  &  &  & c \arrow[d, "!\exists"] &  \\
  &  &  &  & lim~D \arrow[ld] \arrow[rd] &  \\
-1 \arrow[rrr, "D"', dotted, bend right] \arrow[rrrru, dashed] \arrow[r, bend left] \arrow[r, bend right] & 2 \arrow[rrrr, dotted, bend right] \arrow[rrru, dashed] &  & i \arrow[rr, bend left] \arrow[rr, bend right] &  & j
+1 \arrow[rrr, "D"', dotted, bend right] \arrow[rrrru, dashed] \arrow[r, bend left] \arrow[r, bend right] & 2 \arrow[rrrr, dotted, bend right] \arrow[rrru, dashed] &  & X \arrow[rr, bend left, "f"] \arrow[rr, bend right, "g"] &  & Y
 \end{tikzcd}
 #+END_EXPORT 
 
-An equalizer is the limit of a diagram with two points (1 and 2) and two arrows
-from 1 to 2.
+The equalizer of two morphisms $f,g$ is the limit of the above diagram. In Set, it is a subset of $X$
+such that $f(x) = g(x)$.
 
-*** Pullback (fibered product)
+*** Pullback (fibered product)                                      :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
- &  &  &  & c \arrow[d] &  \\
- & \textrm{Index Cat} &  &  & lim~D \arrow[ld, "p"] \arrow[d, "r"] \arrow[rd, "q"] &  \\
-1 \arrow[r] & 2 & 3 \arrow[l] & A \arrow[r, "f"'] & B & C \arrow[l, "g"]
+            &                    & c \arrow[rd] &                                     &                  \\
+            & \textrm{Index Cat} &              & lim~D \arrow[d, "p"] \arrow[r, "q"] & C \arrow[d, "g"] \\
+1 \arrow[r] & 2                  & 3 \arrow[l]  & A \arrow[r, "f"]                    & B               
 \end{tikzcd}
 #+END_EXPORT
 
-- The limit cones should be equal so $$ f \circ p = g \circ q $$ In Set, $lim~D$
-  would be a product where $g$ on second element equals to $f$ on first
-  element.
+- The *pullback* of morphisms $f,g$ is a limit object $lim~D$ and two morphisms
+  $p,q$ such that $f \circ p = g \circ q$. In Set, consider that $lim~D$ is the
+  set $Cone(1,D)$. The pullback would be $$A \times_B C = \{ (a,c) = f(a) = g(c) \}$$
 
 - If one uses fibers in $A$ and $B$ to make $f,g$ injective then
   $lim~D$ would be the product of fibers.
+
+*** Pushout (fibered sum)                                           :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+c &                    &                                 \\
+  & colim~D \arrow[lu] & C \arrow[l, "q"]                \\
+  & A \arrow[u, "p"]   & B \arrow[l, "f"] \arrow[u, "g"]
+\end{tikzcd}
+#+END_EXPORT
+
+The *pushout* of two morphisms $f,g$ is a co-limit object $colim~D$ and two
+morphisms $p,q$ such that the above commutes. For sets, $colim~D$ is the
+disjoint union of $A$ and $C$ quotiented over the relation $f(b) \sim g(b)$. For
+example, if $A,C$ are a subset of $W$, $B$ their intersection with $f,g$
+inclusion maps, the pushout would be the canonical set union $A \cup C$.
 
 *** Fiber 
  - A *fiber* of a function $f$ and a value $b$ is the set of elements for which
