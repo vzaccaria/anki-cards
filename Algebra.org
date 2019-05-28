@@ -4079,7 +4079,7 @@ such that $f(x) = g(x)$.
 \end{tikzcd}
 #+END_EXPORT
 
-- The *pullback* of morphisms $f,g$ is a limit object $lim~D$ and two morphisms
+- The *pullback* *of two morphisms* $f,g$ is a limit object $lim~D$ and two morphisms
   $p,q$ such that $f \circ p = g \circ q$. In Set, consider that $lim~D$ is the
   set $Cone(1,D)$. The pullback would be $$A \times_B C = \{ (a,c) = f(a) = g(c) \}$$
 
@@ -4099,11 +4099,14 @@ c &                    &                                 \\
 \end{tikzcd}
 #+END_EXPORT
 
-The *pushout* of two morphisms $f,g$ is a co-limit object $colim~D$ and two
-morphisms $p,q$ such that the above commutes. For sets, $colim~D$ is the
-disjoint union of $A$ and $C$ quotiented over the relation $f(b) \sim g(b)$. For
-example, if $A,C$ are a subset of $W$, $B$ their intersection with $f,g$
-inclusion maps, the pushout would be the canonical set union $A \cup C$.
+- The *pushout of two morphisms* $f,g$ is a co-limit object $colim~D$ and two
+  morphisms $p,q$ such that the above commutes.
+
+- For sets, $colim~D$ is the disjoint union of $A$ and $C$ quotiented over the
+  relation $f(b) \sim g(b)$. 
+- For example, if $A,C$ are a subset of $W$, $B$
+  their intersection with $f,g$ inclusion maps, the pushout would be the
+  canonical set union $A \cup C$.
 
 *** Fiber 
  - A *fiber* of a function $f$ and a value $b$ is the set of elements for which
