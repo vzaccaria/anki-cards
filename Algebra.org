@@ -719,14 +719,13 @@ $$\mathbb{T} = \{ \forall kn. e^{2\pi i k/n}\}$$
 | $\widehat{\mathbb{Z}/n}$ | $z \mapsto \xi_n^{a*z}$   | $\forall a \in \{0 ... n-1\}, \xi_n = e^{2\pi i/n}$ |
 | $\hat{\mathbb{R}}$       | $r \mapsto e^{i\theta r}$ | $\forall \theta \in \mathbb{R}$                     |
 
-*** Group representations and modules
-- A /representation/ is a group hom. $G \rightarrow Aut(V)$ (i.e.,
-  they have inverse).
-- It extends to hom. of rings $K[G] \rightarrow End(V)$, where $End(V)$ is the
-  endomorphism ring.
-- The latter is an $R[G]-module$ which means that $R[G]$ modules and 
-  representations of groups are the same thing.
-- Irreducible representations correspond to a simple module $R[G]-module$. 
+*** Group representations and modules                               :focus:
+- A /representation/ is a group hom. $$G \rightarrow_{Grp} V^V$$
+- It extends to ring homs $$K^G \rightarrow_{Ring} V^V$$ where $V^V$ is the
+  endomorphism ring of the underlying group of $V$. The above is an
+  $R^G$ module, where the ring $R$ happens to be $K$, so $R[G]$ modules and representations
+  of groups are the same thing. For example, irreducible representations
+  correspond to a simple $R[G]$ module.
 *** Fourier transform of a group
 
 - It derives from the Peter-weyl theorem that states that $C[G]
@@ -1484,7 +1483,7 @@ Examples:
 
     # RESTART FROM HERE: https://www.youtube.com/watch?v=Extra4r0Y
 
-*** Example $k$ algebra: group Algebra 
+*** Example $k$ algebra: group Algebra                              :focus:
 
     - A group algebra $\KK[G]$ for a group $G$ and a field $\KK$ is a vector space
       where every vector has the form $$z_1g_1 + z_2g_2 + \ldots$$
@@ -1631,7 +1630,7 @@ $\epsilon(s) = 1 \forall s \in S$.
 Given a set $S$, one can define the a poset over it, ordered by inclusion: $$2^S
 = \{ T \subset S \}$$ Given this poset, one can build an incidence co-algebra $C=int(2^S)$
 
-*** Example $k$ coalgebra: group co-algebra 
+*** Example $k$ coalgebra: group co-algebra                         :focus:
 
     - A group coalgebra $\KK[G]$ for a group $G$ and a field $\KK$ is a vector
       space where every vector has the form $$z_1g_1 + z_2g_2 + \ldots$$ and where 
@@ -1819,7 +1818,7 @@ It can be shown that
  \end{align*}
  #+END_EXPORT
 
-*** $k$ Bialgebra - algebra $A^C$
+*** $k$ Bialgebra - algebra $A^C$                                   :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -1827,8 +1826,10 @@ It can be shown that
 Given $A$ and $C$ respectively an algebra and a co-algebra, $A^C$ is an algebra with 
 product $$\star: A^C \times A^C
 \rightarrow A^C$$ such that $$f \star h = \mu \circ (f \otimes h) \circ \Delta$$
-and unit $u \circ \epsilon$.
-*** $k$ Bialgebra - antipode (Hopf algebra)
+and unit $T = u \circ \epsilon$. If there is an $S$ for which $Id \star S = T$ then $S$
+is called an antipode.
+
+*** $k$ Bialgebra - antipode (Hopf algebra)                         :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -1840,13 +1841,13 @@ the following commutes:
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-A \otimes A \arrow[d, "id \otimes S"] & A \arrow[d, "u \circ \epsilon"] \arrow[l, "\Delta"] \arrow[r, "\Delta"] & A \otimes A \arrow[d, "S \otimes id"] \\
+A \otimes A \arrow[d, "id \otimes S"] & A \arrow[d, "T = u \circ \epsilon"] \arrow[l, "\Delta"] \arrow[r, "\Delta"] & A \otimes A \arrow[d, "S \otimes id"] \\
 A \otimes A \arrow[r, "\mu"]          & A                                                                       & A \otimes A \arrow[l, "\mu"]         
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-In Sweedler notation, $$u(\epsilon(a)) = \sum a_1S(a_2) = \sum S(a_1)a_2$$
+In Sweedler notation, $$T(a) = u(\epsilon(a)) = \sum a_1S(a_2) = \sum S(a_1)a_2$$
 
 *** $k$ Bialgebra - antipode as the inverse of an identity
 :PROPERTIES:
@@ -1856,10 +1857,10 @@ In Sweedler notation, $$u(\epsilon(a)) = \sum a_1S(a_2) = \sum S(a_1)a_2$$
 Given $A$ a bi-algebra with antipode $S$, $S$ is the inverse of $id_A$ in the 
 $(A^A, \star, u \circ \epsilon)$ algebra.
 
-*** $k$ Bialgebra - antipode for a group algebra
+*** $k$ Bialgebra - antipode for a group algebra                    :focus:
 
 The antipode $S$ for a group algebra is such that $$\mu \circ (Id
-\otimes S) (g \otimes g) = u(1)$$ i.e., $S(g) = g^{-1}$.
+\otimes S) (g \otimes g) = T(g)$$ i.e., since $T(g) = e \forall g$, $$S(g) = g^{-1}$$
 *** Opposite algebras and co-algebras
 
 - Given an algebra $A$, the opposite co-algebra $\bar{A}$ is the same as A but with multiplication inverted.
