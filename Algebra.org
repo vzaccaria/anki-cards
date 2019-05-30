@@ -314,22 +314,22 @@ This construction is a *functor*.
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-A free group $X^{*}$ of $X$ is a universal arrow from $X$ to the group forgetful
-functor. It is a pair $(X^{*}, u)$ such that for any function $v: X \mto |G|$, 
+A *free group* $F_X$ on the set $X$ is a universal arrow from $X$ to the group forgetful
+functor. It is a pair $(F_X, u)$ such that for any function $v: X \mto |G|$, 
 there is a unique group homomorphism $f$ for which the diagram below commutes. 
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
                                          & X \arrow[ld, "u",red] \arrow[rd, "v"] &  \\
-\vert X^* \vert \arrow[rr, "\vert f \vert"]                 &                                         & \vert G \vert \\
-X^* \arrow[rr, "f"] &                                         & G \\
+\vert F_X \vert \arrow[rr, "\vert f \vert"]                 &                                         & \vert G \vert \\
+F_X \arrow[rr, "f"] &                                         & G \\
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-In practice, any substitution $v$ of a set $X$ can be factorized through its
-free group.
+In practice, any substitution $v$ of a set $X$ can be factorized through a substitution $u$
+into the free group.
 
 *** Group automorphism
 
@@ -366,16 +366,19 @@ free group.
   \mto |G|$ (or $f \in |G|^X$). The set of group theoretic terms $T_X$ and $|G|^X$
   are endowed with a unique evaluation map $$ev: T_X \mto |G|^X \mto |G|$$
 
-*** Group theoretic relation                                        :focus:
+*** Group theoretic relations and free groups                       :focus:
 
 - A /group theoretic relation/ is a subset of $T_X \times T_X$ composed of all
-  pairs $(e_1, e_2)$ such that $$\exists s. ev(e_1, s) = ev(e_2, s)$$ (write
-  $e_1 \sim_s e_2$). Note for example that $(ab)'=a'b'$ for all elements of a
-  group but only some elements satisfy $ab = ba^2$
+  pairs $(t_1, t_2)$ such that $\exists s. ev(t_1, s) = ev(t_2, s)$. Note for
+  example that $(ab)'=a'b'$ for all elements of a group but only some elements
+  satisfy $ab = ba^2$.
 
-- Given a group homomorphism $h: F \mto G$, $$e_1 \sim_{s_F} e_2 \implies e_1
-  \sim_{s_G} e_2$$ where $s_G$ substitutes the images of $h$ over the same
-  elements substituted by $s_F$.
+- If the following is true $$\exists s. ev_F(t_1, u) = ev_F(t_2, u) \implies
+  \exists s.ev_G(t_1, v) = ev_G(t_2, v)$$ and $u$ is epi (i.e., $F$ is generated
+  by the codomain of $u$) then $v = h \circ u$ ($h$ unique group hom). 
+- If this happens for any $G$ with the same $u: X \rightarrow \vert F \vert$ then we say that
+  *$F$ is the free group on $X$.*
+
 
 
 
