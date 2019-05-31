@@ -105,12 +105,22 @@ function $$(x_i)_{i = \{1 \ldots n\}}$$
 
 It is a /normal subgroup of $G$/, because $$\forall g \in G.f(gkg^{-1})=f(g)f(g^{-1})=1_*$$
 
-*** Range of a group homomorphism
-    The *range* $\textrm{range}(f)$ of a homomorphism  $f: (G,\star)
-    \rightarrow (H,*)$ is a set $R$ such that
+*** First homomorphism theorem :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-    - $R \subseteq H$
-    - $\forall r \in R, \exists g \in G \textrm{~s.t.~} r = f(g)$
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+             &                            & 0                                   &                                                               & 0 \\
+             &                            &                                     & G/Ker~f \simeq im~f \arrow[rd, "\iota"] \arrow[ru] \arrow[lu] &   \\
+             &                            & G \arrow[rr, "f"] \arrow[ru, "\pi"] &                                                               & H \\
+             & ker~f \arrow[ru, "\kappa"] &                                     &                                                               &   \\
+0 \arrow[ru] &                            &                                     &                                                               &
+\end{tikzcd}
+#+END_EXPORT
+Every morphism $f$ factors into $\iota \circ \pi$ , where $\iota$ is a
+monomorphism and $\pi$ is an epimorphism.
 
 *** Coset
 - Given a subgroup $(H, \star) \subseteq (G, \star)$, we define the *left coset*
@@ -2483,6 +2493,16 @@ g_2(x)$, i.e., the solutions of the equation.
 
     - a cartesian closed category is equipped with an isomorphism between $Hom(Q
       \times P, R) \cong Hom(Q, R^P)$
+
+*** Zero morphism   :focus:
+- $z: X \rightarrow Z$ is a left-zero morphism if for any $W, g, h$ we have $zg = zh$
+- $z: Z \rightarrow Y$ is a right-zero morphism if for any $W, g, h$ we have $gz = hz$
+*** Kernel object :focus:
+
+- A kernel object of a morphism $f: X \rightarrow Y$ is the equalizer of $f$ and
+  a zero-morphism $0_{XY}: X \mto Y$
+
+- In the category of groups, it is exactly the kernel of a morphism of groups
 
 ** Kleisly category and monads
 *** Kleisly category ($C_T$) definition
