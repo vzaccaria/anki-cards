@@ -2330,15 +2330,18 @@ composition $R.S$ ($S \subseteq \ubr{n} \times \ubr{p}$) is the set of pairs
 $(i,k) \in \ubr{m} \times \ubr{p}$ for which $$\exists j. (i,j) \in R \wedge (j,k) 
 \in S$$
 
-*** Symmetric monoidal theory                                       :focus:
+*** Symmetric monoidal theory (presentation for a PROP)             :focus:
 
 - A *symmetric monoidal theory* (or /presentation/) for any PROP $G$ is a pair
   $(\Sigma, E)$ where $\Sigma$ is the set of morphisms (generators) of type $n
   \rightarrow m$ other than $id$ and $\sigma$, 
   while $E$ is a set of equations over $\Sigma$.
 - A $\Sigma$ term is any morphism that can be built by composing the generators. 
-- A *freely generated PROP* $G$ is the set of expressions that one can construct with
-  elements in $\Sigma$ quotiented over $E$ (and the axioms of PROP)
+
+*** Freely generated PROP                                           :focus:
+Given a symmetric monoidal theory $(\Sigma, E)$, a *freely generated PROP* $G$ is
+the set of expressions that one can construct with elements in $\Sigma$
+quotiented over $E$ (and the axioms of PROP)
 
 *** SMT for a monoid                                                :focus:
 :PROPERTIES:
@@ -2395,6 +2398,30 @@ and a co-monoid:
 - (F1) $\Delta \circ m = (m \otimes id) \circ (id \otimes \Delta)$
 - (F2) says that co-multiplication factorises the original element
   
+*** PROP sum                                                        :focus:
+- Given two PROPs A and B, one can define their co-product $C = A + B$
+
+- For example one can create a graph PROP G = SB + N, where SB is a /special
+  bialgebra/ SB and $N$ is a /node/ PROP whose signature is a single node:
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \includegraphics[width=4cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/prop_sum_graph.pdf}
+  #+END_EXPORT
+  #+END_CENTER
+ 
+  So and example of morphism in $G = SB+N$ would be:
+  
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \includegraphics[width=4cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/prop_sum_graph_prop.pdf}
+  #+END_EXPORT
+  #+END_CENTER
+  
+  
+
+
+
 ** Set category
 *** Monomorphisms (Sets)                                                                 :noanki:
 :PROPERTIES:
@@ -4128,7 +4155,7 @@ c &                    &                                 \\
 
 - For sets, $colim~D$ is the disjoint union of $A$ and $C$ quotiented over the
   relation $f(b) \sim g(b)$. 
-- For example, if $A,C$ are a subset of $W$, $B$
+- For example, if $A,C$ are a subset of some $W$, $B$
   their intersection with $f,g$ inclusion maps, the pushout would be the
   canonical set union $A \cup C$.
 
