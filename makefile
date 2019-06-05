@@ -29,5 +29,5 @@ watch:
 clean:
 	rm -rf anki-cards *.pdf *.log tmp-*
 
-minor: 
+update: 
 	git add . && git commit -m "updates to cards" && git push

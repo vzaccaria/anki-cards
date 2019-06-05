@@ -2522,12 +2522,46 @@ g_2(x)$, i.e., the solutions of the equation.
       \times P, R) \cong Hom(Q, R^P)$
 
 *** Zero morphism   :focus:
-- $z: X \rightarrow Z$ is a left-zero morphism if for any $W, g, h$ we have $zg = zh$
-- $z: Z \rightarrow Y$ is a right-zero morphism if for any $W, g, h$ we have $gz = hz$
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+- A left-zero morphism $0_{XY}$ is such that the following commutes for any $W, g, h$ 
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  Y & X \arrow[l, "0_{XY}"] & \forall W \arrow[l, "\forall g", bend left] \arrow[l, "\forall h"', bend right]
+  \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
+
+- A right-zero morphism is such that the following commutes for any $Z,g,h$
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  \forall Z & Y \arrow[l, "\forall g", bend left] \arrow[l, "\forall h"', bend right] & X \arrow[l, "0_{XY}"]
+  \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
+
 *** Kernel object :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
 - A kernel object of a morphism $f: X \rightarrow Y$ is the equalizer of $f$ and
-  a zero-morphism $0_{XY}: X \mto Y$
+  a right-zero-morphism $0_{XY}: X \mto Y$
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  \forall Z & Y \arrow[l, "\forall g", bend left] \arrow[l, "\forall h"', bend right] & X \arrow[l, "0_{XY}"] \arrow[l, "f"', bend right] \\
+            &                                                                         & K_f \arrow[u, "k"] \arrow[lu, "0_{K_fY}"]        
+  \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
 
 - In the category of groups, it is exactly the kernel of a morphism of groups
 
