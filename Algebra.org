@@ -376,16 +376,37 @@ into the free group.
   \mto |G|$ (or $f \in |G|^X$). The set of group theoretic terms $T_X$ and $|G|^X$
   are endowed with a unique evaluation map $$ev: T_X \mto |G|^X \mto |G|$$
 
-*** Group theoretic relations and free groups                       :focus:
+*** Group theoretic relation :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
 - A /group theoretic relation/ is a subset of $T_X \times T_X$ composed of all
-  pairs $(t_1, t_2)$ such that $\exists s. ev(t_1, s) = ev(t_2, s)$. Note for
+  pairs $(t_1, t_2)$ such that $\exists s. ev(t_1, s) = ev(t_2, s)$. 
+
+- It is a projection (into $T_X \times T_X$) of the pullback $R$: 
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  GR_G & R_{G} \arrow[d] \arrow[r] \arrow[l] & T_X \times S \arrow[d, "ev \& id"] \\
+      & T_X \times S \arrow[r, "ev \& id"'] & G
+  \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
+
+- Note for
   example that $(ab)'=a'b'$ for all elements of a group but only some elements
   satisfy $ab = ba^2$.
 
-- If the following is true $$\exists s. ev_F(t_1, u) = ev_F(t_2, u) \implies
-  \exists s.ev_G(t_1, v) = ev_G(t_2, v)$$ and $u$ is epi (i.e., $F$ is generated
-  by the codomain of $u$) then $v = h \circ u$ ($h$ unique group hom). 
+
+
+
+*** Group theoretic relations and free groups                       :focus:
+
+- There is a unique group hom $h$ such that $$\forall epi(u), t_1, t_2. ev_F(t_1, u) = ev_F(t_2, u) \implies
+  ev_G(t_1, h \circ u) = ev_G(t_2, h \circ u)$$ 
+
 - If this happens for any $G$ with the same $u: X \rightarrow \vert F \vert$ then we say that
   *$F$ is the free group on $X$.*
 
