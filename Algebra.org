@@ -2422,16 +2422,10 @@ and a co-monoid:
 *** PROP sum                                                        :focus:
 - Given two PROPs A and B, one can define their co-product $C = A + B$
 
-- For example one can create a graph PROP G = SB + N, where SB is a /special
-  bialgebra/ SB and $N$ is a /node/ PROP whose signature is a single node:
-
-  #+BEGIN_CENTER
-  #+BEGIN_EXPORT latex
-  \includegraphics[width=4cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/prop_sum_graph.pdf}
-  #+END_EXPORT
-  #+END_CENTER
- 
-  So and example of morphism in $G = SB+N$ would be:
+- For example one can create a graph PROP G = SB + N, where SB (/special
+  bialgebra/) gives the branching structure while $N$ is a /node/ PROP whose
+  signature is a single $1 \mto 1$ morphism (node) and no equations.:
+  So an example of morphism in $G = SB+N$ would be:
   
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
@@ -2440,7 +2434,6 @@ and a co-monoid:
   #+END_CENTER
   
   
-
 
 
 ** Set category
@@ -2807,6 +2800,32 @@ You can then build the interpreter from the free monad with:
     - SCs form an endofunctor $Hom(Hom(-,R),R)$; this endofunctor can be made
       into a monad where a new ~SC b~ can be built from an ~SC a~ by specifying ~a ->
       SC b~ (bind).
+*** Monad in a bicategory :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+A monad on an object $x$ of the bicategory $B$ is a 1-cell $F: x \mto x$ with
+two cells $\eta$ and $\mu$ such that the following commute:
+
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=10cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/bicategory_monad.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+If $B=Cat$, $x$ is a category and the above corresponds to the usual notion of
+monad as an endofunctor. A monad morphism $\theta$ is a 2-cell making the
+following commute:
+
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=8cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/bicategory_monad_morphism.pdf}
+#+END_EXPORT
+#+END_CENTER
+
 ** Functors
 *** Functor definition                                                                 :noanki:
 
@@ -2941,7 +2960,6 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 - 1-cell is a morphism
 - 2-cell is a morphism between morphisms
 
-
 *** 2-category                                                                 :noanki:
 - A class of 0-cells (objects): $A,B,C$ 
 
@@ -2983,7 +3001,6 @@ A \arrow[r] \arrow[r, "\Downarrow \alpha"', bend left=49] \arrow[r, "\Downarrow 
 
 
 
-    
 *** Representable functors  
     :PROPERTIES:
     :BEAMER_opt: fragile
@@ -3012,7 +3029,6 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
 
 - Another example is the matrix functor that is representable by a pair of integers. 
   A morphism from ~(int,int) -> a~ is one on one with a matrix ~Matrix a~.
-
 
 *** Universal property 
 A universal property of object $X$ is a description of either $X^{(-)}$ or
@@ -3871,7 +3887,6 @@ We have that $\phi(a) = scons(a, \phi(\nu(a)) = a \cdot \nu(a) \cdot \nu^2(a) \c
 
 
 
-
 ** Monad algebras
 *** Drawbacks of F-algebras
 
@@ -3902,7 +3917,6 @@ T(X) \arrow[r, "\theta"] & X \arrow[ru, "\cong"] &
   the above laws (morphisms are F-algebra morphisms).
 
 - Practically, a monad algebra enforce monoidal laws on $\theta$.
-
 
 
 ** Natural transformations
