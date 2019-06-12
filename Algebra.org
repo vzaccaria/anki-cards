@@ -2204,7 +2204,7 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
   from $X$ to $Y$ denoted $Y^X$. In a closed category, we have: $$hom(X \otimes
   Y, Z) \cong hom(Y, Z^X)$$ The natural isomorphism is called *currying*.
 - Visually, the object $Z^X$ is visualized as a /clasp/ and these diagrams are
-  equivalent:
+  in a one to one correspondence:
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
@@ -2214,6 +2214,19 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
   \end{figure}
   #+END_EXPORT
   #+END_CENTER 
+
+*** Closed category - name of a morphism                            :focus:
+
+- The *name* of a morphism $f: X \mto Y$ is a morphism $[f]: I \mto Y^X$, i.e., an
+  element of $Y^X$
+
+- One can recover the original $f$ with the *evaluation* morphism $ev$: 
+  $$ f = ev \circ (Id \otimes [f]) \circ r^{-1}$$ where $r^{-1}: X \mto X \otimes I$.
+
+- In a compact closed category, there is a one-to-one correspondence between a
+  morphism $f$ and an element of $X' \otimes Y$ where $X'$ is the dual of $X$.
+  Thus, a value of $X' \otimes Y$ encodes $f$ (gate teleportation).
+
 
 *** Compact category                                                :focus:
 
@@ -3272,6 +3285,9 @@ G/N \arrow[rr, "\exists!f_k"'] & * \arrow[u, "H_{/N}", dotted]              & X
 #+END_EXPORT
 #+END_CENTER
 
+In practice, considering only morphisms respecting the kernel, 
+$X^G \simeq X^{G/N}$ because $p: G \mto G/N$ is part of all of them.
+
 
 
 
@@ -3556,9 +3572,9 @@ $\kappa (Fix \circ h)$ could filter away data. Instead of two catamorphism you g
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-gI \arrow[rr] \arrow[dd] &                                                                            & gI \arrow[d, "Unfix \circ h"] \arrow[ldd, "h" description] \\
-                         &                                                                            & tI \arrow[d, "f"] \arrow[ld, "\tiny Fix" description]      \\
-I \arrow[r, "\kappa h"'] & I \arrow[r, "\kappa f"'] \arrow[ru, "\tiny unFix" description, bend right] & I
+gI \arrow[r] \arrow[dd]                                        & gI \arrow[r, "Unfix \circ h"] \arrow[dd, "h" description] \arrow[rdd, "\phi"] & gI \arrow[dd, "f"] \\
+                                                               &                                                                               &                    \\
+I \arrow[r, "\kappa h"'] \arrow[rr, "\kappa\phi"', bend right] & I \arrow[r, "\kappa f"']                                                      & I                 
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
