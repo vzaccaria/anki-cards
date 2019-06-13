@@ -2313,13 +2313,13 @@ In this category,
   singleton set, as arrows between $\star$ and any set corresponds to picking
   element $\nu_A$ in it.
 
-*** Category of objects (functor)-under object $b$
+*** Category of objects (functor)-under object $b$                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 Given the functor $S: D \rightarrow C$, the category of objects /S-under/ $b$ ($b
-\downarrow S$) is the set of all pairs $\np{f}{d}$ where the following diagram
-commutes:
+\downarrow S$) is the set of all pairs $\np{f}{d}$ and morphisms $h$ that make 
+the following diagram commute:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
@@ -2330,11 +2330,29 @@ Sd \arrow[rr, "Sh"] &  & Sd'
 #+END_EXPORT
 #+END_CENTER
 
-*Example:* If $S$ is the forgetful $Grp \rightarrow Set$, fixing $x$ gives a
-category ($x \downarrow S$) with objects $\np{g}{f}$, $f$ mapping elements of
-$x$ into the underlying set of $g$. Among them, we find the objects
-$\np{F(x)}{\eta}$ where $\eta$ maps $x$ into the underlying set of the free
-group $F(x)$.
+
+*** Category of objects (functor)-under object $X$, example $Grp \rightarrow Set$ :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+ & X \arrow[ld, "i_{GX}"] \arrow[rd, "i_{G'X}"] &  \\
+\vert G \vert \arrow[rr, "Sh"] &  & \vert G'\vert
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- $S$ is the forgetful $Grp \rightarrow Set$, and $X$ is a set
+
+- The category ($X \downarrow S$) has objects $\np{G}{i_{GX}}$
+  where $i_{GX}$ maps $X$ into the underlying set of $G$ while morphisms
+  $h$ are those that make the above diagram commute.
+
+- The /free group/ on X ($F(X)$) is the initial object in this category
+
 
 *** Product and permutation category (PROP)                         :focus:
 
@@ -4132,22 +4150,31 @@ A \arrow[r] \arrow[rrrr, dotted, bend right] \arrow[rrrrru, "\Delta_c" descripti
     :BEAMER_opt: fragile
     :END:
 
+#+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-c \arrow[rr, "{Cone(c,D)}"] &  & \{\lambda_{c,-}\} \in Set \arrow[d] \\
-c' \arrow[u, "m"] \arrow[rr, "{Cone(c',D)}"] &  & \{\lambda_{c',-}\} \in Set 
+- \arrow[rd, dotted] \arrow[rdd, dashed, bend right] \arrow[rrdd, dashed, bend left] &                        &         \\
+                                                                                     & d \arrow[rd] \arrow[d] &         \\
+                                                                                     & \bullet                & \bullet
 \end{tikzcd}
 #+END_EXPORT
+#+END_CENTER
 
-- $Cone(-,D): C^{op} \rightarrow Set$ is a functor and any morphism $m$ between
-  apices is a morphism between cones. If there exists an object $d \in C$ for
-  which $Cone(-,D) \cong d^{(-)}$, we say that $d$ is the limit of $D$.
+# #+BEGIN_EXPORT latex
+# \begin{tikzcd}
+# c \arrow[rr, "{Cone(c,D)}"] &  & \{\lambda_{c,-}\} \in Set \arrow[d] \\
+# c' \arrow[u, "m"] \arrow[rr, "{Cone(c',D)}"] &  & \{\lambda_{c',-}\} \in Set 
+# \end{tikzcd}
+# #+END_EXPORT
 
-- Alternatively, $d$ is a limit if, for each morphism that arrives to it, there
-  is a *single corresponding cone*.
+- $Cone(-,D): C^{op} \rightarrow Set$ is a functor. If there exists an object $d
+  \in C$ for which $Cone(-,D) \cong d^{(-)}$, we say that $d$ is the limit of
+  $D$ and the cone that departs from it is the /limiting cone/.
 
-- In Set, elements of $d^1$ are in a one to one correspondence with cones $Cone(1,D)$
-  so this can be used as a definition.
+- In practice, if $d$ is a limit then for each morphism that arrives to it, there
+  is a *single corresponding cone* from the sources of the morphism.
+
+- In Set, $d$ is the set of all cones departing from $1$ to the diagram $D$.
 
 *** Products as limit 
 :PROPERTIES:
