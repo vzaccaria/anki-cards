@@ -3031,6 +3031,47 @@ A \arrow[r] \arrow[r, "\Downarrow \alpha"', bend left=49] \arrow[r, "\Downarrow 
 
 
 
+*** Bi-category example *Cat* 
+
+- 0-cells are categories
+- 1-cells are functors and they must compose (symbol used for composition is
+  ";")
+- 2-cells are natural transformations and they must compose 
+
+*** Bi-category example *Span(C)* (up to 1-cells)         :focus:
+
+Assume C is a category with pullbacks. Then *Span(C)* is such that
+- 0-cells are objects of C, 
+- 1-cell $x \mto y$ is a span $(z, f: z \mto x, g: z \mto y)$; composition is given by pullback
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanc_2cellcomp.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+*** Bi-category example *Span(C) (2-cells)*                         :focus:
+
+- A 2-cell is a span morphism $h: z \mto z'$. 
+- Horizontal composition of two 2-cell $h, h'$ is such that the diagram on the right commutes
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{figure}
+  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanc_2cell.pdf}}
+  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanc_2cellhcomp.pdf}}
+  \end{figure} 
+  #+END_EXPORT
+  #+END_CENTER 
+
+- Vertical composition (2-cells along one cells) is composition in $C$
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanc_2cellvcomp.pdf}
+  #+END_EXPORT
+  #+END_CENTER
+
 
 *** Representable functors  
     :PROPERTIES:
