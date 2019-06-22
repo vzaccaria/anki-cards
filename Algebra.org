@@ -35,7 +35,7 @@ function $$(x_i)_{i = \{1 \ldots n\}}$$
       \forall m \in M, \exists s_1, \ldots, s_n \in S \textrm{~~s.t.~~} m = s_1 * \cdots * s_n
     \]
 
-*** Free generator set (Monoid)
+*** Free generator set (Monoid)                                    :noanki:
 
     A subset $S$ of $M$ is said to be a generator if all elements $m \in M$
     can be obtained by a *unique fold* of the elements $s \in S$.
@@ -48,7 +48,7 @@ function $$(x_i)_{i = \{1 \ldots n\}}$$
     $\mathbb{Z}_n$ but it is not free, in the sense that each element of
     $\mathbb{Z}_n$ can be defined by multiple sequences of 1.
 
-*** Free monoid
+*** Free monoid                                                    :noanki:
 
     A free monoid is a monoid *with a free generator*.
 
@@ -253,11 +253,11 @@ Orbits in $G$ relative to $H$ are disjoint subsets of $G$: $\bigcup_g H_g = G$
 
 
 
-*** Stabilizer of a group element's action
+*** Isotropy group (group stabilizers)
     - Given a group $H$, a set $S$ and an action $\curvearrowright: H \times S
       \rightarrow S$, a *stabilizer* of $s \in S$ is an element $h_s \in H$ such
       that $$ {h_s} \curvearrowright s = s$$
-    - For each $s \in S$ one can define a group $Stab(s) = \{ h_s \}$ which is a
+    - For each $s \in S$ one can define a group $Stab_H(s) = \{ h_s \}$ which is a
       sub-group of $H$ (it is called /isotropy group/).
 
 *** Orbit in a set $S$ relative to a group $H$
@@ -280,7 +280,7 @@ h_1 \curvearrowright s \arrow[rd, no head, dotted, bend right] & s \in S        
 - Orbits are disjoint subset of $S$: $\bigcup_s H_s = S$ and define an $H-$ 
   equivalence relation over $S$.
 
-*** Invariance relative to a group $H$
+*** Invariance relative to a group $H$                             :noanki:
 
 - An element $t \in S$ is /invariant/ relative to $H$ if the orbit associated to
   it is a singleton: $$H_t = \{ t \}$$
@@ -384,13 +384,13 @@ into the free group.
 - A /group theoretic relation/ is a subset of $T_X \times T_X$ composed of all
   pairs $(t_1, t_2)$ such that $\exists s. ev(t_1, s) = ev(t_2, s)$. 
 
-- It is a projection (into $T_X \times T_X$) of the pullback $R$: 
+- It is a projection (into $GR_X = T_X \times T_X$) of the pullback $R$: 
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
   \begin{tikzcd}
-  GR_G & R_{G} \arrow[d] \arrow[r] \arrow[l] & T_X \times S \arrow[d, "ev \& id"] \\
-      & T_X \times S \arrow[r, "ev \& id"'] & G
+  GR_X & R_{X} \arrow[d] \arrow[r] \arrow[l] & T_X \times S \arrow[d, "ev \& id"] \\
+      & T_X \times S \arrow[r, "ev \& id"'] & G \times S
   \end{tikzcd}
   #+END_EXPORT
   #+END_CENTER
@@ -404,11 +404,14 @@ into the free group.
 
 *** Group theoretic relations and free groups                       :focus:
 
-- There is a unique group hom $h$ such that $$\forall epi(u), t_1, t_2. ev_F(t_1, u) = ev_F(t_2, u) \implies
-  ev_G(t_1, h \circ u) = ev_G(t_2, h \circ u)$$ 
+- A /free group/ on set $X$ is the set of equivalence classes on $T_X$ (the set of
+  group theoretic terms) of group theoretic relations, i.e. $$T_X/R_X$$
+  
+- Remember that $R_X$ is a pullback of $ev \& id$: $$R_X = (T_X \times S)
+  \times_{G \times S} (T_X \times S)$$
 
-- If this happens for any $G$ with the same $u: X \rightarrow \vert F \vert$ then we say that
-  *$F$ is the free group on $X$.*
+- Given $[t]$ as the equivalence class of $t \in T_X$ we have that:
+   $$[p][q] = [pq], [p]^{-1} = [p^{-1}],~ e = [e]$$
 
 
 
@@ -712,16 +715,16 @@ In general, the kernel and the image of a morphism between spaces $E_1
     \}$$ thus one can define a representation that is equivalent to the group
     algebra's one.
 
-*** Schur's lemma                                                                 :noanki:
+*** Schur's lemma                                                  :noanki:
      - If $(\rho, V)$ and $(\rho', V)$ are irreducible representations and there
        is an intertwining operator $L$, *then* $$L \neq 0 \rightarrow L
        \textrm{~is an equivalence}$$ (no middle ground).
-*** Schur's lemma - corollary for $L : V \rightarrow V$                                                                 :noanki:
+*** Schur's lemma - corollary for $L : V \rightarrow V$            :noanki:
      For irreducible representations ($\rho,V$) all intertwining operators $L: V
      \rightarrow V$ have the form $L=\lambda I$ where $\lambda$ is a scalar. In
      fact, $\lambda$ is the root of the characteristic polynomial (an
      eigenvalue) of $\phi$.
-*** Schur's lemma - corollary for $L_1, L_2$ intertwining operators                                                                 :noanki:
+*** Schur's lemma - corollary for $L_1, L_2$ intertwining operators :noanki:
      For irreducible representations ($\rho, V$) and ($\rho', V'$) all the intertwining
      operators have the form $L_1 = \lambda L_2$.
 *** Irreducible representations of abelian groups
@@ -746,12 +749,14 @@ $$\mathbb{T} = \{ \forall kn. e^{2\pi i k/n}\}$$
  - Just as $K$ represents the functor $(-)^V$, $\mathbb{T}$ represents $(-)^G$
    and the set is just the dual group.
 
-*** Dual group examples
+*** Dual group examples                                             :focus:
 | Name                     | Parameterized element     | Parameter range                                     |
 |--------------------------+---------------------------+-----------------------------------------------------|
 | $\hat{\mathbb{Z}}$       | $z \mapsto t^z$           | $\forall t \in \mathbb{T}$                          |
-| $\widehat{\mathbb{Z}/n}$ | $z \mapsto \xi_n^{a*z}$   | $\forall a \in \{0 ... n-1\}, \xi_n = e^{2\pi i/n}$ |
-| $\hat{\mathbb{R}}$       | $r \mapsto e^{i\theta r}$ | $\forall \theta \in \mathbb{R}$                     |
+| $\widehat{\mathbb{Z}/n}$ | $z \mapsto (\xi_n^{t})^z$ | $\forall t \in \{0 ... n-1\}, \xi_n = e^{2\pi i/n}$ |
+| $\hat{\mathbb{R}}$       | $r \mapsto (e^{i t})^r$ | $\forall t \in \mathbb{R}$                   |
+
+$\xi_n$ is the n-th root of unity (i.e., $\xi_n^n = 1$)
 
 *** Group representations and modules                               :focus:
 - A /representation/ is a group hom. $$G \rightarrow_{Grp} V^V$$
@@ -823,7 +828,7 @@ Given a set $X$ and a function assigning a set of subsets $\mathbf{N}(x) = \{ N_
     - multiplication by 0 gives 0 (annihilates).
 
 ** Rings
-*** Ring
+*** Ring                                                           :noanki:
 
     A ring $R$ consists of a set $R$ such that:
 
@@ -833,29 +838,29 @@ Given a set $X$ and a function assigning a set of subsets $\mathbf{N}(x) = \{ N_
     - multiplication distributes over addition
     - multiplication by 0 gives 0 (annihilates).
 
-*** Commutative ring
+*** Commutative ring                                               :noanki:
 
    A commutative ring $R$ is commutative if $(R, *)$ is commutative.
 
-*** Ring divisor of zero
+*** Ring divisor of zero                                           :noanki:
     - $a \neq 0$ is called divisor of zero if there is $b \neq 0$ such that $ab = 0$
 
     - Z,Q,R and C do not have divisors of zero. This means that, if the product
       of two numbers is zero, then one of them should be zero.
 
-*** Ring cancellation property
+*** Ring cancellation property                                     :noanki:
 
     - A ring has cancellation property if and only if it doesn't have divisors
       of zero. Equationally: $$ ab = ac
       \rightarrow b = c $$
 
-*** Integral domain
+*** Integral domain                                                :noanki:
     - It is a commutative ring (with multiplication commutative) that has the
       cancellation property.
 
     - An integral domain with non-zero characteristic $p$ is such that $p$ is prime.
 
-*** Integral domains and fields
+*** Integral domains and fields                                    :noanki:
 
     - Every field is an integral domain.
 
@@ -986,7 +991,7 @@ ring of integers is an initial object in the category of rings.
     - $k \in K \Rightarrow (k+1) \in K$
     then $K$ is all the integers. Proof by contradiction (see Pinter).
 
-*** Polynomial
+*** Polynomial                                                     :noanki:
     - Take a ring $Z$ and add a new symbol $\pi$. Which other numbers should be
       present to make it a ring? It turns out that all the numbers of the form
       $$a_n \pi^n + \dots + a_1 \pi + a_0$$ should be present.
@@ -998,12 +1003,12 @@ ring of integers is an initial object in the category of rings.
 
     Any ideal $J$ is generated by its member $s(x)$ of the lowest degree.
 
-*** Polynomial associates 
+*** Polynomial associates                                          :noanki:
     Two polynomial $a(x), b(x) \in F[x]$ are associates if there exists an
     element $c \in F$ such that $a(x) = c \times b(x)$. It follows that they
     have a unique monic greatest common divisor polynomial.
 
-*** Irreducible polynomials 
+*** Irreducible polynomials                                        :noanki:
     A polynomial is *reducible* if it is expressible as the product of two other
     polys. It is *irreducible* otherwise. 
     
@@ -1495,7 +1500,7 @@ Examples:
 - $A_i$ has homogeneous elements of degree $i$ such that $a_i \otimes a_j \in
   A_{i+j}$
 
-*** Hilbert series of the dimensions of a $k$ algebra.                                                                 :noanki:
+*** Hilbert series of the dimensions of a graded $k$ algebra.      :noanki:
 
     The following formal series $$\textrm{Hilb}(A,q) = \sum_{d} \textrm{dim}(A_d)q^d$$ is 
     a formal series representing the dimensions of a graded algebra.
@@ -2249,7 +2254,7 @@ and there are unit $i_X: I \cong X \otimes X'$ and co-unit $\epsilon_X: X
 #+END_CENTER
 
 
-*** Compact Closed category                                         :focus:
+*** Compact closed category                                         :focus:
 
 - A compact category is automatically closed, i.e., the exponential object be
   defined as $$Y^X = X' \otimes Y$$ and it can be shown that it satisfies
@@ -2269,6 +2274,11 @@ and there are unit $i_X: I \cong X \otimes X'$ and co-unit $\epsilon_X: X
 
 
 
+*** Dagger category                                                 :focus:
+A dagger category is a category $C$ which has a contravariant functor $\dag$ that is 
+identity on objects and is such that $$\vdag{(\vdag{f})} = f$$ for all morphisms.
+Any morphism $f$ in the category Hilb has a $\vdag{f}$ defined as: $$\ang{\vdag{f}w,v} = 
+\ang{w,fv}$$. It is called the *Hilbert space adjoint*.
 *** Cartesian closed category
 It is a cartesian category that has exponentials.
 
@@ -2447,8 +2457,8 @@ and a co-monoid:
 #+END_EXPORT
 #+END_CENTER
 
-- (F1) $\Delta \circ m = (m \otimes id) \circ (id \otimes \Delta)$
-- (F2) says that co-multiplication factorises the original element
+- (F1 - pseudo-commutativity) $\Delta \circ m = (m \otimes id) \circ (id \otimes \Delta)$
+- (F2 - factorization) says that co-multiplication factorises the original element
   
 *** PROP sum                                                        :focus:
 - Given two PROPs A and B, one can define their co-product $C = A + B$
@@ -2647,7 +2657,7 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
     - A monad is the shadow cast by an adjunction into the domain of the left-adjoint $C$.
     - It raises from natural transformations that one can build on the base functor $T=RL$.
     - The adjunction ensures that $\mu: RLRL \rightarrow RL$ is natural.
-*** Monads from adjoint functors (Maybe monad)
+*** Monads from adjoint functors (Maybe monad)                      :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2660,9 +2670,10 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
 \end{tikzcd}
 #+END_EXPORT
 
-- The left-adjoint is *free* and takes each set $S$ (in $Set$) to the pair $(S \cup \{\nu_S\}, \nu_S)$. 
-  while morphisms $f: A \rightarrow B$ are mapped to point preserving functions $Lf (\nu_A) = \nu_B$
-- The right-adjoint just returns $S \cup \{\nu_S\}$
+- The left-adjoint is *free* and takes 
+   - each set $S$ to $(S \cup \{\nu_S\}, \nu_S)$. 
+   - each $f: S_1 \rightarrow S_2$ to a function $f^*$ such that $f^*(s)=f(s), f^*(\nu_A) = \nu_B$
+- The right-adjoint maps to $S \cup \{\nu_S\}$ and $f^*$.
 - $\eta = LR$ adds a new basepoint to the set and the natural transformation is given
   by natural inclusion.
 - $\mu = LRLR$ map the two new points (because we have to LR in series) to a single
@@ -2805,18 +2816,13 @@ monad.
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
-An interpreter is a natural transformation between the original functor 
-and the monad:
+An interpreter for a free monad can be built from its 
+underlying functor by first creating a natural t.: 
 
 : class (Functor f, Monad m) => Interpret f where
 :     intp :: f a -> m a
 
-: instance (Interpret f m, Interpret g m) =>
-:    Interpret (f :+: g) m where
-:      intp (Inl fa) = intp fa
-:      intp (Inr ga) = intp ga
-
-You can then build the interpreter from the free monad with:
+And lifting as a natural transformation between monads
 
 : interpret :: Interpret f m => Free f a -> m a
 : interpret (Return a) = return a
@@ -3183,12 +3189,12 @@ r \arrow[rr, "h"]   &                                        & d \\
 #+END_EXPORT
 #+END_CENTER
 
-*** Universal arrow from object (comma category view definition)
+*** Universal arrow from object (coslice category view definition)
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 Given the functor $S: D \rightarrow C$, we can define a universal arrow from
-object $c$ to $S$ as the initial object $\np{r}{u}$ in the comma category $(c
+object $c$ to $S$ as the initial object $\np{r}{u}$ in the coslice category $(c
 \downarrow S)$
 
 #+BEGIN_CENTER
@@ -3201,7 +3207,7 @@ r \arrow[rr, "h"]   &                                        & d \\
 #+END_EXPORT
 #+END_CENTER
 
-*** Universal arrow from object (bijection of homsets)
+*** Universal arrow from object and representation
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3247,14 +3253,14 @@ $j_X$ could be thought of as the cases where the input parameter of $U_x$ are
 just those in $X$. If $f$ is linear, it suffices to specify its value only for
 those cases.
 
-*** Universal arrow from object (Groups and quotients) 
+*** Universal arrow from object to forgetful $Grp \mto Set$ resp. kernels :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
 $(\pi_{G,N}, G/N)$ is the universal arrow to $H: Grp \rightarrow Set$ (maps
 respecting the kernel). Any mapping $x_k: S_G \rightarrow S_X$ can be fixed with
-$f_k$.
+$f_k$. Or, fixing $x_k$ gives a group hom $f_k$.
 
 
 #+BEGIN_CENTER
@@ -3266,6 +3272,8 @@ G/N \arrow[rr, "\exists!f_k"'] & * \arrow[u, "H_{/N}", dotted]                  
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
+
+
 
 *** Universal arrow from object to forgetful $Set_* \rightarrow Set$
 :PROPERTIES:
@@ -3369,8 +3377,8 @@ U \arrow[rr, "f"] &  & X
 Considering the category of pointed sets and a generic functor, a universal
 element $(U,u)$ is exactly a universal arrow from $*$ to $H$.
 
-Seeing this as a comma category $(1 \downarrow Set)$, every morphism $1 \rightarrow HX$ is 
-in direct correspondence with $f_x$ if it makes the comma category diagram commute.
+Seeing this as a coslice category $(1 \downarrow Set)$, every morphism $1 \rightarrow HX$ is 
+in direct correspondence with $f_x$ if it makes the coslice category diagram commute.
 
 *** Universal arrow to object
 :PROPERTIES:
@@ -3915,30 +3923,42 @@ instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~.
     | $1 + (A \times X)$ | $A^{\infty} = A^* + A^\mathbb{N}$ | possnext($a$)        | Finite and inf. lists |
     | $1 + X$            | $\mathbb{N} \cup \{ \infty \}$    | pred($n$)            |                       |
     
-*** Bisimulation 
+*** Bisimulation (for lists)                                        :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
+
+#+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
- & S \times S &  \\
-S \arrow[d, "\xi"] & R \arrow[u, hook] \arrow[l, "\pi_1"] \arrow[r, "\pi_2"] \arrow[d, "\gamma"] & S \arrow[d, "\xi"] \\
-P(A \times S) & P(A \times R) \arrow[l] \arrow[r] & P(A \times S)
+S \arrow[d, "\xi"] & R \arrow[r, hook] \arrow[l, "\pi_1"] \arrow[d, "\gamma"] \arrow[l, "\pi_2"', bend right] & S \times S \\
+A \times S         &  A \times R  \arrow[l]                                                                   &           
 \end{tikzcd}
 #+END_EXPORT
-    - Assume a final co-algebra $\xi$ (e.g., $T(S) =A \times S$ or $T(S) = P(A
-      \times S)$). If one can build a $\gamma$ such that the above commutes then
-      $\pi_1=\pi_2$ any pair $(\alpha,\beta) \in R$ implies $\alpha=\beta$.
-    - If $S=A^N$, having a bi-simulation means providing a relation $R \subseteq
-      A^N \times A^N$ for which this holds: $$\gamma: R(a,b) \Rightarrow h(a) = h(b)
-      \wedge R(t(a), t(b))$$ we could say then that $a=b$.
+#+END_CENTER
+
+    - Assume a co-algebra $\xi: S \mto A \times S$ and $\pi_1, \pi_2$ are the
+      projections from $R$ is called *a bi-simulation* if there exists
+      $\gamma$ for which the above commutes for both $\pi_1$ and $\pi_2$.
+    - If $S$ is a final co-algebra, e.g., a list $\xi = [h,t]$ then $\pi_1(a,b),
+      \pi_2(a,b)$ must map to the same list $a=b$ so $R$ is an equivalence. For
+      this to hold, one must find $\gamma$ for which:
+      #+BEGIN_EXPORT latex
+      \begin{align*}
+      (\gamma_A(l_1,l_2), \gamma_{R,1}(l_1,l_2)) & = (h(l_1),t(l_1)) \\ 
+      (\gamma_A(l_1,l_2), \gamma_{R,2}(l_1,l_2)) & = (h(l_2),t(l_2))
+      \end{align*}
+      #+END_EXPORT
+      an indirect way to derive $\gamma$ would be to demonstrate that $h(l_1) =
+      h(l_2) \wedge (t(l_1), t(l_2)) \in R$
+
 *** Anamorphisms
    - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
      $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
 
    - Anamorphisms are called co-recursion.
 
-*** Streams as co-inductive data types
+*** Streams as co-inductive data types                              :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3950,9 +3970,8 @@ generate the next value.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-A \times A \arrow[rr, "Id \times \phi"]                                                                &  & A \times S_A \arrow[dd, "scons = -_A \cdot -_{S_A}", bend left] \\
-A \times A \arrow[u, "Id \times \nu" description]                                                      &  &                                                                 \\
-A \arrow[u, "\Delta" description] \arrow[rr, "\phi = \alpha f"] \arrow[uu, "f" description, bend left] &  & S_A \arrow[uu, "cofix"]                                        
+A \times A \arrow[rr, "Id \times \phi"]                          &  & A \times S_A \arrow[d, "scons = -_A \cdot -_{S_A}", bend left] \\
+A \arrow[rr, "\phi = \alpha (Id~\&~\nu)"] \arrow[u, "Id~\&~\nu"] &  & S_A \arrow[u, "cofix"]                                        
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
