@@ -2843,7 +2843,7 @@ And lifting as a natural transformation between monads
 :END:
 
 A monad on an object $x$ of the bicategory $B$ is a 1-cell $F: x \mto x$ with
-two cells $\eta$ and $\mu$ such that the following commute:
+2-cells $\eta$ and $\mu$ such that the following commute:
 
 
 #+BEGIN_CENTER
@@ -2863,6 +2863,21 @@ following commute:
 #+END_EXPORT
 #+END_CENTER
 
+*** Monad the bicategory *Span(Set)*                                  :focus:
+- In Span(Set), a monad $F$ is a 1-cell (morphism) $Ob \lto Ar \mto Ob$; $\mu$ associates 
+  to each $f, g \in Ar$ their composition $f; g \in Ar$ while $\eta$ associates to each $x \in Ob$ 
+  an arrow $a \in ar$
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{figure}
+  \subfigure{\includegraphics[width=5cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanset_mu.pdf}}
+  \subfigure{\includegraphics[width=2cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanset_eta.pdf}}
+  \end{figure} 
+  #+END_EXPORT
+  #+END_CENTER 
+  
+ 
 ** Functors
 *** Functor definition                                                                 :noanki:
 
@@ -3253,7 +3268,7 @@ $j_X$ could be thought of as the cases where the input parameter of $U_x$ are
 just those in $X$. If $f$ is linear, it suffices to specify its value only for
 those cases.
 
-*** Universal arrow from object to forgetful $Grp \mto Set$ resp. kernels :focus:
+*** Universal arrow $S_G \mto S_{G/N}$ to forgetful $Grp \mto Set$ resp. kernels :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3275,7 +3290,7 @@ G/N \arrow[rr, "\exists!f_k"'] & * \arrow[u, "H_{/N}", dotted]                  
 
 
 
-*** Universal arrow from object to forgetful $Set_* \rightarrow Set$
+*** Universal arrow $S \mto US^*$ to forgetful $Set_* \rightarrow Set$
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
