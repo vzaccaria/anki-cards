@@ -4379,7 +4379,6 @@ $$(\exists a_1 \wedge B_{a_1}) \vee  (\exists a_2 \wedge B_{a_2}) \ldots \sim \e
 Which explains why dependent pairs are used to express existentially quantified
 predicates.
 
-
 *** Dependent pair example in Haskell
 
 #+BEGIN_EXAMPLE
@@ -4412,3 +4411,49 @@ $$ \lambda x.\Phi : \Pi_{x:A} B_x $$
 
 - If $B$ were constant, we would obtain a simple exponential $$B^{\sum x_i} \sim
   B^A$$
+*** Fixed point                                                     :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+A fixed point $\bar{x}$ of a function $f$ is such that the following commutes:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+X \arrow[r, "f"]                             & X \\
+1 \arrow[u, "\bar{x}"] \arrow[ru, "\bar{x}"] &  
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** Fixed point combinator                                          :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+The fixed point combinator $fix~f$ is a point $\bar{x} \in X$ is such that the following commutes for all $f$
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\{\bar{x} \in X \} \arrow[r, "f"]                       & X \\
+\{ f \in X^X \} \arrow[u, "fix"] \arrow[ru, "fix"] &  
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+When $f$ is interpreted as a function with two parameters $X^N \times N$, 
+the fixed point is another function $\phi \in X^N$ such that 
+the below commutes:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\{ \phi \in X^N \} \arrow[r, "f"]                                                     & X^N \\
+\{ f \in (X^N)^{X^N}  \simeq X^{X^N \times N} \} \arrow[u, "fix"] \arrow[ru, "fix"] &    
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+$\phi$ might be a recursive function created from a non-recursive one $f$
