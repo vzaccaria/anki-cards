@@ -85,7 +85,7 @@ function $$(x_i)_{i = \{1 \ldots n\}}$$
 
    The *trivial subgroup* of any group is the subgroup ${e}$ consisting of just the identity element.
 
-*** Normal subgroup
+*** Normal subgroup                                                                 :noanki:
   - $H$ is a normal subgroup of $G$ iff $$\forall h \in H \wedge g \in G, ghg^{-1} \in H$$
 
 *** Normal subgroup and action of inner automorphisms
@@ -94,7 +94,7 @@ function $$(x_i)_{i = \{1 \ldots n\}}$$
 - A normal subgroup $H$ is invariant to the action of the inner automorphisms
   $I(G)$, because, for any $g$, $i_g(h) \in H$.
 
-*** Kernel of a group homomorphism
+*** Kernel of a group homomorphism                                                                 :noanki:
     The *kernel* $\textrm{ker}(f)$ of a group homomorphism $f: (G,\star)
     \rightarrow (H,*)$ is a set $K$ such that
 
@@ -134,7 +134,7 @@ monomorphism and $\pi$ is an epimorphism.
 
 Orbits in $G$ relative to $H$ are disjoint subsets of $G$: $\bigcup_g H_g = G$
 
-*** Subgroup of an abelian group
+*** Subgroup of an abelian group                                                                 :noanki:
     Every subgroup of an abelian group is normal.
 
 *** Coset multiplication                                                                 :noanki:
@@ -211,7 +211,7 @@ Orbits in $G$ relative to $H$ are disjoint subsets of $G$: $\bigcup_g H_g = G$
 *** Symmetric group                                                                 :noanki:
     The symmetric group $S_n$ is the group of all permutations (symmetries) of $\{1, . . . , n\}$
 
-*** Group action
+*** Group action                                                                 :noanki:
 
      - A group action $\phi$ of group $G$ on a set $X$ is a function
        $$*: G \times X \rightarrow X$$ satisfying the following properties:
@@ -229,7 +229,7 @@ Orbits in $G$ relative to $H$ are disjoint subsets of $G$: $\bigcup_g H_g = G$
       automorphisms that have an inverse and that $(g_*)^{-1} = (g^{-1})_*$.
 
 
-*** Commutator subgroup
+*** Commutator subgroup                                                                 :noanki:
 
    - A commutator subgroup $[G,G]$ is an abelian group that can be built from a
      finite group $G$.
@@ -238,7 +238,7 @@ Orbits in $G$ relative to $H$ are disjoint subsets of $G$: $\bigcup_g H_g = G$
 
    - It is a normal subgroup
 
-*** Commutator subgroup of $S_n$
+*** Commutator subgroup of $S_n$                                                                 :noanki:
 
     The commutator subgroup of $S_n$ is the alternating group $A_n$. It
     is the set of all even permutations in $S_n$. Even = even number of
@@ -440,7 +440,7 @@ into the free group.
   $$\alpha_{\omega} : |A|^{n(\omega)} \mto |A|$$
 
 ** Group representations
-*** Category of linear representations
+*** Category of linear representations                                                                 :noanki:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -458,14 +458,14 @@ of representations $Rep(G)$ is the functor category $Vect^{BG}$ where
 #+END_EXPORT
 #+END_CENTER
 
-*** Properties of a linear group representation
+*** Properties of a linear group representation                                                                 :noanki:
 
     - $\rho_g \rho_h = \rho_{gh}$
     - $\rho_1 = Id$
     - $(\rho_g)^{-1} = \rho_{g^{-1}}$
     - $\rho_g(xv + yw) = x\rho_gv + y\rho_gw$
 
-*** Permutation representation
+*** Permutation representation                                                                 :noanki:
      - The *permutation representation* is the representation of a symmetric group
        $S_n$ acting on $V_k = k^n$.
      
@@ -530,10 +530,10 @@ of representations $Rep(G)$ is the functor category $Vect^{BG}$ where
     - If the group is finite, then one can always build an unitary operator.
 
 
-*** Invariant representation
+*** Invariant representation                                                                 :noanki:
      A representation $\rho(g)$ is *invariant* if $\forall v \in V. \rho(g)v \subseteq V$
 
-*** Intertwining operator
+*** Intertwining operator                                                                 :noanki:
 
   - An intertwining operator is a natural transformation between 
     representations interpreted as functors from $BG$.
@@ -595,7 +595,7 @@ to derive a representation $\pi = T\rho$ on $TE$.
     If $V = \bigoplus V_i$ and all $V_i$ are irreducible representations of $G$,
     then $$|G| = \sum_i dim(V_i)^2$$.
 
-*** Full reducibility
+*** Full reducibility                                                                 :noanki:
 
     If $V = W_1 \oplus \ldots W_n$ and all $(\rho, W_i)$ are irreducible then
     $(\rho, V)$ is fully reducible.
@@ -606,7 +606,7 @@ to derive a representation $\pi = T\rho$ on $TE$.
 
     - For G finite, matrices are going to be block diagonal.
 
-*** One dimensional representation
+*** One dimensional representation                                                                 :noanki:
 
   - A one-dimensional $k$ representation is built above a homomorphism $\chi: G
     \rightarrow k^{\times}$ and corresponds to a representation $\rho_k(g) =
@@ -616,7 +616,7 @@ to derive a representation $\pi = T\rho$ on $TE$.
     abelian group and it is isomorphic to $G/G'$ where $G'$ is the
     commutator subgroup.
 
-*** Representations of external direct sums
+*** Representations of external direct sums                                                                 :noanki:
 
    - An external direct sum $V \oplus V'$ is the set of pairs that can be built
 
@@ -625,7 +625,7 @@ to derive a representation $\pi = T\rho$ on $TE$.
    - Practically, if we concatenate $v,v'$ in a single vector, $\rho_{\oplus}$
      is a diagonal block matrix of $\rho, \rho'$.
 
-*** Representations of dual spaces
+*** Representations of dual spaces                                                                 :noanki:
 
     Given $(\rho,V)$, one can define a representation of its dual vector space
     $(\rho^*, V^*)$ such that $$\rho^*(g) \vec{f} = v \mapsto f (\rho^{-1}(g)
@@ -685,7 +685,7 @@ In general, the kernel and the image of a morphism between spaces $E_1
     A conjugate representation $(\rho, \bar{V})$ is *equivalent* to $(\rho, V)$
     and to its dual representation $(\rho^*, V^*)$.
 
-*** Regular representation of $G$
+*** Regular representation of $G$                                                                 :noanki:
 
     A group algebra $K[G]$ is a vector space of elements $\phi$ that can be written as
     $$\phi: \phi(g_1)g_1 + \phi(g_2)g_2 + \ldots$$ i.e., $$K[G]=span\{g_1, g_2,
@@ -693,7 +693,7 @@ In general, the kernel and the image of a morphism between spaces $E_1
     $$\rho_{K}(s)\phi = \rho_{K}(s) \phi(g_1)g_1 + \ldots = \phi(g_1)(s*g_1) +
     \ldots$$
 
-*** Regular representation of $G$ through Cayley
+*** Regular representation of $G$ through Cayley                                                                 :noanki:
 
     - By Caley, there is an isomorphism $\rho_C: G \rightarrow S_n$ for a group
       $G$ of order $n$ that is given by picking a permutation $\lambda x.gx$.
@@ -706,7 +706,7 @@ In general, the kernel and the image of a morphism between spaces $E_1
       ($\{1,x,x^2,\ldots, x^n\}$) associates to each element the power of a
       cyclic permutation matrix $P$.
 
-*** Representation of function space over $G$
+*** Representation of function space over $G$                                                                 :noanki:
 
     A function space $F(G) = \{ \phi: G \rightarrow K \}$ can be seen as composed
     of members of the group algebra (similarly to the Z-transform): $$\phi:
@@ -726,7 +726,7 @@ In general, the kernel and the image of a morphism between spaces $E_1
 *** Schur's lemma - corollary for $L_1, L_2$ intertwining operators :noanki:
      For irreducible representations ($\rho, V$) and ($\rho', V'$) all the intertwining
      operators have the form $L_1 = \lambda L_2$.
-*** Irreducible representations of abelian groups
+*** Irreducible representations of abelian groups                                                                 :noanki:
     - All irreducible representations $(\rho, V)$ of an abelian group are such that
       $dim(V)=1$ (by Schur's lemma), i.e., they are one dimensional.
     - To each $\rho(g)$ it corresponds a scalar $\lambda_g$, which is called *character*.
@@ -884,12 +884,12 @@ Given a set $X$ and a function assigning a set of subsets $\mathbf{N}(x) = \{ N_
       from $H$ to the matrix rings $M(2, C)$ and $M(4, R)$
 
 
-*** Subring
+*** Subring                                                                 :noanki:
 
     If $S \subseteq R$ ($R$ is a ring) and $S$ is closed under sum, difference
     and multiplication of $R$, then it is a subring of $R$.
 
-*** Ideals
+*** Ideals                                                                 :noanki:
     A subring $I$ of $R$ if
 
     - it absorbs elements of $R$ by multiplication: $$\forall s \in I, \forall r
@@ -926,7 +926,7 @@ is in $P$.
 For integers, a prime ideal is the set that contains all the multiples of a
 given prime number,
 
-*** Ring homomorphism
+*** Ring homomorphism                                                                 :noanki:
 
     If $R$ and $S$ are rings, a ring homomorphism $f: R \rightarrow S$ is a
     total function such that:
@@ -1026,7 +1026,7 @@ ring of integers is an initial object in the category of rings.
 A ring is semisimple if (as its left or right module) is semisimple.
 ** Fields
 
-*** Field
+*** Field                                                                 :noanki:
 
     A field a set with two operations:
 
@@ -1246,7 +1246,7 @@ expressed as powers of a single element called a primitive element of the field.
 - Except in the construction of GF(4), there are several possible choices for P,
   which produce isomorphic results.
 
-*** Fundamental theorem of algebra
+*** Fundamental theorem of algebra                                                                 :noanki:
     - Every nonconstant polynomial with complex coefficients has a complex root.
     - If the coefficients are in $\mathbb{R}$ and $a+bi$ is a root, then also $a-bi$ is a root.
 
@@ -1438,7 +1438,7 @@ following hold:
   - $m(a \otimes m(b \otimes c)) = m(m(a \otimes b) \otimes c)$
   - $\mu(u(1) \otimes x) = \mu(x \otimes u(1)) = x, \forall x$ (algebra is unitary)
 
-*** $k$ algebra (as a ring)
+*** $k$ algebra (as a ring)                                                                 :noanki:
 
     A tensor product $m: A \otimes A \rightarrow A$ makes $A$ a *ring* with
     a *bilinear* multiplication $\cdot: A \times A \rightarrow A$, i.e. $$ a \cdot b = m(a
@@ -1795,7 +1795,7 @@ In Sweedler notation: $$\sum_{(d)} f(d_{(1)}) \otimes f(d_{(2)}) = \sum_{f(d)} f
 #+END_EXPORT
 #+END_CENTER
 
-*** Group Algebra as formal sum
+*** Group Algebra as formal sum                                                                 :noanki:
 
     - A group algebra $\KK[G]$ for a group $G$ and a field $\KK$ is a vector space
       that is the direct sum of copies of $\KK$ indexed by $G$.
@@ -1945,7 +1945,7 @@ It is a module that does not have non-zero proper submodules
 A module is semisimple if it is the direct sum of simple (irreducible)
 submodules
 
-*** Projector
+*** Projector                                                                 :noanki:
     - A *projector* is a linear operator $P: X \rightarrow X$ for which $P^2=P$.
 
     - It is characterized by the exact sequence: $$(1-P)X \rightarrow X
@@ -1954,10 +1954,10 @@ submodules
     - $P$ endows $X$ with a direct sum composition $$X \simeq X_1 \oplus X_2 =
       PX \oplus (I-P)X$$
 
-*** Projector image
+*** Projector image                                                                 :noanki:
       The image of a projector $P$ is an *invariant* under $P$: $$ P(PX)=(PX) \sim Pw=w$$
 
-*** Projector kernel
+*** Projector kernel                                                                 :noanki:
       Given a projector $P$, $X_2 = (1-P)X$ is the kernel of $P$ by definition: $$PX_2 = P(1-P)X = (P-P^2)X = 0$$
 
 *** Representation of algebras
@@ -2976,7 +2976,7 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     - Proving a logic predicate means constructing an element of a specific type
 
     - A cartesian closed category is a model for logic and category theory
-*** Natural transformation of functors $F \rightarrow G$
+*** Natural transformation of functors $F \rightarrow G$                                                                 :noanki:
 
     It is a way of comparing functors; given two functors $F,G: C \rightarrow D$, I
     can create compare them by :
@@ -2988,16 +2988,16 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     naturality condition is $$\alpha_{c_2} \circ F f = G f \circ \alpha_{c_1},
     \forall c_1,c_2$$
 
-*** Natural transformation maps morphisms to ...
+*** Natural transformation maps morphisms to ...                                                                 :noanki:
 
     A natural transformation maps a morphism to a commuting diagram (*naturality
     square*).
 
-*** Natural isomorphims
+*** Natural isomorphims                                                                 :noanki:
 
     All the components of a NT are invertible
 
-*** Category of functors and natural transformation
+*** Category of functors and natural transformation                                                                 :noanki:
     - If I compose the components of two natural transformations $\alpha: F a
       \rightarrow G a$ and $\beta: G a \rightarrow H a$, do I have another
       natural transformation? yes
@@ -3432,7 +3432,7 @@ Projection functions $\ang{p, q}$ from the product $a \times b$ (and the product
 the universal arrow from the functor $\Delta(c) = \ang{c,c}$ to the object $\ang{a,b}$.
 
 ** Functor algebras 
-*** Definition of algebras and co-algebras
+*** Definition of algebras and co-algebras                                                                 :noanki:
     - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
       e.g.: $$ X \times A
       \rightarrow X$$ or $$ A \rightarrow X $$
@@ -3441,7 +3441,7 @@ the universal arrow from the functor $\Delta(c) = \ang{c,c}$ to the object $\ang
       object, possibly containing $X$: $$ X \rightarrow A \times
       X $$
 
-*** Functoriality of products, coproducts, exponential and powersets
+*** Functoriality of products, coproducts, exponential and powersets                                                                 :noanki:
 
     - The product operation in a category $C$ is a bi-functor $(-) \times (-): C
       \times C \rightarrow C$ (it maps both *pairs of objects* to a *product object*
@@ -3453,7 +3453,7 @@ the universal arrow from the functor $\Delta(c) = \ang{c,c}$ to the object $\ang
     - The identity map is (endo-)functorial as well as the endomap that maps $X$
       into a fixed object.
 
-*** How to build morphisms of polynomial functors with respect to original morphism
+*** How to build morphisms of polynomial functors with respect to original morphism                                                                 :noanki:
 
     - If we can build functors for products and coproducts, we can build functors
       also for their combination;
@@ -3469,7 +3469,7 @@ the universal arrow from the functor $\Delta(c) = \ang{c,c}$ to the object $\ang
 
     - $X \rightarrow 0$ is the functor that maps $X$ into the emtpy set (initial object)
 
-*** Functor algebra
+*** Functor algebra                                                                 :noanki:
 
     Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
     C$, a functor algebra for $T$ is a pair $(U,a)$:
@@ -3482,7 +3482,7 @@ the universal arrow from the functor $\Delta(c) = \ang{c,c}$ to the object $\ang
     1 \rightarrow U, i: X \rightarrow X, m: (X \times X) \rightarrow X$$ which
     might encode the signature of group operations.
 
-*** Functor algebra example - natural numbers
+*** Functor algebra example - natural numbers                                                                 :noanki:
 
     $0$ and $S$ maps over natural numbers can be seen as a functor algebra
     $([0,S],\mathbb{N})$ of the functor $T(X) = 1 + X$.
@@ -3493,21 +3493,21 @@ the universal arrow from the functor $\Delta(c) = \ang{c,c}$ to the object $\ang
     a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
     with the operations $$ f \circ a = b \circ T(f)$$
 
-*** Whole point of (co-)algebras
+*** Whole point of (co-)algebras                                                                 :noanki:
     - define functions indirectly exploiting fixed (co-)algebraic constructors
       and finality/initiality
     - so one has to specify only the initial algebra $A$ and another algebra $B$
       and automatically the morphism can be built. In general, the morphisms
       used by $B$ are not recursive.
 
-*** Initial algebras
+*** Initial algebras                                                                 :noanki:
     - Fixed a functor $T$, functor algebras $(U, a: T(U) \rightarrow U)$ can be
       seen as categorical objects with algebra homomorphisms as morphism.
 
     - In this category, an *initial algebra* is an algebra for which there exist
       one and only one morphism from it to all the other algebras.
 
-*** Lambek's lemma
+*** Lambek's lemma                                                                 :noanki:
     if $a: T(U) \rightarrow U$ is an initial algebra then there is an
     inverse $a^{-1}: U \rightarrow T(U)$ such that $T(U) \simeq U$.
 
@@ -3664,7 +3664,7 @@ If $I$ is an expression type, and $h$ and $f$ are optimizations expressed as
 F-algebras, you can do a single optimization pass by composing their algebras:
 $$\kappa f \circ \kappa h = \kappa (f \circ unFix \circ h)$$
 
-*** Combining algebras (banana split)
+*** Combining algebras $(A, \phi), (B, \psi)$ into $(A \times B, q$ (banana split)
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3908,7 +3908,7 @@ instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~.
   #+END_CENTER
 
 ** Functor co-algebras
-*** Co-algebra
+*** Co-algebra                                                                 :noanki:
     Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
     C$, a functor co-algebra for $T$ is a pair $(U, c)$
 
@@ -3918,12 +3918,12 @@ instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~.
     $c$ must be defined by a tuple of several functions whose signature is
     specified by $T$. For example, $$T(X) = A \times X$$ defines $$(value,next):
     (U \rightarrow A, U \rightarrow U)$$ for any process $U$.
-*** Homomorphisms of co-algebras
+*** Homomorphisms of co-algebras                                                                 :noanki:
 
     Given two T-functor co-algebras $(U, a: - \rightarrow T(-))$ and $(V, b: - \rightarrow T(-))$,
     a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
     with the operations $$ T(f) \circ a = b \circ f$$
-*** Final co-algebra
+*** Final co-algebra                                                                 :noanki:
     - A final coalgebra $d: W \rightarrow T(W)$ is a coalgebra such that for
       every coalgebra $c: U \rightarrow T(U)$ there exists a unique map of
       co-algebras $f: (U,c) \rightarrow (W,d)$
@@ -3996,7 +3996,7 @@ We have that $\phi(a) = scons(a, \phi(\nu(a)) = a \cdot \nu(a) \cdot \nu^2(a) \c
 
 
 ** Monad algebras
-*** Drawbacks of F-algebras
+*** Drawbacks of F-algebras                                                                 :noanki:
 
 - Given an algebra $(X, \theta: T(X) \rightarrow X)$, with $T(X) = 1 + X^2$ we
   know that $\theta$ has the same signature of a monoid but it should not abide
@@ -4179,7 +4179,7 @@ r \arrow[rr, "h"]   &                                        & - \\
 
 Yoneda: the components of the natural transformation $r^- \cong K-$ are one to one with the
 elements of $Kr$.
-*** Cayley's through yoneda
+*** Cayley's through yoneda                                                                 :noanki:
 
 - Take $C = \{ * \}$ the category with a single object.
 
@@ -4189,7 +4189,7 @@ elements of $Kr$.
   $S_n$.
 
 ** Limits theory
-*** Diagram functors
+*** Diagram functors                                                                 :noanki:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
