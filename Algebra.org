@@ -1590,7 +1590,8 @@ C \otimes C \arrow[r, "\Delta \otimes id"] & C \otimes C \otimes C
 \end{center}
 #+END_EXPORT
 
-*** Example algebra: algebra $A = (int(P))^*$ derived from an incidence algebra
+*** Example algebra: algebra $A = C*$ derived from an incidence co algebra $C = int(P)$ where $P$ is a 
+poset
 
 - Given an incidence co-algebra $C$, one can define its *incidence algebra* as the
   space $C^* = \{ f: C \rightarrow k \}$, where multiplication $m$ is $\Delta^*
