@@ -3743,6 +3743,26 @@ I \arrow[r, "cata(..)"] \arrow[rd, "para(f)"'] & I \times Z \arrow[d, "\pi_Z"]  
 Example, for factorial $f(i,z) = i~?~z*i:1$. Exercise, try to devise a para for sliding window.
 
 
+*** Apomorphisms                                                    :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+t~(C + F) \arrow[r]                                     & t~F          \\
+C+tF \arrow[u, "\phi \vert\vert\vert t~Inj_R"]          &              \\
+C+F \arrow[r, "\alpha(\ldots)"] \arrow[u, "Id + cofix"] & F \arrow[uu] \\
+C \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"]      &             
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+ 
+Given a co-algebra $\phi: C \mto t (C + F)$ where $F$ is final, it allows to
+build a morphism $C \rightarrow F$ that short-circuits the traversal by giving
+the result immediately. 
+
 
 *** Expression data types as functors                               :focus:
 :PROPERTIES:
@@ -4432,7 +4452,7 @@ X \arrow[r, "f"]                             & X \\
 :BEAMER_opt: fragile
 :END:
 
-The fixed point combinator $fix~f$ is a point $\bar{x} \in X$ is such that the following commutes for all $f$
+The fixed point combinator $fix$ maps a function $f$ to a point $\bar{x} \in X$ such that the following commutes for any $f$
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
