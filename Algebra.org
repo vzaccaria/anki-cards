@@ -4493,12 +4493,12 @@ $\phi$ might be a recursive function created from a non-recursive one $f$
 - It is CL without some axioms, for example $A \vee \neg A$ is not always true. 
 
 ** Propositional (CL/IL) logic
-*** Natural deduction                                               :focus:
-  - I know that premises/propositions $A,B,C$ are true/false. Can I say that
+*** Natural deduction
+  - I know that premises/propositions $A,B,C$ are true. Can I say that
     $f(A,B,C)$ is true?
   - One way to do this is by *natural deduction*, i.e., only if I can produce a chain
     $$\{ A,B,C \} \vdash \ldots \vdash f(A,B,C)$$ composed of valid inference rules
-*** $\wedge$ introduction                                           :focus:
+*** $\wedge$ introduction
 - It is a valid inference rule for natural deduction 
   $$\{ A, B \} \vdash A \wedge B$$
   or $$\infer{A \wedge B}{A & B}$$
@@ -4506,7 +4506,7 @@ $\phi$ might be a recursive function created from a non-recursive one $f$
 - Example of application $\{ A, B, C \} \vdash A \wedge B \wedge A \wedge C$: 
   $$ \infer{A \wedge B \wedge A \wedge C}{\infer{A \wedge B}{A & B & C} & \infer{A \wedge C}{A & B & C}} $$
 
-*** $\wedge$ elimination :focus:
+*** $\wedge$ elimination
 
 - It is a valid inference rule for natural deduction 
   $$ A \wedge B \vdash A$$
@@ -4523,6 +4523,36 @@ $\phi$ might be a recursive function created from a non-recursive one $f$
         \infer{C}{Q}
       }
     }
+  \end{equation}
+  #+END_EXPORT
+*** $\implies$ introduction                                        :focus:
+
+One can always introduce an implication of $B$ if one has $B$.
+
+  #+BEGIN_EXPORT latex 
+  \begin{equation}
+  \infer{A \implies B}{B}
+  \end{equation}
+  #+END_EXPORT
+
+
+
+
+*** $\vee$ introduction and elimination                             :focus:
+
+Introduction
+
+  #+BEGIN_EXPORT latex 
+  \begin{equation}
+  \infer{A \vee B}{B}
+  \end{equation}
+  #+END_EXPORT
+
+Elimination
+
+  #+BEGIN_EXPORT latex 
+  \begin{equation}
+  \infer{C}{A \vee B & \infer*{C}{[A]} & \infer*{C}{[B]}}
   \end{equation}
   #+END_EXPORT
 
