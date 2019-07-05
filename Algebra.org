@@ -3119,14 +3119,17 @@ b \arrow[u] \arrow[rr, dashed] \arrow[rrr, dashed, bend right] &  & d^b \in \tex
 
 - Works if you think about (~Rep f)~ as the index into the container (~f x)~.
   For example streams are representable while lists are not.
+  ~tabulate~ creates the container, ~index~ extracts a value from a value
+  of ~Rep f~.
 
 - Another example is the matrix functor that is representable by a pair of integers. 
   A morphism from ~(int,int) -> a~ is one on one with a matrix ~Matrix a~.
 
-*** Universal property 
-A universal property of object $X$ is a description of either $X^{(-)}$ or
-$(-)^X$ functors or any other functor isomorphic to them. We say that $X$
-*represents the functor*, while the functor encodes the *universal property* of $X$.
+
+*** Universal property of object $X$
+
+- $X$ has a universal property when it represents a functor
+- We say that the functor encodes the universal property of $X$.
 
 *** Universal property of initiality
 
@@ -4220,7 +4223,7 @@ elements of $Kr$.
   functor). 
 
 
-*** Cone
+*** Cone                                                            :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -4269,7 +4272,27 @@ A \arrow[r] \arrow[rrrr, dotted, bend right] \arrow[rrrrru, "\Delta_c" descripti
 - In practice, if $d$ is a limit then for each morphism that arrives to it, there
   is a *single corresponding cone* from the sources of the morphism.
 
-- In Set, $d$ is the set of all cones departing from $1$ to the diagram $D$.
+*** Limit cone (in Sets)                                            :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+- \arrow[rd, dotted, "m"] \arrow[rdd, dashed, bend right] \arrow[rrdd, dashed, bend left] &                        &         \\
+                                                                                     & d \arrow[rd] \arrow[d] &         \\
+                                                                                     & \bullet                & \bullet
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- Recall that if $d$ is a limit then for each morphism $m \in d^{(-)}$, there is a
+  *single corresponding cone* $c \in Cone(-,D)$ (i.e., from the sources of the
+  morphism).
+
+- In Set, if 1 is the singleton set we must have, e.g, $d^1 \cong Cone(1,D)$
+  which means that $d$ is $Cone(1,D)$. So $$Cone(-,D) \cong Cone(1,D)^{(-)}$$
 
 *** Products as limit 
 :PROPERTIES:
