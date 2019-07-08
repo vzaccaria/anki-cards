@@ -600,7 +600,7 @@ to derive a representation $\pi = T\rho$ on $TE$.
     If $V = W_1 \oplus \ldots W_n$ and all $(\rho, W_i)$ are irreducible then
     $(\rho, V)$ is fully reducible.
 
-*** Representations of Abelian groups
+*** Representations of Abelian groups                                                                 :noanki:
 
     - For an abelian group, it is possible to choose a basis to make $\rho(g)$ diagonal.
 
@@ -659,7 +659,7 @@ In general, the kernel and the image of a morphism between spaces $E_1
 
 
 
-*** Kernel representations
+*** Kernel representations                                                                 :noanki:
     
     - Given a homomorphism $\mu$ between spaces $E_1 \rightarrow E_2$, the
       representation $E_1/Ker(\mu)$ is isomorphic to $Im(\mu)$
@@ -2842,7 +2842,7 @@ And lifting as a natural transformation between monads
 :BEAMER_opt: fragile
 :END:
 
-A monad on an object $x$ of the bicategory $B$ is a 1-cell $F: x \mto x$ with
+*A monad on an object $x$* of the bicategory $B$ is a 1-cell $F: x \mto x$ with
 2-cells $\eta$ and $\mu$ such that the following commute:
 
 
@@ -2863,10 +2863,10 @@ following commute:
 #+END_EXPORT
 #+END_CENTER
 
-*** Monad the bicategory *Span(Set)*                                  :focus:
-- In Span(Set), a monad $F$ is a 1-cell (morphism) $Ob \lto Ar \mto Ob$; $\mu$ associates 
-  to each $f, g \in Ar$ their composition $f; g \in Ar$ while $\eta$ associates to each $x \in Ob$ 
-  an arrow $a \in ar$
+*** Monad in a bicategory: example of *Span(Set)*                     :focus:
+- In $Span(Set)$, a monad $F$ on an object $Ob$ is a 1-cell (morphism) $Ob \lto
+  Ar \mto Ob$; $\mu$ associates to each $f, g \in Ar$ their composition $f; g
+  \in Ar$ while $\eta$ associates to each $x \in Ob$ an arrow $a \in ar$
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
@@ -2876,7 +2876,23 @@ following commute:
   \end{figure} 
   #+END_EXPORT
   #+END_CENTER 
+
+- Given a monad $F$ over two sets $Ob$ and $Ar$, these can be made into a small
+  category $C_F(Ob,Ar)$.
   
+*** Monad in a bicategory: example of *Span(Set)*                     :focus:
+
+- In $Span(Mon)$, where $Mon$ is the category of monoids and monoid homomorphisms,
+  a monad over a monoid $m$ can be used to define a small strict monoidal category
+  with objects the elements of $m$.
+  
+*** Monad in a bicategory: monad composition in *Span(Set)*        :focus:
+
+- Given to monads $F$ and $G$ over a single set $Ob$ and a 2-cell $\lambda: F;G
+  \mto G;F$) respecting some additional rules and called /distributive law/
+
+- Then one can create a monad $G;F$ over $Ob$
+
  
 ** Functors
 *** Functor definition                                                                 :noanki:

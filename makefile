@@ -23,7 +23,7 @@ anki-cards/Algebra/Algebra.json: Algebra.org header.tex
 
 
 watch: 
-	WATCH=true org2pdf $(CURORG) -r --select-tags focus --watch -p
+	WATCH=true org2pdf $(CURORG) -r --select-tags focus --watch -p --silent
 
 
 clean:
