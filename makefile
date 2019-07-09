@@ -1,4 +1,3 @@
-
 #
 # Use CURTGT=file.pdf make watch
 
@@ -20,11 +19,12 @@ anki-cards/Algebra/Algebra.json: Algebra.org header.tex
 %.pdf: %.org
 	JSLATEX_COPYPB=true org2pdf $<  -r --select-tags focus
 
-
-
 watch: 
-	WATCH=true org2pdf $(CURORG) -r --select-tags focus --watch -p --silent
+	(WATCH=true org2pdf $(CURORG) -r --select-tags focus --watch -p --silent &)
+	/usr/local/bin/emacsclient -nw $(CURORG) -c
 
+kill:
+	pkill -f org2pdf
 
 clean:
 	rm -rf anki-cards *.pdf *.log tmp-*

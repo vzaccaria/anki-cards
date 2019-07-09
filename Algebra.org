@@ -3782,6 +3782,29 @@ Given a co-algebra $\phi: C \mto t (C + F)$ where $F$ is final, it allows to
 build a morphism $C \rightarrow F$ that short-circuits the traversal by giving
 the result immediately. 
 
+*** Apomorphisms example: list insertion                            :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+t_A~(t_A\tilde{L}_A + \tilde{L}_A) \arrow[r]                                                    & t_A~\tilde{L}_A                 \\
+t_A\tilde{L}_A + t_A\tilde{L}_A \arrow[u, "\phi \vert\vert\vert t~Inj_R"]                       &                                 \\
+t_A\tilde{L}_A + \tilde{L}_A \arrow[r, "\alpha(\ldots)"] \arrow[u, "Id + cofix"]                & \tilde{L}_A \arrow[uu, no head] \\
+t_A \tilde{L}_A \cong A \times \tilde{L}_A + 1 \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"] &                                
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+We want to build a morphism: $A \times \tilde{L}_A + 1 \rightarrow \tilde{L}_A$
+to insert an element $A$ into a list $\tilde{L}_A$. $\phi$ could compare $A$
+with the first element of $\tilde{L}_A$ either returning the list as it is
+(short circuiting) or swapping the two. Interestingly, this is an algebra that
+allows us to write an insertion sort $\tilde{L}_A \mto \tilde{L}_A$ with 
+$cata ~ (apo \phi)$.
+
 
 *** Expression data types as functors                               :focus:
 :PROPERTIES:
