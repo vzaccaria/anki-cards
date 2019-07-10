@@ -4599,7 +4599,6 @@ One can always introduce an implication of $B$ if one has $B$.
 
 
 
-
 *** $\vee$ introduction and elimination                             :focus:
 
 Introduction
@@ -4621,3 +4620,39 @@ Elimination
 
 
 
+*** Negation introduction and elimination                           :focus:
+
+Negation introduction states that if a given antecedent implies both the
+consequent and its complement, then the antecedent is a contradiction.
+
+#+BEGIN_EXPORT latex
+\begin{equation}
+\infer{\neg C} { C \implies Q & C \implies \neg Q }
+\end{equation}
+#+END_EXPORT
+
+Elimination is valid only in classical logic through double negation
+#+BEGIN_EXPORT latex
+\begin{equation}
+\infer{C}{ \neg \neg C }
+\end{equation}
+#+END_EXPORT
+This is exactly the rule of the excluded middle that was argued by Brower
+in 1907.
+
+** Categorical view of logic
+*** Heyting algebra                                                 :focus:
+ - A Heyting algebra is a cartesian closed poset $C$ such that 
+   $C^{op}$ is also cartesian.
+ - The set of propositions is a Heyting algebra because
+   - implications can be seen as (single) morphisms between these objects. (a
+     bidirectional implication means that two propositions are equal so, this
+     category is a /partially ordered set/)
+   - $X \wedge Y$ behaves as  the product and $\top$ is the terminal object.
+   - the proposition $X \implies Y$ is such that
+      #+BEGIN_EXPORT latex
+      \begin{equation}
+      \textrm{hom}(X \wedge Y, Z) \cong \textrm{hom}(Y, X \implies Z)
+      \end{equation}
+      #+END_EXPORT 
+   - $C^{op}$ with $\vee$ and $\bot$ is cartesian as well.
