@@ -323,10 +323,13 @@ This construction is a *functor*.
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-A *free group* $F_X$ on the set $X$ is a universal arrow from $X$ to the group forgetful
-functor. It is a pair $(F_X, u)$ such that for any function $v: X \mto |G|$, 
-there is a unique group homomorphism $f$ for which the diagram below commutes. 
+- A *free group* $F_X$ on the set $X$ is a universal arrow from $X$ to the group forgetful
+  functor. It is a pair $(F_X, u)$ such that for any function $v: X \mto |G|$, 
+  there is a unique group homomorphism $f$ for which the diagram below commutes. 
 
+- In practice, any substitution $v$ of a set $X$ can be factorized through a substitution $u$
+  into the free group. Alternatively, note that any other group $\ang{X | R}$ instead of 
+  $F_X$ would have $f$ restricted by the relators $R$.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
@@ -337,8 +340,6 @@ F_X \arrow[rr, "f"] &                                         & G \\
 #+END_EXPORT
 #+END_CENTER
 
-In practice, any substitution $v$ of a set $X$ can be factorized through a substitution $u$
-into the free group.
 
 *** Group automorphism
 
@@ -395,9 +396,8 @@ into the free group.
   #+END_CENTER
 
 - Note for
-  example that $(ab)'=a'b'$ for all elements of a group but only some elements
+  example that $(ab)'=b'a'$ for all elements of a group but only some elements
   satisfy $ab = ba^2$.
-
 
 
 
@@ -1415,6 +1415,20 @@ of vectors $u_k$ is such that $$\sum_k^{\infty}|u_k|<\infty$$
 Concerning completeness, note, for example, that the set of rational numbers is not
 complete, because e.g. ${\sqrt {2}}$ is "missing" from it, even though one can
 construct a Cauchy sequence of rational numbers that converges to it.
+
+*** Group presentation                                              :focus:
+- It is a way of specifying a group $G$. It is a set of generators $S$ and
+  relations $R$ among generators and it is indicated with $\ang{S | R}$. 
+- Relators $R$ are combinations of words in $S$ that are equal to the identity
+  (e.g., $x=y \implies y^{-1}x \in R$).
+- Formally to $$G=\ang{S|R}=F_S/R^{F_S}$$ where $R^{F_S}$ is the 
+  conjugate closure $\{f^{-1}rf| f \in F_S, r \in R\}$ which is always a 
+  normal subgroup while $F_S$ is the free group.
+- Examples:
+  - $\ang{ \{a\}, \{a ^n=1\}}$ is the cyclic group
+  - $\ang{r,f | r^8=f^2=(rf)^2 = 1}$ the dihedral group, i.e., the group of 
+    symmetries of a polygon with 8 sides.
+
 
 ** Algebras and co-algebras
 *** $k$ algebra (with tensor products)
