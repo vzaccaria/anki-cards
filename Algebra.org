@@ -2566,7 +2566,7 @@ properties hold:
 $E$ should be understood as the subset of elements of $X$ for which $g_1(x) =
 g_2(x)$, i.e., the solutions of the equation.
 
-*** Function objects (Sets) 
+*** Function objects (Sets)                                         :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2578,8 +2578,9 @@ g_2(x)$, i.e., the solutions of the equation.
       #+BEGIN_CENTER
       #+BEGIN_EXPORT latex
       \begin{tikzcd}
-      q \times p \arrow[rd, "e"] \arrow[r, "\lambda(e) \times id"] & r^{p} \times p \arrow[d, "eval"] \\
-      & r
+                                      & r &                                                               \\
+      r^p \times p \arrow[ru, "eval"] &   & q \times p \arrow[ll, "\lambda(e) \times id"] \arrow[lu, "e"] \\
+      r^p                             &   & q \arrow[ll, "\lambda(e)"]                                   
       \end{tikzcd}
       #+END_EXPORT
       #+END_CENTER
@@ -2587,8 +2588,8 @@ g_2(x)$, i.e., the solutions of the equation.
     - the mapping $\lambda(e): q \rightarrow r^{p}$ is called the called
       *currying* of $e$. 
 
-    - a cartesian closed category is equipped with an isomorphism between $Hom(Q
-      \times P, R) \cong Hom(Q, R^P)$
+    - in fancy words, for every object $r,p$  the exponential is a universal arrow to $r$ of a
+      functor $H[-] = - \times p$ 
 
 *** Zero morphism   :focus:
 :PROPERTIES:
@@ -2906,6 +2907,15 @@ following commute:
   \mto G;F$) respecting some additional rules and called /distributive law/
 
 - Then one can create a monad $G;F$ over $Ob$
+
+*** Indexed monad                                                   :focus:
+
+Given categories C and D, a /D-indexed monad over C/ is a C-endofunctor $D^D \times C \mto C$ with two natural transformations:
+
+$$\eta: [-] \mto T_{m}[-]$$
+$$\mu: T_{m_2}[T_{m_1}[-]] \mto T_{m_2 \circ m_1}[-]$$
+where $m_{*}$ is a morphism in the category $D$
+
 
  
 ** Functors
@@ -4237,7 +4247,7 @@ $\alpha(g \times h) = g^*(\alpha(h))$ thus $\alpha(g)=g^*(\alpha(1))$ which is
 completely determined by $\alpha(1)$. Thus, $G$ equivariant maps correspond
 bijectively to elements of $F\bullet$: $$Hom((-)^\bullet,F) \simeq F\bullet$$
 
-*** Yoneda as a universal arrow from object 
+*** Functor representability as universal arrow from the singleton set 
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4568,6 +4578,7 @@ $\phi$ might be a recursive function created from a non-recursive one $f$
 
 - It is CL without some axioms, for example $A \vee \neg A$ is not always true. 
 
+
 ** Propositional (CL/IL) logic
 *** Natural deduction
   - I know that premises/propositions $A,B,C$ are true. Can I say that
@@ -4612,7 +4623,6 @@ One can always introduce an implication of $B$ if one has $B$.
   #+END_EXPORT
 
 
-
 *** $\vee$ introduction and elimination                             :focus:
 
 Introduction
@@ -4633,7 +4643,6 @@ Elimination
 
 
 
-
 *** Negation introduction and elimination                           :focus:
 
 Negation introduction states that if a given antecedent implies both the
@@ -4645,7 +4654,7 @@ consequent and its complement, then the antecedent is a contradiction.
 \end{equation}
 #+END_EXPORT
 
-Elimination is valid only in classical logic through double negation
+Negation elimination is valid only in classical logic through double negation
 #+BEGIN_EXPORT latex
 \begin{equation}
 \infer{C}{ \neg \neg C }
@@ -4658,15 +4667,30 @@ in 1907.
 *** Heyting algebra                                                 :focus:
  - A Heyting algebra is a cartesian closed poset $C$ such that 
    $C^{op}$ is also cartesian.
- - The set of propositions is a Heyting algebra because
-   - implications can be seen as (single) morphisms between these objects. (a
-     bidirectional implication means that two propositions are equal so, this
-     category is a /partially ordered set/)
+ - The set of propositions $P$ with implication as morphisms is a Heyting Algebra
+   because:
+   - a bidirectional implication means that two propositions are equal so $P$
+     is poset 
    - $X \wedge Y$ behaves as  the product and $\top$ is the terminal object.
-   - the proposition $X \implies Y$ is such that
+   - the proposition $X \implies Z$ is another object and is such that is such
+     that
       #+BEGIN_EXPORT latex
       \begin{equation}
       \textrm{hom}(X \wedge Y, Z) \cong \textrm{hom}(Y, X \implies Z)
       \end{equation}
       #+END_EXPORT 
    - $C^{op}$ with $\vee$ and $\bot$ is cartesian as well.
+*** Proof theoriy for CL/IL                                         :focus:
+Studies the whole set of proofs from $X$ to $Y$ not just implications; so many morphism
+between propositions.
+
+1. Hilbert's approach: many axioms, one rule $$\infer{Y}{X & X \implies Y}$$ (modus ponens)
+2. Gentzen sequent calculus: few axioms, many inference rules. Introduces the concept of
+   sequent: $$ X_1, \ldots X_n \vdash Y_1 \ldots Y_m $$ which is a proposition 
+   that is read as: /all of $X_i$ can be used to prove at least one of $Y_j$/
+*** Proof theory as a category                                      :focus:
+ - Propositions are objects and proofs are morphisms. A morphism between $X$ and $Y$ is
+   written as $X \vdash Y$
+ - An inference rule is a way to get new morphisms from old. Composition in a 
+   category is called the /cut rule/: $\infer{X \vdash Z}{X \vdash Y & Y \vdash Z}$
+ 
