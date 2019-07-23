@@ -3668,28 +3668,7 @@ I \arrow[r, "\kappa f"] \arrow[rr, "\kappa g"', bend right] & E \arrow[r, "h"] &
   directly the output $H$ (e.g., an integer).
 
 
-*** Catamorphism compose law 
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-gI \arrow[rr] \arrow[dd]           &                         & gI \arrow[d, "h"] \arrow[ldd, "Fix \circ h" description] \\
-                                   &                         & tI \arrow[d, "f"] \arrow[ld, "Fix" description]          \\
-I \arrow[r, "\kappa(Fix \circ h)"] & I \arrow[r, "\kappa f"] & I                                                       
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-If $h$ is a natural tranformation and $f$ an algebra, then the following is
-always true:
-$$\kappa f \circ \kappa(Fix \circ h) = \kappa (f \circ h)$$ For example
-$\kappa (Fix \circ h)$ could filter away data. Instead of two catamorphism you get only one.
-
-
-*** Catamorphism compose law example (optimizing expressions)
+*** Catamorphism compose law        :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3706,7 +3685,8 @@ I \arrow[r, "\kappa h"'] \arrow[rr, "\kappa\phi"', bend right] & I \arrow[r, "\k
 
 If $I$ is an expression type, and $h$ and $f$ are optimizations expressed as
 F-algebras, you can do a single optimization pass by composing their algebras:
-$$\kappa f \circ \kappa h = \kappa (f \circ unFix \circ h)$$
+$$\kappa f \circ \kappa h = \kappa (f \circ unFix \circ h)$$ Another example,
+$h$ could filter away data.
 
 *** Combining algebras $(A, \phi), (B, \psi)$ into $(A \times B, q$ (banana split)
 :PROPERTIES:
@@ -3728,7 +3708,7 @@ i \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[rrr, bend right] & a & b & f
 
 
       
-*** Hylomorphisms
+*** Hylomorphisms                                                   :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3740,15 +3720,15 @@ i \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[rrr, bend right] & a & b & f
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-a \arrow[d, "\phi"] \arrow[r, "\alpha \phi",red] \arrow[rr, "{hylo~(\psi, \phi)}", bend left,blue] & F \arrow[d] \arrow[r, "\kappa\psi",red] & b \\
-f a \arrow[rr, "{f(hylo (\psi,\phi))}", bend right] & fF \arrow[u] & fb \arrow[u, "\psi"]
+{F[A]} \arrow[r]                                                                           & {F[\tilde{F}]} \arrow[r] \arrow[d, no head] & {F[B]} \arrow[d, "\psi"] \\
+A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tilde{F} \arrow[r, "\kappa(\psi)"]         & B                       
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
 - allows to exploit parallelism? substituting recursive control with a data structure
 
-*** Hylomorphism example: mergesort
+*** Hylomorphism example: mergesort                                 :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3756,13 +3736,13 @@ f a \arrow[rr, "{f(hylo (\psi,\phi))}", bend right] & fF \arrow[u] & fb \arrow[u
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-L_A \arrow[d, "\phi"] \arrow[r, "\alpha \phi",red] \arrow[rr, "{hylo~(\psi, \phi)}", bend left,blue] & F_A \arrow[d] \arrow[r, "\kappa\psi",red] & L_A \\
-f L_A \arrow[rr, "{f(hylo (\psi,\phi))}", bend right] & fF_A \arrow[u] & fL_A \arrow[u, "\psi"]
+{F[L_A]} \arrow[r]                                                                           & {F[\tilde{F}]} \arrow[r] \arrow[d, no head] & {F[L_A]} \arrow[d, "\psi"] \\
+L_A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tilde{F} \arrow[r, "\kappa(\psi)"]         & L_A                       
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- Consider the functor $f[X] = A + X \times X$, its initial algebra $F_A$ being a binary tree of $A$'s.
+- Consider the functor $F[X] = A + X \times X$, its initial algebra $\tilde{F}$ being a binary tree of $A$'s.
 - Consider $L_A$ as a list of A's. One could implement merge sort $\mu: L_A
   \rightarrow L_A$ as $hylo(\psi,\phi)$, where $\phi$ constructs the tree by splitting
   lists in two while $\psi$ merges two lists into one (by reordering them).
@@ -4688,9 +4668,19 @@ between propositions.
 2. Gentzen sequent calculus: few axioms, many inference rules. Introduces the concept of
    sequent: $$ X_1, \ldots X_n \vdash Y_1 \ldots Y_m $$ which is a proposition 
    that is read as: /all of $X_i$ can be used to prove at least one of $Y_j$/
-*** Proof theory as a category                                      :focus:
+*** Proof (logical) theory from a category                          :focus:
  - Propositions are objects and proofs are morphisms. A morphism between $X$ and $Y$ is
    written as $X \vdash Y$
- - An inference rule is a way to get new morphisms from old. Composition in a 
-   category is called the /cut rule/: $\infer{X \vdash Z}{X \vdash Y & Y \vdash Z}$
+ - In this way, all systems of logic allow for a description in terms of a
+   closed monoidal category, where an inference rule is a way to get new morphisms from old. 
+   
+   #+attr_latex: :font \footnotesize :width 0.85\linewidth :float t :placement [h]
+   | CC name     | Logic name    | expression                                          |
+   |             |               |                                                     |
+   | Composition | cut rule      | \infer{X \vdash Z}{X \vdash Y & Y \vdash Z}         |
+   | Identity    | identity rule | \infer{X \vdash X}{}                                |
+   |             |               |                                                     |
+   | Currying    |               | \infer{Y \vdash X \implies Z}{X \otimes Y \vdash Z} |
+   |             |               |                                                     |
+   |             | Modus ponens  | \infer{X \otimes (X \implies Y) \vdash Y}{}         |
  
