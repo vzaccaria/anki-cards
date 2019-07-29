@@ -105,7 +105,7 @@ function $$(x_i)_{i = \{1 \ldots n\}}$$
 
 It is a /normal subgroup of $G$/, because $$\forall g \in G.f(gkg^{-1})=f(g)f(g^{-1})=1_*$$
 
-*** First homomorphism theorem :focus:
+*** First homomorphism theorem
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -631,7 +631,7 @@ to derive a representation $\pi = T\rho$ on $TE$.
     $(\rho^*, V^*)$ such that $$\rho^*(g) \vec{f} = v \mapsto f (\rho^{-1}(g)
     \cdot v)$$.
 
-*** Representation of quotient spaces.
+*** Representation of quotient spaces.                                                                 :noanki:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2013,7 +2013,6 @@ A \otimes V \arrow[r, "\lambda"]                                                
 A module is a ring homomorphism into the endomorphism ring of an abelian group. Since $Z$ is the 
 initial object in the category of rings, there is a single $Z$-module for each abelian group.
 
-  
 * Category theory 
 
 ** Category basics
@@ -4152,7 +4151,7 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
   - $\mu_X$ flattens the list, e.g., $\mu_X(\ang{a\ang{ab}}) = \ang{aab}$
 
 
-*** Yoneda lemma
+*** Yoneda lemma                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4160,8 +4159,9 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-x \arrow[d] & x^c \arrow[d] \arrow[r, "\alpha_x"] & Fx \arrow[d] \\
-y  & y^c \arrow[r, "\alpha_y"] & Fy
+c & & Fc \\
+x \arrow[d] & x^c \arrow[d] \arrow[r, "\alpha"] & Fx \arrow[d] \\
+y  & y^c \arrow[r, "\alpha"] & Fy
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -4172,13 +4172,12 @@ natural transformation $\alpha_p: (-)^c \rightarrow F$, i.e.,
 $$Hom((-)^c,F) \simeq Fc$$
 
 
-*** Yoneda Lemma - G-Equivariant maps  
+*** Pre - Yoneda Lemma - G-Equivariant maps                         :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
  Given two actions of a group $G$ (interpreted as functors) over two sets $X$
- and $Y$, a natural transformation among them is called a *$G$ equivariant map*
- $\alpha$
+ and $Y$, a natural transformation among them is called a *$G$ equivariant map* $\alpha$
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
@@ -4189,26 +4188,30 @@ $$Hom((-)^c,F) \simeq Fc$$
 #+END_EXPORT
 #+END_CENTER
 
-*** Yoneda Lemma - Functor from $BG$ to $G$ 
+*** Pre - Yoneda Lemma - Representability of functor from $BG$ to $G$ :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-$G$ can be seen as an object in Set over which $BG$ acts functorially by left or right
-multiplication ($g\times -$), call this functor $f_G$. 
+$\vert G \vert$ can be seen as an object in Set over which $BG$ acts functorially by left or right
+multiplication ($g\times \cdot$), call this functor $\Gamma$. 
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-\bullet (BG)  \arrow[d] & G \arrow[d, "(g \times -)"]  \\
-\bullet (BG)           & G                 
+\bullet (BG)  \arrow[d, "g"] & \vert G \vert \arrow[d, "\Gamma g = (g \times \cdot)"]  \\
+\bullet (BG)           & \vert G \vert                
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-Note that $G \simeq (-)^{\bullet}$ so the functor $f_G$ is a represented one.
+Note that:
+- $G \simeq (\bullet)^{\bullet}$
+- there exists an inclusion from $\vert G \vert=\Gamma \bullet$ into $G = (\bullet)^{\bullet}$ which is natural and bidirectional
 
-*** Yoneda lemma - $G$ equivariant maps determined by identity
+Functor (or action) $\Gamma$ is thus represented by $\bullet$.
+
+*** Pre - Yoneda lemma - $G$ equivariant maps determined by identity :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4216,18 +4219,25 @@ Note that $G \simeq (-)^{\bullet}$ so the functor $f_G$ is a represented one.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-\bullet (BG)  \arrow[d] & (-)^{\bullet} \arrow[d, "(g \times -)"] \arrow[r, "\alpha"] & F\bullet \arrow[d, "g_*"] \\
-\bullet (BG)           & (-)^{\bullet} \arrow[r, "\alpha"]                  &  F\bullet
+\bullet (BG)  \arrow[d] & (\bullet)^{\bullet} \arrow[d, "(g \times \cdot)"] \arrow[r, "\alpha"] & F\bullet \arrow[d, "g_*"] \\
+\bullet (BG)           & (\bullet)^{\bullet} \arrow[r, "\alpha"]                  &  F\bullet
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-A natural transformation $\alpha$ with another action $F$ over $F\bullet$ is such that
-$\alpha(g \times h) = g^*(\alpha(h))$ thus $\alpha(g)=g^*(\alpha(1))$ which is
-completely determined by $\alpha(1)$. Thus, $G$ equivariant maps correspond
-bijectively to elements of $F\bullet$: $$Hom((-)^\bullet,F) \simeq F\bullet$$
+- Consider two actions of $G$: $\Gamma$ (represented by $\bullet$, so $\Gamma g =
+  g \times \cdot$) and $F$.
 
-*** Functor representability as universal arrow from the singleton set 
+- Any $G$ equivariant map $\alpha$ is completely determined by $\alpha(1)$ because
+  $\alpha(g \times h) = g^*(\alpha(h))$ i.e. $\alpha(g) = g^*(\alpha(1))$
+
+- There is thus a bijection between $$Hom(\Gamma, F) \simeq
+  Hom((\bullet)^\bullet,F) \simeq F\bullet$$
+
+
+
+
+*** Functor representability as universal arrow from the singleton set                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4426,8 +4436,10 @@ c &                    &                                 \\
 - The *pushout of two morphisms* $f,g$ is a co-limit object $colim~D$ and two
   morphisms $p,q$ such that the above commutes.
 
-- For sets, $colim~D$ is the disjoint union of $A$ and $C$ quotiented over the
-  relation $f(b) \sim g(b)$. 
+- For sets, $colim~D$ is the disjoint union of $A$ and $C$ where, if $a \in A$,
+  $c \in C$ and there exists $b \in B$ such that $a = f(b)$ and $c=g(b)$ then
+  $q$ and $p$ map to the same element $d = q(b) = q(a)$.
+
 - For example, if $A,C$ are a subset of some $W$, $B$
   their intersection with $f,g$ inclusion maps, the pushout would be the
   canonical set union $A \cup C$.
@@ -4684,3 +4696,21 @@ between propositions.
    |             |               |                                                     |
    |             | Modus ponens  | \infer{X \otimes (X \implies Y) \vdash Y}{}         |
  
+* Other mathematics
+** Probability and statistics
+*** Kullback Leibler divergence                                     :focus:
+
+Given two distributions $p(x)$ and $q(x)$, KL is defined as
+
+$$D_q(p) = \sum_x p(x)\log_2\left(\frac{p(x)}{q(x)} \right)$$
+
+Roughly, is a weighted average of the difference in terms of bits for the
+encoding of a set of data following optimizied for $p$ and $q$ respectively.
+
+*** Mutual information                                              :focus:
+
+It is related to KL. It's the number of bits you save representing X and Y if
+you understand the relationship between them instead of assuming they're
+independent:
+
+$$I(X,Y) = \sum_{x,y} p(x,y) \log_2\left(\frac{p(x,y)}{p(x)p(y)} \right)$$
