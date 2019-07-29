@@ -4672,7 +4672,7 @@ in 1907.
       \end{equation}
       #+END_EXPORT 
    - $C^{op}$ with $\vee$ and $\bot$ is cartesian as well.
-*** Proof theoriy for CL/IL                                         :focus:
+*** Proof theory for CL/IL (Hilbert vs Gentzen)                     :focus:
 Studies the whole set of proofs from $X$ to $Y$ not just implications; so many morphism
 between propositions.
 
@@ -4680,21 +4680,26 @@ between propositions.
 2. Gentzen sequent calculus: few axioms, many inference rules. Introduces the concept of
    sequent: $$ X_1, \ldots X_n \vdash Y_1 \ldots Y_m $$ which is a proposition 
    that is read as: /all of $X_i$ can be used to prove at least one of $Y_j$/
-*** Proof (logical) theory from a category                          :focus:
- - Propositions are objects and proofs are morphisms. A morphism between $X$ and $Y$ is
-   written as $X \vdash Y$
+*** Closed monoidal theory                                     :focus:
+ - Propositions are objects and proofs are morphisms. The set of proofs from $X$
+   and $Y$ (i.e., their homset) is written as $X \vdash Y$. $X \implies Y$ is
+   the set of equivalence classes of proofs from $X$ to $Y$. $X \otimes Y$ is
+   the proposition $X \wedge Y$.
+
  - In this way, all systems of logic allow for a description in terms of a
-   closed monoidal category, where an inference rule is a way to get new morphisms from old. 
+   closed monoidal category, where an *inference rule is a morphism between homsets*, 
+   while deductions are compositions of those morphisms.
    
-   #+attr_latex: :font \footnotesize :width 0.85\linewidth :float t :placement [h]
-   | CC name     | Logic name    | expression                                          |
-   |             |               |                                                     |
-   | Composition | cut rule      | \infer{X \vdash Z}{X \vdash Y & Y \vdash Z}         |
-   | Identity    | identity rule | \infer{X \vdash X}{}                                |
-   |             |               |                                                     |
-   | Currying    |               | \infer{Y \vdash X \implies Z}{X \otimes Y \vdash Z} |
-   |             |               |                                                     |
-   |             | Modus ponens  | \infer{X \otimes (X \implies Y) \vdash Y}{}         |
+   #+attr_latex: :font \tiny :width 0.85\linewidth :float t :placement [h]
+   | CC name                                         | Logic name   | Logic rule                                          |
+   |                                                 |              |                                                     |
+   | $\circ: hom(X,Y) \times hom(Y,Z) \mto hom(X,Z)$ | cut          | \infer{X \vdash Z}{X \vdash Y & Y \vdash Z}         |
+   |                                                 |              |                                                     |
+   | $i_X: 1 \rightarrow hom(X,X)$                   | identity     | \infer{X \vdash X}{}                                |
+   |                                                 |              |                                                     |
+   | Currying                                        |              | \infer{Y \vdash X \implies Z}{X \otimes Y \vdash Z} |
+   |                                                 |              |                                                     |
+   |                                                 | Modus ponens | \infer{X \otimes (X \implies Y) \vdash Y}{}         |
  
 * Other mathematics
 ** Probability and statistics
