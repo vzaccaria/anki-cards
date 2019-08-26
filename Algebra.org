@@ -3951,25 +3951,21 @@ instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~.
 
 - $P[A]$ is a functor in $A$; You can get a parser $PB$ for object $B$ if you have $P[A]$ and $A \rightarrow B$.
 
-*** Parsers with recursion schemes interpreters
+*** Expression data types as functors - parsers (annotation)        :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
-- Assume $L[]$ is a functor that extends $N[]$ and $\widetilde{L}$ is its
-  initial algebra.
 
-- We can define a combinator parser for $\widetilde{L}$ (blue) by exploiting
-  $N[]$'s constructor and two additional functions (red).
-
-- Here we show the case for $n_2[\widetilde{L}]:
-  \widetilde{L}\times\widetilde{L} \rightarrow N \widetilde{L}$
+Each constructor in $T$, e.g., $n_2: X \times X \mto T[X]$ can be made into a
+parser of annotated trees by introducing a function $inj$ that, from a tree
+parser creates an annotated tree parser.
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
-  \begin{tikzcd}
-  L[\widetilde{L}] \arrow[d,"\phi",red] \arrow[r] & (P \circ L)[\widetilde{L}] \arrow[d,"P \phi"]  & (P \circ N)[\widetilde{L}] \arrow[l,"\gamma",red] \arrow[ld, "P\phi \circ \gamma"] \\
-  \widetilde{L} \arrow[r]   & P [\widetilde{L}] & P [\widetilde{L}] \times P [\widetilde{L}] \arrow[u, "Pn_2"] \arrow[l, "P\phi\circ\gamma \circ P n_2", blue]
-  \end{tikzcd}
+\begin{tikzcd}
+{P[\widetilde{Q}_A^T] \times P[\widetilde{Q}_A^T]} \arrow[d] \arrow[rr, "P[n_2]"] &  & {P[T[\widetilde{Q}_A^T]]} \arrow[d, "inj"]           \\
+{P[\widetilde{Q}_A^T]}                                                          &  & {P[Q_A^T[\widetilde{Q}_A^T]]} \arrow[ll, "{P[fix]}"]
+\end{tikzcd}
   #+END_EXPORT
   #+END_CENTER
 
