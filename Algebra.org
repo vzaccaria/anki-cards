@@ -3963,7 +3963,7 @@ parser creates an annotated tree parser.
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{P[\widetilde{Q}_A^T] \times P[\widetilde{Q}_A^T]} \arrow[d] \arrow[rr, "P[n_2]"] &  & {P[T[\widetilde{Q}_A^T]]} \arrow[d, "inj"]           \\
+{P[\widetilde{Q}_A^T] \times P[\widetilde{Q}_A^T]} \arrow[d] \arrow[rr, "{P[n_2]}"] &  & {P[T[\widetilde{Q}_A^T]]} \arrow[d, "inj"]           \\
 {P[\widetilde{Q}_A^T]}                                                          &  & {P[Q_A^T[\widetilde{Q}_A^T]]} \arrow[ll, "{P[fix]}"]
 \end{tikzcd}
   #+END_EXPORT
@@ -4112,7 +4112,8 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
 #+END_EXPORT
     - Two categories $C$ and $D$ are equivalent if I can build two functors, one
       going left $L: D \leftarrow C$ and $R: D \rightarrow C$ if their
-      composition is naturally isomorphic through $\eta$ and $\epsilon$ 
+      composition is naturally isomorphic, through $\eta$ and $\epsilon$, to the
+      identity functor.
     - We say that $L$ is /left adjoint/ to R
 *** Adjoint functors and homsets
     - It is another way of stating that two functors $L: D \leftarrow C$ and $R:
@@ -4689,7 +4690,7 @@ between propositions.
    #+attr_latex: :font \tiny :width 0.85\linewidth :float t :placement [h]
    | CC name                                         | Logic name   | Logic rule                                          |
    |                                                 |              |                                                     |
-   | $\circ: hom(X,Y) \times hom(Y,Z) \mto hom(X,Z)$ | cut          | \infer{X \vdash Z}{X \vdash Y & Y \vdash Z}         |
+   | $\circ: Y^X \times Z^Y \mto Z^X$ | cut          | \infer{X \vdash Z}{X \vdash Y & Y \vdash Z}         |
    |                                                 |              |                                                     |
    | $i_X: 1 \rightarrow hom(X,X)$                   | identity     | \infer{X \vdash X}{}                                |
    |                                                 |              |                                                     |
