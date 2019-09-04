@@ -693,6 +693,8 @@ In general, the kernel and the image of a morphism between spaces $E_1
     $$\rho_{K}(s)\phi = \rho_{K}(s) \phi(g_1)g_1 + \ldots = \phi(g_1)(s*g_1) +
     \ldots$$
 
+    See nb. 4 - p. 28
+
 *** Regular representation of $G$ through Cayley                                                                 :noanki:
 
     - By Caley, there is an isomorphism $\rho_C: G \rightarrow S_n$ for a group
