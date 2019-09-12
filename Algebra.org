@@ -3190,24 +3190,24 @@ $$\textrm{sing} : (-) \mapsto \{ \cdot \}$$
 that maps objects to the singleton set, then we say that $X$ is final.
 This means that, the set of morphisms into $X$ from any other object is singleton.
 
-*** Universal property encoded by $1_{Set}: Set \rightarrow Set$
+*** Universal property encoded by $Id_{Set}: Set \rightarrow Set$
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-Take $1_{Set}$ as the *identity functor* in the category $Set$ then, in the
+Take $Id_{Set}$ as the *identity functor* in the category $Set$ then, in the
 following diagram:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-x \in Set \arrow[d, "f"] \arrow[r, "1_{Set}"] & x \arrow[d, "f"] \arrow[r, "\cong"] & x^? \arrow[l] \arrow[d, "f_*"] \\
-y \arrow[r, "1_{Set}"] & y \arrow[r] & y^? \arrow[l, "\cong"]
+x \in Set \arrow[d, "f"] \arrow[r, "Id_{Set}"] & x \arrow[d, "f"] \arrow[r, "\cong"] & x^? \arrow[l] \arrow[d, "f_*"] \\
+y \arrow[r, "Id_{Set}"] & y \arrow[r] & y^? \arrow[l, "\cong"]
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-The *singleton set* is the only value for (?) that represents $1_{Set}$ because
+The *singleton set* is the only value for (?) that represents $Id_{Set}$ because
 only for that object there is a natural transformation that makes the right
 square commute.
 
