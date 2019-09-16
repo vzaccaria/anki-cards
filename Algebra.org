@@ -4701,6 +4701,32 @@ between propositions.
    |                                                 | Modus ponens | \infer{X \otimes (X \implies Y) \vdash Y}{}         |
  
 * Other mathematics
+** Computation theory
+*** Lambda calculus (application and abstraction)                   :focus:
+- Programs are data; all data is a $\lambda$ term. 
+- Basic terms are variables (countable set), e.g., "x", "y"...
+- If $f$ and $t$ are terms, $f(t)$ is a term (/application/)
+- If $x$ is a variable and $t$ is a term, then $(\lambda x .t)$ is a term (/lambda/-abstraction)
+
+From a simple set of rules, Church and Kleene were able to build up Boolean
+logic, the natural numbers, the usual operations of arithmetic, and so on. All
+computable functions $f: N \mto N$ can be defined in the lambda calculus
+
+
+*** Lambda calculus (beta and eta reduction)                        :focus:
+If we apply $\lambda x.t$ to $s$ we get back $t$ but with $s$ substituted for
+each free occurrence of $x$: $$(\lambda x.t)(s) = t[s/x]$$
+This is a rewrite rule (beta reduction); by repeatedly applying it we perform *computation*.
+Eta reduction says instead that one can always rewrite $$(\lambda x. t(x)) = t$$
+Alpha conversion allows to rename the bound variable, e.g., $x$ in $\lambda x.t$.
+
+*** Lambda calculus (Church numerals)                               :focus:
+If we define: 
+- $ 0 = \lambda f. \lambda x.x $
+- $ 1 = \lambda f. \lambda x. f (x) $
+- $ 2 = \lambda f. \lambda x. f(f (x)) $
+then $$ (\lambda a.(\lambda b.(\lambda x.a(b(x)))))$$ can define multiplication
+by repeatedly applying rewrite rules.
 ** Probability and statistics
 *** Kullback Leibler divergence                                     :focus:
 
