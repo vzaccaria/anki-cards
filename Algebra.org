@@ -3475,6 +3475,11 @@ a & c \arrow[u, "h"] \arrow[l, "f"] \arrow[r, "g"'] & b & \Delta (a \times b) \a
 Projection functions $\ang{p, q}$ from the product $a \times b$ (and the product itself) are
 the universal arrow from the functor $\Delta(c) = \ang{c,c}$ to the object $\ang{a,b}$.
 
+*** Presheaf
+A presheaf on a small category $C$ is a functor $$C^{op} \mto Set$$. The category
+of presheaves on $C$ is denoted as $[C^{op}, Set]$ and has functors as objects 
+and natural transformations as morphisms.
+
 ** Functor algebras 
 *** Definition of algebras and co-algebras                                                                 :noanki:
     - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
@@ -4154,20 +4159,30 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
 :BEAMER_opt: fragile
 :END:
 
+Lemma's says how many natural transformations between a representable presheaf 
+and another presheaf $F$, i.e., the set:
+
+$$Hom((-)^c,F)$$
+
+If $\alpha$ is a natural transformation then the following must commute also for
+$x=c$ and $x^c=Id_c$:
+
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-c & & Fc \\
-x \arrow[d] & x^c \arrow[d] \arrow[r, "\alpha"] & Fx \arrow[d] \\
-y  & y^c \arrow[r, "\alpha"] & Fy
+x \arrow[d, "\phi"] & x^c \arrow[d, "\circ \phi"] \arrow[r, "\alpha_x"] & Fx \arrow[d, "F\phi" ] \\
+y  & y^c \arrow[r, "\alpha_y"] & Fy
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-For any functor $F: C \rightarrow Set$ and any object $c$,
-for every point $p$ in $F c$ (which is a set) there is a unique
-natural transformation $\alpha_p: (-)^c \rightarrow F$, i.e., 
-$$Hom((-)^c,F) \simeq Fc$$
+Implying that:
+
+$$\forall \phi,y. (\alpha_y \circ \phi) = (F \phi) \alpha_c(Id_c)$$
+
+So fixing $\alpha_c(Id_c)$ in $Fc$ means fixing $\alpha$ for all $y$. In practice: 
+$$Hom((-)^c,F) = Fc$$
+
 
 
 *** Pre - Yoneda Lemma - G-Equivariant maps                         :focus:
