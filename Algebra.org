@@ -3270,8 +3270,7 @@ r \arrow[rr, "h"]   &                                        & d \\
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-$(r, u)$ is universal for $(S,c)$ if and only if $D(r,-) \simeq C(c,S-)$. When
-this happens we say that $(S-)^c$ *is represented* by $r$. 
+$(r, u)$ is universal for $(S,c)$ means that $(S-)^c$ *is represented* by $r$. 
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
