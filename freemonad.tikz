@@ -1,0 +1,5 @@
+\begin{tikzcd}
+                                                                         &                                                       & {M[M[A]]} \arrow[d, "j", dashed] &                                                \\
+{T[A]} \arrow[rr, "\nu", two heads, dashed, bend left] \arrow[r, "\phi"] & {\tilde{F}[A]} \arrow[r, "\iota"', dashed]            & {M[A]} \arrow[r, "T\iota"']      & {T[M[A]]} \arrow[lu, "\nu", two heads, dashed] \\
+                                                                         & A \arrow[u, "\pi"] \arrow[ru, "r", two heads, dashed] &                                  &                                               
+\end{tikzcd}

@@ -2797,15 +2797,15 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
 :BEAMER_opt: fragile
 :END:
 
-Remember that $T[C]$ is a representation of a sequence of commands. To build the
+Remember that $T[A]$ is a sequence of commands. To build the
 AST tree through a Free monad, e.g., ~type Console = Free ConsoleF~, we need to
 lift single commands as they were sequences of one command alone.
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{T[\widetilde{T}[A]]} \arrow[d, "\phi"] & {T[A]} \arrow[l, "T\pi"] \arrow[ld, "liftF"] \\
-{\widetilde{T}[A]}                      &                                             
+{T[\widetilde{F}[A]]} \arrow[d, "\phi"] & {T[A]} \arrow[l, "T\pi"] \arrow[ld, "liftF"] \\
+{\widetilde{F}[A]}                      &                                             
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER 
@@ -2832,23 +2832,28 @@ Given two functors $T$ and $G$, one can build a free monad of $(T+G)$
 This is a way to compose functors which manage different effects into a single
 monad.
 
-*** Free monads (interpretation)
+*** Free monads (interpretation)                                    :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
-An interpreter for a free monad can be built from its 
-underlying functor by first creating a natural t.: 
 
-: class (Functor f, Monad m) => Interpret f where
-:     intp :: f a -> m a
+An interpreter $\iota$ is a morphism between the free monad $\tilde{F}_T^A$ and
+a generic monad $M[A]$. It can be built through $\nu$ for which an appropriate
+functor $\tilde{F}$ must be provided (it is always possible to build $\mu$). The
+functor $\tilde{F}$ must abide the laws on the right for any $\nu$.
 
-And lifting as a natural transformation between monads
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+                                                                        &                                & A \arrow[rrd, "\pi_M", bend left] \arrow[d, "\pi_T"']      &                                     &                                        \\
+\tilde{F}_T^A \arrow[rd, "\iota"', dashed] \arrow[r, "\tilde{F}_{\nu}"] & \tilde{F}_M^A \arrow[d, "\mu"] & \tilde{F}_T^A \arrow[rr, "\tilde{F}_{\nu}"']               &                                     & \tilde{F}_M^A                          \\
+{T[A]} \arrow[r, "\nu", two heads, dashed]                              & {M[A]}                         & {T[\tilde{F}_T^A]} \arrow[u, "\phi_T"] \arrow[r, "TF_\nu"] & {T[\tilde{F}_M^A]} \arrow[r, "\nu"] & {M[\tilde{F}_M^A]} \arrow[u, "\phi_M"]
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
-: interpret :: Interpret f m => Free f a -> m a
-: interpret (Return a) = return a
-: interpret (Join fa) = join $ intp (interpret <$> fa)
 
-(consistent with Tweagio's and Hopkins's free monads)
+(consistent with Tweagio's, check for Hopkins's free monad)
 
 *** Suspended computation and continuation monads
     - A function ~(a -> r) -> r~ is called a suspended computation (SC). It needs a way
