@@ -2576,7 +2576,7 @@ g_2(x)$, i.e., the solutions of the equation.
 :BEAMER_opt: fragile
 :END:
 
-    - The object-morphism pair $(r^{p}, eval: r^{p} \times p \rightarrow r)$
+    - The object-morphism pair $(r^{p}, eval: p \times r^{p} \rightarrow r)$
       makes an *exponential object* if for all other object-morphism pair $(q, e)$ there exists 
       a mapping $\lambda(e)$ such that the following commutes:
 
@@ -2584,7 +2584,7 @@ g_2(x)$, i.e., the solutions of the equation.
       #+BEGIN_EXPORT latex
       \begin{tikzcd}
                                       & r &                                                               \\
-      r^p \times p \arrow[ru, "eval"] &   & q \times p \arrow[ll, "\lambda(e) \times id"] \arrow[lu, "e"] \\
+      p \times r^p  \arrow[ru, "eval"] &   & p \times q \arrow[ll, "\lambda(e) \times id"] \arrow[lu, "e"] \\
       r^p                             &   & q \arrow[ll, "\lambda(e)"]                                   
       \end{tikzcd}
       #+END_EXPORT
@@ -2594,7 +2594,7 @@ g_2(x)$, i.e., the solutions of the equation.
       *currying* of $e$. 
 
     - in fancy words, for every object $r,p$  the exponential is a universal arrow to $r$ of a
-      functor $H[-] = - \times p$ 
+      functor $H[-] = p \times -$ 
 
 *** Zero morphism   :focus:
 :PROPERTIES:
