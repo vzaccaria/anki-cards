@@ -1,4 +1,4 @@
-#+TITLE: Algebra
+#+TITLE: Notes
 #+AUTHOR: Vittorio Zaccaria
 #+LEVEL: 3
 #+OPTIONS: H:3
@@ -1337,10 +1337,15 @@ W \arrow[r] & K^W \arrow[u, "f^*"]
     - Alternatively, it can be defined as $(A, V_k, (-): A \times A \rightarrow V_k)$ where
       $(-)$ complies with Weyl's axioms
 
-*** Quotient space
+*** Quotient space                                                  :focus:
     Given a vector space $V$ and a subspace $W$, the quotient space $V/W$ is the set of
-    cosets $W_v = \{ v + w | w \in W \}$.  Fixed a $v$, the coset represents the elements $y$
-    for which $\exists w \in W, x - y = w$ which is an equivalence class.
+    cosets $W_a = \{ a + w | w \in W \}$, i.e., the elements of $V$ distant $a$ from
+    some $w \in W$. For $x,y,z \in W_a$:
+    - $x-y \in W$ and $y-x \in W$
+    - $x-x \in W$
+    - $x-y \in W$ and $y-z \in W \rightarrow x-z \in W$
+
+    $W_a$ is thus an equivalence class.
 
 *** Free vector space
 
@@ -2020,7 +2025,6 @@ A module is a ring homomorphism into the endomorphism ring of an abelian group. 
 initial object in the category of rings, there is a single $Z$-module for each abelian group.
 
 * Category theory 
-
 ** Category basics
 *** Category                                                                 :noanki:
 
@@ -2411,7 +2415,7 @@ composition $R.S$ ($S \subseteq \ubr{n} \times \ubr{p}$) is the set of pairs
 $(i,k) \in \ubr{m} \times \ubr{p}$ for which $$\exists j. (i,j) \in R \wedge (j,k) 
 \in S$$
 
-*** Symmetric monoidal theory (presentation for a PROP)             :focus:
+*** Symmetric monoidal theory (presentation for a PROP)                                                                 :noanki:
 
 - A *symmetric monoidal theory* (or /presentation/) for any PROP $G$ is a pair
   $(\Sigma, E)$ where $\Sigma$ is the set of morphisms (generators) of type $n
@@ -2419,12 +2423,12 @@ $(i,k) \in \ubr{m} \times \ubr{p}$ for which $$\exists j. (i,j) \in R \wedge (j,
   while $E$ is a set of equations over $\Sigma$.
 - A $\Sigma$ term is any morphism that can be built by composing the generators. 
 
-*** Freely generated PROP                                           :focus:
+*** Freely generated PROP                                                                 :noanki:
 Given a symmetric monoidal theory $(\Sigma, E)$, a *freely generated PROP* $G$ is
 the set of expressions that one can construct with elements in $\Sigma$
 quotiented over $E$ (and the axioms of PROP)
 
-*** SMT for a monoid                                                :focus:
+*** SMT for a monoid                                                                 :noanki:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2441,7 +2445,7 @@ quotiented over $E$ (and the axioms of PROP)
 - The freely generated PROP $\MM$ is isomorphic with FinSet, so we say that
   the theory of commutative monoids *presents* FinSet. 
 
-*** SMT for a co-monoid                                             :focus:
+*** SMT for a co-monoid                                                                 :noanki:
 
 For a co-monoid, black dot is $\Delta$
 
@@ -2451,7 +2455,7 @@ For a co-monoid, black dot is $\Delta$
 #+END_EXPORT
 #+END_CENTER
 
-*** SMT for a bi-algebra                                            :focus:
+*** SMT for a bi-algebra                                                                 :noanki:
 
 The operations of a co-monoid are monoid morphisms:
 
@@ -2465,7 +2469,7 @@ The operations of a co-monoid are monoid morphisms:
 - (A8) is $\Delta \circ m = (m \otimes m) \circ (id \otimes \tau \otimes id)
   \circ (\Delta \otimes \Delta )$
 
-*** SMT for a special frobenius algebra                             :focus:
+*** SMT for a special frobenius algebra                                                                 :noanki:
 
 A Frobenius algebra is a second way (other than bi-algebra) to combine a monoid 
 and a co-monoid:
@@ -2479,7 +2483,7 @@ and a co-monoid:
 - (F1 - pseudo-commutativity) $\Delta \circ m = (m \otimes id) \circ (id \otimes \Delta)$
 - (F2 - factorization) says that co-multiplication factorises the original element
   
-*** PROP sum                                                        :focus:
+*** PROP sum                                                                 :noanki:
 - Given two PROPs A and B, one can define their co-product $C = A + B$
 
 - For example one can create a graph PROP G = SB + N, where SB (/special
@@ -2958,7 +2962,7 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
     $Id: C \rightarrow C$ is a functor that maps an object to itself and a
     function to itself.
 
-*** Constant $\Delta_c$ functor
+*** Constant $\Delta_c$ functor                                                                 :noanki:
     A constant functor $\Delta_c: B \rightarrow C$ is a functor that maps every
     object in $B$ into a single object $c \in C$ and every morphism into the
     identity map on $c$.
@@ -3002,7 +3006,7 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
     A pro-functor is a functor $D^{op} \times C \rightarrow Set$. 
 
-*** Combination of functors
+*** Combination of functors                                                                 :noanki:
 
     - $T(X) = X = Id$ is a functor
 
@@ -3489,589 +3493,6 @@ A presheaf on a small category $C$ is a functor $$C^{op} \mto Set$$. The categor
 of presheaves on $C$ is denoted as $[C^{op}, Set]$ and has functors as objects 
 and natural transformations as morphisms.
 
-** Functor algebras 
-*** Definition of algebras and co-algebras                                                                 :noanki:
-    - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
-      e.g.: $$ X \times A
-      \rightarrow X$$ or $$ A \rightarrow X $$
-
-    - A co-algebraic operation in domain $X$ is a morphism from $X$ into a tuple
-      object, possibly containing $X$: $$ X \rightarrow A \times
-      X $$
-
-*** Functoriality of products, coproducts, exponential and powersets                                                                 :noanki:
-
-    - The product operation in a category $C$ is a bi-functor $(-) \times (-): C
-      \times C \rightarrow C$ (it maps both *pairs of objects* to a *product object*
-      and *pairs of functions* to a *product function*).
-
-    - Fixed an object $A$ there is a functor $(-)^A: C \rightarrow C$ that maps $X$
-      into $X^A$ (the exponential object).
-
-    - The identity map is (endo-)functorial as well as the endomap that maps $X$
-      into a fixed object.
-
-*** How to build morphisms of polynomial functors with respect to original morphism                                                                 :noanki:
-
-    - If we can build functors for products and coproducts, we can build functors
-      also for their combination;
-
-    - For example: $T(X) = X + (C \times X)$
-      maps X to an object $X + (C \times X)$ but also morphisms $f: X \rightarrow X'$:
-
-      $$T(f) = f + (id_C \times f): X+(C\times X) \rightarrow X'+(C \times X')$$
-
-*** Functors mapping to 1 and 0                                    :noanki:
-
-    - $X \rightarrow 1$ is the functor that maps $X$ into the singleton set (final object)
-
-    - $X \rightarrow 0$ is the functor that maps $X$ into the emtpy set (initial object)
-
-*** Functor algebra                                                                 :noanki:
-
-    Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
-    C$, a functor algebra for $T$ is a pair $(U,a)$:
-
-    - an object $U \in C$ (*carrier*)
-    - a morphism $a: T(U) \rightarrow U$ (*algebra structure*)
-
-    $a$ must be defined by a cotuple of several functions whose signature is
-    specified by $T$. For example, $$T(X) = 1 + X + (X \times X)$$ defines $$e:
-    1 \rightarrow U, i: X \rightarrow X, m: (X \times X) \rightarrow X$$ which
-    might encode the signature of group operations.
-
-*** Functor algebra example - natural numbers                                                                 :noanki:
-
-    $0$ and $S$ maps over natural numbers can be seen as a functor algebra
-    $([0,S],\mathbb{N})$ of the functor $T(X) = 1 + X$.
-
-*** Homomorphisms of algebras
-
-    Given two T-functor algebras $(U, a: T(-) \rightarrow -)$ and $(V, b: T(-) \rightarrow -)$,
-    a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
-    with the operations $$ f \circ a = b \circ T(f)$$
-
-*** Whole point of (co-)algebras                                                                 :noanki:
-    - define functions indirectly exploiting fixed (co-)algebraic constructors
-      and finality/initiality
-    - so one has to specify only the initial algebra $A$ and another algebra $B$
-      and automatically the morphism can be built. In general, the morphisms
-      used by $B$ are not recursive.
-
-*** Initial algebras                                                                 :noanki:
-    - Fixed a functor $T$, functor algebras $(U, a: T(U) \rightarrow U)$ can be
-      seen as categorical objects with algebra homomorphisms as morphism.
-
-    - In this category, an *initial algebra* is an algebra for which there exist
-      one and only one morphism from it to all the other algebras.
-
-*** Lambek's lemma                                                                 :noanki:
-    if $a: T(U) \rightarrow U$ is an initial algebra then there is an
-    inverse $a^{-1}: U \rightarrow T(U)$ such that $T(U) \simeq U$.
-
-*** An initial algebra defines homomorphisms by induction (integers)                                                                 :noanki:
-
-    - Let's indicate with $(N, [0,S]: 1 + N \rightarrow N$) the *initial* algebra of
-      natural numbers.
-
-    - An object $Q$ equipped with a functor algebra $$(Q, [q_0,q_S]:
-      1+Q\rightarrow Q)$$ defines, by induction, one and only one algebra
-      morphism $f: N \rightarrow Q$.
-
-      - $f \circ 0 = q_0$
-      - $f \circ S = q_S \circ f$
-
-      i.e, $$f = n \mapsto q_S^n(q_0)$$
-
-*** An initial algebra defines homomorphisms by induction (lists)                                                                 :noanki:
-
-    * Let's indicate with $(A^*, [e,c]: 1 + A \times A^* \rightarrow A^*$) the
-      *initial* algebra of lists of $A$.
-
-    * An algebra $$(Q^*, [q_e,q_c]:
-      1+A \times Q^* \rightarrow Q^*)$$ defines, by induction, one and only one algebra
-      morphism $f: A^* \rightarrow Q^*$.
-
-      - $f \circ e = q_e$
-      - $f \circ c = q_c \circ (id \times f)$
-
-    * For example, an algebra $$(\mathbb{N}, [0, S \circ \pi]: 1+A \times
-      \mathbb{N} \rightarrow \mathbb{N})$$ defines implicitly the length of a list
-
-*** Proofs by induction with initial algebras
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-1 + P \arrow[r, "1 + i"] \arrow[d] & 1 + N \arrow[d] \\
-P \arrow[r, "i", hook] & N \arrow[l, "!\exists", bend left]
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-- Predicate $P$ subset of $N$ by an inclusion morphism $i$. 
-
-- ($0 \in P$ and $n \in P \Rightarrow (n+1) \in P$) means there exists an algebra for $P$.
-
-- Since there is only algebra morphism from $N$ to $N$ (id) this means that
-  $i$ must be an epi-morphism.
-
-*** Principle of list induction for a predicate on the set of lists
-    To show that a predicate/set $P$ is equal to the set of all lists $A*$, it is enough to
-    show the following:
-
-    - $empty \in P$
-    - $\forall a, \alpha \in P \Rightarrow cons(a,\alpha) \in P$
-
-    i.e., 
-    - $P$ can be understood as an algebra $$(P, [empty,cons]: 1 + A\times P \rightarrow P)$$ 
-    - $P$ is a subalgebra of $A^*$ because there is a morphism $i: P \rightarrow A^*$
-    - Since $A^*$ is initial, any morphism $A^* \rightarrow A^*$ is the identity
-      (by uniqueness), so $i$ is epi and mono (iso).
-*** Fixed point functors
-    - Initial algebras for some functors are already known. If we start from a
-      generic functor $t$, the type of an initial algebra $I$ should be such
-      that $I \cong t(I)$ (Lambeck).
-    - Assuming $I \sim F~t$ we have $F~t = t~(F~t)$, which can be created
-      through a recursive data type ~Fix t = Fx t (Fix t)~. Fx encodes algebraic
-      operations $t(I) \rightarrow t$.
-*** Catamorphisms 
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-t ~ I \arrow[r, "t~g"] \arrow[d, "Fx~(\textrm{unfix})"] & t~E \arrow[d, "k"] \\
-I \arrow[u] \arrow[r, "g"] & E
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-
-    - Given an initial algebra $(I, Fx: t~I \rightarrow I)$ and a generic algebra $(E, k)$, a
-      generic morphism $g: I \rightarrow E$ can be defined as $g = k \circ (t~g) \circ unfix$
-    - We say that $g = cata(k)$; given the same expression in $I$, I can create
-      mappings into several other types by simply specifying the non-recursive
-      $k$.
-
-*** Catamorphisms fusion law 
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-tI \arrow[r, "t(\kappa f)"] \arrow[d] & tE \arrow[d, "f"] \arrow[r, "th"] & tH \arrow[d, "g"] \\
-I \arrow[r, "\kappa f"] \arrow[rr, "\kappa g"', bend right] & E \arrow[r, "h"] & H
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-- if you must compose $h$ with a catamorphism $\kappa f$, and $h$ is an $(E,f) \rightarrow (H,g)$ algebra
-  homomorphism, then you can take directly the catamorphism of the second
-  algebra $g$: $$ h \circ \kappa f = \kappa g $$
-
-- This amounts to say that $h$ must be a morphism in the (comma) category of objects under $I$.
-- You bypass the intermediate structure $E$ (which might be a list) to generate
-  directly the output $H$ (e.g., an integer).
-
-
-*** Catamorphism compose law        :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-gI \arrow[r] \arrow[dd]                                        & gI \arrow[r, "Unfix \circ h"] \arrow[dd, "h" description] \arrow[rdd, "\phi"] & gI \arrow[dd, "f"] \\
-                                                               &                                                                               &                    \\
-I \arrow[r, "\kappa h"'] \arrow[rr, "\kappa\phi"', bend right] & I \arrow[r, "\kappa f"']                                                      & I                 
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-If $I$ is an expression type, and $h$ and $f$ are optimizations expressed as
-F-algebras, you can do a single optimization pass by composing their algebras:
-$$\kappa f \circ \kappa h = \kappa (f \circ unFix \circ h)$$ Another example,
-$h$ could filter away data.
-
-*** Combining algebras $(A, \phi), (B, \psi)$ into $(A \times B, q$ (banana split)
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-Given $\phi: fa \rightarrow a$ and $\psi: fb \rightarrow b$ produce $\beta: f (a \times b) \rightarrow (a \times b)$ as
-$$\beta = (\phi \times \psi) \circ (f~fst \times f~snd) \circ split$$
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-f~i \arrow[d] \arrow[r] \arrow[rr, bend left] \arrow[rrr, bend left] & fa \arrow[d, "\phi", red] & fb \arrow[d, "\psi", red] & f(a \times b) \arrow[d, "(f~fst \times f~snd) \circ split" description, blue] \\
-i \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[rrr, bend right] & a & b & fa \times fb \arrow[d, "\phi \times \psi" description, blue] \\
- &  &  & {a \times b}
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-
-      
-*** Hylomorphisms                                                   :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-- Given a initial and final algebra of $F$ (the same functor!)
-      $$hylo(\psi,\phi) = cata(\phi) \circ ana(\psi)$$
-
-- This is the basis for deforestation, it eliminates intermediate data structures.
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-{F[A]} \arrow[r]                                                                           & {F[\tilde{F}]} \arrow[r] \arrow[d, no head] & {F[B]} \arrow[d, "\psi"] \\
-A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tilde{F} \arrow[r, "\kappa(\psi)"]         & B                       
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-- allows to exploit parallelism? substituting recursive control with a data structure
-
-*** Hylomorphism example: mergesort                                 :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-{F[L_A]} \arrow[r]                                                                           & {F[\tilde{F}]} \arrow[r] \arrow[d, no head] & {F[L_A]} \arrow[d, "\psi"] \\
-L_A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tilde{F} \arrow[r, "\kappa(\psi)"]         & L_A                       
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-- Consider the functor $F[X] = A + X \times X$, its initial algebra $\tilde{F}$ being a binary tree of $A$'s.
-- Consider $L_A$ as a list of A's. One could implement merge sort $\mu: L_A
-  \rightarrow L_A$ as $hylo(\psi,\phi)$, where $\phi$ constructs the tree by splitting
-  lists in two while $\psi$ merges two lists into one (by reordering them).
-
-*** Paramorphisms                                                   :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-t~I \arrow[dd, "Fix" description] \arrow[r]    & t~(I \times Z) \arrow[d, "(t~fst \times f) \circ split"] \\
-                                               & t I \times Z \arrow[d, "Fix \times id"]                  \\
-I \arrow[r, "cata(..)"] \arrow[rd, "para(f)"'] & I \times Z \arrow[d, "\pi_Z"]                            \\
-                                               & Z                                                       
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-Example, for factorial $f(i,z) = i~?~z*i:1$. Exercise, try to devise a para for sliding window.
-
-
-*** Apomorphisms                                                    :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-t~(C + F) \arrow[r]                                     & t~F          \\
-C+tF \arrow[u, "\phi \vert\vert\vert t~Inj_R"]          &              \\
-C+F \arrow[r, "\alpha(\ldots)"] \arrow[u, "Id + cofix"] & F \arrow[uu] \\
-C \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"]      &             
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
- 
-Given a co-algebra $\phi: C \mto t (C + F)$ where $F$ is final, it allows to
-build a morphism $C \rightarrow F$ that short-circuits the traversal by giving
-the result immediately. 
-
-*** Apomorphisms example: list insertion                            :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-t_A~(t_A\tilde{L}_A + \tilde{L}_A) \arrow[r]                                                    & t_A~\tilde{L}_A                 \\
-t_A\tilde{L}_A + t_A\tilde{L}_A \arrow[u, "\phi \vert\vert\vert t~Inj_R"]                       &                                 \\
-t_A\tilde{L}_A + \tilde{L}_A \arrow[r, "\alpha(\ldots)"] \arrow[u, "Id + cofix"]                & \tilde{L}_A \arrow[uu, no head] \\
-t_A \tilde{L}_A \cong A \times \tilde{L}_A + 1 \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"] &                                
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-We want to build a morphism: $A \times \tilde{L}_A + 1 \rightarrow \tilde{L}_A$
-to insert an element $A$ into a list $\tilde{L}_A$. $\phi$ could compare $A$
-with the first element of $\tilde{L}_A$ either returning the list as it is
-(short circuiting) or swapping the two. Interestingly, this is an algebra that
-allows us to write an insertion sort $\tilde{L}_A \mto \tilde{L}_A$ with 
-$cata ~ (apo \phi)$.
-
-
-*** Expression data types as functors                               :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-Two ways to build them, 
-
-1. recursive data type which needs an explicitly recursive function to interpret it.
-
-  #+BEGIN_EXAMPLE
-  data Exp = Const Int | Neg Exp | Add Exp Exp 
-  #+END_EXAMPLE
-
-- Using a non-recursive data type
-  
-  #+BEGIN_EXAMPLE
-  data ExprF e = Const Int | Neg e | Add e e deriving functor
-  type Expr = Fix ExprF
-  #+END_EXAMPLE
-
-  #+BEGIN_EXPORT latex
-  \begin{tikzcd}
-  1 \arrow[r, "const"] & {ExprF[Expr]} \arrow[d, "Fx"] \arrow[r] & {ExprF[Int]} \arrow[d, "rules"] \\
-  Expr \times Expr \arrow[ru, "Add", bend left=49] & Expr \arrow[r, "eval"] \arrow[u, "Neg", bend left=60] & Int
-  \end{tikzcd}
-  #+END_EXPORT
-
-  Build expressions in ~Expr~ with original type constructors, evaluate with ~eval
-  = cata rules~.
-
-*** Expression data types as functors - templating (free monad)     :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-{A + T[\widetilde{Q}_A^T]} \arrow[d] \arrow[r]       & {A+T[\widetilde{T}]} \arrow[d, "\phi + Fix_T"] \\
-\widetilde{Q}_A^T \arrow[r, "\kappa(\phi + Fix_T)"'] & \widetilde{T}                                 
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-- Assume $T[-]$ is a functor with $\wtt$ as its initial algebra representing an AST.
-
-- Then $Q_A^T= A + T[-]$ is such that $\wtq_A^T$ is a tree similar to $\wtt$
-  where leafs are $A$ while $T$ merges them into the tree itself. 
-- For templating $A=String$ referencing the name of a variable.
-
-- Given $\phi: A \rightarrow \wtt$ you can build a complete $\wtt$ from
-  $\wtq_A^T$ with $\kappa(\phi + Fix_T)$ (acting as /template substitution/).
-
-*** Expression data types as functors - annotation (cofree comonad) :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-{(A \times T[\widetilde{Q}_A^T])_{AnnF}} \arrow[d, "Fix", no head] \arrow[r] & {(A \times T[\widetilde{T}])_{AnnF}} \arrow[d, "{\phi = \lambda(-,t).Fix_T t}"] \\
-\widetilde{Q}_A^T \arrow[r, "\kappa(\phi)"']                          & \widetilde{T}                                                         
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-- Useful because it can reuse $T$ algebras (e.g., printing)
-
-- Assume $T[-]$ is a functor with $\wtt$ as its initial algebra representing an AST.
-
-- Then $Q_A^T= A \times T[-]$ is such that $\wtq_A^T$ is a tree similar to
-  $\wtt$ where all nodes have been annotated with values of type $A$, and one
-  can strip annotations by running a $\kappa(\phi)$.
-
-*** Expression data types as functors - adding annotations bottom-up :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-{T[\widetilde{T}]} \arrow[r] \arrow[dd, no head] & {T[\widetilde{Q}_A^T]} \arrow[d, "(f \circ T\alpha)\& id"] \arrow[dd, "\phi"', bend right=49] &   \\
-                                        & {A \times T[\widetilde{Q}_A^T]} \arrow[d, "Fix . AnnF"]                                    &   \\
-\widetilde{T} \arrow[r, "\kappa(\phi)"] & \widetilde{Q}_A^T \arrow[r, "\alpha"]                                                      & A
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-- Assume $\alpha$ allows to get an annotation from the root of the tree
-  $\widetilde{Q}_A^T$ and $f: T A \mto A$ is a $T$ algebra that allows to
-  compute a new $A$ from the set of underlying tree's $A$
-- then $\kappa \phi$ can be used to annotate a tree; for example $f = (+1) \circ
-  sum_T$ can be used to annotate a root with the sum of $T$ childs (bottom-up
-  annotation).
-
-
-*** Expression data types as functors - evaluating into a monad     :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-Useful to attach monadic actions to expressions; in general you would need an
-algebra ~f (m a) -> m a~ but that would be difficult to specify. You can do
-instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~.
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-{F[\widetilde{F}]} \arrow[d, no head] \arrow[rr] & *                           & {M[FA]} \arrow[r, ">=>", no head, dotted] & FA \arrow[ld, "algM"] \\
-\widetilde{F} \arrow[rr, "\kappa M(algM)"']      & * \arrow[u, "mapM", dotted] & MA                                        &                      
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-: eval' :: Env -> Expr -> Maybe Int
-: eval'env = ('runReaderT' env) . cataM algM where
-:   algM :: ExprF Int -> ReaderT Env Maybe Int
-:   algM (Const c) = return c
-:   algM (Var i) = ask >>= lift . M.lookup i
-
-*** Parser combinators
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-- A /parser/ of A ($P[A]$), is an object $A^S$ which takes a string (type $S$) and returns a value $A$.
-
-- A parser combinator, is a /higher order function/ that takes two or more parsers
-  and returns a new parser (e.g., $alt: P[A]\times P[B] \rightarrow P[A+B]$ and
-  $seq: P[A]\times P[B] \rightarrow P[A\times B]$):
-
-  #+BEGIN_CENTER
-  #+BEGIN_EXPORT latex
-  \begin{tikzcd}
-  A^S \times B^S \arrow[d, "alt"] & A^S \times B^S \arrow[d, "seq"] \\
-  (A+B)^S & (A \times B)^S
-  \end{tikzcd}
-  #+END_EXPORT
-  #+END_CENTER
-
-- $P[A]$ is a functor in $A$; You can get a parser $PB$ for object $B$ if you have $P[A]$ and $A \rightarrow B$.
-
-*** Expression data types as functors - parsers (annotation)        :focus:
-    :PROPERTIES:
-    :BEAMER_opt: fragile
-    :END:
-
-Each constructor in $T$, e.g., $n_2: X \times X \mto T[X]$ can be made into a
-parser of annotated trees by introducing a function $inj$ that, from a tree
-parser creates an annotated tree parser.
-
-  #+BEGIN_CENTER
-  #+BEGIN_EXPORT latex
-\begin{tikzcd}
-{P[\widetilde{Q}_A^T] \times P[\widetilde{Q}_A^T]} \arrow[d] \arrow[rr, "{P[n_2]}"] &  & {P[T[\widetilde{Q}_A^T]]} \arrow[d, "inj"]           \\
-{P[\widetilde{Q}_A^T]}                                                          &  & {P[Q_A^T[\widetilde{Q}_A^T]]} \arrow[ll, "{P[fix]}"]
-\end{tikzcd}
-  #+END_EXPORT
-  #+END_CENTER
-
-** Functor co-algebras
-*** Co-algebra                                                                 :noanki:
-    Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
-    C$, a functor co-algebra for $T$ is a pair $(U, c)$
-
-    - an object $U \in C$ (*carrier*)
-    - a morphism $c: U \rightarrow T(U)$ (*co-algebra structure*)
-
-    $c$ must be defined by a tuple of several functions whose signature is
-    specified by $T$. For example, $$T(X) = A \times X$$ defines $$(value,next):
-    (U \rightarrow A, U \rightarrow U)$$ for any process $U$.
-*** Homomorphisms of co-algebras                                                                 :noanki:
-
-    Given two T-functor co-algebras $(U, a: - \rightarrow T(-))$ and $(V, b: - \rightarrow T(-))$,
-    a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
-    with the operations $$ T(f) \circ a = b \circ f$$
-*** Final co-algebra                                                                 :noanki:
-    - A final coalgebra $d: W \rightarrow T(W)$ is a coalgebra such that for
-      every coalgebra $c: U \rightarrow T(U)$ there exists a unique map of
-      co-algebras $f: (U,c) \rightarrow (W,d)$
-
-
-*** Examples of final co-algebras
-    
-    | Functor            | FC Carrier                        | FC Structure         | Notes                 |
-    |--------------------+-----------------------------------+----------------------+-----------------------|
-    | $A \times X$       | $A^\mathbb{N}$                    | head($a$), tail($a$) | Infinite lists of As  |
-    | $1 + (A \times X)$ | $A^{\infty} = A^* + A^\mathbb{N}$ | possnext($a$)        | Finite and inf. lists |
-    | $1 + X$            | $\mathbb{N} \cup \{ \infty \}$    | pred($n$)            |                       |
-    
-*** Bisimulation (for lists)                                        :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-S \arrow[d, "\xi"] & R \arrow[r, hook] \arrow[l, "\pi_1"] \arrow[d, "\gamma"] \arrow[l, "\pi_2"', bend right] & S \times S \\
-A \times S         &  A \times R  \arrow[l]                                                                   &           
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-    - Assume a co-algebra $\xi: S \mto A \times S$ and $\pi_1, \pi_2$ are the
-      projections from $R$ is called *a bi-simulation* if there exists
-      $\gamma$ for which the above commutes for both $\pi_1$ and $\pi_2$.
-    - If $S$ is a final co-algebra, e.g., a list $\xi = [h,t]$ then $\pi_1(a,b),
-      \pi_2(a,b)$ must map to the same list $a=b$ so $R$ is an equivalence. For
-      this to hold, one must find $\gamma$ for which:
-      #+BEGIN_EXPORT latex
-      \begin{align*}
-      (\gamma_A(l_1,l_2), \gamma_{R,1}(l_1,l_2)) & = (h(l_1),t(l_1)) \\ 
-      (\gamma_A(l_1,l_2), \gamma_{R,2}(l_1,l_2)) & = (h(l_2),t(l_2))
-      \end{align*}
-      #+END_EXPORT
-      an indirect way to derive $\gamma$ would be to demonstrate that $h(l_1) =
-      h(l_2) \wedge (t(l_1), t(l_2)) \in R$
-
-*** Anamorphisms
-   - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
-     $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
-
-   - Anamorphisms are called co-recursion.
-
-*** Streams as co-inductive data types                              :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-A stream $S_A$ is a final co-algebra of $s \mapsto a \times s$. One can build a stream from
-a seed value $a \in A$ by using $ana((Id \times \nu)\circ\Delta)$ where $\nu$ specifies how to 
-generate the next value.
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-A \times A \arrow[rr, "Id \times \phi"]                          &  & A \times S_A \arrow[d, "scons = -_A \cdot -_{S_A}", bend left] \\
-A \arrow[rr, "\phi = \alpha (Id~\&~\nu)"] \arrow[u, "Id~\&~\nu"] &  & S_A \arrow[u, "cofix"]                                        
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-We have that $\phi(a) = scons(a, \phi(\nu(a)) = a \cdot \nu(a) \cdot \nu^2(a) \cdot \ldots$
-
-
-
-
 ** Monad algebras
 *** Drawbacks of F-algebras                                                                 :noanki:
 
@@ -4472,7 +3893,588 @@ c &                    &                                 \\
 
  - It is a way to make some arbitrary function as injective.
 
-* Type theory
+* Haskell, type, logic, computation theory
+** Functor algebras and co-algebras
+*** Definition of algebras and co-algebras                                                                 :noanki:
+    - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
+      e.g.: $$ X \times A
+      \rightarrow X$$ or $$ A \rightarrow X $$
+
+    - A co-algebraic operation in domain $X$ is a morphism from $X$ into a tuple
+      object, possibly containing $X$: $$ X \rightarrow A \times
+      X $$
+
+*** Functoriality of products, coproducts, exponential and powersets                                                                 :noanki:
+
+    - The product operation in a category $C$ is a bi-functor $(-) \times (-): C
+      \times C \rightarrow C$ (it maps both *pairs of objects* to a *product object*
+      and *pairs of functions* to a *product function*).
+
+    - Fixed an object $A$ there is a functor $(-)^A: C \rightarrow C$ that maps $X$
+      into $X^A$ (the exponential object).
+
+    - The identity map is (endo-)functorial as well as the endomap that maps $X$
+      into a fixed object.
+
+*** How to build morphisms of polynomial functors with respect to original morphism                                                                 :noanki:
+
+    - If we can build functors for products and coproducts, we can build functors
+      also for their combination;
+
+    - For example: $T(X) = X + (C \times X)$
+      maps X to an object $X + (C \times X)$ but also morphisms $f: X \rightarrow X'$:
+
+      $$T(f) = f + (id_C \times f): X+(C\times X) \rightarrow X'+(C \times X')$$
+
+*** Functors mapping to 1 and 0                                    :noanki:
+
+    - $X \rightarrow 1$ is the functor that maps $X$ into the singleton set (final object)
+
+    - $X \rightarrow 0$ is the functor that maps $X$ into the emtpy set (initial object)
+
+*** Functor algebra                                                                 :noanki:
+
+    Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
+    C$, a functor algebra for $T$ is a pair $(U,a)$:
+
+    - an object $U \in C$ (*carrier*)
+    - a morphism $a: T(U) \rightarrow U$ (*algebra structure*)
+
+    $a$ must be defined by a cotuple of several functions whose signature is
+    specified by $T$. For example, $$T(X) = 1 + X + (X \times X)$$ defines $$e:
+    1 \rightarrow U, i: X \rightarrow X, m: (X \times X) \rightarrow X$$ which
+    might encode the signature of group operations.
+
+*** Functor algebra example - natural numbers                                                                 :noanki:
+
+    $0$ and $S$ maps over natural numbers can be seen as a functor algebra
+    $([0,S],\mathbb{N})$ of the functor $T(X) = 1 + X$.
+
+*** Homomorphisms of algebras
+
+    Given two T-functor algebras $(U, a: T(-) \rightarrow -)$ and $(V, b: T(-) \rightarrow -)$,
+    a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
+    with the operations $$ f \circ a = b \circ T(f)$$
+
+*** Whole point of (co-)algebras                                                                 :noanki:
+    - define functions indirectly exploiting fixed (co-)algebraic constructors
+      and finality/initiality
+    - so one has to specify only the initial algebra $A$ and another algebra $B$
+      and automatically the morphism can be built. In general, the morphisms
+      used by $B$ are not recursive.
+
+*** Initial algebras                                                                 :noanki:
+    - Fixed a functor $T$, functor algebras $(U, a: T(U) \rightarrow U)$ can be
+      seen as categorical objects with algebra homomorphisms as morphism.
+
+    - In this category, an *initial algebra* is an algebra for which there exist
+      one and only one morphism from it to all the other algebras.
+
+*** Lambek's lemma                                                                 :noanki:
+    if $a: T(U) \rightarrow U$ is an initial algebra then there is an
+    inverse $a^{-1}: U \rightarrow T(U)$ such that $T(U) \simeq U$.
+
+*** An initial algebra defines homomorphisms by induction (integers)                                                                 :noanki:
+
+    - Let's indicate with $(N, [0,S]: 1 + N \rightarrow N$) the *initial* algebra of
+      natural numbers.
+
+    - An object $Q$ equipped with a functor algebra $$(Q, [q_0,q_S]:
+      1+Q\rightarrow Q)$$ defines, by induction, one and only one algebra
+      morphism $f: N \rightarrow Q$.
+
+      - $f \circ 0 = q_0$
+      - $f \circ S = q_S \circ f$
+
+      i.e, $$f = n \mapsto q_S^n(q_0)$$
+
+*** An initial algebra defines homomorphisms by induction (lists)                                                                 :noanki:
+
+    * Let's indicate with $(A^*, [e,c]: 1 + A \times A^* \rightarrow A^*$) the
+      *initial* algebra of lists of $A$.
+
+    * An algebra $$(Q^*, [q_e,q_c]:
+      1+A \times Q^* \rightarrow Q^*)$$ defines, by induction, one and only one algebra
+      morphism $f: A^* \rightarrow Q^*$.
+
+      - $f \circ e = q_e$
+      - $f \circ c = q_c \circ (id \times f)$
+
+    * For example, an algebra $$(\mathbb{N}, [0, S \circ \pi]: 1+A \times
+      \mathbb{N} \rightarrow \mathbb{N})$$ defines implicitly the length of a list
+
+*** Proofs by induction with initial algebras
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+1 + P \arrow[r, "1 + i"] \arrow[d] & 1 + N \arrow[d] \\
+P \arrow[r, "i", hook] & N \arrow[l, "!\exists", bend left]
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- Predicate $P$ subset of $N$ by an inclusion morphism $i$. 
+
+- ($0 \in P$ and $n \in P \Rightarrow (n+1) \in P$) means there exists an algebra for $P$.
+
+- Since there is only algebra morphism from $N$ to $N$ (id) this means that
+  $i$ must be an epi-morphism.
+
+*** Principle of list induction for a predicate on the set of lists
+    To show that a predicate/set $P$ is equal to the set of all lists $A*$, it is enough to
+    show the following:
+
+    - $empty \in P$
+    - $\forall a, \alpha \in P \Rightarrow cons(a,\alpha) \in P$
+
+    i.e., 
+    - $P$ can be understood as an algebra $$(P, [empty,cons]: 1 + A\times P \rightarrow P)$$ 
+    - $P$ is a subalgebra of $A^*$ because there is a morphism $i: P \rightarrow A^*$
+    - Since $A^*$ is initial, any morphism $A^* \rightarrow A^*$ is the identity
+      (by uniqueness), so $i$ is epi and mono (iso).
+*** Fixed point functors
+    - Initial algebras for some functors are already known. If we start from a
+      generic functor $t$, the type of an initial algebra $I$ should be such
+      that $I \cong t(I)$ (Lambeck).
+    - Assuming $I \sim F~t$ we have $F~t = t~(F~t)$, which can be created
+      through a recursive data type ~Fix t = Fx t (Fix t)~. Fx encodes algebraic
+      operations $t(I) \rightarrow t$.
+*** Catamorphisms 
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+t ~ I \arrow[r, "t~g"] \arrow[d, "Fx~(\textrm{unfix})"] & t~E \arrow[d, "k"] \\
+I \arrow[u] \arrow[r, "g"] & E
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+
+    - Given an initial algebra $(I, Fx: t~I \rightarrow I)$ and a generic algebra $(E, k)$, a
+      generic morphism $g: I \rightarrow E$ can be defined as $g = k \circ (t~g) \circ unfix$
+    - We say that $g = cata(k)$; given the same expression in $I$, I can create
+      mappings into several other types by simply specifying the non-recursive
+      $k$.
+
+*** Catamorphisms fusion law                                        :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+tI \arrow[r, "t(\kappa f)"] \arrow[d] & tE \arrow[d, "f"] \arrow[r, "th"] & tH \arrow[d, "g"] \\
+I \arrow[r, "\kappa f"] \arrow[rr, "\kappa g"', bend right] & E \arrow[r, "h"] & H
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- if you must compose $h$ with a catamorphism $\kappa f$, and $h$ is an $(E,f) \rightarrow (H,g)$ algebra
+  homomorphism, then you can take directly the catamorphism of the second
+  algebra $g$: $$ h \circ \kappa f = \kappa g $$
+
+- This amounts to say that $h$ must be a morphism in the (comma) category of objects under $I$.
+- You bypass the intermediate structure $E$ (which might be a list) to generate
+  directly the output $H$ (e.g., an integer).
+
+
+*** Catamorphism compose law        :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+gI \arrow[r] \arrow[dd]                                        & gI \arrow[r, "Unfix \circ h"] \arrow[dd, "h" description] \arrow[rdd, "\phi"] & gI \arrow[dd, "f"] \\
+                                                               &                                                                               &                    \\
+I \arrow[r, "\kappa h"'] \arrow[rr, "\kappa\phi"', bend right] & I \arrow[r, "\kappa f"']                                                      & I                 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+If $I$ is an expression type, and $h$ and $f$ are optimizations expressed as
+F-algebras, you can do a single optimization pass by composing their algebras:
+$$\kappa f \circ \kappa h = \kappa (f \circ unFix \circ h)$$ Another example,
+$h$ could filter away data.
+
+*** Combining algebras $(A, \phi), (B, \psi)$ into $(A \times B, q$ (banana split)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Given $\phi: fa \rightarrow a$ and $\psi: fb \rightarrow b$ produce $\beta: f (a \times b) \rightarrow (a \times b)$ as
+$$\beta = (\phi \times \psi) \circ (f~fst \times f~snd) \circ split$$
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+f~i \arrow[d] \arrow[r] \arrow[rr, bend left] \arrow[rrr, bend left] & fa \arrow[d, "\phi", red] & fb \arrow[d, "\psi", red] & f(a \times b) \arrow[d, "(f~fst \times f~snd) \circ split" description, blue] \\
+i \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[rrr, bend right] & a & b & fa \times fb \arrow[d, "\phi \times \psi" description, blue] \\
+ &  &  & {a \times b}
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+
+      
+*** Hylomorphisms                                                   :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+- Given a initial and final algebra of $F$ (the same functor!)
+      $$hylo(\psi,\phi) = cata(\phi) \circ ana(\psi)$$
+
+- This is the basis for deforestation, it eliminates intermediate data structures.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{F[A]} \arrow[r]                                                                           & {F[\tilde{F}]} \arrow[r] \arrow[d, no head] & {F[B]} \arrow[d, "\psi"] \\
+A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tilde{F} \arrow[r, "\kappa(\psi)"]         & B                       
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- allows to exploit parallelism? substituting recursive control with a data structure
+
+*** Hylomorphism example: mergesort                                 :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{F[L_A]} \arrow[r]                                                                           & {F[\tilde{F}]} \arrow[r] \arrow[d, no head] & {F[L_A]} \arrow[d, "\psi"] \\
+L_A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tilde{F} \arrow[r, "\kappa(\psi)"]         & L_A                       
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- Consider the functor $F[X] = A + X \times X$, its initial algebra $\tilde{F}$ being a binary tree of $A$'s.
+- Consider $L_A$ as a list of A's. One could implement merge sort $\mu: L_A
+  \rightarrow L_A$ as $hylo(\psi,\phi)$, where $\phi$ constructs the tree by splitting
+  lists in two while $\psi$ merges two lists into one (by reordering them).
+
+*** Paramorphisms                                                   :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+t~I \arrow[dd, "Fix" description] \arrow[r]    & t~(I \times Z) \arrow[d, "(t~fst \times f) \circ split"] \\
+                                               & t I \times Z \arrow[d, "Fix \times id"]                  \\
+I \arrow[r, "cata(..)"] \arrow[rd, "para(f)"'] & I \times Z \arrow[d, "\pi_Z"]                            \\
+                                               & Z                                                       
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+Example, for factorial $f(i,z) = i~?~z*i:1$. Exercise, try to devise a para for sliding window.
+
+
+*** Apomorphisms                                                    :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+t~(C + F) \arrow[r]                                     & t~F          \\
+C+tF \arrow[u, "\phi \vert\vert\vert t~Inj_R"]          &              \\
+C+F \arrow[r, "\alpha(\ldots)"] \arrow[u, "Id + cofix"] & F \arrow[uu] \\
+C \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"]      &             
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+ 
+Given a co-algebra $\phi: C \mto t (C + F)$ where $F$ is final, it allows to
+build a morphism $C \rightarrow F$ that short-circuits the traversal by giving
+the result immediately. 
+
+*** Apomorphisms example: list insertion                            :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+t_A~(t_A\tilde{L}_A + \tilde{L}_A) \arrow[r]                                                    & t_A~\tilde{L}_A                 \\
+t_A\tilde{L}_A + t_A\tilde{L}_A \arrow[u, "\phi \vert\vert\vert t~Inj_R"]                       &                                 \\
+t_A\tilde{L}_A + \tilde{L}_A \arrow[r, "\alpha(\ldots)"] \arrow[u, "Id + cofix"]                & \tilde{L}_A \arrow[uu, no head] \\
+t_A \tilde{L}_A \cong A \times \tilde{L}_A + 1 \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"] &                                
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+We want to build a morphism: $A \times \tilde{L}_A + 1 \rightarrow \tilde{L}_A$
+to insert an element $A$ into a list $\tilde{L}_A$. $\phi$ could compare $A$
+with the first element of $\tilde{L}_A$ either returning the list as it is
+(short circuiting) or swapping the two. Interestingly, this is an algebra that
+allows us to write an insertion sort $\tilde{L}_A \mto \tilde{L}_A$ with 
+$cata ~ (apo \phi)$.
+
+
+*** Expression data types as functors                               :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Two ways to build them, 
+
+1. recursive data type which needs an explicitly recursive function to interpret it.
+
+  #+BEGIN_EXAMPLE
+  data Exp = Const Int | Neg Exp | Add Exp Exp 
+  #+END_EXAMPLE
+
+- Using a non-recursive data type
+  
+  #+BEGIN_EXAMPLE
+  data ExprF e = Const Int | Neg e | Add e e deriving functor
+  type Expr = Fix ExprF
+  #+END_EXAMPLE
+
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  1 \arrow[r, "const"] & {ExprF[Expr]} \arrow[d, "Fx"] \arrow[r] & {ExprF[Int]} \arrow[d, "rules"] \\
+  Expr \times Expr \arrow[ru, "Add", bend left=49] & Expr \arrow[r, "eval"] \arrow[u, "Neg", bend left=60] & Int
+  \end{tikzcd}
+  #+END_EXPORT
+
+  Build expressions in ~Expr~ with original type constructors, evaluate with ~eval
+  = cata rules~.
+
+*** Expression data types as functors - templating (free monad)     :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{A + T[\widetilde{Q}_A^T]} \arrow[d] \arrow[r]       & {A+T[\widetilde{T}]} \arrow[d, "\phi + Fix_T"] \\
+\widetilde{Q}_A^T \arrow[r, "\kappa(\phi + Fix_T)"'] & \widetilde{T}                                 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- Assume $T[-]$ is a functor with $\wtt$ as its initial algebra representing an AST.
+
+- Then $Q_A^T= A + T[-]$ is such that $\wtq_A^T$ is a tree similar to $\wtt$
+  where leafs are $A$ while $T$ merges them into the tree itself. 
+- For templating $A=String$ referencing the name of a variable.
+
+- Given $\phi: A \rightarrow \wtt$ you can build a complete $\wtt$ from
+  $\wtq_A^T$ with $\kappa(\phi + Fix_T)$ (acting as /template substitution/).
+
+*** Expression data types as functors - annotation (cofree comonad) :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{(A \times T[\widetilde{Q}_A^T])_{AnnF}} \arrow[d, "Fix", no head] \arrow[r] & {(A \times T[\widetilde{T}])_{AnnF}} \arrow[d, "{\phi = \lambda(-,t).Fix_T t}"] \\
+\widetilde{Q}_A^T \arrow[r, "\kappa(\phi)"']                          & \widetilde{T}                                                         
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- Useful because it can reuse $T$ algebras (e.g., printing)
+
+- Assume $T[-]$ is a functor with $\wtt$ as its initial algebra representing an AST.
+
+- Then $Q_A^T= A \times T[-]$ is such that $\wtq_A^T$ is a tree similar to
+  $\wtt$ where all nodes have been annotated with values of type $A$, and one
+  can strip annotations by running a $\kappa(\phi)$.
+
+*** Expression data types as functors - adding annotations bottom-up :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{T[\widetilde{T}]} \arrow[r] \arrow[dd, no head] & {T[\widetilde{Q}_A^T]} \arrow[d, "(f \circ T\alpha)\& id"] \arrow[dd, "\phi"', bend right=49] &   \\
+                                        & {A \times T[\widetilde{Q}_A^T]} \arrow[d, "Fix . AnnF"]                                    &   \\
+\widetilde{T} \arrow[r, "\kappa(\phi)"] & \widetilde{Q}_A^T \arrow[r, "\alpha"]                                                      & A
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+- Assume $\alpha$ allows to get an annotation from the root of the tree
+  $\widetilde{Q}_A^T$ and $f: T A \mto A$ is a $T$ algebra that allows to
+  compute a new $A$ from the set of underlying tree's $A$
+- then $\kappa \phi$ can be used to annotate a tree; for example $f = (+1) \circ
+  sum_T$ can be used to annotate a root with the sum of $T$ childs (bottom-up
+  annotation).
+
+
+*** Expression data types as functors - evaluating into a monad     :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+Useful to attach monadic actions to expressions; in general you would need an
+algebra ~f (m a) -> m a~ but that would be difficult to specify. You can do
+instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~.
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+{F[\widetilde{F}]} \arrow[d, no head] \arrow[rr] & *                           & {M[FA]} \arrow[r, ">=>", no head, dotted] & FA \arrow[ld, "algM"] \\
+\widetilde{F} \arrow[rr, "\kappa M(algM)"']      & * \arrow[u, "mapM", dotted] & MA                                        &                      
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+: eval' :: Env -> Expr -> Maybe Int
+: eval'env = ('runReaderT' env) . cataM algM where
+:   algM :: ExprF Int -> ReaderT Env Maybe Int
+:   algM (Const c) = return c
+:   algM (Var i) = ask >>= lift . M.lookup i
+
+*** Parser combinators
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+- A /parser/ of A ($P[A]$), is an object $A^S$ which takes a string (type $S$) and returns a value $A$.
+
+- A parser combinator, is a /higher order function/ that takes two or more parsers
+  and returns a new parser (e.g., $alt: P[A]\times P[B] \rightarrow P[A+B]$ and
+  $seq: P[A]\times P[B] \rightarrow P[A\times B]$):
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  A^S \times B^S \arrow[d, "alt"] & A^S \times B^S \arrow[d, "seq"] \\
+  (A+B)^S & (A \times B)^S
+  \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
+
+- $P[A]$ is a functor in $A$; You can get a parser $PB$ for object $B$ if you have $P[A]$ and $A \rightarrow B$.
+
+*** Expression data types as functors - parsers (annotation)        :focus:
+    :PROPERTIES:
+    :BEAMER_opt: fragile
+    :END:
+
+Each constructor in $T$, e.g., $n_2: X \times X \mto T[X]$ can be made into a
+parser of annotated trees by introducing a function $inj$ that, from a tree
+parser creates an annotated tree parser.
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+\begin{tikzcd}
+{P[\widetilde{Q}_A^T] \times P[\widetilde{Q}_A^T]} \arrow[d] \arrow[rr, "{P[n_2]}"] &  & {P[T[\widetilde{Q}_A^T]]} \arrow[d, "inj"]           \\
+{P[\widetilde{Q}_A^T]}                                                          &  & {P[Q_A^T[\widetilde{Q}_A^T]]} \arrow[ll, "{P[fix]}"]
+\end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
+
+*** Co-algebra                                                                 :noanki:
+    Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
+    C$, a functor co-algebra for $T$ is a pair $(U, c)$
+
+    - an object $U \in C$ (*carrier*)
+    - a morphism $c: U \rightarrow T(U)$ (*co-algebra structure*)
+
+    $c$ must be defined by a tuple of several functions whose signature is
+    specified by $T$. For example, $$T(X) = A \times X$$ defines $$(value,next):
+    (U \rightarrow A, U \rightarrow U)$$ for any process $U$.
+*** Homomorphisms of co-algebras                                                                 :noanki:
+
+    Given two T-functor co-algebras $(U, a: - \rightarrow T(-))$ and $(V, b: - \rightarrow T(-))$,
+    a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
+    with the operations $$ T(f) \circ a = b \circ f$$
+*** Final co-algebra                                                                 :noanki:
+    - A final coalgebra $d: W \rightarrow T(W)$ is a coalgebra such that for
+      every coalgebra $c: U \rightarrow T(U)$ there exists a unique map of
+      co-algebras $f: (U,c) \rightarrow (W,d)$
+
+
+*** Examples of final co-algebras
+    
+    | Functor            | FC Carrier                        | FC Structure         | Notes                 |
+    |--------------------+-----------------------------------+----------------------+-----------------------|
+    | $A \times X$       | $A^\mathbb{N}$                    | head($a$), tail($a$) | Infinite lists of As  |
+    | $1 + (A \times X)$ | $A^{\infty} = A^* + A^\mathbb{N}$ | possnext($a$)        | Finite and inf. lists |
+    | $1 + X$            | $\mathbb{N} \cup \{ \infty \}$    | pred($n$)            |                       |
+    
+*** Bisimulation (for lists)                                        :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+S \arrow[d, "\xi"] & R \arrow[r, hook] \arrow[l, "\pi_1"] \arrow[d, "\gamma"] \arrow[l, "\pi_2"', bend right] & S \times S \\
+A \times S         &  A \times R  \arrow[l]                                                                   &           
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+    - Assume a co-algebra $\xi: S \mto A \times S$ and $\pi_1, \pi_2$ are the
+      projections from $R$ is called *a bi-simulation* if there exists
+      $\gamma$ for which the above commutes for both $\pi_1$ and $\pi_2$.
+    - If $S$ is a final co-algebra, e.g., a list $\xi = [h,t]$ then $\pi_1(a,b),
+      \pi_2(a,b)$ must map to the same list $a=b$ so $R$ is an equivalence. For
+      this to hold, one must find $\gamma$ for which:
+      #+BEGIN_EXPORT latex
+      \begin{align*}
+      (\gamma_A(l_1,l_2), \gamma_{R,1}(l_1,l_2)) & = (h(l_1),t(l_1)) \\ 
+      (\gamma_A(l_1,l_2), \gamma_{R,2}(l_1,l_2)) & = (h(l_2),t(l_2))
+      \end{align*}
+      #+END_EXPORT
+      an indirect way to derive $\gamma$ would be to demonstrate that $h(l_1) =
+      h(l_2) \wedge (t(l_1), t(l_2)) \in R$
+
+*** Anamorphisms
+   - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
+     $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
+
+   - Anamorphisms are called co-recursion.
+
+*** Streams as co-inductive data types                              :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+A stream $S_A$ is a final co-algebra of $s \mapsto a \times s$. One can build a stream from
+a seed value $a \in A$ by using $ana((Id \times \nu)\circ\Delta)$ where $\nu$ specifies how to 
+generate the next value.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+A \times A \arrow[rr, "Id \times \phi"]                          &  & A \times S_A \arrow[d, "scons = -_A \cdot -_{S_A}", bend left] \\
+A \arrow[rr, "\phi = \alpha (Id~\&~\nu)"] \arrow[u, "Id~\&~\nu"] &  & S_A \arrow[u, "cofix"]                                        
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+We have that $\phi(a) = scons(a, \phi(\nu(a)) = a \cdot \nu(a) \cdot \nu^2(a) \cdot \ldots$
+
+
+
 ** Dependent types
 *** Dependent pair
 
@@ -4577,8 +4579,7 @@ the below commutes:
 #+END_CENTER
 
 $\phi$ might be a recursive function created from a non-recursive one $f$
-* Logic 
-** Introduction
+** Logic 
 *** Classical logic                                                 :focus:
 - CL is /truth functional/, i.e., every predicate in classical logic is either
   true or false, regardless of the fact that we can find witnesses for them.
@@ -4592,8 +4593,6 @@ $\phi$ might be a recursive function created from a non-recursive one $f$
 
 - It is CL without some axioms, for example $A \vee \neg A$ is not always true. 
 
-
-** Propositional (CL/IL) logic
 *** Natural deduction
   - I know that premises/propositions $A,B,C$ are true. Can I say that
     $f(A,B,C)$ is true?
@@ -4636,7 +4635,6 @@ One can always introduce an implication of $B$ if one has $B$.
   \end{equation}
   #+END_EXPORT
 
-
 *** $\vee$ introduction and elimination                             :focus:
 
 Introduction
@@ -4654,7 +4652,6 @@ Elimination
   \infer{C}{A \vee B & \infer*{C}{[A]} & \infer*{C}{[B]}}
   \end{equation}
   #+END_EXPORT
-
 
 
 *** Negation introduction and elimination                           :focus:
@@ -4677,7 +4674,6 @@ Negation elimination is valid only in classical logic through double negation
 This is exactly the rule of the excluded middle that was argued by Brower
 in 1907.
 
-** Categorical view of logic
 *** Heyting algebra                                                 :focus:
  - A Heyting algebra is a cartesian closed poset $C$ such that 
    $C^{op}$ is also cartesian.
@@ -4723,7 +4719,6 @@ between propositions.
    |                                                 |              |                                                     |
    |                                                 | Modus ponens | \infer{X \otimes (X \implies Y) \vdash Y}{}         |
  
-* Other mathematics
 ** Computation theory
 *** Lambda calculus (application and abstraction)                   :focus:
 - Programs are data; all data is a $\lambda$ term. 
@@ -4734,7 +4729,6 @@ between propositions.
 From a simple set of rules, Church and Kleene were able to build up Boolean
 logic, the natural numbers, the usual operations of arithmetic, and so on. All
 computable functions $f: N \mto N$ can be defined in the lambda calculus
-
 
 *** Lambda calculus (beta and eta reduction)                        :focus:
 If we apply $\lambda x.t$ to $s$ we get back $t$ but with $s$ substituted for
@@ -4750,6 +4744,7 @@ If we define:
 - $ 2 = \lambda f. \lambda x. f(f (x)) $
 then $$ (\lambda a.(\lambda b.(\lambda x.a(b(x)))))$$ can define multiplication
 by repeatedly applying rewrite rules.
+* Cryptography, quantum, probability, statistics
 ** Probability and statistics
 *** Kullback Leibler divergence                                     :focus:
 
