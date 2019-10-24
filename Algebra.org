@@ -4841,25 +4841,60 @@ The norm of the vector must be always 1.
 The state of a qubit can be alternatively described with two parameters $\theta$ and $\phi$
 which are the possible angles of the unit vector.
 
-*** Bell state                                                    
+*** Bell state                                                      :focus:
 
-A Bell state (EPR) pair is defined as: $$\frac{\ket{00} + \ket{11}}{\sqrt{2}}$$
+A Bell state (EPR) pair is defined as: $$ket{\beta_{00}} = \frac{\ket{00} + \ket{11}}{\sqrt{2}}$$
 In a Bell state, if one measures only 1 of the two qubits, the other is determined.
 
-*** Quantum gate                                                    
-A quantum gate operates on a set of qubits by a linear operation in the state
-vector space. This matrix $U$ must be such that $UU^+=I$ because quantum states
-must always be unitary. $U^+$ is the transpose complex conjugate.
+*** Quantum gate                                                    :focus:
+
+- A quantum gate operates on a set of qubits by a linear operation in the state
+  vector space whose basis are the possible combinations of bits.
+
+- This matrix $U$ must be such that $UU^+=I$ because they must preserve
+  probability. Since unitary matrices are invertible, this means that
+  all quantum gates must be reversible. 
+
+- There are infinitely many two by two unitary matrices, properties of the
+  complete set can be under- stood from the properties of a much smaller set
+  called universal set.
 
 *** Quantum not gate                                                :focus:
 
-A quantum gate swaps the basis states of a qubit: $$a\ket{0} + b\ket{1} \mto
+A 1 to 1 quantum gate swaps the basis states of a qubit: $$a\ket{0} + b\ket{1} \mto
 a\ket{1} + b\ket{0}$$
 
 *** Quantum Hadamard gate                                           :focus:
 
-A quantum gate that swaps the basis states of a qubit: $$a\ket{0} + b\ket{1} \mto
+A 1 to 1 quantum gate that swaps the basis states of a qubit: $$a\ket{0} + b\ket{1} \mto
 a\frac{\ket{0} + \ket{1}}{\sqrt{2}} + b\frac{\ket{0} + \ket{1}}{\sqrt{2}}$$
+
+*** Quantum - Controlled not gate (CNOT)                            :focus:
+
+It is a 2 qubit quantum gate which rotates values in the state vector space
+with the following law: 
+
+#+attr_latex: :width 0.35\linewidth :float t :placement [h]
+file:./images/q_cnotgate.pdf
+
+In practice, it inverts the components of $\ket{10}$ and $\ket{11}$. Any multiple
+qubit gate can be composed by a CNOT and single qubit gates. If the state is a 
+pure computational basis state $\ket{a,b}$ it is transformed into the basis
+state $\ket{a, a \oplus b}$.
+
+*** Quantum teleportation                                           :focus:
+
+If two points $A$ and $B$ share a bell state, they can exchange quantum information
+through classic bit communication:
+
+#+attr_latex: :width 0.85\linewidth :float t :placement [h]
+file:./images/q_teleportation.pdf
+
+#+attr_latex: :width 0.55\linewidth :float t :placement [h]
+file:./images/q_teleportation_psi2.pdf
+
+Which limits B's to 4 possible states after A performs measurements $M_1$ and
+$M_2$. 
 
 ** Probability and statistics
 *** Kullback Leibler divergence                                     
