@@ -46,18 +46,17 @@ that:
 It is an endofunctor and a monad of a poset when this is interpreted as a category. 
 
 
-*** Closure operator (powerset poset)                               :focus:
+*** Closure operator (example of the power set poset)               :focus:
 
-- Assume $\mathcal{C} = \{ C_i \}$ where $C_i$ is one of the fixed points of the
-  closure operator $cl$.
+- Given a set $S$, assume $\mathcal{C} = \{ f_i \}$ ($f_i \in P(S)$) are the
+  fixed points of the operator $cl$, i.e. $cl(f_i) = f_i$. Call these /closed
+  sets/.
 
-- Each subset $C_i$ is called /closed set/ while $\mathcal{C}$ is called a /Moore
-  family/. This family *defines* the closure operator, i.e., when $C_i \in P(S)$,
-  $cl(X)$ maps $X$ to the intersection of all $C_i \in \mathcal{C}$ that include
-  $X$.
+- $\mathcal{C} \subseteq P(S)$ is closed under intersection.
 
-- A subset $C_i$ is such that the following holds:
-  $$\forall (T \subseteq S,s \in S), T \subseteq C_i \implies s \in C_i$$,
+- The closure operator is a function $cl: P(S) \mto C$
+  and maps any $s$ to the smallest $f_i$ such that $s \subseteq f_i$.
+
 
 ** Monoids
 *** Monoid                                                                 :noanki:
@@ -3810,7 +3809,7 @@ c &                    &                                 \\
 
  - It is a way to make some arbitrary function as injective.
 
-* Haskell, type, logic, computation theory
+* Haskell, functor algebras, free monads 
 ** Functor algebras and co-algebras
 *** Definition of algebras and co-algebras                                                                 :noanki:
     - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
@@ -4101,7 +4100,7 @@ I \arrow[u] \arrow[r] \arrow[rd, "para(\phi)"'] & I \times Z \arrow[d, "\pi_Z"] 
 Example, for factorial $f(i,z) = i~?~z*i:1$. Exercise, try to devise a para for sliding window.
 
 
-*** Apomorphisms                                                    
+*** Apomorphisms                                                    :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4110,8 +4109,7 @@ Example, for factorial $f(i,z) = i~?~z*i:1$. Exercise, try to devise a para for 
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
 t~(C + F) \arrow[r]                                     & t~F          \\
-C+tF \arrow[u, "\phi \vert\vert\vert t~Inj_R"]          &              \\
-C+F \arrow[r, "\alpha(\ldots)"] \arrow[u, "Id + cofix"] & F \arrow[uu] \\
+C+F \arrow[u, "{[\phi , t~Inj_R] \circ (Id + cofix)}"] \arrow[r, "\alpha(\ldots)"]  & F \arrow[u] \\
 C \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"]      &             
 \end{tikzcd}
 #+END_EXPORT
@@ -4160,7 +4158,7 @@ I \arrow[u] \arrow[r] \arrow[rd, "{zygo(\psi, \phi)}"'] & I \times Z \arrow[d, "
 #+END_EXPORT
 #+END_CENTER
 
-Extension of paramorphisms.
+Extension of paramorphisms, i.e, $$para(\phi) = zygo(Fix, \phi)$$
 
 
 
@@ -4179,8 +4177,10 @@ Extension of paramorphisms.
 #+END_EXPORT
 #+END_CENTER
 
-with $\phi: T[\widetilde{Q}_A^T] \mto A$. Assume $\widetilde{T} = Nat$
-then $\phi$ could inspect previous computations in $T[\widetilde{Q}_A^T]$, e.g., 
+
+Builds computations of annotations $\tilde{Q}_A^T$ of a structure $\tilde{T}$
+through $\phi: T[\widetilde{Q}_A^T] \mto A$ which inspects previous computations
+in $T[\widetilde{Q}_A^T]$ to build the new $A$. E.g., for Fibonacci:
 
 \begin{equation}
 f(q) = \begin{cases}
@@ -4266,6 +4266,8 @@ Two ways to build them,
   $\wtt$ where all nodes have been annotated with values of type $A$, and one
   can strip annotations by running a $\kappa(\phi)$.
 
+- We define $\beta = Fix \circ AnnF$ in other slides;
+
 *** Expression data types as functors - adding annotations bottom-up :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
@@ -4290,18 +4292,19 @@ Two ways to build them,
   annotation).
 
 
-*** Expression data types as functors - evaluating into a monad     
+*** Expression data types as functors - evaluating into a monad     :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 Useful to attach monadic actions to expressions; in general you would need an
 algebra ~f (m a) -> m a~ but that would be difficult to specify. You can do
-instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~.
+instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~ and using kleisli
+arrow composition.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{F[\widetilde{F}]} \arrow[d, no head] \arrow[rr] & *                           & {M[FA]} \arrow[r, ">=>", no head, dotted] & FA \arrow[ld, "algM"] \\
-\widetilde{F} \arrow[rr, "\kappa M(algM)"']      & * \arrow[u, "mapM", dotted] & MA                                        &                      
+{F[\widetilde{F}]} \arrow[d, no head] \arrow[rr] & *                           & {M[FA]} \arrow[d, "algM: FA \rightarrow MA", dashed, tail] \\
+\widetilde{F} \arrow[rr, "\kappa M(algM)"']      & * \arrow[u, "mapM", dotted] & MA                                                        
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -4416,27 +4419,43 @@ A \times S         &  A \times R  \arrow[l]                                     
 
    - Anamorphisms are called co-recursion.
 
-*** Streams as co-inductive data types                              
+*** Streams as co-inductive data types (generation)                 :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
 A stream $S_A$ is a final co-algebra of $s \mapsto a \times s$. One can build a stream from
-a seed value $a \in A$ by using $ana((Id \times \nu)\circ\Delta)$ where $\nu$ specifies how to 
+a seed value $a \in A$ by using $ana([Id,\nu])$ where $\nu$ specifies how to 
 generate the next value.
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
 A \times A \arrow[rr, "Id \times \phi"]                          &  & A \times S_A \arrow[d, "scons = -_A \cdot -_{S_A}", bend left] \\
-A \arrow[rr, "\phi = \alpha (Id~\&~\nu)"] \arrow[u, "Id~\&~\nu"] &  & S_A \arrow[u, "cofix"]                                        
+A \arrow[rr, "{\phi = \alpha([Id,\nu])}"] \arrow[u, "{[Id, \nu]}"] &  & S_A \arrow[u, "cofix"]                                        
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
 We have that $\phi(a) = scons(a, \phi(\nu(a)) = a \cdot \nu(a) \cdot \nu^2(a) \cdot \ldots$
 
+*** Streams as co-inductive data types (transformation)             :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+A \times S_A \arrow[rr, "Id \times \alpha(\nu)"]   &  & A \times S_A \arrow[d, "scons = -_A \cdot -_{S_A}", bend left] \\
+S_A \arrow[rr, "\phi={\alpha(\nu)}"] \arrow[u, "{\nu}"] &  & S_A \arrow[u, "cofix"]                                        
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+$\nu$ can be lifted into a stream transformer:  $\phi(s) = \nu_A(s) \cdot \phi(\nu_S(s))$, for
+example $\nu(s)= \langle (head(s))+1, tail(s) \rangle$ adds one to the stream.
 ** Free monads
 *** Free monads (construction)
     :PROPERTIES:
@@ -4556,6 +4575,7 @@ functor $\tilde{F}$ must abide the laws on the right for any $\nu$.
     - SCs form an endofunctor $Hom(Hom(-,R),R)$; this endofunctor can be made
       into a monad where a new ~SC b~ can be built from an ~SC a~ by specifying ~a ->
       SC b~ (bind).
+* Logic,computation theory, dependent types
 ** Dependent types
 *** Dependent pair
 
@@ -4843,7 +4863,7 @@ which are the possible angles of the unit vector.
 
 *** Bell state                                                      :focus:
 
-A Bell state (EPR) pair is defined as: $$ket{\beta_{00}} = \frac{\ket{00} + \ket{11}}{\sqrt{2}}$$
+A Bell state (EPR) pair is defined as: $$\ket{\beta_{00}} = \frac{\ket{00} + \ket{11}}{\sqrt{2}}$$
 In a Bell state, if one measures only 1 of the two qubits, the other is determined.
 
 *** Quantum gate                                                    :focus:
@@ -4866,16 +4886,24 @@ a\ket{1} + b\ket{0}$$
 
 *** Quantum Hadamard gate                                           :focus:
 
-A 1 to 1 quantum gate that swaps the basis states of a qubit: $$a\ket{0} + b\ket{1} \mto
-a\frac{\ket{0} + \ket{1}}{\sqrt{2}} + b\frac{\ket{0} + \ket{1}}{\sqrt{2}}$$
+A 1 to 1 quantum gate that puts in superposition the basis states of a qubit:
+$$a\ket{0} + b\ket{1} \mto a\frac{\ket{0} + \ket{1}}{\sqrt{2}} +
+b\frac{\ket{0} + \ket{1}}{\sqrt{2}}$$
+
+For example, applying $n$ Hadamard gates to $n$ qubits in the state $\ket{0}$ 
+provides a final state of: $$H^{\otimes n}(\ket{0}) = \ket{0}^{\otimes n} = \frac{1}{\sqrt{2^n}}\sum_x \ket{x}$$
 
 *** Quantum - Controlled not gate (CNOT)                            :focus:
 
 It is a 2 qubit quantum gate which rotates values in the state vector space
 with the following law: 
 
-#+attr_latex: :width 0.35\linewidth :float t :placement [h]
-file:./images/q_cnotgate.pdf
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=0.35\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_cnotgate.pdf}
+#+END_EXPORT
+#+END_CENTER
+
 
 In practice, it inverts the components of $\ket{10}$ and $\ket{11}$. Any multiple
 qubit gate can be composed by a CNOT and single qubit gates. If the state is a 
@@ -4887,14 +4915,98 @@ state $\ket{a, a \oplus b}$.
 If two points $A$ and $B$ share a bell state, they can exchange quantum information
 through classic bit communication:
 
-#+attr_latex: :width 0.85\linewidth :float t :placement [h]
-file:./images/q_teleportation.pdf
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=0.85\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_teleportation.pdf}
+#+END_EXPORT
+#+END_CENTER
 
-#+attr_latex: :width 0.55\linewidth :float t :placement [h]
-file:./images/q_teleportation_psi2.pdf
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=0.55\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_teleportation_psi2.pdf}
+#+END_EXPORT
+#+END_CENTER
+
 
 Which limits B's to 4 possible states after A performs measurements $M_1$ and
 $M_2$. 
+
+*** Toffoli gate                                                    :focus:
+
+The Toffoli gate has three input bits and three output bits. Two of the bits are
+control bits that are unaffected by the action of the Toffoli gate:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=0.35\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_toffoli.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+*** Ancilla state                                                   :focus:
+
+It is a standard state prepared to create new gates, e.g., 1 is used in this Toffoli gate
+to create a NAND gate:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=0.55\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_ancilla.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+*** Classic quantum parallelism (1 bit)                             :focus:
+
+Assume $x$ the data register and $y$ the data register are both qubits and
+define a unitary transformation $U_f:  \ket{x,y} \mto \ket{x,y \oplus f(x)}$. If the
+data register is a superposition, the final state will be in a superposition as well
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=0.55\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_parallelism.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+I.e., $$\ket{\psi} = \frac{\ket{0,f(0)} + \ket{1,f(1)}}{\sqrt{2}}$$
+
+*** Quantum parallelism ($n$ bit)                                   :focus:
+
+Applying $n$ Hadamard gates to $n$ qubits in the state $\ket{0}$ 
+provides a final state of: $$H^{\otimes n}(\ket{0}) = \ket{0}^{\otimes n} = \frac{1}{\sqrt{2^n}}\sum_x \ket{x}$$
+
+If we apply a $U_f$ (where $f$ is an $n$ to $1$ bit function) to the state
+$\ket{0}^{\otimes n}\ket{0}$, the resulting state is
+$$\frac{1}{\sqrt{2^n}}\sum_x \ket{x}\ket{f(x)}$$
+
+
+*** Quantum parallelism ($1$ bit) - Deutsch's algorithm             :focus:
+
+With two additional hadamard gates with respect to the classic parallelism gate:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=0.55\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_deutsch.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+The first qubit of $\ket{\psi_3}$ will be proportional to $f(0) \oplus f(1)$ thus
+allowing us to determine some global property of $f$ with just one evaluation of $f$.
+
+*** Quantum parallelism ($n$ bit) - Deutsch-Josza algorithm         :focus:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=0.55\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_deutsch_josza.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+The first $n$ qubits are $\sum_{\gamma} \widehat{f}(\gamma)\ket{\gamma}$. The
+probability of measuring a $\ket{0...0}$ is $\widehat{f}(0)^2$, so, in the case
+where $f$ can be either balanced or constant, we can distinguish the two
+because, in the first case, one would never measure such state while in the
+second case one would always measure such state.
+
+
+
+
 
 ** Probability and statistics
 *** Kullback Leibler divergence                                     
