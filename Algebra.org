@@ -4650,23 +4650,12 @@ X \arrow[r, "f"]                             & X \\
 #+END_EXPORT
 #+END_CENTER
 
-*** Fixed point combinator                                          
+*** Fixed point combinator                                          :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-The fixed point combinator $fix$ maps a function $f$ to a point $\bar{x} \in X$ such that the following commutes for any $f$
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-\{\bar{x} \in X \} \arrow[r, "f"]                       & X \\
-\{ f \in X^X \} \arrow[u, "fix"] \arrow[ru, "fix"] &  
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-When $f$ is interpreted as a function with two parameters $X^N \times N$, 
+When $f$ is interpreted as a function between functions $(X^N)^{X^N}$, 
 the fixed point is another function $\phi \in X^N$ such that 
 the below commutes:
 
@@ -4679,20 +4668,30 @@ the below commutes:
 #+END_EXPORT
 #+END_CENTER
 
-$\phi$ might be a recursive function created from a non-recursive one $f$
+For example, if $f \gamma n = (n>0)~?~(n*\gamma(n-1))~1$, then $$fix~f= f~(fix~
+f)~~~\simeq~~~\phi~n = (n>0)~?~(n*\phi(n-1))~1$$
+
+For languages that do not support recursion but only higher order functions, 
+there is an explicit lambda representation for $fix$ found by H.Curry.
+
 ** Logic 
-*** Classical logic                                                 
-- CL is /truth functional/, i.e., every predicate in classical logic is either
+*** Classical logic                                                 :focus:
+- it is /truth functional/, i.e., every predicate in classical logic is either
   true or false, regardless of the fact that we can find witnesses for them.
 
-- In CL, the following predicate is true $$\neg(\forall x, \neg P(x)) \implies
-  \exists x.P(x)$$ but how do we find $x$?
+- In classic logic the following is a valid rule $$\neg(\forall x,
+  \neg P(x)) \vdash \exists x.P(x)$$ This depends on the principle of the
+  third excluded which is not a valid rule in, for example, constructive logic.
 
-*** Intuitionistic/Constructive logic                               
-- In IL, an existential can only be proven if I provide a witness: $$P(a) \implies
-  \exists x.P(x)$$ We say that values are (existential) proofs, i.e., IL is /proof functional/.
+*** Intuitionistic logic                                            :focus:
+- Intuitionistic logic is /proof functional/, i.e., a proposition is  
+  true if I can find a proof for it. 
 
-- It is CL without some axioms, for example $A \vee \neg A$ is not always true. 
+- An existential can only be proven if I provide a witness: $$P(a) \vdash
+  \exists x.P(x)$$
+
+- It is classic logic without some axioms, for example $A \vee \neg A$ is not
+  a valid axiom in .
 
 *** Natural deduction
   - I know that premises/propositions $A,B,C$ are true. Can I say that
@@ -4791,34 +4790,33 @@ in 1907.
       \end{equation}
       #+END_EXPORT 
    - $C^{op}$ with $\vee$ and $\bot$ is cartesian as well.
-*** Proof theory for CL/IL (Hilbert vs Gentzen)                     
+*** Proof theory                      :focus:
 Studies the whole set of proofs from $X$ to $Y$ not just implications; so many morphism
 between propositions.
 
 1. Hilbert's approach: many axioms, one rule $$\infer{Y}{X & X \implies Y}$$ (modus ponens)
 2. Gentzen sequent calculus: few axioms, many inference rules. Introduces the concept of
    sequent: $$ X_1, \ldots X_n \vdash Y_1 \ldots Y_m $$ which is a proposition 
-   that is read as: /all of $X_i$ can be used to prove at least one of $Y_j$/
-*** Closed monoidal theory                                     
- - Propositions are objects and proofs are morphisms. The set of proofs from $X$
-   and $Y$ (i.e., their homset) is written as $X \vdash Y$. $X \implies Y$ is
-   the set of equivalence classes of proofs from $X$ to $Y$. $X \otimes Y$ is
-   the proposition $X \wedge Y$.
+   that is read as: all of $X_i$ can be used to prove at least one of $Y_j$
+*** Proof theory as a monoidal theory                               :focus:
+ - Propositions are objects and proofs are morphisms. $hom(X,Y)$ is written as
+   $X \vdash Y$. $X \implies Y$ is an object corresponding to the set of
+   equivalence classes of proofs from $X$ to $Y$. $X \otimes Y$ is the
+   proposition $X \wedge Y$.
 
- - In this way, all systems of logic allow for a description in terms of a
-   closed monoidal category, where an *inference rule is a morphism between homsets*, 
-   while deductions are compositions of those morphisms.
+ - An *inference rule is a morphism between homsets* and deductions are
+   compositions of those morphisms.
    
    #+attr_latex: :font \tiny :width 0.85\linewidth :float t :placement [h]
-   | CC name                                         | Logic name   | Logic rule                                          |
-   |                                                 |              |                                                     |
-   | $\circ: Y^X \times Z^Y \mto Z^X$ | cut          | \infer{X \vdash Z}{X \vdash Y & Y \vdash Z}         |
-   |                                                 |              |                                                     |
-   | $i_X: 1 \rightarrow hom(X,X)$                   | identity     | \infer{X \vdash X}{}                                |
-   |                                                 |              |                                                     |
-   | Currying                                        |              | \infer{Y \vdash X \implies Z}{X \otimes Y \vdash Z} |
-   |                                                 |              |                                                     |
-   |                                                 | Modus ponens | \infer{X \otimes (X \implies Y) \vdash Y}{}         |
+   | CC name     | Logic name   | Logic rule                                          |
+   |             |              |                                                     |
+   | composition | cut          | \infer{X \vdash Z}{X \vdash Y & Y \vdash Z}         |
+   |             |              |                                                     |
+   | identity    | identity     | \infer{X \vdash X}{}                                |
+   |             |              |                                                     |
+   | Currying    |              | \infer{Y \vdash X \implies Z}{X \otimes Y \vdash Z} |
+   |             |              |                                                     |
+   |             | Modus ponens | \infer{X \otimes (X \implies Y) \vdash Y}{}         |
  
 ** Computation theory
 *** Lambda calculus (application and abstraction)                   
@@ -4838,11 +4836,11 @@ This is a rewrite rule (beta reduction); by repeatedly applying it we perform *c
 Eta reduction says instead that one can always rewrite $$(\lambda x. t(x)) = t$$
 Alpha conversion allows to rename the bound variable, e.g., $x$ in $\lambda x.t$.
 
-*** Lambda calculus (Church numerals)                               
+*** Lambda calculus (Church numerals)                               :focus:
 If we define: 
-- $ 0 = \lambda f. \lambda x.x $
-- $ 1 = \lambda f. \lambda x. f (x) $
-- $ 2 = \lambda f. \lambda x. f(f (x)) $
+- $0 = \lambda f. \lambda x.x$
+- $1 = \lambda f. \lambda x. f (x)$
+- $2 = \lambda f. \lambda x. f(f (x))$
 then $$ (\lambda a.(\lambda b.(\lambda x.a(b(x)))))$$ can define multiplication
 by repeatedly applying rewrite rules.
 * Cryptography, quantum, probability, statistics
