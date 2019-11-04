@@ -4843,6 +4843,17 @@ If we define:
 - $2 = \lambda f. \lambda x. f(f (x))$
 then $$ (\lambda a.(\lambda b.(\lambda x.a(b(x)))))$$ can define multiplication
 by repeatedly applying rewrite rules.
+*** Typed lambda calculus                                           :focus:
+When types are added to lambda calculus, terms (programs) can be seen as
+morphisms in a cartesian closed category where data types are objects.
+
+- A term from $X$ to $Y$ is an element of $Y^X$ which is a function type.
+  Since two terms might be actually the same morphism by rewrite rules, this
+  must be intended as a set of equivalence classes under beta reduction.
+
+- A product type is a pair of two types and there is also a terminal object
+  (unit type) with only one element.
+
 * Cryptography, quantum, probability, statistics
 ** Quantum computing                                                 
 *** Qubit
