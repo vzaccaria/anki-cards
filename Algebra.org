@@ -45,7 +45,6 @@ that:
 
 It is an endofunctor and a monad of a poset when this is interpreted as a category. 
 
-
 *** Closure operator (example of the power set poset)               :focus:
 
 - Given a set $S$, assume $\mathcal{C} = \{ f_i \}$ ($f_i \in P(S)$) are the
@@ -57,6 +56,15 @@ It is an endofunctor and a monad of a poset when this is interpreted as a catego
 - The closure operator is a function $cl: P(S) \mto C$
   and maps any $s$ to the smallest $f_i$ such that $s \subseteq f_i$.
 
+*** Galois connection                                               :focus:
+- It is a sort of weak iso-morphism between posets $C$ and $D$.
+- Categorically, it is an adjunction between two functors $L,R$ that map 
+  elements (objects) and relations (morphism) and such that 
+  $D(Lc,d) \simeq C(c,Rd)$ 
+- The mapping $RL: C \mto C$ is exactly the closure operator of the poset (or the unit of 
+  the adjunction). The co-unit $LR: D \mto D$ is called the kernel operator.
+- An antitone Galois connection is just an adjunction between $D$ and $C^{op}$;
+  functors, in this case, are called polarities.
 
 ** Monoids
 *** Monoid                                                                 :noanki:
@@ -3919,7 +3927,7 @@ c &                    &                                 \\
     * For example, an algebra $$(\mathbb{N}, [0, S \circ \pi]: 1+A \times
       \mathbb{N} \rightarrow \mathbb{N})$$ defines implicitly the length of a list
 
-*** Proofs by induction with initial algebras
+*** Proofs by induction with initial algebras                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3940,7 +3948,7 @@ P \arrow[r, "i", hook] & N \arrow[l, "!\exists", bend left]
 - Since there is only algebra morphism from $N$ to $N$ (id) this means that
   $i$ must be an epi-morphism.
 
-*** Principle of list induction for a predicate on the set of lists
+*** Principle of list induction for a predicate on the set of lists                                                                  :focus:
     To show that a predicate/set $P$ is equal to the set of all lists $A*$, it is enough to
     show the following:
 
@@ -3952,14 +3960,14 @@ P \arrow[r, "i", hook] & N \arrow[l, "!\exists", bend left]
     - $P$ is a subalgebra of $A^*$ because there is a morphism $i: P \rightarrow A^*$
     - Since $A^*$ is initial, any morphism $A^* \rightarrow A^*$ is the identity
       (by uniqueness), so $i$ is epi and mono (iso).
-*** Fixed point functors
+*** Fixed point functors                                            :focus:
     - Initial algebras for some functors are already known. If we start from a
-      generic functor $t$, the type of an initial algebra $I$ should be such
-      that $I \cong t(I)$ (Lambeck).
-    - Assuming $I \sim F~t$ we have $F~t = t~(F~t)$, which can be created
-      through a recursive data type ~Fix t = Fx t (Fix t)~. Fx encodes algebraic
-      operations $t(I) \rightarrow t$.
-*** Catamorphisms 
+      generic functor $t$, the type of an initial algebra $\tia$ should be such 
+      that $\tia \cong \tfun{\tia}$ (Lambeck).
+    - Call $\tia \simeq Fix~t$ we have $Fix~t = t~(Fix~t)$, which in Haskell can
+      be created through a recursive data type ~Fix t = Fx t (Fix t)~. ~Fx~ encodes 
+      algebraic operations $\tfun{\tia} \rightarrow \tia$.
+*** Catamorphisms                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3967,8 +3975,8 @@ P \arrow[r, "i", hook] & N \arrow[l, "!\exists", bend left]
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-t ~ I \arrow[r, "t~g"] \arrow[d, "Fx~(\textrm{unfix})"] & t~E \arrow[d, "k"] \\
-I \arrow[u] \arrow[r, "g"] & E
+\tfun{\tia} \arrow[r, "t~g"] \arrow[d, "Fx~(\textrm{unfix})"] & t~E \arrow[d, "k"] \\
+\tia \arrow[u] \arrow[r, "g"] & E
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -3980,7 +3988,23 @@ I \arrow[u] \arrow[r, "g"] & E
       mappings into several other types by simply specifying the non-recursive
       $k$.
 
-*** Catamorphisms fusion law
+*** Scan (as a catamorphism)                                        :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Given $\phi = A \times B \mto B$, $scan(\phi)$ is a catamorphism of type:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+1 + A \times A^* \arrow[d] \arrow[r] & 1 + A \times B^* \arrow[d, "{[1 , cons \circ (\phi \times Id)]}"] \\
+A^* \arrow[r, "scan(\phi)"]          & B^*                                                              
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** Catamorphisms fusion law                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3988,8 +4012,8 @@ I \arrow[u] \arrow[r, "g"] & E
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-tI \arrow[r, "t(\kappa f)"] \arrow[d] & tE \arrow[d, "f"] \arrow[r, "th"] & tH \arrow[d, "g"] \\
-I \arrow[r, "\kappa f"] \arrow[rr, "\kappa g"', bend right] & E \arrow[r, "h"] & H
+\tfun{\tia} \arrow[r, "t(\kappa f)"] \arrow[d] & tE \arrow[d, "f"] \arrow[r, "th"] & tH \arrow[d, "g"] \\
+\tia \arrow[r, "\kappa f"] \arrow[rr, "\kappa g"', bend right] & E \arrow[r, "h"] & H
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -4003,7 +4027,7 @@ I \arrow[r, "\kappa f"] \arrow[rr, "\kappa g"', bend right] & E \arrow[r, "h"] &
   directly the output $H$ (e.g., an integer).
 
 
-*** Catamorphism compose law
+*** Catamorphism compose law                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4011,9 +4035,9 @@ I \arrow[r, "\kappa f"] \arrow[rr, "\kappa g"', bend right] & E \arrow[r, "h"] &
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-gI \arrow[r] \arrow[dd]                                        & gI \arrow[r, "Unfix \circ h"] \arrow[dd, "h" description] \arrow[rdd, "\phi"] & gI \arrow[dd, "f"] \\
+\tfun{\tia} \arrow[r] \arrow[dd]                                        & \tfun{\tia} \arrow[r, "Unfix \circ h"] \arrow[dd, "h" description] \arrow[rdd, "\phi"] & \tfun{\tia} \arrow[dd, "f"] \\
                                                                &                                                                               &                    \\
-I \arrow[r, "\kappa h"'] \arrow[rr, "\kappa\phi"', bend right] & I \arrow[r, "\kappa f"']                                                      & I                 
+\tia \arrow[r, "\kappa h"'] \arrow[rr, "\kappa\phi"', bend right] & \tia \arrow[r, "\kappa f"']                                                      & \tia                 
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -4023,19 +4047,19 @@ F-algebras, you can do a single optimization pass by composing their algebras:
 $$\kappa f \circ \kappa h = \kappa (f \circ unFix \circ h)$$ Another example,
 $h$ could filter away data.
 
-*** Combining algebras $(A, \phi), (B, \psi)$ into $(A \times B, q$ (banana split)
+*** Combining algebras $(A, \phi), (B, \psi)$ into $(A \times B, q$ (banana split)                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-Given $\phi: fa \rightarrow a$ and $\psi: fb \rightarrow b$ produce $\beta: f (a \times b) \rightarrow (a \times b)$ as
-$$\beta = (\phi \times \psi) \circ (f~fst \times f~snd) \circ split$$
+Given $\phi: \tfun{a} \rightarrow a$ and $\psi: \tfun{b} \rightarrow b$ produce $\beta: \tfun{(a \times b)} \rightarrow (a \times b)$ as
+$$\beta = (\phi \times \psi) \circ (t~fst \times t~snd) \circ split$$
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-f~i \arrow[d] \arrow[r] \arrow[rr, bend left] \arrow[rrr, bend left] & fa \arrow[d, "\phi", red] & fb \arrow[d, "\psi", red] & f(a \times b) \arrow[d, "(f~fst \times f~snd) \circ split" description, blue] \\
-i \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[rrr, bend right] & a & b & fa \times fb \arrow[d, "\phi \times \psi" description, blue] \\
+\tfun{\tia} \arrow[d] \arrow[r] \arrow[rr, bend left] \arrow[rrr, bend left] & \tfun{a} \arrow[d, "\phi", red] & \tfun{b} \arrow[d, "\psi", red] & \tfun{(a \times b)} \arrow[d, "(t~fst \times t~snd) \circ split" description, blue] \\
+\tia \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[drrr, bend right] & a & b & \tfun{a} \times \tfun{b} \arrow[d, "\phi \times \psi" description, blue] \\
  &  &  & {a \times b}
 \end{tikzcd}
 #+END_EXPORT
@@ -4043,11 +4067,11 @@ i \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[rrr, bend right] & a & b & f
 
 
       
-*** Hylomorphisms                                                   
+*** Hylomorphisms                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-- Given a initial and final algebra of $F$ (the same functor!)
+- Given a initial and final algebra of the same functor $t$
       $$hylo(\psi,\phi) = cata(\phi) \circ ana(\psi)$$
 
 - This is the basis for deforestation, it eliminates intermediate data structures.
@@ -4055,15 +4079,15 @@ i \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[rrr, bend right] & a & b & f
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{F[A]} \arrow[r]                                                                           & {F[\tilde{F}]} \arrow[r] \arrow[d, no head] & {F[B]} \arrow[d, "\psi"] \\
-A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tilde{F} \arrow[r, "\kappa(\psi)"]         & B                       
+{\tfun{A}} \arrow[r]                                                                           & {\tfun{\tia}} \arrow[r] \arrow[d, no head] & {\tfun{B}} \arrow[d, "\psi"] \\
+A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tia \arrow[r, "\kappa(\psi)"]         & B                       
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
 - allows to exploit parallelism? substituting recursive control with a data structure
 
-*** Hylomorphism example: mergesort                                 
+*** Hylomorphism example: mergesort                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4109,7 +4133,7 @@ Example, for factorial $f(i,z) = i~?~z*i:1$. Exercise, try to devise a para for 
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
 t~(C + F) \arrow[r]                                     & t~F          \\
-C+F \arrow[u, "{[\phi , t~Inj_R] \circ (Id + cofix)}"] \arrow[r, "\alpha(\ldots)"]  & F \arrow[u] \\
+C+F \arrow[u, "{[\phi , t~Inj_R \circ cofix]}"] \arrow[r, "\alpha(\ldots)"]  & F \arrow[u] \\
 C \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"]      &             
 \end{tikzcd}
 #+END_EXPORT
@@ -4119,7 +4143,7 @@ Given a co-algebra $\phi: C \mto t (C + F)$ where $F$ is final, it allows to
 build a morphism $C \rightarrow F$ that short-circuits the traversal by giving
 the result immediately. 
 
-*** Apomorphisms example: list insertion                            
+*** Apomorphisms example: list insertion                            :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4162,7 +4186,7 @@ Extension of paramorphisms, i.e, $$para(\phi) = zygo(Fix, \phi)$$
 
 
 
-*** Histomorphism                                                   :focus:
+*** Histomorphism (on annotations)                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4170,17 +4194,17 @@ Extension of paramorphisms, i.e, $$para(\phi) = zygo(Fix, \phi)$$
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{T[\widetilde{T}]} \arrow[d] \arrow[r]                       & {T[\widetilde{Q}_A^T]} \arrow[d, "{\beta \circ \langle id, \phi \rangle}"] \\
-\widetilde{T} \arrow[u] \arrow[r] \arrow[rd, "histo(\phi)"'] & \widetilde{Q}_A^T \arrow[d, "\alpha"]                                      \\
+{\tfun{\tia}} \arrow[d] \arrow[r]                       & {\tfun{\tcfcm}} \arrow[d, "{\beta \circ \langle id, \phi \rangle}"] \\ 
+\tia \arrow[u] \arrow[r] \arrow[rd, "histo(\phi)"'] & \tcfcm \arrow[d, "\alpha"]                                      \\
                                                              & A                                                                       
 \end{tikzcd}
-#+END_EXPORT
+#+END_EXPORT 
 #+END_CENTER
+ 
 
-
-Builds computations of annotations $\tilde{Q}_A^T$ of a structure $\tilde{T}$
-through $\phi: T[\widetilde{Q}_A^T] \mto A$ which inspects previous computations
-in $T[\widetilde{Q}_A^T]$ to build the new $A$. E.g., for Fibonacci:
+Builds computations of annotations $\tcfcm$ of a structure $\tia$
+through $\phi: \tfun{\tcfcm} \mto A$ which inspects previous computations
+in $\tfun{\tcfcm}$ to build the new $A$. E.g., for Fibonacci:
 
 \begin{equation}
 f(q) = \begin{cases}
@@ -4191,7 +4215,7 @@ f(q) = \begin{cases}
 \end{equation}
 
 
-*** Expression data types as functors                               
+*** Expression data types as functors                               :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4221,7 +4245,7 @@ Two ways to build them,
   Build expressions in ~Expr~ with original type constructors, evaluate with ~eval
   = cata rules~.
 
-*** Expression data types as functors - templating (free monad)     
+*** Expression data types as functors - templating (free monad)     :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4229,20 +4253,19 @@ Two ways to build them,
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{A + T[\widetilde{Q}_A^T]} \arrow[d] \arrow[r]       & {A+T[\widetilde{T}]} \arrow[d, "\phi + Fix_T"] \\
-\widetilde{Q}_A^T \arrow[r, "\kappa(\phi + Fix_T)"'] & \widetilde{T}                                 
+{A + \tfun{\tfm}} \arrow[d] \arrow[r]       & {A+\tfun{\tia}} \arrow[d, "\phi + Fix_T"] \\
+\tfm \arrow[r, "\kappa(\phi + Fix_T)"'] & \tia                                 
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- Assume $T[-]$ is a functor with $\wtt$ as its initial algebra representing an AST.
+- Assume $\tia$ is an initial algebra representing an AST of expressions built with $t$.
 
-- Then $Q_A^T= A + T[-]$ is such that $\wtq_A^T$ is a tree similar to $\wtt$
+- Then the fixed point $\tfm$ of $(A + t[-])$ is such that $\tfm$ is a tree similar to $\tia$
   where leafs are $A$ while $T$ merges them into the tree itself. 
-- For templating $A=String$ referencing the name of a variable.
-
-- Given $\phi: A \rightarrow \wtt$ you can build a complete $\wtt$ from
-  $\wtq_A^T$ with $\kappa(\phi + Fix_T)$ (acting as /template substitution/).
+- For templating consider $A=String$ referencing the name of a variable, given
+  $\phi: A \rightarrow \tia$ you can build a complete $\tia$ with $\kappa(\phi +
+  Fix_T)$ (acting as /template substitution/).
 
 *** Expression data types as functors - annotation (cofree comonad) :focus:
 :PROPERTIES:
@@ -4252,19 +4275,16 @@ Two ways to build them,
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{(A \times T[\widetilde{Q}_A^T])_{AnnF}} \arrow[d, "Fix", no head] \arrow[r] & {(A \times T[\widetilde{T}])_{AnnF}} \arrow[d, "{\phi = \lambda(-,t).Fix_T t}"] \\
-\widetilde{Q}_A^T \arrow[r, "\kappa(\phi)"']                          & \widetilde{T}                                                         
+{A \times \tfun{\tcfcm}} \arrow[d, "\beta = Fix \circ AnnF", no head] \arrow[r] & {A \times \tfun{\tia}} \arrow[d, "{\phi = (\lambda(-,t).Fix_T t}) \circ AnnF"] \\
+\tcfcm \arrow[r, "\kappa(\phi)"']                          & \tia                                                         
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- Useful because it can reuse $T$ algebras (e.g., printing)
+- Useful because it can reuse $t$ algebras (e.g., printing)
 
-- Assume $T[-]$ is a functor with $\wtt$ as its initial algebra representing an AST.
-
-- Then $Q_A^T= A \times T[-]$ is such that $\wtq_A^T$ is a tree similar to
-  $\wtt$ where all nodes have been annotated with values of type $A$, and one
-  can strip annotations by running a $\kappa(\phi)$.
+- the fixed point $\tcfcm$ is a tree similar to $\tia$ where all nodes have been annotated with
+  values of type $A$, and one can strip annotations by running a $\kappa(\phi)$.
 
 - We define $\beta = Fix \circ AnnF$ in other slides;
 
@@ -4276,16 +4296,16 @@ Two ways to build them,
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{T[\widetilde{T}]} \arrow[r] \arrow[d, no head] & {T[\widetilde{Q}_A^T]} \arrow[d, "{\phi = \beta \circ \langle id, f \circ T\alpha\rangle}"] &   \\
-\widetilde{T} \arrow[r, "\kappa(\phi)"]         & \widetilde{Q}_A^T \arrow[r, "\alpha"]                                                       & A
+{\tfun{\tia}} \arrow[r] \arrow[d, no head] & {\tfun{\tcfcm}} \arrow[d, "{\phi = \beta \circ \langle id, f \circ T\alpha\rangle}"] &   \\
+\tia \arrow[r, "\kappa(\phi)"]         & \tcfcm \arrow[r, "\alpha"]                                                       & A
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
 - Assume $\alpha$ allows to get an annotation from the root of the tree
-  $\widetilde{Q}_A^T$ and $f: T A \mto A$ is a $T$ algebra that allows to
+  $\tcfcm$ and $f: \tfun{A} \mto A$ is a $t$ algebra that allows to
   compute a new $A$ from the set of underlying tree's $A$; 
-  $\beta: T[\widetilde{Q}_A^T] \times A \mto \widetilde{Q}_A^T$ allows to build a new
+  $\beta: \tfun{\tcfcm} \times A \mto \tcfcm$ allows to build a new
   tree from child trees and an annotation.
 - then $\kappa \phi$ can be used to annotate a tree (see $histo(f \circ T\alpha)$); for example $f = (+1) \circ
   sum_T$ can be used to annotate a root with the sum of $T$ childs (bottom-up
@@ -4303,8 +4323,8 @@ arrow composition.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{F[\widetilde{F}]} \arrow[d, no head] \arrow[rr] & *                           & {M[FA]} \arrow[d, "algM: FA \rightarrow MA", dashed, tail] \\
-\widetilde{F} \arrow[rr, "\kappa M(algM)"']      & * \arrow[u, "mapM", dotted] & MA                                                        
+{\tfun{\tia}} \arrow[d, no head] \arrow[rr] & *                           & {M[tA]} \arrow[d, "algM: tA \rightarrow MA", dashed, tail] \\
+\tia \arrow[rr, "\kappa M(algM)"']      & * \arrow[u, "mapM", dotted] & MA                                                        
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -4315,7 +4335,7 @@ arrow composition.
 :   algM (Const c) = return c
 :   algM (Var i) = ask >>= lift . M.lookup i
 
-*** Parser combinators
+*** Parser combinators                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4337,20 +4357,20 @@ arrow composition.
 
 - $P[A]$ is a functor in $A$; You can get a parser $PB$ for object $B$ if you have $P[A]$ and $A \rightarrow B$.
 
-*** Expression data types as functors - parsers (annotation)        
+*** Expression data types as functors - parsers (annotation)        :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
 
-Each constructor in $T$, e.g., $n_2: X \times X \mto T[X]$ can be made into a
+Each constructor in $t$, e.g., $n_2: X \times X \mto t[X]$ can be made into a
 parser of annotated trees by introducing a function $inj$ that, from a tree
 parser creates an annotated tree parser.
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{P[\widetilde{Q}_A^T] \times P[\widetilde{Q}_A^T]} \arrow[d] \arrow[rr, "{P[n_2]}"] &  & {P[T[\widetilde{Q}_A^T]]} \arrow[d, "inj"]           \\
-{P[\widetilde{Q}_A^T]}                                                          &  & {P[Q_A^T[\widetilde{Q}_A^T]]} \arrow[ll, "{P[fix]}"]
+{P[\tcfcm] \times P[\tcfcm]} \arrow[d] \arrow[rr, "{P[n_2]}"] &  & {P[\tfun{\tcfcm}]} \arrow[d, "inj"]           \\
+{P[\tcfcm]}     &  & {P[A \times \tfun{\tcfcm}]} \arrow[ll, "{P[fix]}"]
 \end{tikzcd}
   #+END_EXPORT
   #+END_CENTER
@@ -4376,7 +4396,7 @@ parser creates an annotated tree parser.
       co-algebras $f: (U,c) \rightarrow (W,d)$
 
 
-*** Examples of final co-algebras
+*** Examples of final co-algebras                                                                  :focus:
     
     | Functor            | FC Carrier                        | FC Structure         | Notes                 |
     |--------------------+-----------------------------------+----------------------+-----------------------|
@@ -4384,7 +4404,7 @@ parser creates an annotated tree parser.
     | $1 + (A \times X)$ | $A^{\infty} = A^* + A^\mathbb{N}$ | possnext($a$)        | Finite and inf. lists |
     | $1 + X$            | $\mathbb{N} \cup \{ \infty \}$    | pred($n$)            |                       |
     
-*** Bisimulation (for lists)                                        
+*** Bisimulation (for lists)                                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4413,7 +4433,7 @@ A \times S         &  A \times R  \arrow[l]                                     
       an indirect way to derive $\gamma$ would be to demonstrate that $h(l_1) =
       h(l_2) \wedge (t(l_1), t(l_2)) \in R$
 
-*** Anamorphisms
+*** Anamorphisms                                                                  :focus:
    - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
      $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
 
@@ -4457,7 +4477,7 @@ S_A \arrow[rr, "\phi={\alpha(\nu)}"] \arrow[u, "{\nu}"] &  & S_A \arrow[u, "cofi
 $\nu$ can be lifted into a stream transformer:  $\phi(s) = \nu_A(s) \cdot \phi(\nu_S(s))$, for
 example $\nu(s)= \langle (head(s))+1, tail(s) \rangle$ adds one to the stream.
 ** Free monads
-*** Free monads (construction)
+*** Free monads (construction)                                      :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -4475,7 +4495,7 @@ example $\nu(s)= \langle (head(s))+1, tail(s) \rangle$ adds one to the stream.
    $A$ is an arbitrary object.
  - It is possible to show that $\tilde{F}[A]$ is a functor and *a monad* in $A$.
 
-*** Free monads (construction - bind)
+*** Free monads (construction - bind)                               :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4493,7 +4513,7 @@ example $\nu(s)= \langle (head(s))+1, tail(s) \rangle$ adds one to the stream.
   from a pure $\pi$ or a free $\phi$: $$f^o = \begin{cases} f \circ \pi^{-1}
   \\ \phi\circ Tf^o \phi^{-1}\\ \end{cases}$$
 
-*** Free monads (underlying commands from functor)
+*** Free monads (underlying commands from functor)                  :focus:
 
 - Assume $C$ is the type of some sequence of commands. 
 
@@ -4505,7 +4525,7 @@ example $\nu(s)= \langle (head(s))+1, tail(s) \rangle$ adds one to the stream.
 - It is a way to build backwards a sequence of commands, e.g., $$getline~(x
   \mapsto (print~("hi" x) (end)))$$ of type $T[T[T[C]]]$
  
-*** Free monads (building monad commands from functor ones)
+*** Free monads (building monad commands from functor ones)         :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4530,7 +4550,7 @@ lift single commands as they were sequences of one command alone.
 : getline = liftF (GetLine id)
 
 
-*** Free monads (composition)
+*** Free monads (composition)                                       :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -4545,7 +4565,7 @@ Given two functors $T$ and $G$, one can build a free monad of $(T+G)$
 This is a way to compose functors which manage different effects into a single
 monad.
 
-*** Free monads (interpretation)
+*** Free monads (interpretation)                                    :focus:
     :PROPERTIES:
     :BEAMER_opt: fragile
     :END:
@@ -4568,7 +4588,7 @@ functor $\tilde{F}$ must abide the laws on the right for any $\nu$.
 
 (consistent with Tweagio's, check for Hopkins's free monad)
 
-*** Suspended computation and continuation monads
+*** Suspended computation and continuation monads                   :focus:
     - A function ~(a -> r) -> r~ is called a suspended computation (SC). It needs a way
       to transform its intermediate value ~a~ into its final result ~r~.
     - Such a way is provided by means of a continuation ~a -> r~.
@@ -4774,13 +4794,16 @@ Negation elimination is valid only in classical logic through double negation
 This is exactly the rule of the excluded middle that was argued by Brower
 in 1907.
 
-*** Heyting algebra                                                 
- - A Heyting algebra is a cartesian closed poset $C$ such that 
-   $C^{op}$ is also cartesian.
+*** Boolean algebra                                                 :focus:
+It is a lattice where every element $a$ has /complement/ $\bar{a}$, i.e., such
+that $$a \vee \bar{a} = 1$$ and $$a \wedge \bar{a} = 0$$
+and where meets and joins are distributive.
+
+*** Heyting algebra                                                 :focus:
+ - A Heyting algebra is a bounded lattice with exponential objects $X \implies Y$
+ - It is a Boolean algebra minus the complement for $\vee$.
  - The set of propositions $P$ with implication as morphisms is a Heyting Algebra
    because:
-   - a bidirectional implication means that two propositions are equal so $P$
-     is poset 
    - $X \wedge Y$ behaves as  the product and $\top$ is the terminal object.
    - the proposition $X \implies Z$ is another object and is such that is such
      that
