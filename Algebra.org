@@ -4012,19 +4012,19 @@ A^* \arrow[r, "scan(\phi)"]          & B^*
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-\tfun{\tia} \arrow[r, "t(\kappa f)"] \arrow[d] & tE \arrow[d, "f"] \arrow[r, "th"] & tH \arrow[d, "g"] \\
-\tia \arrow[r, "\kappa f"] \arrow[rr, "\kappa g"', bend right] & E \arrow[r, "h"] & H
+                         & {(I_t, fix)} \arrow[ld, "\kappa(f)"] \arrow[rd, "\kappa(h_{g,f})"] &         \\
+{(F, f)} \arrow[rr, "g"] &                                                              & {(H,h_{g,f})}
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- if you must compose $h$ with a catamorphism $\kappa f$, and $h$ is an $(E,f) \rightarrow (H,g)$ algebra
-  homomorphism, then you can take directly the catamorphism of the second
-  algebra $g$: $$ h \circ \kappa f = \kappa g $$
-
-- This amounts to say that $h$ must be a morphism in the (comma) category of objects under $I$.
-- You bypass the intermediate structure $E$ (which might be a list) to generate
-  directly the output $H$ (e.g., an integer).
+- There might be up to a unique morphism between two algebras. Fixing one algebra and an
+  algebra morphism fixes the second algebra which /fuses/ $h$ and $\kappa(f)$.
+  
+- For example, for $I_t$ a list, $\kappa(f) = fold (+1) = length$ and $g = (2*)$ then $(2*) \circ
+  length$ can be rewritten as the fold of $(+n)$, instead of $(+1)$.
+- For a list this happens if one can find a $h_{g,f}$ such that $$(g \circ
+  f)(a,n)=h_{g,f}(a,f(n))$$
 
 
 *** Catamorphism compose law                                                                  :focus:
@@ -4035,17 +4035,22 @@ A^* \arrow[r, "scan(\phi)"]          & B^*
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-\tfun{\tia} \arrow[r] \arrow[dd]                                        & \tfun{\tia} \arrow[r, "Unfix \circ h"] \arrow[dd, "h" description] \arrow[rdd, "\phi"] & \tfun{\tia} \arrow[dd, "f"] \\
-                                                               &                                                                               &                    \\
-\tia \arrow[r, "\kappa h"'] \arrow[rr, "\kappa\phi"', bend right] & \tia \arrow[r, "\kappa f"']                                                      & \tia                 
+                                & t I_t \arrow[rd, "h"]                           &                                                 & t I_t \arrow[rd, "t~\kappa(f)"] &                       \\
+t I_t \arrow[ru, "t~\kappa(h)"] &                                                 & I_t \arrow[rd, "\kappa(f)"] \arrow[ru, "unfix"] &                                 & t I_t \arrow[ld, "f"] \\
+                                & I_t \arrow[ru, "\kappa(h)"] \arrow[lu, "unfix"] &                                                 & I_t                             &                      
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-If $I$ is an expression type, and $h$ and $f$ are optimizations expressed as
-F-algebras, you can do a single optimization pass by composing their algebras:
-$$\kappa f \circ \kappa h = \kappa (f \circ unFix \circ h)$$ Another example,
-$h$ could filter away data.
+Since $Unfix \circ h$ is a natural transformation $$f~(t~\kappa(f))~ 
+unfix ~h~ (t~\kappa(h))= (f ~ unfix ~ h)~
+(t~(\kappa(h) \kappa(f)))$$ This means that $$\kappa(f) \circ
+\kappa(h) = k(f \circ unfix \circ h)$$
+
+- If $I$ is an expression type, and $h$ and $f$ are optimizations expressed as
+  F-algebras, you can do a single optimization pass by composing their algebras:
+  Another example,
+- Or, $h$ could filter away data.
 
 *** Combining algebras $(A, \phi), (B, \psi)$ into $(A \times B, q$ (banana split)                                                                  :focus:
 :PROPERTIES:
