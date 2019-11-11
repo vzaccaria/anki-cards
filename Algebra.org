@@ -4718,11 +4718,61 @@ there is an explicit lambda representation for $fix$ found by H.Curry.
 - It is classic logic without some axioms, for example $A \vee \neg A$ is not
   a valid axiom in .
 
-*** Natural deduction
-  - I know that premises/propositions $A,B,C$ are true. Can I say that
-    $f(A,B,C)$ is true?
-  - One way to do this is by *natural deduction*, i.e., only if I can produce a chain
-    $$\{ A,B,C \} \vdash \ldots \vdash f(A,B,C)$$ composed of valid inference rules
+*** Structural proof theory                                        :focus:
+- Studies the whole set of proofs from $X$ to $Y$ (either propositions or
+  predicates) and admits many morphism between those.
+
+- It is a system for proving statements compliant with a certain logic.
+
+The most widespread are:
+- Hilbert's calculi
+- Gentzen natural deduction
+- Gentzen sequent calculus
+
+Not very widespread: syllogistic calculus (Aristotle)
+
+*** Hilbert calculi                                                 :focus:
+
+- Used for up to first order logic
+- Many axioms schemes, where each scheme is a template, e.g., 
+  $\phi \mto \phi$ can mean $p \mto p$ or $(p \mto p) \mto (p \mto p)$
+- one inference rule $$\infer{Y}{X,  X \mto Y}$$
+- Every line is an unconditional tautology.
+- classic logic has an axiom scheme $(\neg \phi \mto \neg \psi) \mto (\phi \mto \psi)$ while  
+  intuitionistic doesn't.
+
+*** Gentzen sequent calculus                                        :focus:
+- few axioms, many inference rules. 
+- Introduces the concept of sequent: $$ X_1, \ldots X_n \vdash Y_1 \ldots Y_m $$
+  which is a proposition that is read as: all of $X_i$ can be used to prove at
+  least one of $Y_j$
+- Every line is a conditional tautology with zero or more conditions
+- Every (conditional) line has zero or more asserted propositions on the right.
+
+*** Natural deduction                                               :focus:
+- It is a sequent calculus where every (conditional) line has exactly one
+  asserted proposition on the right.
+
+*** Proof theory as a monoidal theory                               :focus:
+ - Propositions are objects and proofs are morphisms. $hom(X,Y)$ is written as
+   $X \vdash Y$. $X \implies Y$ is an object corresponding to the set of
+   equivalence classes of proofs from $X$ to $Y$. $X \otimes Y$ is the
+   proposition $X \wedge Y$.
+
+ - An *inference rule is a morphism between homsets* and deductions are
+   compositions of those morphisms.
+   
+   #+attr_latex: :font \tiny :width 0.85\linewidth :float t :placement [h]
+   | CC name     | Logic name   | Logic rule                                          |
+   |             |              |                                                     |
+   | composition | cut          | \infer{X \vdash Z}{X \vdash Y & Y \vdash Z}         |
+   |             |              |                                                     |
+   | identity    | identity     | \infer{X \vdash X}{}                                |
+   |             |              |                                                     |
+   | Currying    |              | \infer{Y \vdash X \implies Z}{X \otimes Y \vdash Z} |
+   |             |              |                                                     |
+   |             | Modus ponens | \infer{X \otimes (X \implies Y) \vdash Y}{}         |
+ 
 *** $\wedge$ introduction
 - It is a valid inference rule for natural deduction 
   $$\{ A, B \} \vdash A \wedge B$$
@@ -4818,34 +4868,6 @@ and where meets and joins are distributive.
       \end{equation}
       #+END_EXPORT 
    - $C^{op}$ with $\vee$ and $\bot$ is cartesian as well.
-*** Proof theory                      :focus:
-Studies the whole set of proofs from $X$ to $Y$ not just implications; so many morphism
-between propositions.
-
-1. Hilbert's approach: many axioms, one rule $$\infer{Y}{X & X \implies Y}$$ (modus ponens)
-2. Gentzen sequent calculus: few axioms, many inference rules. Introduces the concept of
-   sequent: $$ X_1, \ldots X_n \vdash Y_1 \ldots Y_m $$ which is a proposition 
-   that is read as: all of $X_i$ can be used to prove at least one of $Y_j$
-*** Proof theory as a monoidal theory                               :focus:
- - Propositions are objects and proofs are morphisms. $hom(X,Y)$ is written as
-   $X \vdash Y$. $X \implies Y$ is an object corresponding to the set of
-   equivalence classes of proofs from $X$ to $Y$. $X \otimes Y$ is the
-   proposition $X \wedge Y$.
-
- - An *inference rule is a morphism between homsets* and deductions are
-   compositions of those morphisms.
-   
-   #+attr_latex: :font \tiny :width 0.85\linewidth :float t :placement [h]
-   | CC name     | Logic name   | Logic rule                                          |
-   |             |              |                                                     |
-   | composition | cut          | \infer{X \vdash Z}{X \vdash Y & Y \vdash Z}         |
-   |             |              |                                                     |
-   | identity    | identity     | \infer{X \vdash X}{}                                |
-   |             |              |                                                     |
-   | Currying    |              | \infer{Y \vdash X \implies Z}{X \otimes Y \vdash Z} |
-   |             |              |                                                     |
-   |             | Modus ponens | \infer{X \otimes (X \implies Y) \vdash Y}{}         |
- 
 ** Computation theory
 *** Lambda calculus (application and abstraction)                   
 - Programs are data; all data is a $\lambda$ term. 
