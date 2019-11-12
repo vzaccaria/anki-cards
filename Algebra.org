@@ -3525,7 +3525,7 @@ $x=c$ and $x^c=Id_c$:
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-x \arrow[d, "\phi"] & x^c \arrow[d, "\circ \phi"] \arrow[r, "\alpha_x"] & Fx \arrow[d, "F\phi" ] \\
+x \arrow[d, "\phi"] & x^c \arrow[d, "\circ \phi"] \arrow[r, "\alpha_x"] & Fix \arrow[d, "F\phi" ] \\
 y  & y^c \arrow[r, "\alpha_y"] & Fy
 \end{tikzcd}
 #+END_EXPORT
@@ -3976,7 +3976,7 @@ epimorphism.
       generic functor $t$, the type of an initial algebra $\tia$ should be such 
       that $\tia \cong \tfun{\tia}$ (Lambeck).
     - Call $\tia \simeq Fix~t$ we have $Fix~t = t~(Fix~t)$, which in Haskell can
-      be created through a recursive data type ~Fix t = Fx t (Fix t)~. ~Fx~ encodes 
+      be created through a recursive data type ~Fix t = Fix t (Fix t)~. ~Fix~ encodes 
       algebraic operations $\tfun{\tia} \rightarrow \tia$.
 *** Catamorphisms                                                                  :focus:
 :PROPERTIES:
@@ -3986,14 +3986,14 @@ epimorphism.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-\tfun{\tia} \arrow[r, "t~g"] \arrow[d, "Fx~(\textrm{unfix})"] & t~E \arrow[d, "k"] \\
-\tia \arrow[u] \arrow[r, "g"] & E
+\tfun{\tia} \arrow[r, "t~g"] \arrow["Fix~(\textrm{unfix})", no head] & t~E \arrow[d, "k"] \\
+\tia \arrow[r, "g"] & E
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
 
-    - Given an initial algebra $(I, Fx: t~I \rightarrow I)$ and a generic algebra $(E, k)$, a
+    - Given an initial algebra $(I, Fix: t~I \rightarrow I)$ and a generic algebra $(E, k)$, a
       generic morphism $g: I \rightarrow E$ can be defined as $g = k \circ (t~g) \circ unfix$
     - We say that $g = cata(k)$; given the same expression in $I$, I can create
       mappings into several other types by simply specifying the non-recursive
@@ -4158,7 +4158,7 @@ Given a co-algebra $\phi: C \mto t (C + \fia)$ where $\fia$ is final, it allows 
 build a morphism $C \rightarrow \fia$ that short-circuits the traversal by giving
 the result immediately. 
 
-*** Apomorphisms example: list insertion                            :focus:
+*** Apomorphisms example: streams :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4166,21 +4166,15 @@ the result immediately.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-t_A~(t_A\tilde{L}_A + \tilde{L}_A) \arrow[r]                                                    & t_A~\tilde{L}_A                 \\
-t_A\tilde{L}_A + t_A\tilde{L}_A \arrow[u, "\phi \vert\vert\vert t~Inj_R"]                       &                                 \\
-t_A\tilde{L}_A + \tilde{L}_A \arrow[r, "\alpha(\ldots)"] \arrow[u, "Id + cofix"]                & \tilde{L}_A \arrow[uu, no head] \\
-t_A \tilde{L}_A \cong A \times \tilde{L}_A + 1 \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"] &                                
+A\times(A + S_A) \arrow[r]                             & A \times S_A \arrow[d, no head] \\
+A+S_A \arrow[u, "{[\phi, t Inj_R \circ cofix]}"] \arrow[r] & S_A                             \\
+A \arrow[ru, "apo(\phi)"] \arrow[u, "Inj_L"]           &                                
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-We want to build a morphism: $A \times \tilde{L}_A + 1 \rightarrow \tilde{L}_A$
-to insert an element $A$ into a list $\tilde{L}_A$. $\phi$ could compare $A$
-with the first element of $\tilde{L}_A$ either returning the list as it is
-(short circuiting) or swapping the two. Interestingly, this is an algebra that
-allows us to write an insertion sort $\tilde{L}_A \mto \tilde{L}_A$ with 
-$cata ~ (apo \phi)$.
-
+$\phi$ can return either $A \times A$ (becoming a generator) or $A\times S_A$
+and at that point the ~cofix~ part starts.
 
 *** Zygomorphism                                                    :focus:
 :PROPERTIES:
@@ -4252,7 +4246,7 @@ Two ways to build them,
 
   #+BEGIN_EXPORT latex
   \begin{tikzcd}
-  1 \arrow[r, "const"] & {ExprF[Expr]} \arrow[d, "Fx"] \arrow[r] & {ExprF[Int]} \arrow[d, "rules"] \\
+  1 \arrow[r, "const"] & {ExprF[Expr]} \arrow[d, "Fix"] \arrow[r] & {ExprF[Int]} \arrow[d, "rules"] \\
   Expr \times Expr \arrow[ru, "Add", bend left=49] & Expr \arrow[r, "eval"] \arrow[u, "Neg", bend left=60] & Int
   \end{tikzcd}
   #+END_EXPORT
