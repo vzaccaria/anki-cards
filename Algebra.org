@@ -1940,7 +1940,7 @@ product $$\star: A^C \times A^C
 and unit $T = u \circ \epsilon$. If there is an $S$ for which $Id \star S = T$ then $S$
 is called an antipode.
 
-*** $k$ Bialgebra - antipode (Hopf algebra)
+*** $k$ Bialgebra - antipode (Hopf algebra)                         :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -1960,7 +1960,7 @@ A \otimes A \arrow[r, "\mu"]          & A                                       
 
 In Sweedler notation, $$T(a) = u(\epsilon(a)) = \sum a_1S(a_2) = \sum S(a_1)a_2$$
 
-*** $k$ Bialgebra - antipode as the inverse of an identity
+*** $k$ Bialgebra - antipode as the inverse of an identity          :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -1968,7 +1968,7 @@ In Sweedler notation, $$T(a) = u(\epsilon(a)) = \sum a_1S(a_2) = \sum S(a_1)a_2$
 Given $A$ a bi-algebra with antipode $S$, $S$ is the inverse of $id_A$ in the 
 $(A^A, \star, u \circ \epsilon)$ algebra.
 
-*** $k$ Bialgebra - antipode for a group algebra
+*** $k$ Bialgebra - antipode for a group algebra                    :focus:
 
 The antipode $S$ for a group algebra is such that $$\mu \circ (Id
 \otimes S) (g \otimes g) = T(g)$$ i.e., since $T(g) = e \forall g$, $$S(g) = g^{-1}$$
@@ -2618,7 +2618,7 @@ properties hold:
 $E$ should be understood as the subset of elements of $X$ for which $g_1(x) =
 g_2(x)$, i.e., the solutions of the equation.
 
-*** Function objects (Sets)
+*** Function objects (Sets)                                         :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
