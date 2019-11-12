@@ -3927,7 +3927,7 @@ c &                    &                                 \\
     * For example, an algebra $$(\mathbb{N}, [0, S \circ \pi]: 1+A \times
       \mathbb{N} \rightarrow \mathbb{N})$$ defines implicitly the length of a list
 
-*** Proofs by induction with initial algebras                                                                  :focus:
+*** Proofs by induction with initial algebras (integers)            :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3941,25 +3941,36 @@ P \arrow[r, "i", hook] & N \arrow[l, "!\exists", bend left]
 #+END_EXPORT
 #+END_CENTER
 
-- Predicate $P$ subset of $N$ by an inclusion morphism $i$. 
+Assume that
+- Predicate $P$ is a subset of $N$ by an inclusion morphism $i$. 
 
 - ($0 \in P$ and $n \in P \Rightarrow (n+1) \in P$) means there exists an algebra for $P$.
 
-- Since there is only algebra morphism from $N$ to $N$ (id) this means that
-  $i$ must be an epi-morphism.
+Then, $i$ is an algebra morphism because the square commutes. Since there is
+only algebra morphism from $N$ to $N$ (id) this means that $i$ must be an
+epi-morphism.
 
-*** Principle of list induction for a predicate on the set of lists                                                                  :focus:
-    To show that a predicate/set $P$ is equal to the set of all lists $A*$, it is enough to
-    show the following:
+*** Proofs by induction with initial algebras (lists)               :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-    - $empty \in P$
-    - $\forall a, \alpha \in P \Rightarrow cons(a,\alpha) \in P$
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+1 + A \times P \arrow[r, "1 + i"] \arrow[d, "-:-"] & 1 + A \times A^* \arrow[d, "-:-"] \\
+P \arrow[r, "i", hook] & A^* \arrow[l, "!\exists", bend left]
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
-    i.e., 
-    - $P$ can be understood as an algebra $$(P, [empty,cons]: 1 + A\times P \rightarrow P)$$ 
-    - $P$ is a subalgebra of $A^*$ because there is a morphism $i: P \rightarrow A^*$
-    - Since $A^*$ is initial, any morphism $A^* \rightarrow A^*$ is the identity
-      (by uniqueness), so $i$ is epi and mono (iso).
+Assume that: 
+- $\phi$ is an algebra (it is if $p \in P \implies a:p \in P$)
+- $i$ is an algebra morphism; it is because $i(a:p) = a:i(p)$
+  
+Then $i$ must belong to the unique identity morphism on $A^*$ so it is an
+epimorphism.
+
 *** Fixed point functors                                            :focus:
     - Initial algebras for some functors are already known. If we start from a
       generic functor $t$, the type of an initial algebra $\tia$ should be such 
@@ -3993,12 +4004,12 @@ P \arrow[r, "i", hook] & N \arrow[l, "!\exists", bend left]
 :BEAMER_opt: fragile
 :END:
 
-Given $\phi = A \times B \mto B$, $scan(\phi)$ is a catamorphism of type:
+Given $\phi: A \times B \mto B$, $scan(\phi)$ is a catamorphism of type:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-1 + A \times A^* \arrow[d] \arrow[r] & 1 + A \times B^* \arrow[d, "{[1 , cons \circ (\phi \times Id)]}"] \\
+1 + A \times A^* \arrow[d] \arrow[r] & 1 + A \times B^* \arrow[d, "{[1 , cons \circ \langle \phi, Id\rangle]}"] \\
 A^* \arrow[r, "scan(\phi)"]          & B^*                                                              
 \end{tikzcd}
 #+END_EXPORT
@@ -4100,13 +4111,13 @@ A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", b
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{F[L_A]} \arrow[r]                                                                           & {F[\tilde{F}]} \arrow[r] \arrow[d, no head] & {F[L_A]} \arrow[d, "\psi"] \\
-L_A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tilde{F} \arrow[r, "\kappa(\psi)"]         & L_A                       
+{t_A[L_A]} \arrow[r]                                                                           & {t_A[\tia]} \arrow[r] \arrow[d, no head] & {t_A[L_A]} \arrow[d, "\psi"] \\
+L_A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tia \arrow[r, "\kappa(\psi)"]         & L_A                       
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- Consider the functor $F[X] = A + X \times X$, its initial algebra $\tilde{F}$ being a binary tree of $A$'s.
+- Consider the functor $t_A[X] = A + X \times X$, its initial algebra $\tia$ being a binary tree of $A$'s.
 - Consider $L_A$ as a list of A's. One could implement merge sort $\mu: L_A
   \rightarrow L_A$ as $hylo(\psi,\phi)$, where $\phi$ constructs the tree by splitting
   lists in two while $\psi$ merges two lists into one (by reordering them).
@@ -4119,15 +4130,14 @@ L_A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}",
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-tI \arrow[d] \arrow[r]                          & t(I\times Z) \arrow[d, "{\langle Fix \circ t~fst, \phi \rangle}"] \\
-I \arrow[u] \arrow[r] \arrow[rd, "para(\phi)"'] & I \times Z \arrow[d, "\pi_Z"]                                     \\
+\tfun{\tia} \arrow[d] \arrow[r]                          & \tfun{\tia\times Z} \arrow[d, "{\langle Fix \circ t~fst, \phi \rangle}"] \\
+\tia \arrow[u] \arrow[r] \arrow[rd, "para(\phi)"'] &  \tia \times Z \arrow[d, "\pi_Z"]                                     \\
                                                 & Z                                                                
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
 Example, for factorial $f(i,z) = i~?~z*i:1$. Exercise, try to devise a para for sliding window.
-
 
 *** Apomorphisms                                                    :focus:
 :PROPERTIES:
@@ -4137,15 +4147,15 @@ Example, for factorial $f(i,z) = i~?~z*i:1$. Exercise, try to devise a para for 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-t~(C + F) \arrow[r]                                     & t~F          \\
-C+F \arrow[u, "{[\phi , t~Inj_R \circ cofix]}"] \arrow[r, "\alpha(\ldots)"]  & F \arrow[u] \\
+t~(C + \fia) \arrow[r]                                     & t~\fia          \\
+C+\fia \arrow[u, "{[\phi , t~Inj_R \circ cofix]}"] \arrow[r, "\alpha(\ldots)"]  & \fia \arrow[u] \\
 C \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"]      &             
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
  
-Given a co-algebra $\phi: C \mto t (C + F)$ where $F$ is final, it allows to
-build a morphism $C \rightarrow F$ that short-circuits the traversal by giving
+Given a co-algebra $\phi: C \mto t (C + \fia)$ where $\fia$ is final, it allows to
+build a morphism $C \rightarrow \fia$ that short-circuits the traversal by giving
 the result immediately. 
 
 *** Apomorphisms example: list insertion                            :focus:
@@ -4177,19 +4187,19 @@ $cata ~ (apo \phi)$.
 :BEAMER_opt: fragile
 :END:
 
+Applies algebra $\psi$ to $\tia$ instead of the initial one.
+
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-tI \arrow[d] \arrow[r]                                  & t(I\times Z) \arrow[d, "{\langle \psi \circ t~fst, \phi \rangle}"] \\
-I \arrow[u] \arrow[r] \arrow[rd, "{zygo(\psi, \phi)}"'] & I \times Z \arrow[d, "\pi_Z"]                                      \\
+\tfun{\tia} \arrow[d] \arrow[r]                                  & t(\tia\times Z) \arrow[d, "{\langle \psi \circ t~fst, \phi \rangle}"] \\
+\tia \arrow[u] \arrow[r] \arrow[rd, "{zygo(\psi, \phi)}"'] & \tia \times Z \arrow[d, "\pi_Z"]                                      \\
                                                         & Z                                                                 
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
 Extension of paramorphisms, i.e, $$para(\phi) = zygo(Fix, \phi)$$
-
-
 
 *** Histomorphism (on annotations)                                  :focus:
 :PROPERTIES:
@@ -4258,7 +4268,7 @@ Two ways to build them,
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{A + \tfun{\tfm}} \arrow[d] \arrow[r]       & {A+\tfun{\tia}} \arrow[d, "\phi + Fix_T"] \\
+{A + \tfun{\tfm}} \arrow[d, "Fix_M", no head] \arrow[r]       & {A+\tfun{\tia}} \arrow[d, "\phi + Fix_T"] \\
 \tfm \arrow[r, "\kappa(\phi + Fix_T)"'] & \tia                                 
 \end{tikzcd}
 #+END_EXPORT
@@ -4280,7 +4290,7 @@ Two ways to build them,
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{A \times \tfun{\tcfcm}} \arrow[d, "\beta = Fix \circ AnnF", no head] \arrow[r] & {A \times \tfun{\tia}} \arrow[d, "{\phi = (\lambda(-,t).Fix_T t}) \circ AnnF"] \\
+{A \times \tfun{\tcfcm}} \arrow[d, "Fix_C", no head] \arrow[r] & {A \times \tfun{\tia}} \arrow[d, "{\phi = (\lambda(-,t).Fix_T t}) \circ AnnF"] \\
 \tcfcm \arrow[r, "\kappa(\phi)"']                          & \tia                                                         
 \end{tikzcd}
 #+END_EXPORT
