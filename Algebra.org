@@ -1929,16 +1929,17 @@ It can be shown that
  \end{align*}
  #+END_EXPORT
 
-*** $k$ Bialgebra - algebra $A^C$
+*** $k$ Bialgebra - algebra $A^C$                                   :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-Given $A$ and $C$ respectively an algebra and a co-algebra, $A^C$ is an algebra with 
-product $$\star: A^C \times A^C
-\rightarrow A^C$$ such that $$f \star h = \mu \circ (f \otimes h) \circ \Delta$$
-and unit $T = u \circ \epsilon$. If there is an $S$ for which $Id \star S = T$ then $S$
-is called an antipode.
+Given $A$ and $C$ respectively an algebra and a co-algebra, $A^C$ is the
+homology group of $A$ and $C$ with product $$\star: A^C \times A^C \rightarrow
+A^C$$ such that $$f \star h = \mu \circ (f \otimes h) \circ \Delta$$ and unit $T
+= u \circ \epsilon$. If there is an $S$ for which $Id \star S = T$ then $S$ is
+called an antipode.
+
 
 *** $k$ Bialgebra - antipode (Hopf algebra)                         :focus:
 :PROPERTIES:
