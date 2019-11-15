@@ -1338,7 +1338,10 @@ expressed as powers of a single element called a primitive element of the field.
     Given a vector space on complex numbers $V_C$ then also $\bar{V}_C$, where
      scalar multiplication is $\bar{z}*v$ for $z \in C$, is a vector space.
 
-*** Dual Space
+
+*** Dual Pair                                              :focus:
+A /dual pair/ is a pair of vector spaces $X,Y$ and a bilinear map $\ang{}: X \times Y \mto K$.
+*** Dual Space                                                      :focus:
 
     - Given a vector space $V$, one can define its dual space as the space of
       linear mappings over it, i.e., $V^* = \{f: V \rightarrow k \}$.
@@ -1346,11 +1349,9 @@ expressed as powers of a single element called a primitive element of the field.
     - $V^*=span(f_1^*, \ldots, f_n^*)$ where $$f_i^*(\sum_j c_j e_j)=c_i$$
       and $V = span(e_1, \ldots, e_n)$.
 
-    - Important property of *duality*: $(V^*)^* \cong V$
+   
 
-    - Also called *linear functionals* from $V$ to $k$.
-
-*** Functor between spaces and dual spaces
+*** Dual spaces (functor relation)                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -1358,25 +1359,19 @@ expressed as powers of a single element called a primitive element of the field.
 #+BEGIN_EXPORT latex
 \begin{center}
 \begin{tikzcd}
-V \arrow[d, "f"] \arrow[r, "K^{(-)}"] & K^V \\
-W \arrow[r] & K^W \arrow[u, "f^*"]
+V \arrow[d, "f"]  & K^V \\
+W & K^W \arrow[u, "Tf"]
 \end{tikzcd}
 \end{center}
 #+END_EXPORT
 
-- It is a contravariant functor represented by $\KK$ and maps a linear $f: V
-  \rightarrow W$ to its dual $f^*: W^* \rightarrow V^*$.
-- The following identity holds:
-  $$f^*(w^*) = w^* \circ f$$
-- With the notation of natural pairing $\np{f^*(w^*)}{v} = \np{w^*}{f(v)}$
+- $V$ and $K^V$ form a dual pair with the so called natural pairing: $\np{f}{x} = f(x)$
+- $V$ and $K^V$ are also related by a functor relationship 
+  $Tf[-] = (- \circ f)$
+- The functor relationship can be expressed with the natural pairing notation as well:
 
-*** Dual spaces natural pairing
+  $$\np{Tf(w^*)}{v} = \np{w^*}{f(v)}$$
 
-
-    - Given $v \in V_k$ and $v^* \in V^*$, there is a natural pairing $\np{v^*}{v}$,
-      i.e., $v^*(v) \in k$. 
-
-    - The *natural pairing* is a bi-linear map (in both $v$ and $v^*$).
       
 *** Affine space
     - A tuple $(A, V_k, (+): V_k \times A \rightarrow A)$ defines an /affine space/
@@ -3987,7 +3982,7 @@ epimorphism.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-\tfun{\tia} \arrow[r, "t~g"] \arrow["Fix~(\textrm{unfix})", no head] & t~E \arrow[d, "k"] \\
+\tfun{\tia} \arrow[r, "t~g"] \arrow[d, "Fix~(\textrm{unfix})", no head] & t~E \arrow[d, "k"] \\
 \tia \arrow[r, "g"] & E
 \end{tikzcd}
 #+END_EXPORT
