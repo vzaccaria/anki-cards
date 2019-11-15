@@ -1346,9 +1346,11 @@ A /dual pair/ is a pair of vector spaces $X,Y$ and a bilinear map $\ang{}: X \ti
     - Given a vector space $V$, one can define its dual space as the space of
       linear mappings over it, i.e., $V^* = \{f: V \rightarrow k \}$.
 
-    - $V^*=span(f_1^*, \ldots, f_n^*)$ where $$f_i^*(\sum_j c_j e_j)=c_i$$
+    - $K^V=V^*=span(f_1^*, \ldots, f_n^*)$ where $$f_i^*(\sum_j c_j e_j)=c_i$$
       and $V = span(e_1, \ldots, e_n)$.
 
+    - $V$ and $K^V$ form a *dual pair* if we define the inner product with
+      $\np{f}{x} = f(x)$ which is called the natural pairing.
    
 
 *** Dual spaces (functor relation)                                  :focus:
@@ -1365,7 +1367,7 @@ W & K^W \arrow[u, "Tf"]
 \end{center}
 #+END_EXPORT
 
-- $V$ and $K^V$ form a dual pair with the so called natural pairing: $\np{f}{x} = f(x)$
+- $V$ and $K^V$ form a dual pair if we define the inner product as: $\np{f}{x} = f(x)$
 - $V$ and $K^V$ are also related by a functor relationship 
   $Tf[-] = (- \circ f)$
 - The functor relationship can be expressed with the natural pairing notation as well:
@@ -1449,7 +1451,7 @@ V \times W \arrow[r, "\phi"] \arrow[rd, "h"] & V \otimes W \arrow[d, "\tilde{h}"
     - The sequence B -> C -> 0 is exact only if the map from B to C is an epimorphism
     - The sequence 0 -> A -> B -> C -> 0 is called exact if A -> B is mono and B -> C is epi
     
-*** Metric space
+*** Metric space                                                    :focus:
 
 A metric space is a vector space possessing an inner product $\np{v}{w}$ that
 allows length and angle to be measured. The inner product
@@ -1461,7 +1463,7 @@ allows length and angle to be measured. The inner product
 The length (or norm) of $x$ is defined as $|x|=\sqrt{\np{x}{x}}$. The distance
 $d(x,y)$ is the norm of the difference, i.e., $|x-y|$.
 
-*** Hilbert space
+*** Hilbert space                                                   :focus:
 
 A Hilbert space is a metric space which is also *complete*, i.e., every sequence
 of vectors $u_k$ is such that $$\sum_k^{\infty}|u_k|<\infty$$
@@ -1469,6 +1471,7 @@ of vectors $u_k$ is such that $$\sum_k^{\infty}|u_k|<\infty$$
 Concerning completeness, note, for example, that the set of rational numbers is not
 complete, because e.g. ${\sqrt {2}}$ is "missing" from it, even though one can
 construct a Cauchy sequence of rational numbers that converges to it.
+
 
 *** Group presentation
 - It is a way of specifying a group $G$. It is a set of generators $S$ and
@@ -4906,6 +4909,39 @@ morphisms in a cartesian closed category where data types are objects.
 
 * Cryptography, quantum, probability, statistics
 ** Quantum computing                                                 
+*** Pauli matrices                                                  :focus:
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=1\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_pauli.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+*** Hilbert space $C^n$ - inner product                             :focus:
+
+$C^n$ is an Hilbert space where the inner product is defined by:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=1\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_hilb.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+The inner product of two vectors is equal to the vector inner product between two matrix representations of those vectors.
+
+*** Hilbert space $C^n$ - outer product                             :focus:
+
+Remember that $\bra{v}\ket{v'}$ is a complex number. The outer product operator
+$\ket{w}\bra{v}$ is a linear operator which applied to $\ket{v'}$ is defined as:
+
+$$(\ket{w}\bra{v})\ket{v'} = \bra{v}\ket{v'}\ket{w}$$
+
+Any linear operator $A: V \rightarrow W$ can be represented through the outer product:
+
+$$\sum_{ij} \bra{w_j}A\ket{v_i}\ket{w_j}\bra{v_i}$$ where $w_j$ and $v_i$ are the bases
+of $W$ and $V$ respectively.
+
+
+
 *** Qubit
 A qubit is something that has a state which, when measured can be either 0 with
 probability $\alpha$ or 1 with probability $\beta$. We describe this state in 
@@ -5034,7 +5070,6 @@ provides a final state of: $$H^{\otimes n}(\ket{0}) = \ket{0}^{\otimes n} = \fra
 If we apply a $U_f$ (where $f$ is an $n$ to $1$ bit function) to the state
 $\ket{0}^{\otimes n}\ket{0}$, the resulting state is
 $$\frac{1}{\sqrt{2^n}}\sum_x \ket{x}\ket{f(x)}$$
-
 
 *** Quantum parallelism ($1$ bit) - Deutsch's algorithm             :focus:
 
