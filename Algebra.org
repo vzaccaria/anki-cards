@@ -2268,24 +2268,23 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
   duplication morphism $\Delta_X: X \rightarrow X \times X$ and the map into the
   terminal object $!_X: X \mto 1$
 
-*** Closed category
+*** Closed category                                                 :focus:
 
 - In a closed category there is also an object representing *all* the morphisms
   from $X$ to $Y$ denoted $Y^X$. In a closed category, we have: $$hom(X \otimes
   Y, Z) \cong hom(Y, Z^X)$$ The natural isomorphism is called *currying*.
-- Visually, the object $Z^X$ is visualized as a /clasp/ and these diagrams are
-  in a one to one correspondence:
+
+- Visually, there is a one to one correspondence
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
-  \begin{figure}
-  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/cchom1.pdf}}
-  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/cchom3.pdf}}
-  \end{figure}
+  \includegraphics[width=4cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/key/page-2-crop.pdf}
   #+END_EXPORT
-  #+END_CENTER 
+  #+END_CENTER
 
-*** Closed category - name of a morphism
+
+
+*** Closed category - name of a morphism                            :focus:
 
 - The *name* of a morphism $f: X \mto Y$ is a morphism $[f]: I \mto Y^X$, i.e., an
   element of $Y^X$
@@ -2293,12 +2292,33 @@ Given two categories $C$ and $D$, a product category $C \times D$ is such that
 - One can recover the original $f$ with the *evaluation* morphism $ev$: 
   $$ f = ev \circ (Id \otimes [f]) \circ r^{-1}$$ where $r^{-1}: X \mto X \otimes I$.
 
-- In a compact closed category, there is a one-to-one correspondence between a
-  morphism $f$ and an element of $X' \otimes Y$ where $X'$ is the dual of $X$.
-  Thus, a value of $X' \otimes Y$ encodes $f$ (gate teleportation).
+- The evaluation map is the uncurrying of the identity on $Y^X$
+
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \includegraphics[width=3cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/key/page-1-crop.pdf}
+  #+END_EXPORT
+  #+END_CENTER
 
 
-*** Compact category
+
+*** Compact closed category - name of a morphism                    :focus:
+
+- The *name* of a morphism $f: X \mto Y$ is a morphism $[f]: I \mto X' \otimes Y$
+  (the latter in a CCC is the exponential object)
+
+- In a CCC the evaluation is just $\epsilon_X \otimes Id$
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\includegraphics[width=3cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/key/page-3-crop.pdf}
+#+END_EXPORT
+#+END_CENTER
+
+- A value of $X' \otimes Y$ encodes $f$ (gate teleportation).
+
+
+*** Compact category                                                :focus:
 
 A compact (or /autonomous/) category is such that every object $X$ has a dual $X'$: 
 
@@ -2319,7 +2339,7 @@ and there are unit $i_X: I \cong X \otimes X'$ and co-unit $\epsilon_X: X
 #+END_CENTER
 
 
-*** Compact closed category
+*** Compact closed category                                         :focus:
 
 - A compact category is automatically closed, i.e., the exponential object be
   defined as $$Y^X = X' \otimes Y$$ and it can be shown that it satisfies
