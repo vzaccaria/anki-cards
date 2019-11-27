@@ -3528,7 +3528,7 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
   - $\mu_X$ flattens the list, e.g., $\mu_X(\ang{a\ang{ab}}) = \ang{aab}$
 
 
-*** Yoneda lemma
+*** Yoneda lemma                                                    :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3544,17 +3544,15 @@ $x=c$ and $x^c=Id_c$:
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-x \arrow[d, "\phi"] & x^c \arrow[d, "\circ \phi"] \arrow[r, "\alpha_x"] & Fix \arrow[d, "F\phi" ] \\
+x \arrow[d, "\phi"] & x^c \arrow[d, "\circ \phi"] \arrow[r, "\alpha_x"] & Fx \arrow[d, "F\phi" ] \\
 y  & y^c \arrow[r, "\alpha_y"] & Fy
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-Implying that:
+$$\alpha_y (\phi \circ Id_c) \simeq \alpha_y(\phi) = (F \phi) \alpha_c(Id_c)$$
 
-$$\forall \phi,y. (\alpha_y \circ \phi) = (F \phi) \alpha_c(Id_c)$$
-
-So fixing $\alpha_c(Id_c)$ in $Fc$ means fixing $\alpha$ for all $y$. In practice: 
+Given $F$, for any $\alpha_c(Id_c) \in Fc$ there is a single $\alpha_y$. In practice: 
 $$Hom((-)^c,F) = Fc$$
 
 
@@ -4042,14 +4040,16 @@ A^* \arrow[r, "scan(\phi)"]          & B^*
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-                         & {(I_t, fix)} \arrow[ld, "\kappa(f)"] \arrow[rd, "\kappa(h_{g,f})"] &         \\
+& {(I_t, fix)} \arrow[ld, "\kappa(f)"] \arrow[rd, "\kappa(h_{g,f})"] &         \\
 {(F, f)} \arrow[rr, "g"] &                                                              & {(H,h_{g,f})}
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- There might be up to a unique morphism between two algebras. Fixing one algebra and an
-  algebra morphism fixes the second algebra which /fuses/ $h$ and $\kappa(f)$.
+# Vedere https://www.cs.ox.ac.uk/ralf.hinze/publications/IFL10.pdf
+
+- Given $g$ and $f$, if there exists an $h_{g,f}$ such that $g$ is an algebra morphism, 
+  the composition of $g \circ \kappa(f)$ is equal to $\kappa(h_{g,f})$.
   
 - For example, for $I_t$ a list, $\kappa(f) = fold (+1) = length$ and $g = (2*)$ then $(2*) \circ
   length$ can be rewritten as the fold of $(+n)$, instead of $(+1)$.
@@ -4243,7 +4243,7 @@ f(q) = \begin{cases}
 \end{equation}
 
 
-*** Expression data types as functors                               :focus:
+*** Expression data types as initial alg. of functors               :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4950,17 +4950,49 @@ The inner product of two vectors is equal to the vector inner product between tw
 
 *** Hilbert space $C^n$ - outer product                             :focus:
 
-Remember that $\bra{v}\ket{v'}$ is a complex number. The outer product operator
-$\ket{w}\bra{v}$ is a linear operator which applied to $\ket{v'}$ is defined as:
+Remember that $\braket{v}{v'}$ is a complex number. The outer product operator
+$\ketbra{w}{v}$ is a matrix defined as:
 
-$$(\ket{w}\bra{v})\ket{v'} = \bra{v}\ket{v'}\ket{w}$$
+$$(\ketbra{w}{v})\ket{v'} = \braket{v}{v'}\ket{w}$$
 
-Any linear operator $A: V \rightarrow W$ can be represented through the outer product:
+If $\ket{i}$ is an orthonormal basis, we have that (/completeness relation/):
+$$\sum_i \ketbra{i}{i} = I$$
 
-$$\sum_{ij} \bra{w_j}A\ket{v_i}\ket{w_j}\bra{v_i}$$ where $w_j$ and $v_i$ are the bases
-of $W$ and $V$ respectively.
+Examples for orthonormal bases $\ket{0}$: 
+#+BEGIN_EXPORT latex
+\begin{equation}
+\ketbra{0}{0} = \left (
+\begin{array}{cc}
+1& 0 \\
+0 & 0 \\
+\end{array}
+\right ), 
+\ketbra{1}{1} = \left (
+\begin{array}{cc}
+0& 0 \\
+0 & 1 \\
+\end{array}
+\right ), 
+\end{equation}
+#+END_EXPORT
 
 
+
+
+*** Eigenvectors and eigenvalues                                    :focus:
+Given an operator $A$, its eigenvector $\ket{v}$ is such that
+$$A \ket{v} = v \ket{v}$$ 
+where $v$ is the eigenvalue of $A$ corresponding to $\ket{v}$ (note
+that we will use the same name but the type is different.
+Eigenvalues of $A$ can be found by solving $$c(v) = det | A - vI | = 0$$
+
+*** Diagonal representation of an operator                          :focus:
+An operator $A$ is diagonalizabile if it can afford a representation
+in terms of outer products of eigenvectors:
+
+$$A = \sum_i \lambda_i \ketbra{i}{i}$$
+
+for example Pauli's $Z = \ketbra{0}{0} - \ketbra{1}{1}$ is thus diagonalizable.
 
 *** Qubit
 A qubit is something that has a state which, when measured can be either 0 with
@@ -5117,6 +5149,7 @@ probability of measuring a $\ket{0...0}$ is $\widehat{f}(0)^2$, so, in the case
 where $f$ can be either balanced or constant, we can distinguish the two
 because, in the first case, one would never measure such state while in the
 second case one would always measure such state.
+
 
 
 
