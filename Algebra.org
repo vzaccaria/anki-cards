@@ -4299,7 +4299,8 @@ Two ways to build them,
 #+END_EXPORT
 #+END_CENTER
 
-- Assume $\tia$ is an initial algebra representing an AST of expressions built with $t$.
+- Assume $\tia$ is an initial algebra representing an AST of expressions built with $t$. $\tfm$ 
+  is an initial algebra for $A + t[-]$.
 
 - Then the fixed point $\tfm$ of $(A + t[-])$ is such that $\tfm$ is a tree similar to $\tia$
   where leafs are $A$ while $T$ merges them into the tree itself. 
@@ -4315,18 +4316,22 @@ Two ways to build them,
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{A \times \tfun{\tcfcm}} \arrow[d, "Fix_C", no head] \arrow[r] & {A \times \tfun{\tia}} \arrow[d, "{\phi = (\lambda(-,t).Fix_T t}) \circ AnnF"] \\
+{A \times \tfun{\tcfcm}} \arrow[d, "\beta", no head] \arrow[r] & {A \times \tfun{\tia}} \arrow[d, "{\phi = Fix_T \circ snd}"] \\
 \tcfcm \arrow[r, "\kappa(\phi)"']                          & \tia                                                         
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-- Useful because it can reuse $t$ algebras (e.g., printing)
+- $\tcfcm$ is an initial algebra as well. $\beta = Fix \circ AnnF$ here and in other slides;
+  As the free monad, it can give back the original $\tia$.
+
+- Useful because it can reuse $t$ algebras (e.g., printing) 
 
 - the fixed point $\tcfcm$ is a tree similar to $\tia$ where all nodes have been annotated with
-  values of type $A$, and one can strip annotations by running a $\kappa(\phi)$.
+  values of type $A$
 
-- We define $\beta = Fix \circ AnnF$ in other slides;
+- In the above example one can strip annotations by running a $\kappa(\phi)$.
+
 
 *** Expression data types as functors - adding annotations bottom-up :focus:
 :PROPERTIES:
@@ -4524,18 +4529,16 @@ example $\nu(s)= \langle (head(s))+1, tail(s) \rangle$ adds one to the stream.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{A_{\pi} + T[\tilde{F}[A]]_{\phi}} \arrow[d] \arrow[r] & {A+T[X]} \arrow[d] \\
-\tilde{F}[A] \arrow[u, "\cong"] \arrow[r] & {X}
+{A + \tfun{\tfm}} \arrow[d] \arrow[r] & {A+\tfun{X}} \arrow[d] \\
+\tfm \arrow[u, "{\pi + \phi}"] \arrow[r] & {X}
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
- - Given a functor $T[-]$, the *free monad* $\tilde{F}[A]$ can be built as the
-   fixed point of functor $A+T[-]$ (constructed with $\pi$ and $\phi$), where
-   $A$ is an arbitrary object.
- - It is possible to show that $\tilde{F}[A]$ is a functor and *a monad* in $A$.
+ - The *free monad* $\tfm$ is the fixed point of a functor
+   where $Fix = \pi + \phi$ (pure and free).
 
-*** Free monads (construction - bind)                               :focus:
+*** Free monads (bound function)                                    :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -4543,8 +4546,8 @@ example $\nu(s)= \langle (head(s))+1, tail(s) \rangle$ adds one to the stream.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{T[\tilde{F}[A]]} \arrow[r] \arrow[d, "Tf^o"] & {\tilde{F}[A]} \arrow[d, "f^o"] \arrow[r, "\pi"] \arrow[l, "\phi"] & A \arrow[ld, "f", dashed] \arrow[l] \\
-{T[\tilde{F}[B]]} \arrow[r] & {\tilde{F}[B]} \arrow[l, "\phi"] & 
+{\tfun{\tfmx{A}}} \arrow[r, "\phi"] \arrow[d, "Tf^o"] & {\tfm} \arrow[d, "f^o", red] \arrow[r, "\pi"] & A \arrow[ld, "f", dashed] \arrow[l] \\
+{\tfun{\tfmx{B}}} \arrow[r, "\phi"] & {\tfmx{B}}  & 
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -4555,30 +4558,33 @@ example $\nu(s)= \langle (head(s))+1, tail(s) \rangle$ adds one to the stream.
 
 *** Free monads (underlying commands from functor)                  :focus:
 
-- Assume $C$ is the type of some sequence of commands. 
+- Assume $C$ is the type of some sequence of commands; the functor represents
+  the composition of one action with that sequence $$T[C] = (S \times
+  C)_{print} + (S \mto C)_{getline} + 1_{end}$$
 
-- The data costructor/functor $$T[C] = (S \times C)_{print} + (S \mto
-  C)_{getline} + 1_{end}$$ represents the actions with which one can extend that
-  sequence, e.g., printing something then $C$ ($print$) or how to
-  produce $C$ from a string ($getline$).
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \includegraphics[width=4cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/key/page-4-crop.pdf}
+  #+END_EXPORT
+  #+END_CENTER
 
 - It is a way to build backwards a sequence of commands, e.g., $$getline~(x
-  \mapsto (print~("hi" x) (end)))$$ of type $T[T[T[C]]]$
+  \mapsto (print~("hi" x) (end))) ~~~ : T[T[T[C]]]$$
  
 *** Free monads (building monad commands from functor ones)         :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-Remember that $T[A]$ is a sequence of commands. To build the
+Remember that $\tfun{A}$ is a sequence of commands. To build the
 AST tree through a Free monad, e.g., ~type Console = Free ConsoleF~, we need to
 lift single commands as they were sequences of one command alone.
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-{T[\widetilde{F}[A]]} \arrow[d, "\phi"] & {T[A]} \arrow[l, "T\pi"] \arrow[ld, "liftF"] \\
-{\widetilde{F}[A]}                      &                                             
+{\tfun{\tfm}} \arrow[d, "\phi"] & {\tfun{A}} \arrow[l, "\tfun{\pi}"] \arrow[ld, "liftF"] \\
+{\tfm}                      &                                             
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER 
