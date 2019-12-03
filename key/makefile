@@ -4,6 +4,7 @@ PAGESOURCE?=images.pdf
 all: \
 	page-1-crop.pdf \
 	page-3-crop.pdf \
+	page-4-crop.pdf \
 	page-2-crop.pdf 
 
 page-%-full.pdf: images.pdf
