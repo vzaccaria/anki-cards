@@ -374,7 +374,7 @@ It is the smallest \emph{normal} subgroup of $G$ that contains $S$.
 *** Class number of a group $G$
 
     - The class number of G is the number of distinct (nonequivalent) conjugacy classes
-*** Free group construction
+*** Free group construction                                         :focus:
 The free group $F_S$ with free generating set $S$ can be constructed as follows.
 - Consider $S$ is a set of symbols and define for every $s \in S$ a
   corresponding $s^{-1} \in S^{-1}$. 
@@ -383,7 +383,7 @@ The free group $F_S$ with free generating set $S$ can be constructed as follows.
   \cdot$) words in $T$ with *concatenation* as group operation.
 This construction is a *functor*.
 
-*** Free group universal property
+*** Free group universal property                                   :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -391,9 +391,6 @@ This construction is a *functor*.
   functor. It is a pair $(F_X, u)$ such that for any function $v: X \mto |G|$, 
   there is a unique group homomorphism $f$ for which the diagram below commutes. 
 
-- In practice, any substitution $v$ of a set $X$ can be factorized through a substitution $u$
-  into the free group. Alternatively, note that any other group $\ang{X | R}$ instead of 
-  $F_X$ would have $f$ restricted by the relators $R$.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
@@ -1220,6 +1217,25 @@ F \arrow[r, hook] \arrow[rd, hook] & F(a) \arrow[d] \\
 - They are permutations and they form a group (the *Galois* group) $$Gal(F(c) : F)$$
 - not all permutations can be considered because only a few determine root field
   automorphisms.
+
+*** Fixed field                                                     :focus:
+Given a group $G$ and a field $K$, the *fixed field* $K^G$ is the 
+set of $k \in K$ that remain constant under the action (by multiplication of $G$):
+
+$$K^G = \{ k | g k = k \}$$
+
+Normally, the group $G$ is intended as the group of automorphisms from a
+field into itself, i.e., $G=Aut(F)$.
+
+*** Galois extension                                                :focus:
+
+If the field $L$ extends $K$ we indicate $L$ with $L/K$. 
+
+If the following hold:
+- all $l\in L$ are a root of $K[x]$ (i.e., it is an algebraic extension)
+- $K^{Aut(L/K)} \simeq K$ (where $K^G$ indicates the fixed field)
+
+then $L/K$ is a *Galois extension*.
 
 *** Galois correspondence                                           :focus:
 :PROPERTIES:
@@ -3198,7 +3214,7 @@ homomorphisms from $Z$ to $G$ whose size depends on which of the elements of $G$
 we map the generator.
 
 
-*** Universal arrow from object
+*** Universal arrow from object                                     :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3216,6 +3232,9 @@ r \arrow[rr, "h"]   &                                        & d \\
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
+
+The universal arrow is also called *free object* on $c$.
+
 
 *** Universal arrow from object (coslice category view definition)
 :PROPERTIES:
