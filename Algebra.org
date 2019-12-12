@@ -820,13 +820,14 @@ $$\mathbb{T} = \{ \forall kn. e^{2\pi i k/n}\}$$
 
 $\xi_n$ is the n-th root of unity (i.e., $\xi_n^n = 1$)
 
-*** Group representations and modules
-- A /representation/ is a group hom. $$G \rightarrow_{Grp} V^V$$
-- It extends to ring homs $$K^G \rightarrow_{Ring} V^V$$ where $V^V$ is the
-  endomorphism ring of the underlying group of $V$. The above is an
-  $R^G$ module, where the ring $R$ happens to be $K$, so $R[G]$ modules and representations
-  of groups are the same thing. For example, irreducible representations
-  correspond to a simple $R[G]$ module.
+*** Group representations and modules                               :focus:
+- If $G$ acts on $V$ through $\rho: G \mto V^V$, then also $KG$ acts on $V^V$ 
+  K-linearly:
+  $$\left(\sum_{g\in G} a_g g\right) v:=\sum_{g\in G}a_g(g\cdot v) \qquad \forall v\in V, ~a_g\in k.$$
+  so there is a ring hom: $$KG \rightarrow_{Ring} V^V$$ 
+- Since a module is a ring homomorphism into $V^V$ then a representation
+  induces automatically a $KG-module$ and viceversa.
+- For example, irreducible representations of $G$ correspond to simple $KG$ -modules.
 *** Fourier transform of a group
 
 - It derives from the Peter-weyl theorem that states that $C[G]
@@ -1228,14 +1229,43 @@ Normally, the group $G$ is intended as the group of automorphisms from a
 field into itself, i.e., $G=Aut(F)$.
 
 *** Galois extension                                                :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-If the field $L$ extends $K$ we indicate $L$ with $L/K$. 
+Given an extension $L/K$ of field $K$, if the following hold:
 
-If the following hold:
 - all $l\in L$ are a root of $K[x]$ (i.e., it is an algebraic extension)
+
 - $K^{Aut(L/K)} \simeq K$ (where $K^G$ indicates the fixed field)
 
-then $L/K$ is a *Galois extension*.
+then $L/K$ is a *Galois extension* and $Aut(L/K)$ is its *Galois group*. This happens if
+there exists $\bar{K}$ for which $i$ is a natural transformation and the triangles commute:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\bullet \arrow[d, "G=Aut(L/K)"] & \bar{K} \arrow[d, "(\cdot g)"] \arrow[r, "i", hook] \arrow[rd, "i", hook] & K \arrow[d, "(\cdot g)"] \\
+\bullet                         & \bar{K} \arrow[r, "i", hook]                                              & K                       
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** Orbit category                                                  :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+Given a group $G$, the orbit category $O_G$ is a subcategory of quotient groups of $G$
+ where morphims are $G$ equivariant maps of the right $G$ action:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+\bullet \arrow[d, "g"] & G/H \arrow[d, "(g \cdot )"] \arrow[r, "m"] & G/K \arrow[d, "(g \cdot)"] \\
+\bullet                & G/H \arrow[r, "m"]                        & G/K                       
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
 *** Galois correspondence                                           :focus:
 :PROPERTIES:
