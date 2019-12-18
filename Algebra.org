@@ -3078,10 +3078,13 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
 - Example: CAT, where 1-cells are functors and 2-cells are natural transformations
 
-*** 2-category vertical composition
+*** 2-category vertical composition                                 :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
+
+Allows the composition of 2-cells to give a new two-cell. If A and B are objects
+in Cat, this is the canonical composition of natural transformations.
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
@@ -3091,12 +3094,15 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 #+END_EXPORT
 #+END_CENTER
 
-This is the canonical composition of natural transformations
+It is done componentwise $$(\beta \alpha)_A = \beta_A \alpha_A$$
 
-*** 2-category horizontal composition
+
+*** 2-category horizontal composition                               :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
+
+The composition of 1-cells allows the composition of two-cells as:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
@@ -3105,6 +3111,20 @@ A \arrow[r] \arrow[r, "\Downarrow \alpha"', bend left=49] \arrow[r, "\Downarrow 
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
+
+This works also when considering either the left or right nat. trans and
+functors as identities. In this case, the shortcuts are the transformations $H\eta:
+HF \mto HG$ and $\eta H: FH \mto GH$ as
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+A \arrow[r, "\Downarrow \eta"', bend left] \arrow[r, "G"', bend right] & B \arrow[r, "H"]                                                       & C \\
+A \arrow[r, "H"]                                                       & B \arrow[r, "\Downarrow \eta"', bend left] \arrow[r, "G"', bend right] & C
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
 
 
 
