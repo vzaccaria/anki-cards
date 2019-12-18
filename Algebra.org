@@ -3889,11 +3889,27 @@ c &                    &                                 \\
   both $A$ and $B$), this is the canonical set union $A \cup B$.
 
 
-*** Fiber 
- - A *fiber* of a function $f$ and a value $b$ is the set of elements for which
-   $f(x) = b$.
+*** Fiber                                                           :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+ - A *fiber* of a function $f$ and a value $b$ is the set of elements:
+   $$\phi_f(b) = \{ a | f(a) = b \}$$
 
- - It is a way to make some arbitrary function as injective.
+ - It is a way to make some arbitrary function as injective; it corresponds to the
+   following pullback:
+
+   #+BEGIN_CENTER
+   #+BEGIN_EXPORT latex
+   \begin{tikzcd}
+   \phi_f = A \times_B * \arrow[d] \arrow[r] & * \arrow[d, "pt"] \\
+   A \arrow[r, "f"]                 & B                
+   \end{tikzcd}
+   #+END_EXPORT
+   #+END_CENTER
+  
+
+
 
 * Haskell, functor algebras, free monads 
 ** Functor algebras and co-algebras
