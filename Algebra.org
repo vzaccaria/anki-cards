@@ -1220,43 +1220,52 @@ F \arrow[r, hook] \arrow[rd, hook] & F(a) \arrow[d] \\
   automorphisms.
 
 *** Fixed field                                                     :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 Given a group $G$ and a field $K$, the *fixed field* $K^G$ is the 
-set of $k \in K$ that remain constant under the action (by multiplication of $G$):
+set of $k \in K$ that remain constant under the action (by multiplication of $G$), i.e., 
+where the following commutes:
 
-$$K^G = \{ k | g k = k \}$$
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+K^G \arrow[d, "(\cdot g)"] \arrow[r, "i", hook] \arrow[rd, "i", hook] & K \arrow[d, "(\cdot g)"] \\
+K^G \arrow[r, "i", hook]                                              & K                       
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
-Normally, the group $G$ is intended as the group of automorphisms from a
-field into itself, i.e., $G=Aut(F)$.
+One interesting group studied later is the group $G=Aut(L/K)$ where $L/K$ is 
+an extension $L$ of $K$.
+
 
 *** Galois extension                                                :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-Given an extension $L/K$ of field $K$, if the following hold:
+An extension $L/K$ is a *Galois extension* of field $K$, if the following hold:
 
-- all $l\in L$ are a root of $K[x]$ (i.e., it is an algebraic extension)
+- all $l\in L$ are a root of $K[x]$ (i.e., $L$ it is an algebraic extension)
 
-- $K^{Aut(L/K)} \simeq K$ (where $K^G$ indicates the fixed field)
+- The following commutes (fixed field) and the inclusion morphism is invertible:
 
-then $L/K$ is a *Galois extension* and $Aut(L/K)$ is its *Galois group*. This happens if
-there exists $\bar{K}$ for which $i$ is a natural transformation and the triangles commute:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-\bullet \arrow[d, "G=Aut(L/K)"] & \bar{K} \arrow[d, "(\cdot g)"] \arrow[r, "i", hook] \arrow[rd, "i", hook] & K \arrow[d, "(\cdot g)"] \\
-\bullet                         & \bar{K} \arrow[r, "i", hook]                                              & K                       
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  \begin{tikzcd}
+  K^{Aut(L/K)} \arrow[d, "(\cdot g)"] \arrow[r, "i", hook] \arrow[rd, "i", hook] & K \arrow[d, "(\cdot g)"] \\
+  K^{Aut(L/K)} \arrow[r, "i", hook]                                              & K                       
+  \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
 
 *** Orbit category                                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
-Given a group $G$, the orbit category $O_G$ is a subcategory of quotient groups of $G$
- where morphims are $G$ equivariant maps of the right $G$ action:
+Given a group $G$, the *orbit category* $O_G$ is a subcategory of quotient groups of $G$
+ where morphims are $G$ equivariant maps of the left $G$ action:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
