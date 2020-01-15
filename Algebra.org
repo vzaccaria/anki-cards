@@ -3087,18 +3087,19 @@ A faithful functor $T: C \rightarrow D$ is a *monomorphism* between morphisms in
 
 - Example: CAT, where 1-cells are functors and 2-cells are natural transformations
 
-*** 2-category vertical composition                                 :focus:
+*** Natural transformation vertical composition                     :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-Allows the composition of 2-cells to give a new two-cell. If A and B are objects
-in Cat, this is the canonical composition of natural transformations.
+Given two nt. $\alpha,\beta \in \mathbb{D}^\mathbb{C}$ can create a new
+nt. $\beta\alpha: \mathbb{D}^\mathbb{C}$ 
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
- A \arrow[r, "\Downarrow \alpha"', bend left=49] \arrow[r] \arrow[r, "\Downarrow \beta", bend right=49] &  B & \implies \exists  & A \arrow[r, "\Downarrow \alpha \circ \beta"', bend left=49] \arrow[r, bend right=49] & B
+A \in \mathbb{C} \arrow[d] & FA \in \mathbb{D} \arrow[d] \arrow[r, "\alpha_A"] \arrow[rr, "(\beta\alpha)_A", bend left=49] & GA \arrow[r, "\beta_A"] \arrow[d] & HA \arrow[d] \\
+B \in \mathbb{C}           & FB \arrow[r]                                                                                  & GB \arrow[r]                      & HB          
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -3106,33 +3107,34 @@ in Cat, this is the canonical composition of natural transformations.
 It is done componentwise $$(\beta \alpha)_A = \beta_A \alpha_A$$
 
 
-*** 2-category horizontal composition                               :focus:
+*** Natural transformation horizontal composition                   :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-The composition of 1-cells allows the composition of two-cells as:
-
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-A \arrow[r] \arrow[r, "\Downarrow \alpha"', bend left=49] \arrow[r, "\Downarrow \beta", bend right=49] & B \arrow[r] \arrow[r, "\Downarrow \gamma"', bend left=49] \arrow[r, "\Downarrow \delta", bend right=49] & C \implies & A \arrow[r] \arrow[r, "\Downarrow (\gamma \circ_1 \alpha)"', bend left=49] \arrow[r, "\Downarrow (\delta \circ_1 \beta)", bend right=49] & C
+\mathbb{C} \arrow[r, "\Downarrow \alpha"', bend left=49] \arrow[r, "G", bend right=49] \arrow[r, "F", bend left=49] & \mathbb{D} \arrow[r, "\Downarrow \gamma"', bend left=49] \arrow[r, "K", bend right=49] \arrow[r, "H", bend left=49] & \mathbb{E} = & \mathbb{C} \arrow[r, "\Downarrow (\gamma * \alpha)"', bend left=49] \arrow[r, "KG", bend right=49] \arrow[r, "HF", bend left=49] & \mathbb{E}
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-This works also when considering either the left or right nat. trans and
-functors as identities. In this case, the shortcuts are the transformations $H\eta:
-HF \mto HG$ and $\eta H: FH \mto GH$ as
+For all $c \in \mathbb{C}$ $$(\gamma * \alpha)_c = \gamma_{Gc} \circ H\alpha_c = K\alpha_c \circ \gamma_{Fc}$$
+
+When some ntt. are identities, these are called whiskerings, e.g., $H\alpha:
+HF \mto HG$ for $\gamma=id$ is the whiskering of $\alpha$:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
-A \arrow[r, "\Downarrow \eta"', bend left] \arrow[r, "G"', bend right] & B \arrow[r, "H"]                                                       & C \\
-A \arrow[r, "H"]                                                       & B \arrow[r, "\Downarrow \eta"', bend left] \arrow[r, "G"', bend right] & C
+\mathbb{C} \arrow[r, "\Downarrow \alpha"', bend left] \arrow[r, "G"', bend right] & \mathbb{D} \arrow[r, "H"] & \mathbb{E}
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
+
+It can be shown that $\gamma * \alpha$ can be decomposed into whiskerings of
+either $\alpha$ or $\gamma$.
 
 
 
