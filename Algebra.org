@@ -56,27 +56,32 @@ It is an endofunctor and a monad of a poset when this is interpreted as a catego
 - The closure operator is a function $cl: P(S) \mto C$
   and maps any $s$ to the smallest $f_i$ such that $s \subseteq f_i$.
 
-*** Galois connection                                               :focus:
+*** Galois connection (posets)                                      :focus:
 - It is a sort of weak iso-morphism between posets $C$ and $D$. Categorically,
-  it is an *adjunction* between two functors $LR$
+  it is an *adjunction* between two functors $LR$, i.e., two maps such that $$L(p)
+  \leq q \iff p \leq R(q)$$
 - The mapping $RL: C \mto C$ is exactly the *closure operator* of the poset (or the unit of 
   the adjunction). 
 - The co-unit $LR: D \mto D$ is called the *kernel operator*.
 - An antitone Galois connection is just an adjunction between $D$ and $C^{op}$;
   functors, in this case, are called polarities.
 
-*** Galois connection (least element)                               :focus:
+*** Galois connection (posets, least element)                       :focus:
 - A poset $X$ has a least element if there is an adjunction (or Galois connection)
   with the singleton poset $1=\{ * \}$ where $* \leq *$.
 - An adjunction $(l,r)$ (where $r: 1 \mto X$) then if there exists $* \leq l(x)$
   then $r \leq x$. Since $* \leq l(x)$ this is true for all $x$, then $r$ is the
   least element.
 
-*** Galois connection (meets and join)                              :focus:
+*** Galois connection (posets, meets and join)                      :focus:
 - The total $\vee: X \times X \mto X$ is the (lower) adjoint to the duplication
   function $\Delta: X \mto X \times X$, where $X$ is a poset.
 - On the other hand, the meet $\wedge$ exists for all $x$ if it is the upper adjoint
   to $\Delta$.
+
+*** Galois connection (posets, floor)                               :focus:
+Assume the poset $\mathbb{N}$. The map $(k \times -)$ is left adjoint to $\lceil
+-/k \rceil$
 
 ** Monoids
 *** Monoid                                                                 :noanki:
@@ -3940,6 +3945,25 @@ c &                    &                                 \\
    #+END_CENTER
   
 
+
+*** Lax closed functor                                              :focus:
+A lax closed functor (or *applicative*) $T$ is a functor for which 
+there exist the following natural transformations:
+
+$$(\star: T(x^y)^{T y} \mto Tx, x \mto T x)$$
+
+If such a functor exists, one can lift an arbitrary argument function: 
+ 
+$${{c^{b^a}}^{Ta}}^{Tb} \mto {c^{b^a}}^{Tb^a} \xrightarrow{fmap} T(c^{b^a})^{Tb^a} \xrightarrow{\star} Tc$$
+
+*** Lax monoidal functor                                            :focus:
+A lax monoidal functor $T$ is a functor for which 
+there exist the following natural transformations:
+
+$$(\mu: Ta \times Tb \mto T(a \times b), u: T())$$
+
+In a closed monoidal category one can derive a lax closed functor (applicative)
+from this and viceversa.
 
 
 * Haskell, functor algebras, free monads 
