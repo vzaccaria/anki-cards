@@ -4324,8 +4324,9 @@ A \arrow[ru, "apo(\phi)"] \arrow[u, "Inj_L"]           &
 #+END_EXPORT
 #+END_CENTER
 
-$\phi$ can return either $A \times A$ (becoming a generator) or $A\times S_A$
-and at that point the ~cofix~ part starts.
+$\phi: A \mto A \times A + A \times S_a$ so it can return $A \times A$ (becoming
+in the recursion, a generator) or $A \times S_A$ and from that point the $cofix: S_A \mto A \times S_A$ 
+starts. It corresponds to a transformation identity so it does nothing.
 
 *** Zygomorphism                                                    :focus:
 :PROPERTIES:
