@@ -3625,34 +3625,6 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
   - $\mu_X$ flattens the list, e.g., $\mu_X(\ang{a\ang{ab}}) = \ang{aab}$
 
 
-*** Yoneda lemma                                                    :focus:
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-Lemma's says how many natural transformations between a representable presheaf 
-and another presheaf $F$, i.e., the set:
-
-$$Hom((-)^c,F)$$
-
-If $\alpha$ is a natural transformation then the following must commute also for
-$x=c$ and $x^c=Id_c$:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-x \arrow[d, "\phi"] & x^c \arrow[d, "\circ \phi"] \arrow[r, "\alpha_x"] & Fx \arrow[d, "F\phi" ] \\
-y  & y^c \arrow[r, "\alpha_y"] & Fy
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-$$\alpha_y (\phi \circ Id_c) \simeq \alpha_y(\phi) = (F \phi) \alpha_c(Id_c)$$
-
-Given $F$, for any $\alpha_c(Id_c) \in Fc$ there is a single $\alpha_y$. In practice: 
-$$Hom((-)^c,F) = Fc$$
-
-
 
 *** Pre - Yoneda Lemma - G-Equivariant maps
 :PROPERTIES:
@@ -3716,6 +3688,50 @@ Functor (or action) $\Gamma$ is thus represented by $\bullet$.
 - There is thus a bijection between $$Hom(\Gamma, F) \simeq
   Hom((\bullet)^\bullet,F) \simeq F\bullet$$
 
+
+
+
+*** Yoneda lemma                                                    :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Lemma's says how many natural transformations between a representable presheaf 
+and another presheaf $F$, i.e., the set:
+
+$$Hom((-)^c,F)$$
+
+If $\alpha$ is a natural transformation then the following must commute also for
+$x=c$ and $x^c=Id_c$:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+x \arrow[d, "\phi"] & x^c \arrow[d, "\phi \circ"] \arrow[r, "\alpha_x"] & Fx \arrow[d, "F\phi" ] \\
+y  & y^c \arrow[r, "\alpha_y"] & Fy
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+$$\alpha_y (\phi \circ Id_c) \simeq \alpha_y(\phi) = (F \phi) \circ \alpha_c(Id_c)$$
+
+Given $F$, for any $\alpha_c(Id_c) \in Fc$ there is a single $\alpha_y$. In practice: 
+$$Hom((-)^c,F) = Fc$$
+
+
+*** Yoneda embedding                                                :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Yoneda lemma says that there is an isomorphism natural in $c$ and $F$: 
+
+$$Hom((*)^c,F) = Fc$$
+
+Natural means that on the left and right side there are two bi-functors $C
+\times Set^C \mto Set$, i.e.: that map $(c, F)$ to a set. The functor on the
+right is called $ev$; Yoneda lemma says that these two functors are
+equivalent.
 
 
 
