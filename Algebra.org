@@ -4077,7 +4077,7 @@ from this and viceversa.
 
       i.e, $$f = n \mapsto q_S^n(q_0)$$
 
-*** An initial algebra defines homomorphisms by induction (lists)                                                                 :noanki:
+*** An initial algebra defines homomorphisms by induction (lists) :noanki:focus:
 
     * Let's indicate with $(A^*, [e,c]: 1 + A \times A^* \rightarrow A^*$) the
       *initial* algebra of lists of $A$.
