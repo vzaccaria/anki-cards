@@ -1211,17 +1211,16 @@ F \arrow[r, hook] \arrow[rd, hook] & F(a) \arrow[d] \\
   thus there is a single root field for every irreducible polynomial --- if it
   contains $a$ it should contain also $b$.
 
-*** Galois group
+*** Galois group                                                    :focus:
 
-- A root field automorphism is an isomorphism over the same field which fixes $F$:
-   $$h_{p(x)}: F(c) \rightarrow F(c)$$
+- Given an extension $E/F$ with polynomial $p(x)$, a root field automorphism is
+  an isomorphism $$h_{p(x)}: E \rightarrow E$$ which fixes $F$, i.e., each
+  $h_{p(x)}$ permutes only its roots.
 
-- Each $h_{p(x)}$ permutes only the roots.
+- The number of $h_{p(x)}$ is the degree $[E : F]$
 
-- The number of $h_{p(x)}$ is the degree $[F(c) : F]$
-
-- They are permutations and they form a group (the *Galois* group) $$Gal(F(c) : F)$$
-- not all permutations can be considered because only a few determine root field
+- They are permutations and they form a group (the *Galois* group) $$h_{p(x)} \in Aut(E/F)$$
+  not all permutations can be considered because only a few determine root field
   automorphisms.
 
 *** Fixed field                                                     :focus:
@@ -1250,17 +1249,15 @@ an extension $L$ of $K$.
 :BEAMER_opt: fragile
 :END:
 
-An extension $L/K$ is a *Galois extension* of field $K$, if the following hold:
-
-- all $l\in L$ are a root of $K[x]$ (i.e., $L$ it is an algebraic extension)
-
-- The following commutes (fixed field) and the inclusion morphism is invertible:
+An extension $E/F$ is *Galois extension* if: 
+- all $e\in E$ are a root of $F[x]$ (i.e., $E$ it is an algebraic extension)
+- $F$ is the fixed field of $Aut(E/F)$, i.e.,
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
   \begin{tikzcd}
-  K^{Aut(L/K)} \arrow[d, "(\cdot g)"] \arrow[r, "i", hook] \arrow[rd, "i", hook] & K \arrow[d, "(\cdot g)"] \\
-  K^{Aut(L/K)} \arrow[r, "i", hook]                                              & K                       
+  F^{Aut(E/F)} \arrow[d, "(\cdot g)"] \arrow[r, "i", hook] \arrow[rd, "i", hook] & F \arrow[d, "(\cdot g)"] \\
+  F^{Aut(E/F)} \arrow[r, "i", hook]                                              & F                       
   \end{tikzcd}
   #+END_EXPORT
   #+END_CENTER
@@ -1301,7 +1298,7 @@ F \arrow[r, hook] & {F[p_1]} \arrow[r, hook] & {F[p_1,p_2]} \\
 
 - The number of elements of $H$ is $[F:I]$.
 
-*** Galois correspondence example
+*** Galois correspondence example                                   :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
