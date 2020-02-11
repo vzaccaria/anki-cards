@@ -4170,9 +4170,11 @@ Given $\phi: A \times B \mto B$, $scan(\phi)$ is a catamorphism of type:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEYACAak4EFOAHUF4AtvH4A9AFQgAvqXSZc+QinbkqtRizZdeA4WIkAKAEJCRWcXE5mZASnmKQGbHgJEy7LfWatEED4ZZyV3VSINH2o-XUCLI2sJe1kFMJVPdVIAJl8dAJAU+S0YKABzeCJQADMAJwhRJDIQHAgkbJj8tmRhGDRsBgIAfT5STkQKEGoGOgAjGAYABWUPNRAGGGqcUJA6hqbqVqQNbX8kMCYGBmm5heXwzPXN7bTd+sbEE6PEAGZOs8CPUEMzAZQ2nFmY1miF6-SwgzAQwSglqdFBGzGwjQAAssJZjLYAJJQSY3eZLFYRQIbLY7PYfDotNq-Ml3SmPGnbf5xEDCbBlUR0OnvdqHZkAFm5BTgAGM0cL9iymUhJaceSZEE45BQ5EA
 \begin{tikzcd}
-1 + A \times A^* \arrow[d] \arrow[r] & 1 + A \times B^* \arrow[d, "{[1 , cons \circ \langle \phi, Id\rangle]}"] \\
-A^* \arrow[r, "scan(\phi)"]          & B^*                                                              
+1 + A \times A^* \arrow[d, "{[\epsilon_A, :]}"] \arrow[r] & 1 + A \times (B \times B^*) \arrow[d, "{[\langle b, b:\epsilon_B \rangle, \phi \times Id]}"] \\
+A^* \arrow[r, "\sigma"] \arrow[rd, "scan"]                & B \times B^* \arrow[d, "(:)"]                                                                \\
+                                                          & B^*                                                                                         
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
