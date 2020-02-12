@@ -3726,9 +3726,14 @@ Yoneda lemma says that there is an isomorphism natural in $c$ and $F$:
 $$Hom((*)^c,F) = Fc$$
 
 Natural means that on the left and right side there are two bi-functors $C
-\times Set^C \mto Set$, i.e.: that map $(c, F)$ to a set. The functor on the
-right is called $ev$; Yoneda lemma says that these two functors are
-equivalent.
+\times Set^C \mto Set$, i.e.: that map $(c, F)$ to a set. 
+
+- The functor on the right is called $ev: C \times Set^C \mto C$
+- On the left, we have that $(*)^c$ is a functor $y: C^{op} \mto Set^C$
+  and the complete functor is $Hom(y(-),-)$.
+
+- Yoneda lemma implies that $y$ is full (a surjection of morphism) 
+  and faithful (injection of morphisms) into $Set^C$.
 
 
 
