@@ -78,6 +78,8 @@ It is an endofunctor and a monad of a poset when this is interpreted as a catego
   function $\Delta: X \mto X \times X$, where $X$ is a poset.
 - On the other hand, the meet $\wedge$ exists for all $x$ if it is the upper adjoint
   to $\Delta$.
+- Left adjoints preserve joins: $L(\bigvee A)= \bigvee L(A)$
+- Right adjoints preserve meets: $R(\bigwedge A)= \bigwedge R(A)$
 
 *** Galois connection (posets, floor)                               :focus:
 Assume the poset $\mathbb{N}$. The map $(k \times -)$ is left adjoint to $\lceil
@@ -4171,7 +4173,7 @@ epimorphism.
 :BEAMER_opt: fragile
 :END:
 
-Given $\phi: A \times B \mto B$, $scan(\phi)$ is a catamorphism of type:
+Given $\phi: A \times B \mto B$, $scan(\phi,b)$ is a catamorphism of type:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
