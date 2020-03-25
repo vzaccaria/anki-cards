@@ -13,6 +13,10 @@ anki-cards/Algebra/Algebra.json: Algebra.org header.tex
 	mkdir -p $(dir $@)
 	pandoc-anki  $< -j -f -r header.tex > $@
 
+internal: Algebra.org
+	pandoc-anki  $< -i -f 
+
+
 # for commutative diagrams, copy freetikz into /home/admin/texmf/tex/latex/freetikz
 # then use: http://homepages.inf.ed.ac.uk/cheunen/freetikz/freetikz.html
 
