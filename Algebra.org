@@ -132,7 +132,7 @@ Assume the poset $\mathbb{N}$. The map $(k \times -)$ is left adjoint to $\lceil
       f(1_X) = 1_Y \textrm{~~and~~} f(m \star n) = f(m) * f(n)
     \]
 
-** Groups
+** Groups                                                            :focus:
 *** Group                                                                 
 
    A group $G$ is a monoid where for all elements $a$, the (*) operation satisfies:
