@@ -2705,30 +2705,30 @@ properties hold:
 $E$ should be understood as the subset of elements of $X$ for which $g_1(x) =
 g_2(x)$, i.e., the solutions of the equation.
 
-*** Function objects (Sets)                                         
+*** Function objects (Sets)                                         :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
 
-    - The object-morphism pair $(r^{p}, eval: p \times r^{p} \rightarrow r)$
-      makes an *exponential object* if for all other object-morphism pair $(q, e)$ there exists 
+    - The object-morphism pair $(b^{a}, eval: b^{a} \times a \rightarrow b)$
+      makes an *exponential object* if for all other object-morphism pair $(z \times a, e)$ there exists 
       a mapping $\lambda(e)$ such that the following commutes:
 
       #+BEGIN_CENTER
       #+BEGIN_EXPORT latex
       \begin{tikzcd}
-                                      & r &                                                               \\
-      p \times r^p  \arrow[ru, "eval"] &   & p \times q \arrow[ll, "\lambda(e) \times id"] \arrow[lu, "e"] \\
-      r^p                             &   & q \arrow[ll, "\lambda(e)"]                                   
+                                      & b &                                                               \\
+      b^a \times a  \arrow[ru, "eval"] &   & z \times a \arrow[ll, "\lambda_e \times id"] \arrow[lu, "e"] \\
+      b^a                             &   & z \arrow[ll, "\lambda_e"]                                   
       \end{tikzcd}
       #+END_EXPORT
       #+END_CENTER
 
-    - the mapping $\lambda(e): q \rightarrow r^{p}$ is called the called
-      *currying* of $e$. 
+    - the mapping $\lambda_e: z \rightarrow b^{a}$ is called the called
+      *currying* of $e: z \times a\rightarrow b$. 
 
-    - in fancy words, for every object $r,p$  the exponential is a universal arrow to $r$ of a
-      functor $H[-] = p \times -$ 
+    - in fancy words, the exponential is a universal arrow to $b$ of a
+      functor $H[-] = - \times a$ 
 
 *** Zero morphism
 :PROPERTIES:
@@ -3985,7 +3985,7 @@ In a closed monoidal category one can derive a lax closed functor (applicative)
 from this and viceversa.
 
 * Haskell, functor algebras, free monads
-** Functor algebras                                                  :focus:
+** Functor algebras and co-algebras
 *** Definition of algebras and co-algebras                                                                 
     - An algebraic operation in domain $X$ is a morphism from tuple objects to $X$
       e.g.: $$ X \times A
@@ -4029,13 +4029,6 @@ from this and viceversa.
     a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
     with the operations $$ f \circ a = b \circ T(f)$$
 
-*** Whole point of (co-)algebras                                                                 
-    - define functions indirectly exploiting fixed (co-)algebraic constructors
-      and finality/initiality
-    - so one has to specify only the initial algebra $A$ and another algebra $B$
-      and automatically the morphism can be built. In general, the morphisms
-      used by $B$ are not recursive.
-
 *** Initial algebras                                                                 
     - Fixed a functor $T$, functor algebras $(U, a: T(U) \rightarrow U)$ can be
       seen as categorical objects with algebra homomorphisms as morphism.
@@ -4054,6 +4047,35 @@ from this and viceversa.
     - Call $\tia \simeq Fix~t$ we have $Fix~t = t~(Fix~t)$, which in Haskell can
       be created through a recursive data type ~Fix t = Fix t (Fix t)~. ~Fix~ encodes 
       algebraic operations $\tfun{\tia} \rightarrow \tia$.
+*** Co-algebra                                                                 
+    Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
+    C$, a functor co-algebra for $T$ is a pair $(U, c)$
+
+    - an object $U \in C$ (*carrier*)
+    - a morphism $c: U \rightarrow T(U)$ (*co-algebra structure*)
+
+    $c$ must be defined by a tuple of several functions whose signature is
+    specified by $T$. For example, $$T(X) = A \times X$$ defines $$(value,next):
+    (U \rightarrow A, U \rightarrow U)$$ for any process $U$.
+*** Homomorphisms of co-algebras                                                                 
+
+    Given two T-functor co-algebras $(U, a: - \rightarrow T(-))$ and $(V, b: - \rightarrow T(-))$,
+    a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
+    with the operations $$ T(f) \circ a = b \circ f$$
+*** Final co-algebra                                                                 
+    - A final coalgebra $d: W \rightarrow T(W)$ is a coalgebra such that for
+      every coalgebra $c: U \rightarrow T(U)$ there exists a unique map of
+      co-algebras $f: (U,c) \rightarrow (W,d)$
+
+*** Examples of final co-algebras                                                                  
+    
+    | Functor            | FC Carrier                        | FC Structure         | Notes                 |
+    |--------------------+-----------------------------------+----------------------+-----------------------|
+    | $A \times X$       | $A^\mathbb{N}$                    | head($a$), tail($a$) | Infinite lists of As  |
+    | $1 + (A \times X)$ | $A^{\infty} = A^* + A^\mathbb{N}$ | possnext($a$)        | Finite and inf. lists |
+    | $1 + X$            | $\mathbb{N} \cup \{ \infty \}$    | pred($n$)            |                       |
+    
+** Notable F-algebra morphisms                                       :focus:
 *** Catamorphisms                                                                  
 :PROPERTIES:
 :BEAMER_opt: fragile
@@ -4159,7 +4181,6 @@ $$\beta = (\phi \times \psi) \circ (t~fst \times t~snd) \circ split$$
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
-
 
 *** Hylomorphisms                                                                  
 :PROPERTIES:
@@ -4341,23 +4362,25 @@ Two ways to build them,
 :BEAMER_opt: fragile
 :END:
 
+- If $I_t$ is an initial algebra representing an AST of expressions built with $t$
+  then the fixed point $M_t^A$ of $(A + t[−])$ is a **tree similar to $I_t$ with
+  holes of type $A$** while $T$ merges them into the tree itself. Such a monad can
+  be easily used as a co-algebra for building streams (see futumorphisms).
+
+- Consider $A$ = String referencing the name of a variable.
+  Then, in the following picture, $\phi: A → I_t$ can be used to build a complete tree $I_t$
+  by substituting instances of $A$ with subtrees $I_t$:
+
+
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEACAak5wFkA+jgB67EAF9S6TLnyEUARnJVajFm3bccASWGTpIDNjwEiZRavrNWiEENHipMk-KLLL1axrt6ck1RgoAHN4IlAAMwAnCABbJDIQHAgkACZqBjoAIxgGAAVZUwUQBhgI-2oACxg6KDZIMFYvdVsQCKwAD0F+A0iY+MRE5KRlNRskMCYGBgzs3ILXMztS8t62-pHqYcQAZmbxu2QAHSO0SqxSTnaugBUKEFmc-MK3ZbL-Z3W4tK2U3f2fCATgBrOhoNB0AAUx1O50u10EdwAlA8SnNnotilEsMFKh8KBIgA
 \begin{tikzcd}
-{A + \tfun{\tfm}} \arrow[d, "Fix_M", no head] \arrow[r]       & {A+\tfun{\tia}} \arrow[d, "\phi + Fix_T"] \\
-\tfm \arrow[r, "\kappa(\phi + Fix_T)"'] & \tia                                 
+A + tM_t^A \arrow[d, "fix_M", no head] \arrow[r] & A+tI_t \arrow[d, "{[\phi, fix_T]}"] \\
+M_t^A \arrow[r, "{\kappa([\phi, fix_T])}"']      & I_t                                
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
-
-- Assume $\tia$ is an initial algebra representing an AST of expressions built with $t$. $\tfm$ 
-  is an initial algebra for $A + t[-]$.
-
-- Then the fixed point $\tfm$ of $(A + t[-])$ is such that $\tfm$ is a tree similar to $\tia$
-  where leafs are $A$ while $T$ merges them into the tree itself. 
-- For templating consider $A=String$ referencing the name of a variable, given
-  $\phi: A \rightarrow \tia$ you can build a complete $\tia$ with $\kappa(\phi +
-  Fix_T)$ (acting as /template substitution/).
 
 *** Expression data types as functors - annotation (cofree comonad) 
 :PROPERTIES:
@@ -4473,68 +4496,33 @@ parser creates an annotated tree parser.
 
 
 ** Functor co-algebras                                               :focus:
-*** Co-algebra                                                                 
-    Given a polynomial (endo-)functor $T$ that maps $X \in C$ to $T(X) \in
-    C$, a functor co-algebra for $T$ is a pair $(U, c)$
-
-    - an object $U \in C$ (*carrier*)
-    - a morphism $c: U \rightarrow T(U)$ (*co-algebra structure*)
-
-    $c$ must be defined by a tuple of several functions whose signature is
-    specified by $T$. For example, $$T(X) = A \times X$$ defines $$(value,next):
-    (U \rightarrow A, U \rightarrow U)$$ for any process $U$.
-*** Homomorphisms of co-algebras                                                                 
-
-    Given two T-functor co-algebras $(U, a: - \rightarrow T(-))$ and $(V, b: - \rightarrow T(-))$,
-    a homomorphism of algebras from $(U,a)$ to $(V,b)$ is a function $f: U \rightarrow V$ which commutes
-    with the operations $$ T(f) \circ a = b \circ f$$
-*** Final co-algebra                                                                 
-    - A final coalgebra $d: W \rightarrow T(W)$ is a coalgebra such that for
-      every coalgebra $c: U \rightarrow T(U)$ there exists a unique map of
-      co-algebras $f: (U,c) \rightarrow (W,d)$
-
-*** Examples of final co-algebras                                                                  
-    
-    | Functor            | FC Carrier                        | FC Structure         | Notes                 |
-    |--------------------+-----------------------------------+----------------------+-----------------------|
-    | $A \times X$       | $A^\mathbb{N}$                    | head($a$), tail($a$) | Infinite lists of As  |
-    | $1 + (A \times X)$ | $A^{\infty} = A^* + A^\mathbb{N}$ | possnext($a$)        | Finite and inf. lists |
-    | $1 + X$            | $\mathbb{N} \cup \{ \infty \}$    | pred($n$)            |                       |
-    
-*** Bisimulation (for lists)                                                                  
-:PROPERTIES:
-:BEAMER_opt: fragile
-:END:
-
-#+BEGIN_CENTER
-#+BEGIN_EXPORT latex
-\begin{tikzcd}
-S \arrow[d, "\xi"] & R \arrow[r, hook] \arrow[l, "\pi_1"] \arrow[d, "\gamma"] \arrow[l, "\pi_2"', bend right] & S \times S \\
-A \times S         &  A \times R  \arrow[l]                                                                   &           
-\end{tikzcd}
-#+END_EXPORT
-#+END_CENTER
-
-    - Assume a co-algebra $\xi: S \mto A \times S$ and $\pi_1, \pi_2$ are the
-      projections from $R$ is called *a bi-simulation* if there exists
-      $\gamma$ for which the above commutes for both $\pi_1$ and $\pi_2$.
-    - If $S$ is a final co-algebra, e.g., a list $\xi = [h,t]$ then $\pi_1(a,b),
-      \pi_2(a,b)$ must map to the same list $a=b$ so $R$ is an equivalence. For
-      this to hold, one must find $\gamma$ for which:
-      #+BEGIN_EXPORT latex
-      \begin{align*}
-      (\gamma_A(l_1,l_2), \gamma_{R,1}(l_1,l_2)) & = (h(l_1),t(l_1)) \\ 
-      (\gamma_A(l_1,l_2), \gamma_{R,2}(l_1,l_2)) & = (h(l_2),t(l_2))
-      \end{align*}
-      #+END_EXPORT
-      an indirect way to derive $\gamma$ would be to demonstrate that $h(l_1) =
-      h(l_2) \wedge (t(l_1), t(l_2)) \in R$
-
 *** Anamorphisms                                                                  
    - Given a final co-algebra A, and a generic co-algebra $(B,f)$ the unfold of
      $f$ allows to create a mapping $B \rightarrow A$ non-recursively; this is called $ana(f)$.
 
    - Anamorphisms are called co-recursion.
+
+*** Futumorphisms
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+Recall that $M_t^A$ represents a tree of structure $t$ with holes of type $A$. A
+futumorphism $u(\phi)$, given an $\phi: A \rightarrow tM_t^A$, allows to create
+a co-algebra $M_t^A \rightarrow tM_t^A$ which can be used to construct a
+co-inductive value (e.g., a stream).
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRBwAIBZAfRwD0AgiAC+pdJlz5CKMgCYqtRiza8BwsROx4CRAIykF1es1aIQAST6jxIDNun7yikyvM4rOG1qm7ZpAGYXZTMQDVt7XxkSUj1g0zZBDgBqDhw1IVFFGCgAc3giUAAzACcIAFskOWocCCQAzRBSiqQDdjrEaqUE8wAdXsY0AAs6AAoAOkmASm8mssrEMnb6xuaFgBYajrbXUP60LB4uWbWkTeXO4xC2JlH9oawZ1fnWraQAViuekCYwIqwAB4nF6IT4XJa7NjIe5YUgcLBQChZERAA
+\begin{tikzcd}
+t M_t^A \arrow[r]                                 & tI_t           \\
+A + tM_t^A \arrow[u, "{[\phi, id]}"]              &                \\
+M_t^A \arrow[r, "\alpha(...)"] \arrow[u, "unfix"] & I_t \arrow[uu] \\
+A \arrow[u, "\pi_M"] \arrow[ru, "u(\phi)"]        &               
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
 
 *** Streams as co-inductive data types (generation)                 
 :PROPERTIES:
@@ -4542,14 +4530,15 @@ A \times S         &  A \times R  \arrow[l]                                     
 :END:
 
 A stream $S_A$ is a final co-algebra of $s \mapsto a \times s$. One can build a stream from
-a seed value $a \in A$ by using $ana([Id,\nu])$ where $\nu$ specifies how to 
+a seed value $a \in A$ by using $ana(\langle Id, \nu \rangle)$
+ where $\nu$ specifies how to 
 generate the next value.
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
 \begin{tikzcd}
 A \times A \arrow[rr, "Id \times \phi"]                          &  & A \times S_A \arrow[d, "scons = -_A \cdot -_{S_A}", bend left] \\
-A \arrow[rr, "{\phi = \alpha([Id,\nu])}"] \arrow[u, "{[Id, \nu]}"] &  & S_A \arrow[u, "cofix"]                                        
+A \arrow[rr, "{\phi = \alpha(\langle Id,\nu \rangle)}"] \arrow[u, "{\langle Id, \nu \rangle}"] &  & S_A \arrow[u, "cofix"]                                        
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -4648,6 +4637,35 @@ Assume that:
 Then $i$ must belong to the unique identity morphism on $A^*$ so it is an
 epimorphism.
 
+*** Bisimulation (for lists)                                                                  
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+\begin{tikzcd}
+S \arrow[d, "\xi"] & R \arrow[r, hook] \arrow[l, "\pi_1"] \arrow[d, "\gamma"] \arrow[l, "\pi_2"', bend right] & S \times S \\
+A \times S         &  A \times R  \arrow[l]                                                                   &           
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+    - Assume a co-algebra $\xi: S \mto A \times S$ and $\pi_1, \pi_2$ are the
+      projections from $R$ is called *a bi-simulation* if there exists
+      $\gamma$ for which the above commutes for both $\pi_1$ and $\pi_2$.
+    - If $S$ is a final co-algebra, e.g., a list $\xi = [h,t]$ then $\pi_1(a,b),
+      \pi_2(a,b)$ must map to the same list $a=b$ so $R$ is an equivalence. For
+      this to hold, one must find $\gamma$ for which:
+      #+BEGIN_EXPORT latex
+      \begin{align*}
+      (\gamma_A(l_1,l_2), \gamma_{R,1}(l_1,l_2)) & = (h(l_1),t(l_1)) \\ 
+      (\gamma_A(l_1,l_2), \gamma_{R,2}(l_1,l_2)) & = (h(l_2),t(l_2))
+      \end{align*}
+      #+END_EXPORT
+      an indirect way to derive $\gamma$ would be to demonstrate that $h(l_1) =
+      h(l_2) \wedge (t(l_1), t(l_2)) \in R$
+
 
 ** Free monads
 *** Free monads (construction)                                      
@@ -4722,7 +4740,6 @@ lift single commands as they were sequences of one command alone.
 : 
 : getline :: Console String
 : getline = liftF (GetLine id)
-
 
 *** Free monads (composition)                                       
     :PROPERTIES:
