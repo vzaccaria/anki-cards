@@ -2146,6 +2146,10 @@ form loops (except for identity arrows).
 
 - *antisimmetry*: $x \rightarrow y \rightarrow x \Rightarrow x = y$
 
+*** Poset monotone map
+A monotone map between two posets $(A, \leq)$ and $(B, \leq)$ is
+a function $f: A \rightarrow B$ such that if $x \leq y$ then $f(x) \leq f(y)$.
+
 *** Symmetric monoidal poset                                        
 It is a poset equipped with monoidal structure $$(X, \leq, I, \otimes)$$ 
 where: 
@@ -2153,8 +2157,17 @@ where:
 - $I \otimes x = x$, 
 - $\otimes$ is associative and symmetric
 
-An example is $(Mat, \rightarrow, 0, +)$ for chemical reactions. Another is $(Bool, \leq, true, \wedge)$.
+An example is $(Mat, \rightarrow, 0, +)$ for chemical reactions. Another is
+$(Bool, \leq, true, \wedge)$. Recall however that $false \leq true$ in this poset.
+ 
 
+*** Monoidal monotone maps
+Given two monoidal posets $(P,\leq,I_p, \times_p)$ and $(Q,\leq,I_Q, \times_Q)$
+a function $f: P \rightarrow Q$ is
+
+- monoidal monotone, if $I_Q \leq f(I_P)$ and $f(p_1) \times_Q f(p_2) \leq f(p_1 \times_P p_2)$
+- strong monoidal monotone, if $I_Q \simeq f(I_P)$ and $f(p_1) \times_Q f(p_2) \simeq f(p_1 \times_P p_2)$
+- strict monoidal monotone, if $I_Q = f(I_P)$ and $f(p_1) \times_Q f(p_2) = f(p_1 \times_P p_2)$
 *** Closure operator (posets)                                       
 
 Given a poset $P$, the closure operator is an endomorphism $cl: P \mto P$ such 
@@ -2202,8 +2215,8 @@ It is an endofunctor and a monad of a poset when this is interpreted as a catego
 - Right adjoints preserve meets: $R(\bigwedge A)= \bigwedge R(A)$
 
 *** Galois connection (posets, floor)                               
-Assume the poset $\mathbb{N}$. The map $(k \times -)$ is left adjoint to $\lceil
--/k \rceil$
+Assume the poset $\mathbb{N}$ (arrows = $\leq$). The map $(k \times -)$ is left adjoint to $\lfloor
+-/k \rfloor$. Interpret this as, e.g., $$3x \leq y \leftrightarrow \leq \lfloor y/3 \rfloor$$
 
 *** Preorder as a category
 
@@ -2880,14 +2893,18 @@ Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot 
 
 *** Indexed monad
 
-Given categories C and D, a /D-indexed monad over C/ is a C-endofunctor $D^D \times C \mto C$ with two natural transformations:
+- Given categories C and D, a /D-indexed monad $T$ over C/ is a C-endofunctor $D^D
+  \times C \mto C$ with two natural transformations:
 
-$$\eta: [-] \mto T_{m}[-]$$
-$$\mu: T_{m_2}[T_{m_1}[-]] \mto T_{m_2 \circ m_1}[-]$$
-where $m_{*}$ is a morphism in the category $D$
+  $$\exists d. \eta: [-] \mto T_{Id_d}[-]$$
+  $$\mu: T_{m_2}[T_{m_1}[-]] \mto T_{m_2 \circ m_1}[-]$$
+
+  where $m_{*}$ is a morphism in the category $D$.
+
+- For example, in Haskell, $D=\{lock, unlock\}$ and it becomes easy to see 
+  see if the computation acquires the lock, or does not touch the lock.
 
 
- 
 ** Functors
 *** Functor definition                                                                 
 
@@ -4146,18 +4163,19 @@ A^* \arrow[r, "\sigma"] \arrow[rd, "scan"]                & B \times B^* \arrow[
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQcACASQH0cQAX1LpMufIRQBmCtTpNW7LnwHDR2PASLlSxOQxZtEHHvyEiQGDRKIAmXfoVGQK8+vFaUAFgc0Di42UzNUsxTUkSUltHQ3ZXEKsPCJlovyc44LkYKABzeCJQADMAJwgAWyQdDggkGXlY4wALEBpGegAjGEYABTCbY0YYQtULEvKkMmqkHxA2zp6+z1mhgTSGjgA-AB0tgGt6NDR6XkK3EDGKxHspxCr-Zxwd-cPj5taOrt7rJcHhs4vajQcDVEAA2NYBEBPA5HE4tWYfBbfSTLP4hAGIOrAiYQ5w7MDMeFzT6LFG-EZFUqXGbYsG49ind7zL5Jdjk-5UpAAViBILq93Y0JevDeCOZpLZKw540QPJu1wFxnxhKZJORkrRlEEQA
 \begin{tikzcd}
-                                & t I_t \arrow[rd, "h"]                           &                                                 & t I_t \arrow[rd, "t~\kappa(f)"] &                       \\
-t I_t \arrow[ru, "t~\kappa(h)"] &                                                 & I_t \arrow[rd, "\kappa(f)"] \arrow[ru, "unfix"] &                                 & t I_t \arrow[ld, "f"] \\
-                                & I_t \arrow[ru, "\kappa(h)"] \arrow[lu, "unfix"] &                                                 & I_t                             &                      
+                              & t I_t \arrow[rd, "h"]                        &                                              & t I_t \arrow[rd, "t~\kappa_f"] &                       \\
+t I_t \arrow[ru, "t\kappa_h"] &                                              & I_t \arrow[rd, "\kappa_f"] \arrow[ru, "\nu"] &                                & t I_t \arrow[ld, "f"] \\
+                              & I_t \arrow[ru, "\kappa_h"] \arrow[lu, "\nu"] &                                              & I_t                            &                      
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
 
-Since $Unfix \circ h$ is a natural transformation $$f~(t~\kappa(f))~ 
-unfix ~h~ (t~\kappa(h))= (f ~ unfix ~ h)~
-(t~(\kappa(h) \kappa(f)))$$ This means that $$\kappa(f) \circ
-\kappa(h) = k(f \circ unfix \circ h)$$
+Since $\nu \circ h$ is a natural transformation $$f~(t~\kappa_f)~ 
+\nu ~h~ (t~\kappa_h)= (f \nu h)~
+(t~(\kappa_h \kappa_f)) \nu$$ This means that $$\kappa_f \circ
+\kappa_h = \kappa_{f \circ \nu \circ h}$$
 
 - If $I$ is an expression type, and $h$ and $f$ are optimizations expressed as
   F-algebras, you can do a single optimization pass by composing their algebras:
