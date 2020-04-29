@@ -1,0 +1,1646 @@
+% Created 2020-04-24 Fri 10:25
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation]{beamer}
+\usetheme{default}
+\author{Vittorio Zaccaria}
+\date{\today}
+\title{Notes}
+\input{header.tex}
+\hypersetup{
+ pdfauthor={Vittorio Zaccaria},
+ pdftitle={Notes},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.1 (Org mode N/A-fixup)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Category theory}
+\label{sec:org1b0faf7}
+\subsection{Preorder, partial and linear order (Category)\hfill{}\textsc{focus}}
+\label{sec:org7941e3a}
+\begin{frame}[label={sec:org835a90e}]{Poset as a category}
+A \alert{partial order} (\alert{poset}) is a preorder where, if there are arrows, these cannot
+form loops (except for identity arrows).
+
+\begin{itemize}
+\item \alert{reflexivity}: from identity morphisms
+
+\item \alert{transitivity}: from composition of morphisms
+
+\item \alert{antisimmetry}: \(x \rightarrow y \rightarrow x \Rightarrow x = y\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org1a6ebac}]{Poset monotone map}
+A monotone map between two posets \((A, \leq)\) and \((B, \leq)\) is
+a function \(f: A \rightarrow B\) such that if \(x \leq y\) then \(f(x) \leq f(y)\).
+\end{frame}
+
+\begin{frame}[label={sec:org3d25a3e}]{Symmetric monoidal poset}
+It is a poset equipped with monoidal structure $$(X, \leq, I, \otimes)$$ 
+where: 
+\begin{itemize}
+\item \(x_1 \leq y_1\) and \(x_2 \leq y_2\) implies \(x_1 \otimes x_2 \leq y_1 \otimes y_2\)
+\item \(I \otimes x = x\),
+\item \(\otimes\) is associative and symmetric
+\end{itemize}
+
+Examples
+\begin{itemize}
+\item \((Mat, \rightarrow, 0, +)\) for chemical reactions
+\item \((Bool, \leq, true, \wedge)\) - recall however that \(false \leq true\) in this poset.
+\item \((P(M),\subseteq, M, \cap)\) - subsets of M
+\item \((N \cup \{\infty\}, \leq, \infty, min)\)
+\item \(([0, \infty], \geq, +, 0)\) - cost
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org5809a3c}]{Monoidal monotone maps}
+Given two monoidal posets \((P,\leq,I_p, \times_p)\) and \((Q,\leq,I_Q, \times_Q)\)
+a function \(f: P \rightarrow Q\) is
+
+\begin{itemize}
+\item monoidal monotone, if \(I_Q \leq f(I_P)\) and \(f(p_1) \times_Q f(p_2) \leq f(p_1 \times_P p_2)\)
+\item strong monoidal monotone, if \(I_Q \simeq f(I_P)\) and \(f(p_1) \times_Q f(p_2) \simeq f(p_1 \times_P p_2)\)
+\item strict monoidal monotone, if \(I_Q = f(I_P)\) and \(f(p_1) \times_Q f(p_2) = f(p_1 \times_P p_2)\)
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org4b0089a}]{Closure operator (posets)}
+Given a poset \(P\), the closure operator is an endomorphism \(cl: P \mto P\) such 
+that:
+\begin{itemize}
+\item \(x \leq y \implies cl(x) \leq cl(y)\) (functor)
+\item \(x \leq cl(x)\) (this is the \(\eta\))
+\item \(cl(cl(x)) = cl(x)\) (this is the \(\mu\))
+\end{itemize}
+
+It is an endofunctor and a monad of a poset when this is interpreted as a category. 
+\end{frame}
+
+\begin{frame}[label={sec:orgf555676}]{Closure operator (example of the power set poset)}
+\begin{itemize}
+\item Given a set \(S\), assume \(\mathcal{C} = \{ f_i \}\) (\(f_i \in P(S)\)) are the
+fixed points of the operator \(cl\), i.e. \(cl(f_i) = f_i\). Call these \emph{closed
+sets}.
+
+\item \(\mathcal{C} \subseteq P(S)\) is closed under intersection.
+
+\item The closure operator is a function \(cl: P(S) \mto C\)
+and maps any \(s\) to the smallest \(f_i\) such that \(s \subseteq f_i\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org62540ad}]{Galois connection (posets)}
+\begin{itemize}
+\item It is a sort of weak iso-morphism between posets \(C\) and \(D\). Categorically,
+it is an \alert{adjunction} between two functors \(LR\), i.e., two maps such that $$L(p)
+  \leq q \iff p \leq R(q)$$
+\item The mapping \(RL: C \mto C\) is exactly the \alert{closure operator} of the poset (or the unit of 
+the adjunction).
+\item The co-unit \(LR: D \mto D\) is called the \alert{kernel operator}.
+\item An antitone Galois connection is just an adjunction between \(D\) and \(C^{op}\);
+functors, in this case, are called polarities.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org0cbcfee}]{Galois connection (posets, least element)}
+\begin{itemize}
+\item A poset \(X\) has a least element if there is an adjunction (or Galois connection)
+with the singleton poset \(1=\{ * \}\) where \(* \leq *\).
+\item An adjunction \((l,r)\) (where \(r: 1 \mto X\)) then if there exists \(* \leq l(x)\)
+then \(r \leq x\). Since \(* \leq l(x)\) this is true for all \(x\), then \(r\) is the
+least element.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orge4ebc7f}]{Galois connection (posets, meets and join)}
+\begin{itemize}
+\item The total \(\vee: X \times X \mto X\) is the (lower) adjoint to the duplication
+function \(\Delta: X \mto X \times X\), where \(X\) is a poset.
+\item On the other hand, the meet \(\wedge\) exists for all \(x\) if it is the upper adjoint
+to \(\Delta\).
+\item Left adjoints preserve joins: \(L(\bigvee A)= \bigvee L(A)\)
+\item Right adjoints preserve meets: \(R(\bigwedge A)= \bigwedge R(A)\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org30466e5}]{Galois connection (posets, floor)}
+Assume the poset \(\mathbb{N}\) (arrows = \(\leq\)). The map \((k \times -)\) is left adjoint to \(\lfloor
+-/k \rfloor\). Interpret this as, e.g., $$3x \leq y \leftrightarrow \leq \lfloor y/3 \rfloor$$
+\end{frame}
+
+\begin{frame}[label={sec:orgaff49d9}]{Preorder as a category}
+A \alert{preorder} is a category \(\mathcal{C}(O, M, \bullet)\), where there is at most one
+morphism between objects. It has the following properties:
+
+\begin{itemize}
+\item \alert{reflexivity}: from identity morphisms
+
+\item \alert{transitivity}: from composition of morphisms
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org91dde31}]{Poset interval}
+Given a poset \(P\), one can define an interval as the \alert{subposet} \(I_{x,y}=\{ i: x \leq i \leq y \},
+x,y,i \in P\). For example, here:
+
+\begin{tikzcd}
+ & g &  \\
+e \arrow[ru] & b \arrow[u] & f \arrow[lu] \\
+c \arrow[u] \arrow[ru,red] & d \arrow[u,red] \arrow[ru] &  \\
+a \arrow[ru,red] \arrow[u,red] &  & 
+\end{tikzcd}
+
+Red represents \(I_{a,b}\) 
+\end{frame}
+
+\begin{frame}[label={sec:org20c6f13}]{Linear order as a category}
+\begin{itemize}
+\item A Linear order is a partial order where there exists at least 1 arrow between elements:
+
+\[x \rightarrow y \in M \Rightarrow y \rightarrow x \notin M\]
+
+\item Basically, either one or the other but all objects pairs have morphisms
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgc20d1d6}]{Meet}
+\begin{center}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoAmAXVJADcBDAGwFcYkQIB9AZhAF9S6TLnyEUZYtTpNW7LgEZ+gkBmx4CReaUk0GLNog6dySoWtFEy8qXtmGFAAgA6TgO4woAcxgOuJvlIe3ggooABmAE4QALZIZCA4EEjcAuFRsYjcNIlI8qkgkTHJ2UmI5PmFGfE5iFogAEYwYFDJxBXpcSVI5ZR8QA
+\begin{tikzcd}
+o_1                                             & o_2 \\
+o_1 \wedge o_2 \arrow[u] \arrow[ru]             &     \\
+o_3 \arrow[u] \arrow[uu, bend left] \arrow[ruu] &    
+\end{tikzcd}
+\end{center}
+
+A \alert{meet}
+
+\begin{itemize}
+\item is the unique \alert{product} of two objects in a poset
+
+\item it is regarded as the \alert{minimum} of two objects (infimum)
+
+\item in boolean algebra, it can be seen as the \alert{and} operation
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgcd3dfb6}]{Join}
+\begin{center}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoAmAXVJADcBDAGwFcYkQIB9ARhAF9S6TLnyEUZbtTpNW7LtwAEAHSW0YMBV3L9BIDNjwEi3ClIYs2iDp20ChB0UTLEzMy9YDM-KTCgBzeCJQADMAJwgAWyQyEBwIJG47EDDIpHIaOISklKjEdNj4xA9s8NyTAqRiyj4gA
+\begin{tikzcd}
+o_3                    &                            \\
+o_1 \vee o_2 \arrow[u] &                            \\
+o_1 \arrow[u]          & o_2 \arrow[lu] \arrow[luu]
+\end{tikzcd}
+\end{center}
+
+\begin{itemize}
+\item is the unique \alert{coproduct} of two objects in a poset, also called \alert{supremum}
+\item in boolean algebra, it can be seen as the \alert{or} operation
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgb209850}]{Lattice}
+A lattice is a symmetric monoidal poset where \alert{all objects} have a \alert{meet} (GLB) and a \alert{join} (LUB). 
+In a lattice, meets and joins: 
+
+\begin{itemize}
+\item are idempotent, commutative and associative operations
+\item determine the same partial ordering \(\leq\) (they are compatible).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgdb89613}]{Subgroup lattice}
+Given a group \(G\), we can order subgroups; each pair of them has a largest
+common subgroup (intersecting the underlying sets) and a smallest subgroup
+containing both (generated by the union of the underlying sets).
+\end{frame}
+
+\begin{frame}[label={sec:org26dce97}]{Enriched categories}
+Given :
+\begin{itemize}
+\item a symmetric monoidal poset \(V\) and
+\item a set S
+\end{itemize}
+A \(V\) -category \(X\) (or \alert{a category \(X\) enriched in \(V\)}) is a category with:
+
+\begin{itemize}
+\item \(Ob(X) = S\)
+\item morphisms \(X(x,y) \in V\) (called the hom-objects).
+\end{itemize}
+
+such that \(I \leq X(x,x)\) and \(X(x,y) \otimes X(y,z) \leq X(x,z)\). A poset is a Bool category.
+\end{frame}
+
+\begin{frame}[label={sec:org7a16d5a}]{Lawvere's Metric space (category)}
+It is a set \(X\) and a function \(d: X \times X \rightarrow \mathbb{R}\) such that
+\begin{itemize}
+\item \(d(x,x) = 0\)
+\item \(d(x,y) + d(y,z) \geq d(x,z)\)
+\end{itemize}
+If Cost is a symmetric monoidal poset $$([0, \infty], \geq, +, 0)$$
+we have that such a metric space is a Cost-category X since 
+\begin{itemize}
+\item \(0 \geq d(x,x)\) and
+\item \(d(x,y) + d(y,z) \geq d(x,z)\).
+\end{itemize}
+One can represent this category as a matrix where rows/columns are the objects 
+and cells are the values of the poset elements.
+\end{frame}
+
+\begin{frame}[label={sec:org252db67}]{Enriched functor}
+A \alert{V-functor} \(F\) from the V-category \(X\) to the V-category \(Y\)
+is:
+
+\begin{itemize}
+\item a map of objects \(F: Ob(X) \rightarrow Ob(Y)\)
+\item provides for each morphism in \(X(x_1,x_2)\) a morphism in \(Y(F(x_1),F(y_2))\).
+Since morphisms are elements of the monoidal poset \(V\), we can see this as a
+morpshism (\(\leq\)) in the \(V\) monoidal poset, i.e., \(X(x_1,x_2) \leq Y(F(x_1),F(x_2))\)
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:orga70dd8f}]{Enriched product category}
+Given two V-categories \(X\) and \(Y\), one can form the V-category \(X\times Y\)
+which is composed of: 
+\begin{itemize}
+\item pairs of objects from \(X\) and \(Y\) and
+\item the hom objects are the objects \(X(x_1,x_2) \otimes Y(y_1, y_2)\) where \(\otimes\) 
+is the monoidal product.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orge7a2582}]{Enriched functor}
+A \alert{V-functor} \(F\) from the V-category \(X\) to the V-category \(Y\)
+is:
+
+\begin{itemize}
+\item a map of objects \(F: Ob(X) \rightarrow Ob(Y)\)
+\item provides for each morphism in \(X(x_1,x_2)\) a morphism in \(Y(F(x_1),F(y_2))\).
+Since morphisms are elements of the monoidal poset \(V\), we can see this as a
+morpshism (\(\leq\)) in the \(V\) monoidal poset, i.e., \(X(x_1,x_2) \leq Y(F(x_1),F(x_2))\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org7ef030e}]{Enriched product category}
+Given two V-categories \(X\) and \(Y\), one can form the V-category \(X\times Y\)
+which is composed of: 
+\begin{itemize}
+\item pairs of objects from \(X\) and \(Y\) and
+\item the hom objects are the objects \(X(x_1,x_2) \otimes Y(y_1, y_2)\) where \(\otimes\) 
+is the monoidal product.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org7ff78a3}]{Symmetric monoidal closed poset}
+It is a monoidal poset $$(X, \leq, I, \otimes)$$ with the property that
+for any pair of \(v,w,a\) elements, there is an element \((v \Rightarrow w)\)
+such that: 
+$$(a\times v)\leq w \textrm{~iff~} a \leq (v \Rightarrow w)$$
+
+For such a poset, \(\otimes\) distributes over \(\vee\). 
+\end{frame}
+
+\subsection{Special categories}
+\label{sec:orgf14300a}
+\begin{frame}[label={sec:org8de7e09}]{Powers in a bicartesian closed category (Set)}
+\begin{itemize}
+\item \alert{zeroth power}: the set of morphisms that go 
+from the initial object to any object and get the terminal object \(a^0 = 1\)
+
+\item \alert{powers of one}: there is only one morphism that goes from any
+object to the final one: \(1^a = 1\)
+
+\item We also have that: \((a^b)^c = a ^{b\times c}\) and \((a\times b)^c=a^c\times b^c\)
+\end{itemize}
+\end{frame}
+
+
+
+\subsection{Set category\hfill{}\textsc{focus}}
+\label{sec:org049431b}
+\begin{frame}[fragile,label={sec:org918364e}]{Monomorphisms (Sets)}
+\begin{center}
+\begin{tikzcd}
+B \arrow[r, "g_1", bend left] \arrow[r, "g_2", bend right] \arrow[rr, "f \circ g_1", dotted, bend left=49] \arrow[rr, "f \circ g_2", dotted, bend right=49] & C \arrow[r, "f", hook] & D
+\end{tikzcd}
+\end{center}
+\begin{itemize}
+\item \(f\) is a monomorphism if $$\neg\exists (g_1, g_2) ~~ g_1 \neq g_2 \wedge f \circ g_1 = f \circ g_2$$
+
+\item If \(f\) is not mono, one could find \(g_1 \neq g_2\) for which
+$$f(a_1) = f(a_2) \rightarrow f \circ g_1 = f \circ g_2$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgebd6a1a}]{Epimorphisms (Sets)}
+\begin{center}
+\begin{tikzcd}
+B & C \arrow[l, "g_1"', bend right] \arrow[l, "g_2"', bend left] & D \arrow[l, "f"', tail] \arrow[ll, "g_1 \circ f"', dotted, bend right=49] \arrow[ll, "g_2 \circ f"', dotted, bend left=49]
+\end{tikzcd}
+\end{center}
+
+\begin{itemize}
+\item \(f\) is an epimorphism if $$\neg\exists (g_1, g_2) ~~ g_1 \neq g_2 \wedge g_1 \circ f = g_2
+  \circ f$$
+
+\item If \(f\) is not surjective, there are elements in \(C\) which will not participate
+to \(g_{*} \circ f\) (\emph{terra incognita}). There will be thus \(g_1\) and \(g_2\) that differ only in
+terms of those excluded terms while their composition is the same.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org8f75021}]{Terminal object (Sets)}
+There is a set 1 for which, for any set \(X\), there is a unique function \(X \rightarrow 1\).
+This is called the \alert{terminal object}.
+\end{frame}
+
+\begin{frame}[label={sec:org33366cf}]{Unit of categorical product (Sets)}
+The unit of a categorical product is the terminal object, \(X \times 1 \simeq X\)
+\end{frame}
+
+\begin{frame}[label={sec:orgfe3a89c}]{Sets sharing an element (Sets)}
+If:
+
+\begin{itemize}
+\item there is a monomorphism \(m: B \rightarrow X\)
+
+\item and there is \(k: 1 \rightarrow B\) such that \(x: 1 \rightarrow X\) factors through \(m\), i.e.,  \(x = m \circ k\)
+\end{itemize}
+
+then \(x \in B\)
+\end{frame}
+
+\begin{frame}[label={sec:orgd8fc8bc}]{Subobject (Sets)}
+Any object \(B\) for which there exists a monomorphism \(B \rightarrow X\) is a subset/subobject of \(X\).
+\end{frame}
+
+\begin{frame}[label={sec:orgd300997}]{Equalizer (Sets)}
+Given two functions (\(g_1, g_2: X \rightarrow Y\)), \alert{their equaliser} is an \alert{object} and
+\alert{monomorphism} \alert{pair} \((E,m: E \rightarrow X)\) for which the following
+properties hold:
+
+\begin{enumerate}
+\item \alert{Equivalence}: \(g_1 \circ m = g_2 \circ m\)
+\item \alert{Limit}: for any other object pair \((O,m_o: O \rightarrow X)\) where \(g_1 \circ
+   m_o = g_2 \circ m_o\), there exists a unique morphism \(f: O \rightarrow E\) such
+that \(m_o = m \circ f\)
+\end{enumerate}
+
+\(E\) should be understood as the subset of elements of \(X\) for which \(g_1(x) =
+g_2(x)\), i.e., the solutions of the equation.
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org37f8f8b}]{Function objects (Sets)}
+\begin{itemize}
+\item The object-morphism pair \((b^{a}, eval: b^{a} \times a \rightarrow b)\)
+makes an \alert{exponential object} if for all other object-morphism pair \((z \times a, e)\) there exists 
+a mapping \(\lambda(e)\) such that the following commutes:
+
+\begin{center}
+\begin{tikzcd}
+                                & b &                                                               \\
+b^a \times a  \arrow[ru, "eval"] &   & z \times a \arrow[ll, "\lambda_e \times id"] \arrow[lu, "e"] \\
+b^a                             &   & z \arrow[ll, "\lambda_e"]                                   
+\end{tikzcd}
+\end{center}
+
+\item the mapping \(\lambda_e: z \rightarrow b^{a}\) is called the called
+\alert{currying} of \(e: z \times a\rightarrow b\).
+
+\item in fancy words, the exponential object is a universal arrow to \(b\) of a
+functor \(H[-] = - \times a\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org3e7a8df}]{Zero morphism}
+\begin{itemize}
+\item A left-zero morphism \(0_{XY}\) is such that the following commutes for any \(W, g, h\) 
+
+\begin{center}
+\begin{tikzcd}
+Y & X \arrow[l, "0_{XY}"] & \forall W \arrow[l, "\forall g", bend left] \arrow[l, "\forall h"', bend right]
+\end{tikzcd}
+\end{center}
+
+\item A right-zero morphism is such that the following commutes for any \(Z,g,h\)
+
+\begin{center}
+\begin{tikzcd}
+\forall Z & Y \arrow[l, "\forall g", bend left] \arrow[l, "\forall h"', bend right] & X \arrow[l, "0_{XY}"]
+\end{tikzcd}
+\end{center}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgabe2938}]{Kernel object}
+\begin{itemize}
+\item A kernel object of a morphism \(f: X \rightarrow Y\) is the equalizer of \(f\) and
+a right-zero-morphism \(0_{XY}: X \mto Y\)
+
+\begin{center}
+\begin{tikzcd}
+\forall Z & Y \arrow[l, "\forall g", bend left] \arrow[l, "\forall h"', bend right] & X \arrow[l, "0_{XY}"] \arrow[l, "f"', bend right] \\
+          &                                                                         & K_f \arrow[u, "k"] \arrow[lu, "0_{K_fY}"]        
+\end{tikzcd}
+\end{center}
+
+\item In the category of groups, it is exactly the kernel of a morphism of groups
+\end{itemize}
+\end{frame}
+
+\subsection{Kleisly category and monads\hfill{}\textsc{focus}}
+\label{sec:org2fb8ccf}
+\begin{frame}[label={sec:org240b186}]{Kleisly category (\(C_T\)) definition}
+\begin{itemize}
+\item Assume \(C\) is a category with an endofunctor \(T\) and a morphism \(\mu: T^2 C \rightarrow C\)
+\item \(C_T\) has the same object as \(C\) but any morphism \(A \rightarrow_T B\) is
+built by picking a morphism \(A \rightarrow T B\) in the following way:
+\begin{itemize}
+\item The \alert{identity} for any \(A\) is constructed by picking a morphism \(\eta_A: A
+        \rightarrow T A\)
+\item The composed arrow \(h_T = f_T \circ g_T : A \rightarrow_T C\) is the
+the one built as \(h: A \rightarrow T C\) such that $$ h = \mu
+        \circ T f \circ g$$
+\item Note that \(T f: T B \rightarrow T^2 C\)
+\end{itemize}
+\item The relationship between \(C\) and \(C_T\) is an example of \emph{adjunction}
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org8ee6717}]{Monads}
+Given a category \(C\), A monad corresponds to the data of:
+\begin{itemize}
+\item an endofunctor \(T: C \rightarrow C\)
+\item a unit natural transformation \(\eta: 1_C \Rightarrow T\) (where \(1_C\) is the identity endofunctor)
+\item a multiplication natural transformation \(\mu: T^2 \Rightarrow T\) arising
+from functor composition so that, seeing the endofunctors as objects in
+the monoidal category of endofunctors \(C^C\), the unit and the
+multiplication can be used to make \(T\) a monoid. Recall that,
+multiplication is functor composition.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgded2eb7}]{Monads from adjoint functors}
+\begin{tikzcd}
+D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend right=49] & \bot & C~\textrm{with}~\eta: I_c \rightarrow R L \arrow[ll, "L(\textrm{eft})", bend right=49]
+\end{tikzcd}
+\begin{itemize}
+\item A monad is the shadow cast by an adjunction into the domain of the left-adjoint \(C\).
+\item It raises from natural transformations that one can build on the base functor \(T=RL\).
+\item The adjunction ensures that \(\mu: RLRL \rightarrow RL\) is natural.
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile,label={sec:orgec3fd7a}]{Monads from adjoint functors (Maybe monad)}
+\begin{tikzcd}
+Set_{*} \arrow[rr, "R(\textrm{ight})~\textrm{forgetful}", bend right=49] & \bot & Set  \arrow[ll, "L(\textrm{eft}) ~ \textrm{free}", bend right=49]
+\end{tikzcd}
+
+\begin{itemize}
+\item The left-adjoint is \alert{free} and takes 
+\begin{itemize}
+\item each set \(S\) to \((S \cup \{\nu_S\}, \nu_S)\).
+\item each \(f: S_1 \rightarrow S_2\) to a function \(f^*\) such that \(f^*(s)=f(s), f^*(\nu_A) = \nu_B\)
+\end{itemize}
+\item The right-adjoint maps to \(S \cup \{\nu_S\}\) and \(f^*\).
+\item \(\eta = LR\) adds a new basepoint to the set and the natural transformation is given
+by natural inclusion.
+\item \(\mu = LRLR\) map the two new points (because we have to LR in series) to a single
+given by \(LR\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org37271fb}]{Monad laws (left identity - bind)}
+\begin{tikzcd}
+{T[A]} \arrow[d, "f^o"] & A \arrow[l, "r"] \arrow[ld, "f"] \\
+{T[B]} & 
+\end{tikzcd}
+
+\(f^o\) is the bound function. It should commute with the return of the monad.
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgf22d4e8}]{Monad laws (right identity - return)}
+\begin{tikzcd}
+{T[A]} \arrow[d, "r^o"] \arrow[d, "id"', bend right] & A \arrow[l, "r"] \arrow[ld, "r"] \\
+{T[A]} & 
+\end{tikzcd}
+
+Bound return equals identity.
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org07343f5}]{Monad laws (bind associativity)}
+\begin{tikzcd}
+{T[M]} \arrow[d, "f^o"] & M \arrow[ld, "f"] \\
+{T[M']} \arrow[d, "g^o"] & M' \arrow[ld, "g"] \\
+{T[M'']} & 
+\end{tikzcd}
+
+\(g^o \circ f^o = (g^o \circ f)^o\)
+\end{frame}
+
+\begin{frame}[label={sec:org6db160d}]{Indexed monad}
+\begin{itemize}
+\item Given categories C and D, a \emph{D-indexed monad \(T\) over C} is a C-endofunctor \(D^D
+  \times C \mto C\) with two natural transformations:
+
+$$\exists d. \eta: [-] \mto T_{Id_d}[-]$$
+$$\mu: T_{m_2}[T_{m_1}[-]] \mto T_{m_2 \circ m_1}[-]$$
+
+where \(m_{*}\) is a morphism in the category \(D\).
+
+\item For example, in Haskell, \(D=\{lock, unlock\}\) and it becomes easy to see 
+see if the computation acquires the lock, or does not touch the lock.
+\end{itemize}
+\end{frame}
+
+\subsection{Natural transformations}
+\label{sec:orgb6499d8}
+\begin{frame}[fragile,label={sec:org7d4ad16}]{Natural transformation horizontal composition}
+\begin{center}
+\begin{tikzcd}
+\mathbb{C} \arrow[r, "\Downarrow \alpha"', bend left=49] \arrow[r, "G", bend right=49] \arrow[r, "F", bend left=49] & \mathbb{D} \arrow[r, "\Downarrow \gamma"', bend left=49] \arrow[r, "K", bend right=49] \arrow[r, "H", bend left=49] & \mathbb{E} = & \mathbb{C} \arrow[r, "\Downarrow (\gamma * \alpha)"', bend left=49] \arrow[r, "KG", bend right=49] \arrow[r, "HF", bend left=49] & \mathbb{E}
+\end{tikzcd}
+\end{center}
+
+For all \(c \in \mathbb{C}\) $$(\gamma * \alpha)_c = \gamma_{Gc} \circ H\alpha_c = K\alpha_c \circ \gamma_{Fc}$$
+
+When some ntt. are identities, these are called whiskerings, e.g., \(H\alpha:
+HF \mto HG\) for \(\gamma=id\) is the whiskering of \(\alpha\):
+
+\begin{center}
+\begin{tikzcd}
+\mathbb{C} \arrow[r, "\Downarrow \alpha"', bend left] \arrow[r, "G"', bend right] & \mathbb{D} \arrow[r, "H"] & \mathbb{E}
+\end{tikzcd}
+\end{center}
+
+It can be shown that \(\gamma * \alpha\) can be decomposed into whiskerings of
+either \(\alpha\) or \(\gamma\).
+\end{frame}
+
+\subsection{Representability and universal properties}
+\label{sec:org8fcdeed}
+
+\begin{frame}[fragile,label={sec:orgd3c40eb}]{Universal arrow from object (free vector spaces)}
+\begin{itemize}
+\item \(U\KK[X]\) is the set of vectors in \(\KK[X] = span(X)\).
+\item \(j_X\) injects the basis into the whole set \(U\KK[X]\). It is universal.
+\item Any (linear) \(f: \KK[X] \rightarrow W\) can be defined by choosing \(g\) (\alert{extending
+it}) $$Uf \circ j_X = g$$
+\end{itemize}
+
+\begin{center}
+\begin{tikzcd}
+                                         & X \arrow[ld, "j_x",red] \arrow[rd, "g"] &  \\
+U\KK[X] \arrow[rr, "Uf"]                 &                                         & UW \\
+\KK[X] \arrow[rr, "f (\textrm{linear})"] &                                         & W \\
+\end{tikzcd}
+\end{center}
+
+\(j_X\) could be thought of as the cases where the input parameter of \(U_x\) are
+just those in \(X\). If \(f\) is linear, it suffices to specify its value only for
+those cases.
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org46a4d4f}]{Universal arrow from object (free group)}
+\begin{itemize}
+\item A \alert{free group} \(F_X\) on the set \(X\) is a universal arrow from \(X\) to the group forgetful
+functor. It is a pair \((F_X, u)\) such that for any function \(v: X \mto |G|\), 
+there is a unique group homomorphism \(f\) for which the diagram below commutes.
+\end{itemize}
+
+\begin{center}
+\begin{tikzcd}
+                                         & X \arrow[ld, "u",red] \arrow[rd, "v"] &  \\
+\vert F_X \vert \arrow[rr, "\vert f \vert"]                 &                                         & \vert G \vert \\
+F_X \arrow[rr, "f"] &                                         & G \\
+\end{tikzcd}
+\end{center}
+\end{frame}
+
+\subsection{Adjunctions}
+\label{sec:orga2bfb49}
+\begin{frame}[fragile,label={sec:org568d656}]{Adjoint functors, currying}
+An exponential object \(b^a\) is the universal arrow from the \((- \times a)\)
+functor to \(b\) and is a bijection of homsets \(e \leftrightarrow \lambda_e\).
+
+\begin{center}
+\begin{tikzcd}
+                                & b &                                                               \\
+b^a \times a  \arrow[ru, "eval"] &   & z \times a \arrow[ll, "\lambda_e \times id"] \arrow[lu, "e"] \\
+b^a                             &   & z \arrow[ll, "\lambda_e"]                                   
+\end{tikzcd}
+\end{center}
+
+This can also be seen as two adjoint endofunctors in \(C\); the left adjoint is \(-
+\times a\) while the right adjoint is \(-^a\).
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org6f2fc18}]{Yoneda lemma}
+Lemma's says how many natural transformations between a representable presheaf 
+and another presheaf \(F\), i.e., the size of the set:
+
+$$Hom((-)^c,F -) = \{ \alpha^0 \ldots \alpha^n \}$$
+
+If \(\alpha^i\) is a natural transformation then the following must commute also for
+\(x=c\) and \(x^c=Id_c\):
+
+\begin{center}
+\begin{tikzcd}
+x \arrow[d, "\phi"] & x^c \arrow[d, "\phi \circ"] \arrow[r, "\alpha^i_x"] & Fx \arrow[d, "F\phi" ] \\
+y  & y^c \arrow[r, "\alpha^i_y"] & Fy
+\end{tikzcd}
+\end{center}
+
+$$\alpha^i_y (\phi \circ Id_c) \simeq \alpha^i_y(\phi) = (F \phi) \circ \alpha^i_c(Id_c)$$
+
+Given \(F\), fixed \(\alpha^i_c(Id_c) \in Fc\) there is a single \(\alpha^i\). In practice: 
+$$Hom((-)^c,F) = Fc$$
+\end{frame}
+
+
+\begin{frame}[fragile,label={sec:org593b46f}]{Yoneda embedding}
+ \begin{itemize}
+\item Consider functors \((-)^a\) and \((-)^b\). The set of natural transformations
+between them is, by Yoneda, isomorphic to \(a^b\). This can be seen as a
+contravariant functor in \(a\) on its own (called Yoneda embedding): $$C^{op}
+  \rightarrow Set^C$$ which maps for any morphism in \(C^{op}\) a natural transformation
+\(Set^C\).
+
+\item This is fully faithful: objects in \(C\) become functors and connections between them
+are preserved through natural transformations.
+
+\item Similarly, the co-Yoneda embedding \(C \rightarrow Set^{C^{op}}\) embeds \(C\) in 
+the category of pre-sheaves \(Set^{C^{op}}\).
+
+\item In haskell you'd have for any \texttt{b -> a} you have 
+in \texttt{(a -> x) -> (b -> x)} and viceversa.
+\end{itemize}
+\end{frame}
+
+\subsection{Limits theory\hfill{}\textsc{focus}}
+\label{sec:org28543ea}
+\begin{frame}[fragile,label={sec:org8410ce7}]{Diagram functors}
+\begin{itemize}
+\item In any category \(C\), I can pick objects by expressing a \alert{pattern}, i.e., through
+another (small) \alert{index} or \alert{shape} category \(J\) and any functor \(D: J \rightarrow C\) (diagram
+functor).
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile,label={sec:org0e6f146}]{Cone}
+\begin{tikzcd}
+ &  &  &  &  & c \arrow[ld, "\lambda_{c,A}"] \arrow[d, "\lambda_{c,B}"] \arrow[rd, "\lambda_{c,C}"] &  \\
+A \arrow[r] \arrow[rrrr, dotted, bend right] \arrow[rrrrru, "\Delta_c" description, dashed] & B \arrow[rrrr, "D"', dotted, bend right] \arrow[rrrru, dashed] & C \arrow[l] \arrow[rrrr, dotted, bend right] \arrow[rrru, dashed] &  & i \arrow[r] & j & k \arrow[l]
+\end{tikzcd}
+
+\begin{itemize}
+\item A cone over a diagram \(D\) is built over natural transformations \(\lambda\)
+between the constant functor \(\Delta_c\) and \(D\) (both from the index category
+\(S\)).
+
+\item Consider each family \(\lambda_{c,-}\) of morphisms with apex \(c\), we define
+\(Cone(c,D)\) as the set \(\{ \lambda_{c,-} \}\) (as there can be more than one
+family).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org96437f7}]{Limit cone}
+\begin{center}
+\begin{tikzcd}
+- \arrow[rd, dotted] \arrow[rdd, dashed, bend right] \arrow[rrdd, dashed, bend left] &                        &         \\
+                                                                                     & d \arrow[rd] \arrow[d] &         \\
+                                                                                     & \bullet                & \bullet
+\end{tikzcd}
+\end{center}
+
+\begin{itemize}
+\item \(Cone(-,D): C^{op} \rightarrow Set\) is a functor. If there exists an object \(d
+  \in C\) for which \(Cone(-,D) \cong d^{(-)}\), we say that \(d\) is the limit of
+\(D\) and the cone that departs from it is the \emph{limiting cone}.
+
+\item In practice, if \(d\) is a limit then for each morphism that arrives to it, there
+is a \alert{single corresponding cone} from the sources of the morphism.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org5eafcbd}]{Limit cone (in Sets)}
+\begin{center}
+\begin{tikzcd}
+- \arrow[rd, dotted, "m"] \arrow[rdd, dashed, bend right] \arrow[rrdd, dashed, bend left] &                        &         \\
+                                                                                     & d \arrow[rd] \arrow[d] &         \\
+                                                                                     & \bullet                & \bullet
+\end{tikzcd}
+\end{center}
+
+\begin{itemize}
+\item Recall that if \(d\) is a limit then for each morphism \(m \in d^{(-)}\), there is a
+\alert{single corresponding cone} \(c \in Cone(-,D)\) (i.e., from the sources of the
+morphism).
+
+\item In Set, if 1 is the singleton set we must have, e.g, \(d^1 \cong Cone(1,D)\)
+which means that \(d\) is \(Cone(1,D)\). So $$Cone(-,D) \cong Cone(1,D)^{(-)}$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgb75ebba}]{Products as limit}
+\begin{tikzcd}
+ &  &  &  & c \arrow[d, "!\exists"] &  \\
+ &  &  &  & lim~D \arrow[ld] \arrow[rd] &  \\
+1 \arrow[rrr, "D"', dotted, bend right] \arrow[rrrru, dashed] & 2 \arrow[rrrr, dotted, bend right] \arrow[rrru, dashed] &  & i &  & j
+\end{tikzcd}
+
+\begin{itemize}
+\item Consider a discrete category of only two object as the index category \(S\).
+
+\item Any functor \(D: S \rightarrow C\) \alert{indexes a generic pair} of objects \((i,j)\)
+(there are no choices in terms of morphisms to map) so we can speak of \emph{the}
+functor \(D\). MacLane goes as far as saying that \(D\) \alert{is a pair of objects}
+\((i,j)\).
+
+\item A product object \(i \times j\) is the limit of a diagram \(D\) built over the 
+above index category.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org7542892}]{Terminal object as limit}
+\begin{tikzcd}
+c'' \arrow[rd] & c \arrow[d] & c' \arrow[ld] \\
+ & lim~D & 
+\end{tikzcd}
+
+A terminal object is the limit of apices of cones built over an empty index category.
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgc17993c}]{Equalizer as limit}
+\begin{tikzcd}
+ &  &  &  & c \arrow[d, "!\exists"] &  \\
+ &  &  &  & lim~D \arrow[ld] \arrow[rd] &  \\
+1 \arrow[rrr, "D"', dotted, bend right] \arrow[rrrru, dashed] \arrow[r, bend left] \arrow[r, bend right] & 2 \arrow[rrrr, dotted, bend right] \arrow[rrru, dashed] &  & X \arrow[rr, bend left, "f"] \arrow[rr, bend right, "g"] &  & Y
+\end{tikzcd}
+
+The equalizer of two morphisms \(f,g\) is the limit of the above diagram. In Set, it is a subset of \(X\)
+such that \(f(x) = g(x)\).
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org30c9e95}]{Pullback (fibered product)}
+\begin{tikzcd}
+            &                    & c \arrow[rd] &                                     &                  \\
+            & \textrm{Index Cat} &              & lim~D \arrow[d, "p"] \arrow[r, "q"] & B \arrow[d, "g"] \\
+1 \arrow[r] & 2                  & 3 \arrow[l]  & A \arrow[r, "f"]                    & C               
+\end{tikzcd}
+
+\begin{itemize}
+\item The \alert{pullback} \alert{of two morphisms} \(f,g\) is a limit object \(lim~D\) and two morphisms
+\(p,q\) such that \(f \circ p = g \circ q\). In Set, consider that \(lim~D\) is the
+set \(Cone(1,D)\). The pullback would be $$A \times_C B = \{ (a,b) = f(a) = g(b) \}$$
+
+\item If one uses fibers in \(A\) and \(B\) to make \(f,g\) injective then
+\(lim~D\) would be the product of fibers.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org4f54afb}]{Pushout (fibered sum)}
+\begin{tikzcd}
+c &                    &                                 \\
+  & colim~D \arrow[lu] & B \arrow[l, "q"]                \\
+  & A \arrow[u, "p"]   & C \arrow[l, "f"] \arrow[u, "g"]
+\end{tikzcd}
+
+\begin{itemize}
+\item The \alert{pushout of two morphisms} \(f,g\) is a co-limit object \(colim~D\) and two
+morphisms \(p,q\) such that the above commutes.
+\item For sets, \(colim~D\) is the disjoint union of \(A\) and \(C\) where elements of
+\(A\) and \(B\) that are the image of the same \(c \in C\) map to the same
+element in \(colim~D\) while the others map to different elements. It is a sort of 
+fusion of \(A\) and \(B\) where some of the elements are collapsed into a single one.
+\item When \(f,g\) are inclusion maps (so \(c \in C\) belongs to 
+both \(A\) and \(B\)), this is the canonical set union \(A \cup B\).
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile,label={sec:org162151d}]{Fiber}
+\begin{itemize}
+\item A \alert{fiber} of a function \(f: A \rightarrow B\) and a value \(b \in B\) is the set
+subset of \(A\) such that: $$\phi_f(b) = \{ a | f(a) = b \}$$
+
+\item It corresponds to the pullback of:
+
+\begin{center}
+\begin{tikzcd}
+\phi_f = A \times_B * \arrow[d] \arrow[r] & * \arrow[d, "b"] \\
+A \arrow[r, "f"]                 & B                
+\end{tikzcd}
+\end{center}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[label={sec:org807e570}]{Lax closed functor}
+A lax closed functor (or \alert{applicative}) \(T\) is a functor for which 
+there exist the following natural transformations:
+
+$$(\star: T(x^y)^{T y} \mto Tx, x \mto T x)$$
+
+If such a functor exists, one can lift an arbitrary argument function: 
+
+$${ {c^{b^a} }^{Ta} }^{Tb} \mto {c^{b^a} }^{Tb^a} \xrightarrow{fmap} T(c^{b^a})^{Tb^a} \xrightarrow{\star} Tc$$
+\end{frame}
+
+\begin{frame}[label={sec:org6e25f10}]{Lax monoidal functor}
+A lax monoidal functor \(T\) is a functor for which 
+there exist the following natural transformations:
+
+$$(\mu: Ta \times Tb \mto T(a \times b), u: T())$$
+
+In a closed monoidal category one can derive a lax closed functor (applicative)
+from this and viceversa.
+\end{frame}
+
+\section{Haskell, functor algebras, free monads}
+\label{sec:org10b2965}
+\subsection{Notable F-algebra morphisms\hfill{}\textsc{focus}}
+\label{sec:orgf4f8ab3}
+\begin{frame}[fragile,label={sec:orgfe6fc5b}]{Catamorphisms}
+\begin{center}
+\begin{tikzcd}
+\tfun{\tia} \arrow[r, "t~g"] \arrow[d, "Fix~(\textrm{unfix})", no head] & t~E \arrow[d, "k"] \\
+\tia \arrow[r, "g"] & E
+\end{tikzcd}
+\end{center}
+
+
+\begin{itemize}
+\item Given an initial algebra \((I, Fix: t~I \rightarrow I)\) and a generic algebra \((E, k)\), a
+generic morphism \(g: I \rightarrow E\) can be defined as \(g = k \circ (t~g) \circ unfix\)
+\item We say that \(g = cata(k)\); given the same expression in \(I\), I can create
+mappings into several other types by simply specifying the non-recursive
+\(k\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgbf08043}]{Scan (as a catamorphism)}
+Given \(\phi: A \times B \mto B\), \(scan(\phi,b)\) is a catamorphism of type:
+
+\begin{center}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEYACAak4EFOAHUF4AtvH4A9AFQgAvqXSZc+QinbkqtRizZdeA4WIkAKAEJCRWcXE5mZASnmKQGbHgJEy7LfWatEED4ZZyV3VSINH2o-XUCLI2sJe1kFMJVPdVIAJl8dAJAU+S0YKABzeCJQADMAJwhRJDIQHAgkbJj8tmRhGDRsBgIAfT5STkQKEGoGOgAjGAYABWUPNRAGGGqcUJA6hqbqVqQNbX8kMCYGBmm5heXwzPXN7bTd+sbEE6PEAGZOs8CPUEMzAZQ2nFmY1miF6-SwgzAQwSglqdFBGzGwjQAAssJZjLYAJJQSY3eZLFYRQIbLY7PYfDotNq-Ml3SmPGnbf5xEDCbBlUR0OnvdqHZkAFm5BTgAGM0cL9iymUhJaceSZEE45BQ5EA
+\begin{tikzcd}
+1 + A \times A^* \arrow[d, "{[\epsilon_A, :]}"] \arrow[r] & 1 + A \times (B \times B^*) \arrow[d, "{[\langle b, b:\epsilon_B \rangle, \phi \times Id]}"] \\
+A^* \arrow[r, "\sigma"] \arrow[rd, "scan"]                & B \times B^* \arrow[d, "(:)"]                                                                \\
+                                                          & B^*                                                                                         
+\end{tikzcd}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org586f99a}]{Catamorphisms fusion law}
+\begin{center}
+\begin{tikzcd}
+& {(I_t, fix)} \arrow[ld, "\kappa(f)"] \arrow[rd, "\kappa(h_{g,f})"] &         \\
+{(F, f)} \arrow[rr, "g"] &                                                              & {(H,h_{g,f})}
+\end{tikzcd}
+\end{center}
+
+\begin{itemize}
+\item Given \(g\) and \(f\), if there exists an \(h_{g,f}\) such that \(g\) is an algebra morphism, 
+the composition of \(g \circ \kappa(f)\) is equal to \(\kappa(h_{g,f})\).
+
+\item For example, for \(I_t\) a list, \(\kappa(f) = fold (+1) = length\) and \(g = (2*)\) then \((2*) \circ
+  length\) can be rewritten as the fold of \((+n)\), instead of \((+1)\).
+\item For a list this happens if one can find a \(h_{g,f}\) such that $$(g \circ
+  f)(a,n)=h_{g,f}(a,f(n))$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgef22d40}]{Catamorphism compose law}
+\begin{center}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQcACASQH0cQAX1LpMufIRQBmCtTpNW7LnwHDR2PASLlSxOQxZtEHHvyEiQGDRKIAmXfoVGQK8+vFaUAFgc0Di42UzNUsxTUkSUltHQ3ZXEKsPCJlovyc44LkYKABzeCJQADMAJwgAWyQdDggkGXlY4wALEBpGegAjGEYABTCbY0YYQtULEvKkMmqkHxA2zp6+z1mhgTSGjgA-AB0tgGt6NDR6XkK3EDGKxHspxCr-Zxwd-cPj5taOrt7rJcHhs4vajQcDVEAA2NYBEBPA5HE4tWYfBbfSTLP4hAGIOrAiYQ5w7MDMeFzT6LFG-EZFUqXGbYsG49ind7zL5Jdjk-5UpAAViBILq93Y0JevDeCOZpLZKw540QPJu1wFxnxhKZJORkrRlEEQA
+\begin{tikzcd}
+                              & t I_t \arrow[rd, "h"]                        &                                              & t I_t \arrow[rd, "t~\kappa_f"] &                       \\
+t I_t \arrow[ru, "t\kappa_h"] &                                              & I_t \arrow[rd, "\kappa_f"] \arrow[ru, "\nu"] &                                & t I_t \arrow[ld, "f"] \\
+                              & I_t \arrow[ru, "\kappa_h"] \arrow[lu, "\nu"] &                                              & I_t                            &                      
+\end{tikzcd}
+\end{center}
+
+Since \(\nu \circ h\) is a natural transformation $$f~(t~\kappa_f)~ 
+\nu ~h~ (t~\kappa_h)= (f \nu h)~
+(t~(\kappa_h \kappa_f)) \nu$$ This means that $$\kappa_f \circ
+\kappa_h = \kappa_{f \circ \nu \circ h}$$
+
+\begin{itemize}
+\item If \(I\) is an expression type, and \(h\) and \(f\) are optimizations expressed as
+F-algebras, you can do a single optimization pass by composing their algebras:
+Another example,
+\item Or, \(h\) could filter away data.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org2656de4}]{Combining algebras \((A, \phi), (B, \psi)\) into \((A \times B, q\) (banana split)}
+Given \(\phi: \tfun{a} \rightarrow a\) and \(\psi: \tfun{b} \rightarrow b\) produce \(\beta: \tfun{(a \times b)} \rightarrow (a \times b)\) as
+$$\beta = (\phi \times \psi) \circ (t~fst \times t~snd) \circ split$$
+
+\begin{center}
+\begin{tikzcd}
+\tfun{\tia} \arrow[d] \arrow[r] \arrow[rr, bend left] \arrow[rrr, bend left] & \tfun{a} \arrow[d, "\phi", red] & \tfun{b} \arrow[d, "\psi", red] & \tfun{(a \times b)} \arrow[d, "(t~fst \times t~snd) \circ split" description, blue] \\
+\tia \arrow[u] \arrow[r] \arrow[rr, bend right] \arrow[drrr, bend right] & a & b & \tfun{a} \times \tfun{b} \arrow[d, "\phi \times \psi" description, blue] \\
+ &  &  & {a \times b}
+\end{tikzcd}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org58349ca}]{Hylomorphisms}
+\begin{itemize}
+\item Given a initial and final algebra of the same functor \(t\)
+$$hylo(\psi,\phi) = cata(\phi) \circ ana(\psi)$$
+
+\item This is the basis for deforestation, it eliminates intermediate data structures.
+\end{itemize}
+
+\begin{center}
+\begin{tikzcd}
+{\tfun{A}} \arrow[r]                                                                           & {\tfun{\tia}} \arrow[r] \arrow[d, no head] & {\tfun{B}} \arrow[d, "\psi"] \\
+A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tia \arrow[r, "\kappa(\psi)"]         & B                       
+\end{tikzcd}
+\end{center}
+
+\begin{itemize}
+\item allows to exploit parallelism? substituting recursive control with a data structure
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgdf78881}]{Hylomorphism example: mergesort}
+\begin{center}
+\begin{tikzcd}
+{t_A[L_A]} \arrow[r]                                                                           & {t_A[\tia]} \arrow[r] \arrow[d, no head] & {t_A[L_A]} \arrow[d, "\psi"] \\
+L_A \arrow[u, "\phi"] \arrow[r, "\alpha(\phi)"] \arrow[rr, "{hylo(\psi, \phi)}", bend right] & \tia \arrow[r, "\kappa(\psi)"]         & L_A                       
+\end{tikzcd}
+\end{center}
+
+\begin{itemize}
+\item Consider the functor \(t_A[X] = A + X \times X\), its initial algebra \(\tia\) being a binary tree of \(A\)'s.
+\item Consider \(L_A\) as a list of A's. One could implement merge sort \(\mu: L_A
+  \rightarrow L_A\) as \(hylo(\psi,\phi)\), where \(\phi\) constructs the tree by splitting
+lists in two while \(\psi\) merges two lists into one (by reordering them).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org8aaf12b}]{Paramorphisms}
+\begin{center}
+\begin{tikzcd}
+\tfun{\tia} \arrow[d] \arrow[r]                          & \tfun{\tia\times Z} \arrow[d, "{\langle Fix \circ t~fst, \phi \rangle}"] \\
+\tia \arrow[u] \arrow[r] \arrow[rd, "para(\phi)"'] &  \tia \times Z \arrow[d, "\pi_Z"]                                     \\
+                                                & Z                                                                
+\end{tikzcd}
+\end{center}
+
+Example, for factorial \(f(i,z) = i~?~z*i:1\). Exercise, try to devise a para for sliding window.
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgefd0c27}]{Zygomorphism}
+Applies algebra \(\psi\) to \(\tia\) instead of the initial one.
+
+\begin{center}
+\begin{tikzcd}
+\tfun{\tia} \arrow[d] \arrow[r]                                  & t(\tia\times Z) \arrow[d, "{\langle \psi \circ t~fst, \phi \rangle}"] \\
+\tia \arrow[u] \arrow[r] \arrow[rd, "{zygo(\psi, \phi)}"'] & \tia \times Z \arrow[d, "\pi_Z"]                                      \\
+                                                        & Z                                                                 
+\end{tikzcd}
+\end{center}
+
+Extension of paramorphisms, i.e, $$para(\phi) = zygo(Fix, \phi)$$
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgc531297}]{Histomorphism (on annotations)}
+Fold-annote a tree similar to initial \(I_t\) and then extract top.
+
+\begin{center}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRBwEkB9HEAX1LpMufIRRkATFVqMWbbrwFDseAkQCMpKdXrNWiEAGEAegEEe-QSAwrRG8tN1yDOE+cVWbItSk3rHsvrsbjwABAA64XgAtvChppbK3mLIEloBemwJfNIwUADm8ESgAGYAThDRSGTsEEjqSiDlldXUOHWIAMyNzVVdbR0ALDqBbFhQEVFlWHRg+Qwwk2gAFliJTRV9w7VIaTKZBpEARjA4dOu99QO7PZu714gArLctiJo7T9QnYFBIALSdGpOIKrODtAAUkRWWAAlPwKHwgA
+\begin{tikzcd}
+tI_t \arrow[dd] \arrow[r]                           & tC^A_t \arrow[d, "id \triangle \phi"] &   \\
+                                                    & tC^A_t \times A \arrow[d, "\beta"]    &   \\
+I_t \arrow[r] \arrow[rr, "histo(\phi)", bend right] & C^A_t \arrow[r]                       & A
+\end{tikzcd}
+\end{center}
+
+Applies annotations to the cofree comonad, folding them from leafs through
+\(\phi: \tfun{\tcfcm} \mto A\) and returns the one associated with the top of
+the tree. E.g., for Fibonacci:
+
+\begin{equation}
+f(q) = \begin{cases}
+ 0 & \text{for } q = Z \\ 
+ 1 & \text{for } q = S (AnnF (Zero, ...)) \\ 
+ n+m & \text{for } q = S (AnnF (S (AnnF, n), m)) \\ 
+ \end{cases}
+\end{equation}
+\end{frame}
+
+
+\subsection{Expression data types as functors\hfill{}\textsc{focus}}
+\label{sec:org7d03a3c}
+
+\begin{frame}[fragile,label={sec:orgeaa4779}]{Expression data types as initial alg. of functors}
+ Two ways to build them, 
+
+\begin{enumerate}
+\item recursive data type which needs an explicitly recursive function to interpret it.
+
+\begin{verbatim}
+data Exp = Const Int | Neg Exp | Add Exp Exp 
+\end{verbatim}
+
+\item Using a non-recursive data type
+
+\begin{verbatim}
+data ExprF e = Const Int | Neg e | Add e e deriving functor
+type Expr = Fix ExprF
+\end{verbatim}
+
+\begin{tikzcd}
+1 \arrow[r, "const"] & {ExprF[Expr]} \arrow[d, "Fix"] \arrow[r] & {ExprF[Int]} \arrow[d, "rules"] \\
+Expr \times Expr \arrow[ru, "Add", bend left=49] & Expr \arrow[r, "eval"] \arrow[u, "Neg", bend left=60] & Int
+\end{tikzcd}
+
+Build expressions in \texttt{Expr} with original type constructors, evaluate with \texttt{eval
+  = cata rules}.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orga41659e}]{Expression data types as functors - templating (free monad)}
+\begin{itemize}
+\item If \(I_t\) is an initial algebra representing an AST of expressions built with \(t\)
+then the fixed point \(M_t^A\) of \((A + t[-])\) is a \alert{\alert{tree similar to \(I_t\) with
+holes of type \(A\)}} while \(T\) merges them into the tree itself. Such a monad can
+be easily used as a co-algebra for building streams (see futumorphisms).
+
+\item Consider \(A\) = String referencing the name of a variable.
+Then, in the following picture, \(\phi: A \rightarrow I_t\) can be used to build a complete tree \(I_t\)
+by substituting instances of \(A\) with subtrees \(I_t\):
+\end{itemize}
+
+
+\begin{center}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEACAak5wFkA+jgB67EAF9S6TLnyEUARnJVajFm3bccASWGTpIDNjwEiZRavrNWiEENHipMk-KLLL1axrt6ck1RgoAHN4IlAAMwAnCABbJDIQHAgkACZqBjoAIxgGAAVZUwUQBhgI-2oACxg6KDZIMFYvdVsQCKwAD0F+A0iY+MRE5KRlNRskMCYGBgzs3ILXMztS8t62-pHqYcQAZmbxu2QAHSO0SqxSTnaugBUKEFmc-MK3ZbL-Z3W4tK2U3f2fCATgBrOhoNB0AAUx1O50u10EdwAlA8SnNnotilEsMFKh8KBIgA
+\begin{tikzcd}
+A + tM_t^A \arrow[d, "fix_M", no head] \arrow[r] & A+tI_t \arrow[d, "{[\phi, fix_T]}"] \\
+M_t^A \arrow[r, "{\kappa([\phi, fix_T])}"']      & I_t                                
+\end{tikzcd}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org4b607e0}]{Expression data types as functors - stripping annotations (cofree comonad)}
+\begin{center}
+\begin{tikzcd}
+{A \times \tfun{\tcfcm}} \arrow[d, "\beta", no head] \arrow[r] & {A \times \tfun{\tia}} \arrow[d, "{\phi = Fix_T \circ snd}"] \\
+\tcfcm \arrow[r, "\kappa(\phi)"']                          & \tia                                                         
+\end{tikzcd}
+\end{center}
+
+\begin{itemize}
+\item The cofree comonad is the fixed point \(\tcfcm\). It is a tree similar to \(\tia\) 
+where all nodes have been annotated with values of type \(A\).
+
+\item \(\beta: \tfun{\tcfcm} \times A \mto \tcfcm\) allows to build a new
+tree from child trees and an annotation. \(\beta = Fix \circ AnnF\)
+
+\item \(\tcfcm\) is an initial algebra as well. As the free monad, it can give back
+the original \(\tia\) with \(\kappa(\phi)\) (stripping annotations).
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile,label={sec:org66b7971}]{Expression data types as functors - adding annotations bottom-up}
+\begin{center}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRBwEkB9HEAX1LpMufIRRkATFVqMWbbrwFDseAkQCMpKdXrNWiEAGEAegEEe-QSAwrRG8tN1yDOE+cVWbItSk3rHsvrsbjwABAA64XgAtvChpvzSMFAA5vBEoABmAE4Q0Uhk7BBI6kogOXkF1DjFiADMZRX59dW1ACw6gWxYUBFR2Vh0YCkMMKEAFJl9AMZY2dOhOJGMaAAWdACUllm5zR1FSBKdemyRAEYwOHTb5bslrYfHziCRANZ0aGh04+eXdDNzBYAOhBWz4FD4QA
+\begin{tikzcd}
+tI_t \arrow[dd] \arrow[r]                & tC^A_t \arrow[d, "id \triangle (f \circ t\alpha)"] \\
+                                         & tC^A_t \times A \arrow[d, "\beta"]                 \\
+I_t \arrow[r, "\kappa(\beta \circ ...)"] & C^A_t                                             
+\end{tikzcd}
+\end{center}
+
+\begin{itemize}
+\item \(\alpha\) allows to get an annotation from the root of the tree
+\(\tcfcm\), while \(f: \tfun{A} \mto A\) is a \(t\) algebra that allows to
+compute a new \(A\) from the set of underlying tree's \(A\);
+\item \(\kappa (\beta \circ ...)\) can be used to annotate a tree; for example \(f = (+1) \circ
+  sum_T\) can be used to annotate a root with the sum of \(T\) childs (bottom-up
+annotation). Note the similarities with histomorphisms
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile,label={sec:orgaefc7e3}]{Expression data types as functors - evaluating into a monad}
+ Useful to attach monadic actions to expressions; in general you would need an
+algebra \texttt{f (m a) -> m a} but that would be difficult to specify. You can do
+instead with \texttt{algM: f a -> m a}, using \texttt{cataM} instead of \texttt{cata} and using kleisli
+arrow composition.
+\begin{center}
+\begin{tikzcd}
+{\tfun{\tia}} \arrow[d, no head] \arrow[rr] & *                           & {M[tA]} \arrow[d, "algM: tA \rightarrow MA", dashed, tail] \\
+\tia \arrow[rr, "\kappa M(algM)"']      & * \arrow[u, "mapM", dotted] & MA                                                        
+\end{tikzcd}
+\end{center}
+
+\begin{verbatim}
+eval' :: Env -> Expr -> Maybe Int
+eval'env = ('runReaderT' env) . cataM algM where
+  algM :: ExprF Int -> ReaderT Env Maybe Int
+  algM (Const c) = return c
+  algM (Var i) = ask >>= lift . M.lookup i
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org468028a}]{Parser combinators}
+\begin{itemize}
+\item A \emph{parser} of A (\(P[A]\)), is an object \(A^S\) which takes a string (type \(S\)) and returns a value \(A\).
+
+\item A parser combinator, is a \emph{higher order function} that takes two or more parsers
+and returns a new parser (e.g., \(alt: P[A]\times P[B] \rightarrow P[A+B]\) and
+\(seq: P[A]\times P[B] \rightarrow P[A\times B]\)):
+
+\begin{center}
+\begin{tikzcd}
+A^S \times B^S \arrow[d, "alt"] & A^S \times B^S \arrow[d, "seq"] \\
+(A+B)^S & (A \times B)^S
+\end{tikzcd}
+\end{center}
+
+\item \(P[A]\) is a functor in \(A\); You can get a parser \(PB\) for object \(B\) if you have \(P[A]\) and \(A \rightarrow B\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org9e2248c}]{Expression data types as functors - parsers (annotation)}
+Each constructor in \(t\), e.g., \(n_2: X \times X \mto t[X]\) can be made into a
+parser of annotated trees by introducing a function \(inj\) that, from a tree
+parser creates an annotated tree parser.
+
+\begin{center}
+\begin{tikzcd}
+{P[\tcfcm] \times P[\tcfcm]} \arrow[d] \arrow[rr, "{P[n_2]}"] &  & {P[\tfun{\tcfcm}]} \arrow[d, "inj"]           \\
+{P[\tcfcm]}     &  & {P[A \times \tfun{\tcfcm}]} \arrow[ll, "{P[fix]}"]
+\end{tikzcd}
+\end{center}
+\end{frame}
+
+
+\subsection{Functor co-algebras\hfill{}\textsc{focus}}
+\label{sec:org057687b}
+\begin{frame}[label={sec:org2d9e162}]{Anamorphisms}
+\begin{itemize}
+\item Given a final co-algebra A, and a generic co-algebra \((B,f)\) the unfold of
+\(f\) allows to create a mapping \(B \rightarrow A\) non-recursively; this is called \(ana(f)\).
+
+\item Anamorphisms are called co-recursion.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orga218bd7}]{Apomorphisms}
+\begin{center}
+\begin{tikzcd}
+t~(C + \fia) \arrow[r]                                     & t~\fia          \\
+C+\fia \arrow[u, "{[\phi , t~Inj_R \circ cofix]}"] \arrow[r, "\alpha(\ldots)"]  & \fia \arrow[u] \\
+C \arrow[ru, "\alpha_{po}\phi"] \arrow[u, "Inj_L"]      &             
+\end{tikzcd}
+\end{center}
+
+Given a co-algebra \(\phi: C \mto t (C + \fia)\) where \(\fia\) is final, it allows to
+build a morphism \(C \rightarrow \fia\) that short-circuits the traversal by giving
+the result immediately. 
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgf4cb845}]{Apomorphisms example: streams}
+\begin{center}
+\begin{tikzcd}
+A\times(A + S_A) \arrow[r]                             & A \times S_A \arrow[d, no head] \\
+A+S_A \arrow[u, "{[\phi, t Inj_R \circ cofix]}"] \arrow[r] & S_A                             \\
+A \arrow[ru, "apo(\phi)"] \arrow[u, "Inj_L"]           &                                
+\end{tikzcd}
+\end{center}
+
+\(\phi: A \mto A \times A + A \times S_a\) so it can return \(A \times A\) (becoming
+in the recursion, a generator) or \(A \times S_A\) and from that point the \(cofix: S_A \mto A \times S_A\) 
+starts. It corresponds to a transformation identity so it does nothing.
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgeb86923}]{Futumorphisms}
+Recall that \(M_t^A\) represents a tree of structure \(t\) with holes of type \(A\). A
+futumorphism \(u(\phi)\), given an \(\phi: A \rightarrow tM_t^A\), allows to create
+a co-algebra \(M_t^A \rightarrow tM_t^A\) which can be used to construct a
+co-inductive value (e.g., a stream).
+
+\begin{center}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRBwAIBZAfRwD0AgiAC+pdJlz5CKMgCYqtRiza8BwsROx4CRAIykF1es1aIQAST6jxIDNun7yikyvM4rOG1qm7ZpAGYXZTMQDVt7XxkSUj1g0zZBDgBqDhw1IVFFGCgAc3giUAAzACcIAFskOWocCCQAzRBSiqQDdjrEaqUE8wAdXsY0AAs6AAoAOkmASm8mssrEMnb6xuaFgBYajrbXUP60LB4uWbWkTeXO4xC2JlH9oawZ1fnWraQAViuekCYwIqwAB4nF6IT4XJa7NjIe5YUgcLBQChZERAA
+\begin{tikzcd}
+t M_t^A \arrow[r]                                 & tI_t           \\
+A + tM_t^A \arrow[u, "{[\phi, id]}"]              &                \\
+M_t^A \arrow[r, "\alpha(...)"] \arrow[u, "unfix"] & I_t \arrow[uu] \\
+A \arrow[u, "\pi_M"] \arrow[ru, "u(\phi)"]        &               
+\end{tikzcd}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org9cd06ef}]{Futumorphisms (stream example)}
+Assume \(S\) is a stream of \(A\)'s and (\(t\) is the co-algebra). \(\phi(S)\) can take
+future values in \(S\) (by destructuring) and returning them as \(A\) and decide what is
+the next \(M_t^S\) to be used (the second element of the pair).
+
+\begin{center}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEACAHW7wFt4nALIB9HAD0AyiAC+pdJlz5CKAIzkqtRizZdeAoTPmLseAkTJqt9Zq0QgpnANScAFPr5ZBcEeOkAlHIKIBhmKpakAEw2OvYgYpLGIWHKFurRsXZsyaZpqiSkAMxZug7GWjBQAObwRKAAZgBOEPxIZCA4EEga2tmIYEwMDNQMdABGMAwACkrmqiAMMA04wY0tbYhR1F3t1LZlILxoABZYPNxgE2OcWFAgoxNTs+Hpi8urJiDNrUhFO91EAAWfZxNi8RinOhuAB0cKCj0mMzmEQcSxWa2+Gz+AKQ2z6hyYYAaWAAHg9Fk9ka8FujPiEfpsQZ1Ab0DvZBsNEc8UW86ZjGUgAKy4xD-AnxY5YUTCCljJEvfJsflfQWIEUspDM9lsJhuY5nBGUhW82kfOQUWRAA
+\begin{tikzcd}
+A \times M_t^S \arrow[r]                          & A \times S   \\
+S + (A \times M_t^S) \arrow[u, "\phi \nabla id"]  &              \\
+M_t^S \arrow[r, "\alpha(...)"] \arrow[u, "unfix"] & S \arrow[uu] \\
+S \arrow[u, "\pi_M"] \arrow[ru, "u(\phi)"]        &             
+\end{tikzcd}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org3078c8d}]{Streams as co-inductive data types (generation)}
+A stream \(S_A\) is a final co-algebra of \(s \mapsto a \times s\). One can build a stream from
+a seed value \(a \in A\) by using \(ana(\langle Id, \nu \rangle)\)
+ where \(\nu\) specifies how to 
+generate the next value.
+
+\begin{center}
+\begin{tikzcd}
+A \times A \arrow[rr, "Id \times \phi"]                          &  & A \times S_A \arrow[d, "scons = -_A \cdot -_{S_A}", bend left] \\
+A \arrow[rr, "{\phi = \alpha(\langle Id,\nu \rangle)}"] \arrow[u, "{\langle Id, \nu \rangle}"] &  & S_A \arrow[u, "cofix"]                                        
+\end{tikzcd}
+\end{center}
+
+We have that \(\phi(a) = scons(a, \phi(\nu(a)) = a \cdot \nu(a) \cdot \nu^2(a) \cdot \ldots\)
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orga3739e0}]{Streams as co-inductive data types (transformation)}
+\begin{center}
+\begin{tikzcd}
+A \times S_A \arrow[rr, "Id \times \alpha(\nu)"]   &  & A \times S_A \arrow[d, "scons = -_A \cdot -_{S_A}", bend left] \\
+S_A \arrow[rr, "\phi={\alpha(\nu)}"] \arrow[u, "{\nu}"] &  & S_A \arrow[u, "cofix"]                                        
+\end{tikzcd}
+\end{center}
+
+\(\nu\) can be lifted into a stream transformer:  \(\phi(s) = \nu_A(s) \cdot \phi(\nu_S(s))\), for
+example \(\nu(s)= \langle (head(s))+1, tail(s) \rangle\) adds one to the stream.
+\end{frame}
+
+\subsection{Proofs with functor algebras}
+\label{sec:org5fcb154}
+\begin{frame}[fragile,label={sec:org8bf7cb6}]{Bisimulation (for lists)}
+\begin{center}
+\begin{tikzcd}
+S \arrow[d, "\xi"] & R \arrow[r, hook] \arrow[l, "\pi_1"] \arrow[d, "\gamma"] \arrow[l, "\pi_2"', bend right] & S \times S \\
+A \times S         &  A \times R  \arrow[l]                                                                   &           
+\end{tikzcd}
+\end{center}
+
+\begin{itemize}
+\item \(R\) is called \alert{a bi-simulation} on \(S\), if there exists \((R,\gamma)\) for which 
+\(\pi_1, \pi_2\) are algebra homomorphisms from \((R,\gamma)\) to \((S, \xi)\).
+\item If \(S\) is a final co-algebra, e.g., a list \(\xi = [h,t]\) then \(\pi_1\) and
+\(\pi_2\) map to the same list \(a=b\). If you prove the existence of
+\(\gamma\) then the bisimulation \(R\) is an equivalence. For lists 
+\(\gamma\) must abide by:
+\begin{align*}
+(\gamma_A(l_1,l_2), \gamma_{R,1}(l_1,l_2)) & = (h(l_1),t(l_1)) \\ 
+(\gamma_A(l_1,l_2), \gamma_{R,2}(l_1,l_2)) & = (h(l_2),t(l_2))
+\end{align*}
+so an indirect way to prove that it exists is to show that \(h(l_1) =
+      h(l_2) \wedge (t(l_1), t(l_2)) \in R\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgf4e7802}]{Bisimulation (labeled transition system)}
+A labeled transition system \((S,A,\rightarrow)\) is a co-algebra $$\alpha: S
+\rightarrow P(S)^A$$ i.e., to any \(s \in S\) it associates any
+input symbol \(a \in A\) to multiple \(t \in S\) such that \(s \rightarrow^a t\)
+belongs to the system itself. If \(P(S)^A\) is finite then a final co-algebra exists;
+it is the algebra of processes \((P, \pi)\)
+\end{frame}
+\section{Logic,computation theory, dependent types}
+\label{sec:orgc4f2f38}
+\subsection{Dependent types\hfill{}\textsc{focus}}
+\label{sec:orge0f41ba}
+\begin{frame}[label={sec:orgfbe7673}]{Dependent pair}
+\begin{itemize}
+\item Pair of two terms \((a,b)\) where \(a: A\) and \(b: B_a\).
+\item Also called dependent sum because its type can be seen as
+
+$$(a,b) : \{a_1\} \times B_{a_1} + \{a_2\} \times B_{a_2} \ldots = \sum_{x:A} B_x$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org3d8bdc9}]{Existential type}
+Let us now assume that
+
+\begin{itemize}
+\item \(\{ a_i \}\) is the type of the witness that \(a_i\) exists.
+\item \(B_{a_i}\) is the type of the witnesses for a proposition that depends on \(a_i\).
+\end{itemize}
+
+then the expression of the dependent pair:
+
+$$(a,b) : \{a_1\} \times B_{a_1} + \{a_2\} \times B_{a_2} \ldots $$
+
+can be interpreted in logic as
+
+$$(\exists a_1 \wedge B_{a_1}) \vee  (\exists a_2 \wedge B_{a_2}) \ldots \sim \exists x.B(x)$$
+
+Which explains why dependent pairs are used to express existentially quantified
+predicates.
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org757d5e0}]{Dependent pair example in Haskell}
+ \begin{verbatim}
+type family   B (x :: Bool)
+type instance B 'True = Int
+type instance B 'False = String
+
+data BoolPair where
+  (:*:) :: forall x. Sing x -> B x -> BoolPair
+
+f :: BoolPair -> String
+f (STrue :*: n) = show n
+f (SFalse :*: s) = s
+\end{verbatim}
+
+\begin{itemize}
+\item \texttt{Bool} is a kind which corresponds to a set of two sets (types) \texttt{'True} and
+\texttt{'False}. We can't however pattern match on those. To enable matching they 
+must be mapped to a singleton type with is own value constructor.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgb7c44ea}]{Dependent product}
+A dependent product is a function from a value \(a : A\) into a value \(b: B(a)\):
+$$ \lambda x.\Phi : \Pi_{x:A} B_x $$ 
+
+\begin{itemize}
+\item If \(A = \{ x_1 \}\) were a singleton type the function would have a constant
+type: \(B_{x_1}^{\{x_1\}}\).
+
+\item If \(A\) were more than one element we would end up with: $$ \Pi_{x:A} B_x =
+  B_{x_1}^{\{x_1\}} \times B_{x_2}^{\{x_2\}} \times \ldots $$
+
+\item If \(B\) were constant, we would obtain a simple exponential $$B^{\sum x_i} \sim
+  B^A$$
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile,label={sec:org997a454}]{Fixed point}
+A fixed point \(\bar{x}\) of a function \(f\) is such that the following commutes:
+
+\begin{center}
+\begin{tikzcd}
+X \arrow[r, "f"]                             & X \\
+1 \arrow[u, "\bar{x}"] \arrow[ru, "\bar{x}"] &  
+\end{tikzcd}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org1075cba}]{Fixed point combinator}
+When \(f\) is interpreted as a function between functions \((X^N)^{X^N}\), 
+the fixed point is another function \(\phi \in X^N\) such that 
+the below commutes:
+
+\begin{center}
+\begin{tikzcd}
+\{ \phi \in X^N \} \arrow[r, "f"]                                                     & X^N \\
+\{ f \in (X^N)^{X^N}  \simeq X^{X^N \times N} \} \arrow[u, "fix"] \arrow[ru, "fix"] &    
+\end{tikzcd}
+\end{center}
+
+For example, if \(f \gamma n = (n>0)~?~(n*\gamma(n-1))~1\), then $$fix~f= f~(fix~
+f)~~~\simeq~~~\phi~n = (n>0)~?~(n*\phi(n-1))~1$$
+
+For languages that do not support recursion but only higher order functions, 
+there is an explicit lambda representation for \(fix\) found by H.Curry.
+\end{frame}
+
+\subsection{Logic\hfill{}\textsc{focus}}
+\label{sec:org97e2e07}
+\begin{frame}[label={sec:org3993dec}]{Classical logic}
+\begin{itemize}
+\item it is \emph{truth functional}, i.e., every complex proposition truth's is function of
+the truth of inner proposition, regardless of the fact that we can find
+witnesses for them.
+
+\item In classic logic the following is a valid argument $$\neg(\forall x,
+  \neg P(x)) \vdash \exists x.P(x)$$ This depends on the principle of the
+third excluded which is not a valid rule in, for example, constructive logic.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org76a8205}]{Intuitionistic logic}
+\begin{itemize}
+\item Intuitionistic logic is \emph{proof functional}, i.e., a proposition is  
+true if I can find a proof for it.
+
+\item An existential can only be proven if I provide a witness: $$P(a) \vdash
+  \exists x.P(x)$$
+
+\item It is classic logic without some axioms, for example \(A \vee \neg A\) is not
+a valid axiom in .
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgb564dba}]{Structural proof theory}
+\begin{itemize}
+\item It studies the validity of an argument \(X \vdash Y\) from its structure
+
+\item An argument and a proof of its validity is a \alert{theorem}.
+
+\item A valid argument with no premises is a \alert{law} (or \alert{axiom}).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org65d9db4}]{Proof theory as a monoidal theory}
+\begin{itemize}
+\item Given an argument \(X \vdash Y\), the proof of its validity is seen as the
+existence of one morphism between objects \(X\) and \(Y\). \(X \vdash Y\) is then
+understood as the homset of morphisms from \(X\) to \(Y\).
+
+\item \(X \implies Y\) is an object corresponding to the set of
+equivalence classes of proofs from \(X\) to \(Y\). \(X \otimes Y\) is the
+proposition \(X \wedge Y\).
+
+\item An \alert{inference rule} specifies the validity of the inferred argument from that
+of the premises. It is a \alert{morphism between homsets} which is always present.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org399fd36}]{Monoidal proof theory inference rules}
+\begin{table}[h]
+\centering
+\footnotesize
+\begin{tabular}{lll}
+CC name & Logic name & Inference rule\\
+ &  & \\
+composition & cut & \infer{X \vdash Z}{X \vdash Y & Y \vdash Z}\\
+ &  & \\
+identity & identity & \infer{X \vdash X}{}\\
+ &  & \\
+Currying &  & \infer{Y \vdash X \implies Z}{X \otimes Y \vdash Z}\\
+ &  & \\
+ & Modus ponens & \infer{X \otimes (X \implies Y) \vdash Y}{}\\
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[label={sec:org165056a}]{Structural proof theory examples}
+\begin{itemize}
+\item The most widespread are: Hilbert's calculi, Gentzen natural deduction, Gentzen sequent calculus
+
+\item Not very widespread: syllogistic calculus (Aristotle)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org2d6bc50}]{Hilbert calculi}
+\begin{itemize}
+\item Used for up to first order logic
+\item Many axioms schemes, where each scheme is a template, e.g., 
+\(\vdash \phi \mto \phi\) can mean \(\vdash p \mto p\) or \(\vdash (p \mto p) \mto (p \mto p)\)
+\item one inference rule $$\infer{(X, X \mto Y) \vdash Y}{}$$
+\item Every line is an unconditional tautology.
+\item classic logic has an axiom scheme \(\vdash (\neg \phi \mto \neg \psi) \mto (\phi \mto \psi)\) while  
+intuitionistic doesn't.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org458842c}]{Gentzen sequent calculus}
+\begin{itemize}
+\item few axioms, many inference rules.
+\item Introduces the concept of sequent: $$ X_1, \ldots X_n \vdash Y_1 \ldots Y_m $$
+which is a proposition that is read as: all of \(X_i\) can be used to derive the truth 
+of at least one of \(Y_j\)
+\item Every line is a conditional tautology with zero or more conditions
+\item Every (conditional) line has zero or more asserted propositions on the right.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org0722e57}]{Natural deduction}
+\begin{itemize}
+\item It is a sequent calculus where every (conditional) line has exactly one
+asserted proposition on the right.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org92b9411}]{\(\wedge\) introduction}
+\begin{itemize}
+\item It is a valid inference rule for natural deduction 
+$$\{ A, B \} \vdash A \wedge B$$
+or $$\infer{A \wedge B}{A & B}$$
+
+\item Example of application \(\{ A, B, C \} \vdash A \wedge B \wedge A \wedge C\): 
+$$ \infer{A \wedge B \wedge A \wedge C}{\infer{A \wedge B}{A & B & C} & \infer{A \wedge C}{A & B & C}} $$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org1be9c2d}]{\(\wedge\) elimination}
+\begin{itemize}
+\item It is a valid inference rule for natural deduction 
+$$ A \wedge B \vdash A$$
+
+\item Example for \(Q =  (A \wedge B) \wedge C\)
+
+\begin{equation}
+\infer{A \wedge (B \wedge C)}
+  { 
+    \infer{A}{\infer{A \wedge B}{Q}} & 
+    \infer{B \wedge C}{
+      \infer{B}{\infer{A \wedge B}{Q}} &
+      \infer{C}{Q}
+    }
+  }
+\end{equation}
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:orga168e80}]{\(\implies\) introduction}
+One can always introduce an implication of \(B\) if one has \(B\).
+
+\begin{equation}
+\infer{A \implies B}{B}
+\end{equation}
+\end{frame}
+
+\begin{frame}[label={sec:orge3d35b3}]{\(\vee\) introduction and elimination}
+Introduction
+
+\begin{equation}
+\infer{A \vee B}{B}
+\end{equation}
+
+Elimination
+
+\begin{equation}
+\infer{C}{A \vee B & \infer*{C}{[A]} & \infer*{C}{[B]}}
+\end{equation}
+\end{frame}
+
+
+\begin{frame}[label={sec:orgb4f9d1c}]{Negation introduction and elimination}
+Negation introduction states that if a given antecedent implies both the
+consequent and its complement, then the antecedent is a contradiction.
+
+\begin{equation}
+\infer{\neg C} { C \implies Q & C \implies \neg Q }
+\end{equation}
+
+Negation elimination is valid only in classical logic through double negation
+\begin{equation}
+\infer{C}{ \neg \neg C }
+\end{equation}
+This is exactly the rule of the excluded middle that was argued by Brower
+in 1907.
+\end{frame}
+
+\begin{frame}[label={sec:org6d5366d}]{Boolean algebra}
+It is a lattice where every element \(a\) has \emph{complement} \(\bar{a}\), i.e., such
+that $$a \vee \bar{a} = 1$$ and $$a \wedge \bar{a} = 0$$
+and where meets and joins are distributive.
+\end{frame}
+
+\begin{frame}[label={sec:orgee974cb}]{Heyting algebra}
+\begin{itemize}
+\item A Heyting algebra is a bounded lattice with exponential objects \(X \implies Y\)
+\item It is a Boolean algebra minus the complement for \(\vee\).
+\item The set of propositions \(P\) with implication as morphisms is a Heyting Algebra
+because:
+\begin{itemize}
+\item \(X \wedge Y\) behaves as  the product and \(\top\) is the terminal object.
+\item the proposition \(X \implies Z\) is another object and is such that is such
+that
+\begin{equation}
+\textrm{hom}(X \wedge Y, Z) \cong \textrm{hom}(Y, X \implies Z)
+\end{equation}
+\item \(C^{op}\) with \(\vee\) and \(\bot\) is cartesian as well.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Cryptography, quantum, probability, statistics}
+\label{sec:orgbc44145}
+\subsection{Probability and statistics\hfill{}\textsc{focus}}
+\label{sec:org8ed0f4e}
+\begin{frame}[label={sec:org3f1111d}]{Kullback Leibler divergence}
+Given two distributions \(p(x)\) and \(q(x)\), KL is defined as
+
+$$D_q(p) = \sum_x p(x)\log_2\left(\frac{p(x)}{q(x)} \right)$$
+
+Roughly, is a weighted average of the difference in terms of bits for the
+encoding of a set of data following optimizied for \(p\) and \(q\) respectively.
+\end{frame}
+
+\begin{frame}[label={sec:orgc876b09}]{Mutual information}
+It is related to KL. It's the number of bits you save representing X and Y if
+you understand the relationship between them instead of assuming they're
+independent:
+
+$$I(X,Y) = \sum_{x,y} p(x,y) \log_2\left(\frac{p(x,y)}{p(x)p(y)} \right)$$
+\end{frame}
+\end{document}
