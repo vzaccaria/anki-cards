@@ -97,6 +97,13 @@ function $$(x_i)_{i = \{1 \ldots n\}}$$
 - A normal subgroup $H$ is invariant to the action of the inner automorphisms
   $I(G)$, because, for any $g$, $i_g(h) \in H$.
 
+*** Simple group                                                   :focus:
+Given $N_0$ a normal subgroup of $G$, we can say: $N_0 \triangleleft G$. If $N$
+has a normal subgroup $N_1$ we can write $N_1 \triangleleft N_0 \triangleleft
+G$. A *subnormal series* of of $G$ is represented as $$(1=N_i) \triangleleft ...
+\triangleleft N_0 \triangleleft G$$ A *composition series* is such that every
+$N_i$ is maximal. If a group has the only composition series $1 \triangleleft G$
+then it is *simple*
 *** Kernel of a group homomorphism                                                                 
     The *kernel* $\textrm{ker}(f)$ of a group homomorphism $f: (G,\star)
     \rightarrow (H,*)$ is a set $K$ such that
@@ -108,7 +115,7 @@ function $$(x_i)_{i = \{1 \ldots n\}}$$
 
 It is a /normal subgroup of $G$/, because $$\forall g \in G.f(gkg^{-1})=f(g)f(g^{-1})=1_*$$
 
-*** First homomorphism theorem
+*** First homomorphism theorem                                      :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -2115,10 +2122,18 @@ function  \[ \alpha: M \times S \rightarrow S \]. The following properties shoul
 - compatibility: $\alpha(f \star g, s) = \alpha(f, \alpha(g, s))$
 
 ** Preorder, partial and linear order (Category)                     :focus:
-*** Poset as a category
+*** Poset
+A poset is a preorder (there can be at most 1 arrow between object) 
+and it must support composition:
 
-A *partial order* (*poset*) is a preorder where, if there are arrows, these cannot
-form loops (except for identity arrows).
+- *reflexivity*: from identity morphisms
+
+- *transitivity*: from composition of morphisms
+
+*** Partial order as a category
+
+A *partial order* is a poset where, if there are arrows, these cannot
+form loops (except for identity arrows). These are also called *skeletal* posets.
 
 - *reflexivity*: from identity morphisms
 
@@ -2364,8 +2379,9 @@ to the V-category $Y$ is a *V-functor*: $$ X^{op} \times Y \rightarrow V$$
 For such a functor, one has that:
 $$X(x',x) \otimes \Phi(x,y) \otimes Y(y,y') \leq \Phi(x', y')$$
 
-$\Phi$ can be seen as a matrix of elements connecting $X$ and $Y$. If $V$ is Bool,
-the above builds a new Bool category from two Bool categories (posets).
+$\Phi$ can be seen as a matrix of elements connecting $X$ and $Y$. If $X,Y,V$
+are Bool, the above builds a new Bool category from two Bool categories
+(posets) and it is called a feasibility relation.
 
 
 ** Special categories
@@ -2801,8 +2817,23 @@ If:
 then $x \in B$
 
 *** Subobject (Sets)
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
 
-Any object $B$ for which there exists a monomorphism $B \rightarrow X$ is a subset/subobject of $X$.
+A subobject of $c$ is an equivalence class $S=\{v, w \ldots \}$ where $v,w \ldots$ are 
+monos from objects connected by isomorphisms.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRACMQBfU9TXfIRQBGclVqMWbOt14gM2PASKjh4+s1aIQAY27iYUAObwioAGYAnCAFskZEDghIATNRx0sDNgAsIEAGsQag0pbRpZC2s7RFFHZ0Q3R09vbT9A4IlNNgB3SJArW3t3BLifGDooNkgwVhDJLRAAHSbsOy4KLiA
+\begin{tikzcd}
+b \arrow[rd, "v", hook] \arrow[r, "\sim", no head] & a \arrow[d, "w", hook] \\
+                                                   & c                     
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
 
 *** Equalizer (Sets)
 
@@ -3862,7 +3893,7 @@ y  & y^c \arrow[r, "\alpha^i_y"] & Fy
 #+END_EXPORT
 #+END_CENTER
 
-$$\alpha^i_y (\phi \circ Id_c) \simeq \alpha^i_y(\phi) = (F \phi) \circ \alpha^i_c(Id_c)$$
+$$\alpha^i_y (\phi \circ Id_c) \simeq \alpha^i_y(\phi) = (F \phi) (\alpha^i_c(Id_c))$$
 
 Given $F$, fixed $\alpha^i_c(Id_c) \in Fc$ there is a single $\alpha^i$. In practice: 
 $$Hom((-)^c,F) = Fc$$
@@ -4462,7 +4493,6 @@ f(q) = \begin{cases}
  \end{cases}
 \end{equation}
 
-
 ** Expression data types as functors                                 :focus:
 
 *** Expression data types as initial alg. of functors               
@@ -4574,13 +4604,15 @@ I_t \arrow[r, "\kappa(\beta \circ ...)"] & C^A_t
 :END:
 Useful to attach monadic actions to expressions; in general you would need an
 algebra ~f (m a) -> m a~ but that would be difficult to specify. You can do
-instead with ~algM: f a -> m a~, using ~cataM~ instead of ~cata~ and using kleisli
+instead with ~alpha: f a -> m a~, using ~cataM~ instead of ~cata~ and using kleisli
 arrow composition.
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRBwEkB9HEAX1LpMufIRRkATFVqMWbbrwFDseAkQCMpKdXrNWiEAFkuAQX6CQGFaI3lpuuQePAcJvueUi1KTevuz9IwA9CVN+aRgoAHN4IlAAMwAnCABbJDJ2CCQAZh0AthwuQwACAAoAHXKAazo0NDoiivLGNAALOgBKDo8QJNSc6hwsxAAWPL02Q0qW9p6+tNHB4YlxxxBKlKY55IXNTKQVmQmDSpq6hsMmmc7t-sQ9ofTqBiwwQLgIF6gQalaYOm+Bkgbx+7DoWAYbGBrGedAARjAGAAFYSqMQgBgweKKCh8IA
 \begin{tikzcd}
-{\tfun{\tia}} \arrow[d, no head] \arrow[rr] & *                           & {M[tA]} \arrow[d, "algM: tA \rightarrow MA", dashed, tail] \\
-\tia \arrow[rr, "\kappa M(algM)"']      & * \arrow[u, "mapM", dotted] & MA                                                        
+tI_t \arrow[r, "t_M (\kappa_M(\alpha))"]              & M_{tA} \arrow[d, "M\alpha"] \\
+                                                      & M^2_A \arrow[d, "\mu"]      \\
+I_t \arrow[r, "\kappa_M(\alpha)"] \arrow[uu, no head] & M_A                        
 \end{tikzcd}
 #+END_EXPORT
 #+END_CENTER
@@ -4630,7 +4662,6 @@ parser creates an annotated tree parser.
 \end{tikzcd}
   #+END_EXPORT
   #+END_CENTER
-
 
 ** Functor co-algebras                                               :focus:
 *** Anamorphisms                                                                  
@@ -4682,10 +4713,10 @@ starts. It corresponds to a transformation identity so it does nothing.
 :BEAMER_opt: fragile
 :END:
 
-Recall that $M_t^A$ represents a tree of structure $t$ with holes of type $A$. A
-futumorphism $u(\phi)$, given an $\phi: A \rightarrow tM_t^A$, allows to create
-a co-algebra $M_t^A \rightarrow tM_t^A$ which can be used to construct a
-co-inductive value (e.g., a stream).
+A futumorphism $u(\phi)$, given an $\phi: A \rightarrow tM_t^A$, allows to
+create a co-algebra $M_t^A \rightarrow tM_t^A$ which can be used to construct a
+co-inductive value (e.g., a stream). If $A$ is $F_t$, then $\phi$ could access
+future values to produce the current one.
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
@@ -4874,7 +4905,6 @@ belongs to the system itself. If $P(S)^A$ is finite then a final co-algebra exis
 it is the algebra of processes $(P, \pi)$
 
 # [(local) p. 32 of Jacobs and Rutten - A Tutorial on CoAlgebras and CoInduction.pdf](http://127.0.0.1:3000/zotero/L1VzZXJzL3phY2NhcmlhL2RldmVsb3BtZW50L2dpdGh1Yi9vcmctd3JpdGluZy96b3Rlcm9kYi9zdG9yYWdlL1I5NE44R0pDL0phY29icyBhbmQgUnV0dGVuIC0gQSBUdXRvcmlhbCBvbiBDb0FsZ2VicmFzIGFuZCBDb0luZHVjdGlvbi5wZGY.pdf#page=32)
-
 
 
 
@@ -5096,6 +5126,46 @@ f)~~~\simeq~~~\phi~n = (n>0)~?~(n*\phi(n-1))~1$$
 
 For languages that do not support recursion but only higher order functions, 
 there is an explicit lambda representation for $fix$ found by H.Curry.
+
+*** Kinds
+
+- The kinds in Haskell are: ~type~ (asterisk) and ~constraint~. 
+
+- Higher kinded datatypes are mappings: ~type -> type~, e.g. Maybe.
+
+- We can create new kinds with ~-XDataKinds~. Every type declaration
+  becomes a kind declaration (with ticks):
+
+  #+BEGIN_EXAMPLE
+  data Bool = True | False
+  #+END_EXAMPLE
+
+  produces kind ~Bool~ and types ~'True~ and ~'False~. Strings are promoted to kind ~Symbol~. 
+
+*** Polymorphic kinds
+Given a type definition
+
+  #+BEGIN_EXAMPLE
+  data [a] = a | a : [a]
+  #+END_EXAMPLE
+
+The promotion -~XDataKinds~ creates a kind ~[type]~; one can create a type which is a
+list of types through the promoted constructors, e.g.,
+
+#+BEGIN_example
+'[Bool, Int] :: [ type ]
+#+END_example
+
+
+*** Type applications
+
+With ~-XTypeApplicatons~
+
+#+BEGIN_EXAMPLE
+fmap :: Functor f => a -> b -> f a -> f b 
+fmap @Maybe :: a -> b -> Maybe a -> Maybe b
+fmap @_ @Int @Bool :: Int -> Bool -> f Int -> f Bool
+#+END_EXAMPLE
 
 ** Logic                                                             :focus:
 *** Classical logic                                                 
