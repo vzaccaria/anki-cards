@@ -3904,18 +3904,26 @@ $$Hom((-)^c,F) = Fc$$
 :BEAMER_opt: fragile
 :END:
 
-- Consider functors $(-)^a$ and $(-)^b$. The set of natural transformations
-  between them is, by Yoneda, isomorphic to $a^b$. 
+Consider functors $(-)^a$ and $(-)^b$. The set of natural transformations
+between them is, by Yoneda, isomorphic to $a^b$. 
 
-- This can be seen as a contravariant functor in $a$ on its own (called Yoneda
-  embedding): $$C^{op} \rightarrow Set^C$$ which maps for any morphism in
-  $C^{op}$ a natural transformation in $Set^C$. This functor is fully faithful,
-  i.e., objects in $C$ become functors and connections between them are
-  preserved through natural transformations.
+This can be seen as a contravariant functor in $a=*$ on its own (called Yoneda
+embedding): 
 
+  #+BEGIN_CENTER
+  #+BEGIN_EXPORT latex
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRACoACAHW6zE4BhAHrAIaAL4gJpdJlz5CKMgEYqtRizYAjabJAZseAkRWk11es1aIQACgC0ASmG6Zco4tPl1VrbccXLl5+TgBlGBxhQWl1GCgAc3giUAAzACcIAFskMxAcCCRidxAM7KQAZmoCpAAmCQoJIA
+    \begin{tikzcd}
+    * \in C^{op} & (-)^* \in Set^C \arrow[d] \\
+    b \arrow[u]  & (-)^b                    
+    \end{tikzcd}
+  #+END_EXPORT
+  #+END_CENTER
 
-- In Haskell, for any ~b -> a~ you have 
-  in ~(a -> x) -> (b -> x)~ and viceversa.
+which maps for any morphism in $C^{op}$ a natural transformation in $Set^C$.
+This functor is fully faithful, i.e., when objects in $C$ become their
+hom-functors, connections between become natural transformations. In Haskell,
+for any ~b -> a~ you have in ~(a -> x) -> (b -> x)~ and viceversa.
 
 *** Yoneda embedding                                                :focus:
 
@@ -5166,6 +5174,37 @@ fmap :: Functor f => a -> b -> f a -> f b
 fmap @Maybe :: a -> b -> Maybe a -> Maybe b
 fmap @_ @Int @Bool :: Int -> Bool -> f Int -> f Bool
 #+END_EXAMPLE
+
+Can be used with ~-XAllowAmbiguousTypes~ to define 
+functions whose type parameters are only on the left of the fat arrow ~=>~:
+
+#+BEGIN_EXAMPLE
+typeName :: forall a. Typeable a => String 
+typeName = show . typeRep $ Proxy @a 
+#+END_EXAMPLE
+
+
+
+*** GADTS
+
+With ~-XGADTs~ you get type equalities; the GADTS
+
+#+BEGIN_EXAMPLE
+data Expr a where 
+   LitInt :: Int -> Expr Int
+   LitBool :: Bool -> Expr Bool
+   ...
+#+END_EXAMPLE
+
+corresponds to:
+
+#+BEGIN_EXAMPLE
+data Expr a = (a ~ Int) => LitInt Int 
+            | (a ~ Bool) => LitBool Bool
+#+END_EXAMPLE
+
+
+
 
 ** Logic                                                             :focus:
 *** Classical logic                                                 
