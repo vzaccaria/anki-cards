@@ -3680,7 +3680,7 @@ r &  & d \arrow[ll, "f'"]
 #+END_EXPORT
 #+END_CENTER
 
-*** Universal arrow to object, product example
+*** Universal arrow to object, product example                      :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3698,6 +3698,7 @@ a & c \arrow[u, "h"] \arrow[l, "f"] \arrow[r, "g"'] & b & \Delta (a \times b) \a
 
 Projection functions $\ang{p, q}$ from the product $a \times b$ (and the product itself) are
 the universal arrow from the functor $\Delta(c) = \ang{c,c}$ to the object $\ang{a,b}$.
+
 
 *** Presheaf
 A presheaf on a small category $C$ is a functor $$C^{op} \mto Set$$. The category
@@ -3761,7 +3762,7 @@ D~\textrm{with}~\epsilon: LR \rightarrow I_d \arrow[rr, "R(\textrm{ight})", bend
       family of mappings/natural transformation $\eta$, if it exists. And it
       does, because $D(Lc,Lc)$ is not empty.
 
-*** Adjoint functors, currying                                      :focus:
+*** Exponentials - currying                                         :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
@@ -3779,7 +3780,8 @@ functor to $b$ and is a bijection of homsets $e \leftrightarrow \lambda_e$.
   #+END_CENTER
 
 This can also be seen as two adjoint endofunctors in $C$; the left adjoint is $-
-\times a$ while the right adjoint is $-^a$.
+\times a$ while the right adjoint is $-^a$. In particular, $eval$ is the co-unit of 
+the adjunction (i.e., a morphism: $RL \rightarrow I$)
 
 *** List monad from adjoint functors
 :PROPERTIES:
@@ -3955,6 +3957,46 @@ r \arrow[rr, "h"]   &                                        & - \\
 
 Yoneda: the components of the natural transformation $r^- \cong K-$ are one to one with the
 elements of $Kr$.
+
+
+*** Universal arrow and adjunctions                                 :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+- An adjunction is a universal arrow $(Lc, \eta_c)$ for $(R,c)$. 
+
+- So, $(L*, \eta_*)$ is universal for $(R,*)$ so $R$ is representable by $L*$.
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBjEAX1PU1z5CKcqWLU6TVuwBKAGS69+2PASIAmMRIYs2iEDKg8+IDCqFFR67VL0gFx5YLUpN1mjun6j3CTCgA5vBEoABmAE4QALZIAMw0OBBIACxKIBHRSGQgiUjqaRkxiKI5SYjZnnYAOlUwOPSO6ZFFJbmI+ZTcQA
+\begin{tikzcd}
+               & c \arrow[ld, "\eta"] \arrow[rd] &    \\
+RLc \arrow[rr] &                                 & Rd \\
+Lc \arrow[rr]  &                                 & d 
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+*** Product as adjunction                                           :focus:
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+
+#+BEGIN_CENTER
+#+BEGIN_EXPORT latex
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBjEAX1PU1z5CKAEykR1Ok1bsAOrMb0wAc0YwABPVLqARuvkAnJara9+2PASJjikhizaIQ9fbLwBbeLp58QGC0JE5KS2NPYyThyuHl5cZn4ClsLIwRJh0o4g8gAiMIw4LlEAvK6KKmrqHNpRhsZqPJIwUMrwRKAAZgYQ7kjBIDgQSCLxnd29NANIAMwjXT2IACwTg4jEs2OIU8tD3JTcQA
+\begin{tikzcd}
+                                             & c \arrow[rd] \arrow[ld] &                        \\
+c \times c \arrow[rr]                        &                         & a \times b             \\
+{\Delta c = \langle c, c \rangle} \arrow[rr] &                         & {\langle a, b \rangle}
+\end{tikzcd}
+#+END_EXPORT
+#+END_CENTER
+
+$\Delta$ is left adjoint to $- \times -$.
+
 *** Cayley's through yoneda                                                                 
 
 - Take $C = \{ * \}$ the category with a single object.
