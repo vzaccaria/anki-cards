@@ -1331,9 +1331,9 @@ expressed as powers of a single element called a primitive element of the field.
      scalar multiplication is $\bar{z}*v$ for $z \in C$, is a vector space.
 
 
-*** Dual Pair                                              
+*** Dual Pair                                                       :focus:
 A /dual pair/ is a pair of vector spaces $X,Y$ and a bilinear map $\ang{}: X \times Y \mto K$.
-*** Dual Space                                                      
+*** Dual Space                                                      :focus:
 
     - Given a vector space $V$, one can define its dual space as the space of
       linear mappings over it, i.e., $V^* = \{f: V \rightarrow k \}$.
@@ -1345,7 +1345,7 @@ A /dual pair/ is a pair of vector spaces $X,Y$ and a bilinear map $\ang{}: X \ti
       $\np{f}{x} = f(x)$ which is called the natural pairing.
    
 
-*** Dual spaces (functor relation)                                  
+*** Dual spaces (functor relation)                                  :focus:
 :PROPERTIES:
 :BEAMER_opt: fragile
 :END:
