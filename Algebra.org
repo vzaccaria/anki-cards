@@ -5527,7 +5527,7 @@ morphisms in a bicartesian closed category where data types are objects.
 - See the bicartesian closed category Set
 
 * Cryptography, quantum, probability, statistics
-** Quantum computing                                                 
+** Quantum computing                                                 :focus:
 *** Pauli matrices                                                  
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
