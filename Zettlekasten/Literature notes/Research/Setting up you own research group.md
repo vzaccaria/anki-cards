@@ -1,0 +1,17 @@
+
+# Setting up you own research group
+- date: 2021-08-25
+- tags: #research 
+- Links/sources: 
+	- https://onlinelibrary.wiley.com/doi/pdf/10.1111/jth.13531
+
+- Trovare dei mentors e parlare con tutti, dai capi dipartimento ai postdocs..
+- Essere pronto a vari ruoli 	
+	- Project initiator (grant writing)
+	- Project manager 
+	- Mentor
+	- Methodological consultant 
+	- HR manager 
+	- Accountant 
+- Attenzione a voler tornare a fare il semplice ricercatore.. tentare di evitare di risolvere i progetti dal punto di vista scientifico quando il problema potrebbe essere manageriale. 
+- Diversificare i progetti. Possono sembrare sempre belli all'inizio ma potrebbero non funzionare.

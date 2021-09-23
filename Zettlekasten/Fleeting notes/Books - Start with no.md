@@ -1,43 +1,35 @@
-
-#+TITLE: Books
-#+AUTHOR: Vittorio Zaccaria
-#+LEVEL: 2
-
-
-
-* Start with no 
-** What are the major weaknesses in a negotiation?
+### What are the major weaknesses in a negotiation?
    - *Talking*. Dont show you need to feel important.
    - *Fear of rejection.* Dont allow people to believe they have such power over you
    - Dont show neediness by wanting to be always right. Take responsibility of
      your own decisions.
    - Dont rush to close.
 
-** What is the Columbo effect?
+### What is the Columbo effect?
    - Make the *adversary feel in control* by showing *you are not perfect*.
    - Tell *self-deprecating* stories
 
-** Start with no, how?
+### Start with no, how?
    - The adversary must take responsibility for a "no"
    - Say "feel free to say no at any time"
    - Beware that, if we hear yes we might become needy
 
-** What is a negotiation?
+### What is a negotiation?
    A *negotiation* is an agreement between two or more parties, with all parties
    having the right to veto.
 
-** Your mission and purpose, how to set it?
+### Your mission and purpose, how to set it?
    - Must be set in the adversary's world
    - They will decide based on their perspective/Vision
 
-** What are the basic principles about questions in a negotiation?
+### What are the basic principles about questions in a negotiation?
 
    - Use questions. e.g., what would you like me to do? 
    - Leave them open to say no
    - Always start with who, what, when, where, why, how, which
    - *short questions*
 
-** How do you say it? Nurturing
+### How do you say it? 
    - Make them feel at ease. 
    - Laughter 
 
@@ -59,9 +51,7 @@
 
 ** Ho to know the adversary
    - Ask who are the decision makers?
-
    - Circumvent blockers with respect
-
    - It never hurts to start at the top
 
 ** How to share an agenda?
@@ -79,7 +69,3 @@
 
 ** What happens next?
    Always negotiate what happen next, by verifying it three times.
-
-
-  
-
