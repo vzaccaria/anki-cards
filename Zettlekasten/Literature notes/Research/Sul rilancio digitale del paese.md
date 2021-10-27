@@ -1,6 +1,6 @@
 tags: #research, #strategy
 
-links: [[Fleeting notes/Sul rilancio digitale del paese]], [link originale](https://www.agendadigitale.eu/cittadinanza-digitale/pnrr-fuggetta-come-riscrivere-il-piano-per-il-rilancio-del-paese/)[https://www.agendadigitale.eu/cittadinanza-digitale/pnrr-fuggetta-come-riscrivere-il-piano-per-il-rilancio-del-paese/](https://www.agendadigitale.eu/cittadinanza-digitale/pnrr-fuggetta-come-riscrivere-il-piano-per-il-rilancio-del-paese/)
+links: [[Fleeting notes - archived/Sul rilancio digitale del paese]], [link originale](https://www.agendadigitale.eu/cittadinanza-digitale/pnrr-fuggetta-come-riscrivere-il-piano-per-il-rilancio-del-paese/)[https://www.agendadigitale.eu/cittadinanza-digitale/pnrr-fuggetta-come-riscrivere-il-piano-per-il-rilancio-del-paese/](https://www.agendadigitale.eu/cittadinanza-digitale/pnrr-fuggetta-come-riscrivere-il-piano-per-il-rilancio-del-paese/)
 
 Premessa: Una strategia è composta da: 
 - Diagnosi del problema 

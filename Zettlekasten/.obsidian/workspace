@@ -4,11 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "ed377fb258ca5901",
+        "id": "d765cb322fb3711e",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "Fleeting notes/Untitled.md",
+            "mode": "source"
+          }
         }
       }
     ],
@@ -36,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "chiasso",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,6 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Fleeting notes/Untitled.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -82,17 +86,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "ed377fb258ca5901",
+  "active": "d765cb322fb3711e",
   "lastOpenFiles": [
     "Fleeting notes/Untitled.md",
-    "Literature notes/Teaching notes/Didattica blended.md",
-    "Literature notes/Teaching notes/Didattica a distanza.md",
-    "Permanent notes/Research/Rimanere in quota.md",
-    "Permanent notes/Research/Cosa intendo per ricerca.md",
-    "Literature notes/Research/Sul rilancio digitale del paese.md",
-    "Untitled.md",
-    "Inbox/Comunicazione docente studente.md",
-    "Inbox/Intelligence vs Rationality.md",
-    "Literature notes/Research/Setting up you own research group.md"
+    "Fleeting notes/Slowed canonical process in large fields of science.md",
+    "Literature notes/Books/Book - La forza del team.md",
+    "Permanent notes/Società/Autocompiacimento.md",
+    "Permanent notes/Società/I verbi di ciò che è vs ciò che vorrei.md",
+    "Literature notes/Books/Book - Drive.md",
+    "Fleeting notes/Leadership Inclusiva.md",
+    "Fleeting notes/Comunicazione docente studente.md",
+    "Fleeting notes/Nicola Pievani.md",
+    "Fleeting notes/Tony capuozzo.md"
   ]
 }
