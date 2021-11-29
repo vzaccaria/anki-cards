@@ -4,14 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d765cb322fb3711e",
+        "id": "ac98f2c893c97327",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Fleeting notes/Untitled.md",
-            "mode": "source"
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -68,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Fleeting notes/Untitled.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +82,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d765cb322fb3711e",
+  "active": "ac98f2c893c97327",
   "lastOpenFiles": [
     "Fleeting notes/Untitled.md",
     "Fleeting notes/Slowed canonical process in large fields of science.md",

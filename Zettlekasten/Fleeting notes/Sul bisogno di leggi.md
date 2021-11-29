@@ -1,0 +1,1 @@
+Quando vi dicono « [#ddlzan](https://mobile.twitter.com/hashtag/ddlzan?src=hashtag_click) non serviva, abbiamo già le leggi che vanno applicate» rispondete: beh a sto punto abbiamo i 10 Comandamenti, a che serve il codice penale?
