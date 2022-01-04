@@ -1,0 +1,1 @@
+You either die a hero or you live long enough to see yourself become the villain [https://twitter.com/mozilla/status/1476951030638260225](https://twitter.com/mozilla/status/1476951030638260225)

@@ -1,14 +1,18 @@
 {
   "main": {
-    "id": "38375b36c849fda2",
+    "id": "857a78f50c3b2aea",
     "type": "split",
     "children": [
       {
-        "id": "ac98f2c893c97327",
+        "id": "f7f99e54d3ba413a",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "Fleeting notes/Lessons from my PHd.md",
+            "mode": "source",
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Fleeting notes/Lessons from my PHd.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -82,17 +87,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "ac98f2c893c97327",
+  "active": "f7f99e54d3ba413a",
   "lastOpenFiles": [
-    "Fleeting notes/Untitled.md",
-    "Fleeting notes/Slowed canonical process in large fields of science.md",
-    "Literature notes/Books/Book - La forza del team.md",
-    "Permanent notes/Società/Autocompiacimento.md",
+    "Fleeting notes/Lessons from my PHd.md",
+    "Fleeting notes/You either die a hero or you live long enough to see yourself become the villain.md",
+    "Permanent notes/Società/Intra vs Extra.md",
+    "Permanent notes/Teaching - Principio di attualità dell'esame.md",
     "Permanent notes/Società/I verbi di ciò che è vs ciò che vorrei.md",
-    "Literature notes/Books/Book - Drive.md",
-    "Fleeting notes/Leadership Inclusiva.md",
-    "Fleeting notes/Comunicazione docente studente.md",
-    "Fleeting notes/Nicola Pievani.md",
-    "Fleeting notes/Tony capuozzo.md"
+    "Fleeting notes/Sul bisogno di leggi.md",
+    "Fleeting notes/Slowed canonical process in large fields of science.md",
+    "Fleeting notes/Quote da Boncinelli.md",
+    "Fleeting notes/Paolo Boggiani.md",
+    "Literature notes/Books/Book - La forza del team.md"
   ]
 }
