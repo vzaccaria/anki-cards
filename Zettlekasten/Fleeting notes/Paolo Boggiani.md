@@ -1,1 +1,0 @@
-Paolo Boggiani: se sei libero di pensare, sei libero di creare

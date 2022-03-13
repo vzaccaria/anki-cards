@@ -5023,7 +5023,7 @@ it is the algebra of processes $(P, \pi)$
 
 
 
-** Free monads
+** Free monads                                                       :focus:
 *** Free monads (construction)                                      
     :PROPERTIES:
     :BEAMER_opt: fragile

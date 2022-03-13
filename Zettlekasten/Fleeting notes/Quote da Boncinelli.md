@@ -1,1 +1,0 @@
-Riconoscere eventuali difetti in un nostro ragionamento o in una valutazione non ci deve spingere ad arrenderci, perché “è tutto così difficile”, ma a soffermarci e ripartire con argomenti più sensati, perché più pensati. Pensare richiede più tempo e fatica di quanto pensiate.
