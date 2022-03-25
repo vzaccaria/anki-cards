@@ -1,4 +1,21 @@
 
+- Re-elaborated from (either local link or url): https://www.morling.dev/blog/the-code-review-pyramid/
+- 2022-03-19, tags: #management 
+---
+
+Può il momento di condivisione con uno stuente essere paragonato ad una code review? Proviamo a fare un parallelo:
+
+### Sulla identificazione dell'approccio
+1. E' la formulazione generale abbastanza da coprire diversi casi di studio ma non troppo da diventare dispersiva/non ottimale? 
+2. Ci sono più modi di fare una cosa?
+3. C'è una chiara suddivisione fra interfacce e internals?
+4. Si appoggia per quanto possibile a concetti già esistenti? E' stato fatto lo sforzo di cercarli?
+5. Il modo scelto è quello migliore? O vi è la possibilità di obiezioni?
+
+
+
+--- 
+
 Ordered by larger efforts for changes later on. Last points should be automated.
 
 1. API semantics 

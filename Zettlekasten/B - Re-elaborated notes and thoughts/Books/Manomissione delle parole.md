@@ -1,5 +1,5 @@
 - Re-elaborated from (either local link or url): [[Manomissione delle parole]]
-- 2022-03-13, tags: #società 
+- 2022-03-13, tags: #società, #argomentazione 
 ---
 
 #### Sugli effetti delle parole

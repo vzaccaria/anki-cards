@@ -1,6 +1,6 @@
 
 - Re-elaborated from (either local link or url): la forza del team 
-- 2022-03-13, tags: #motivazione 
+- 2022-03-13, tags: #motivazione, #management 
 ---
 
 - "Team" è più una dichiarazione di intenti che non una strategia operativa. E' un termine appagante ma non delineato. E' un messaggio vago.

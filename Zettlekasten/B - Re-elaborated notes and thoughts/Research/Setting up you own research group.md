@@ -1,5 +1,5 @@
 - Re-elaborated from (either local link or url):  https://onlinelibrary.wiley.com/doi/pdf/10.1111/jth.13531
-- 2021-08-25, tags: #ricerca 
+- 2021-08-25, tags: #ricerca, #management 
 ---
 
 - Trovare dei mentors e parlare con tutti, dai capi dipartimento ai postdocs..

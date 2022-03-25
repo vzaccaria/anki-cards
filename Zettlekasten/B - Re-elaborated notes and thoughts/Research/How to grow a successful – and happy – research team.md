@@ -1,5 +1,5 @@
 - Re-elaborated from (either local link or url): https://ijbnpa.biomedcentral.com/articles/10.1186/s12966-019-0907-1
-- 2022-03-13, tags: #ricerca, #collaborazione 
+- 2022-03-13, tags: #ricerca, #collaborazione, #management 
 ---
 
 - Il ranking è importante per due motivi:	

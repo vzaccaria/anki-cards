@@ -1,5 +1,5 @@
 - Re-elaborated from (either local link or url): [[Memorie di Adriano (Fleeting notes)]]
-- 2022-03-13, tags: #filosofia
+- 2022-03-13, tags: #filosofia, #management, #relazioni
 ---
 
 #### Sulla bilancio della propria esistenza

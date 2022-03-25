@@ -1,5 +1,4 @@
-- Re-elaborated from (either local link or url):  [[C - Raw notes and thoughts/Ricerca/Sul rilancio digitale del paese]], [link originale](https://www.agendadigitale.eu/cittadinanza-digitale/pnrr-fuggetta-come-riscrivere-il-piano-per-il-rilancio-del-paese/)[https://www.agendadigitale.eu/cittadinanza-digitale/pnrr-fuggetta-come-riscrivere-il-piano-per-il-rilancio-del-paese/](https://www.agendadigitale.eu/cittadinanza-digitale/pnrr-fuggetta-come-riscrivere-il-piano-per-il-rilancio-del-paese/)
-
+- Re-elaborated from (either local link or url):  [link originale](https://www.agendadigitale.eu/cittadinanza-digitale/pnrr-fuggetta-come-riscrivere-il-piano-per-il-rilancio-del-paese/)
 - 2022-03-13, tags: #ricerca, #società, #economia
 ---
 

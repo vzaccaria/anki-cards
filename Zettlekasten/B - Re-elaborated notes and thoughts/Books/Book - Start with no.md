@@ -1,5 +1,5 @@
 - Re-elaborated from (either local link or url):  [[Start with no]]
-- 2021-08-06, tags: #motivazione, #assertività, #negoziazione
+- 2021-08-06, tags: #motivazione, #assertività, #negoziazione, #management 
 ---
 
 Una negoziazione è un accordo fra parti al quale le stesse possono dire di no. 

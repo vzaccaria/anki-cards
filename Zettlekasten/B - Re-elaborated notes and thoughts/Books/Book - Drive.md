@@ -1,5 +1,5 @@
 - Re-elaborated from (either local link or url): Drive di Daniel Pink
-- 2022-03-13, tags: #motivazione
+- 2022-03-13, tags: #motivazione, #management
 ---
 
 * Bastone e carota significa *ricompensa e punizione* ed è stato uno dei metodi principali caratterizzanti il processo di efficientamento industriale iniziato nel 800 (https://en.wikipedia.org/wiki/Frederick_Winslow_Taylor)

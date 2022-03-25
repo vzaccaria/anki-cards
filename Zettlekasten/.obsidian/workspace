@@ -4,15 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e5a0f2507353430d",
+        "id": "b435377d574d018a",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "A - Permanent notes/Research/Rimanere in quota.md",
-            "mode": "source",
-            "source": false
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -40,8 +36,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#società",
-                "matchingCase": true,
+                "query": "tag:#ragionamento",
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
                 "extraContext": false,
@@ -69,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "A - Permanent notes/Research/Rimanere in quota.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,17 +82,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e5a0f2507353430d",
+  "active": "b435377d574d018a",
   "lastOpenFiles": [
-    "A - Permanent notes/Research/Rimanere in quota.md",
-    "B - Re-elaborated notes and thoughts/Research/Sul rilancio digitale del paese.md",
-    "B - Re-elaborated notes and thoughts/Research/Setting up you own research group.md",
+    "B - Re-elaborated notes and thoughts/Research/Code reviews with students.md",
+    "C - Raw notes and thoughts/Unclassified/Intelligence vs Rationality.md",
+    "C - Raw notes and thoughts/Unclassified/Mentor engineers.md",
+    "B - Re-elaborated notes and thoughts/Research/Lessons funding basic research.md",
+    "B - Re-elaborated notes and thoughts/Research/How to grow a successful – and happy – research team.md",
     "B - Re-elaborated notes and thoughts/Research/Gestione della ricerca.md",
-    "A - Permanent notes/How to Zettelkasten.md",
-    "A - Permanent notes/Teaching/Principio di attualità dell'esame.md",
-    "A - Permanent notes/Teaching/Didattica a distanza.md",
-    "B - Re-elaborated notes and thoughts/Teaching notes/Esami con progetto.md",
-    "A - Permanent notes/Società/Autocompiacimento.md",
-    "A - Permanent notes/Società/Sulle contraddizioni della nostra società.md"
+    "C - Raw notes and thoughts/Ricerca/Random - Introvert in academia.md",
+    "C - Raw notes and thoughts/Ricerca/How to get the most out of your 1on1s.md",
+    "B - Re-elaborated notes and thoughts/Teaching notes/Uso dei libri e registrazione.md",
+    "B - Re-elaborated notes and thoughts/Teaching notes/Esami con progetto.md"
   ]
 }

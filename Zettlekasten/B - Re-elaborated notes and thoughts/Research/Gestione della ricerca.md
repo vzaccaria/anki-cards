@@ -1,5 +1,5 @@
 - Re-elaborated from (either local link or url): [[Managing people 🤯]], [[Lessons from my PHd]]
-- 2022-03-13, tags: #ricerca , #collaborazione 
+- 2022-03-13, tags: #ricerca , #collaborazione, #management 
 ---
 
 ### Instaurare un rapporto di collaborazione
