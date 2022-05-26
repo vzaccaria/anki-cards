@@ -1,1 +1,0 @@
-https://freedom-to-tinker.com/2022/03/11/the-tech-industry-controls-cs-conference-funding-what-are-the-dangers/

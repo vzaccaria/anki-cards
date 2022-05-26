@@ -1,1 +1,0 @@
-https://www.raptitude.com/2016/12/five-things-you-notice-when-you-quit-the-news/

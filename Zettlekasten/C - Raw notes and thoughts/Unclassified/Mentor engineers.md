@@ -1,1 +1,0 @@
-https://xdg.me/mentor-engineers/

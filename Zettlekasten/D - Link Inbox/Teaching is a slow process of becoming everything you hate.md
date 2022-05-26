@@ -1,1 +1,0 @@
-https://dynomight.net/teaching/

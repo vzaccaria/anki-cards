@@ -1,1 +1,0 @@
-https://fs.blog/2013/12/stop-reading-news/

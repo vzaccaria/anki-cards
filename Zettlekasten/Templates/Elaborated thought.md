@@ -1,3 +1,0 @@
-- Re-elaborated from (either local link or url): 
-- {{date}}, tags: 
----
