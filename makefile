@@ -1,4 +1,5 @@
-#
+ORG2PDF=org2pdf --debug-latex --emacs-command /Applications/Emacs.app/Contents/MacOS/Emacs-arm64-12
+
 # Use CURTGT=file.pdf make watch
 
 TARGETS=\
@@ -21,13 +22,13 @@ internal: Algebra.org
 # then use: http://homepages.inf.ed.ac.uk/cheunen/freetikz/freetikz.html
 
 %.tex: %.org
-	JSLATEX_COPYPB=true org2pdf $< -r -t --select-tags focus --exclude-tags noanki -o $@
+	JSLATEX_COPYPB=true $(ORG2PDF) $< -r -t --select-tags focus --exclude-tags noanki -o $@
 
 %.pdf: %.tex
 	jslatex $< --nobibtex
 
 watch: 
-	(WATCH=true org2pdf $(CURORG) -r --select-tags focus --watch -p --silent &)
+	(WATCH=true $(ORG2PDF) $(CURORG) -r --select-tags focus --watch -p --silent &)
 	/usr/local/bin/emacsclient -nw $(CURORG) -c
 
 kill:
@@ -42,3 +43,6 @@ rebuild:
 
 update: 
 	git add . && git commit -m "updates to cards" && git push
+
+obsidian.md: Algebra.org makefile obsidian.script
+	pandoc Algebra.org --wrap=none -t markdown | sed -f obsidian.script > $@

@@ -2479,7 +2479,7 @@ as the set of:
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
-  \includegraphics[width=4cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/key/page-2-crop.pdf}
+  \includegraphics[width=4cm]{./key/page-2-crop.pdf}
   #+END_EXPORT
   #+END_CENTER
 
@@ -2496,7 +2496,7 @@ as the set of:
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
-  \includegraphics[width=3cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/key/page-1-crop.pdf}
+  \includegraphics[width=3cm]{./key/page-1-crop.pdf}
   #+END_EXPORT
   #+END_CENTER
 
@@ -2510,7 +2510,7 @@ as the set of:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=3cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/key/page-3-crop.pdf}
+\includegraphics[width=3cm]{./key/page-3-crop.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -2522,7 +2522,7 @@ A compact (or /autonomous/) category is such that every object $X$ has a dual $X
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/compactdual.pdf}
+\includegraphics[]{./images/compactdual.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -2532,7 +2532,7 @@ and there are unit $i_X: I \cong X \otimes X'$ and co-unit $\epsilon_X: X
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/zigzag.pdf}
+\includegraphics[]{./images/zigzag.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -2546,8 +2546,8 @@ and there are unit $i_X: I \cong X \otimes X'$ and co-unit $\epsilon_X: X
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
   \begin{figure}
-  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/cchom1.pdf}}
-  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/cchom2.pdf}}
+  \subfigure{\includegraphics{./images/cchom1.pdf}}
+  \subfigure{\includegraphics{./images/cchom2.pdf}}
   \end{figure}
   #+END_EXPORT
   #+END_CENTER 
@@ -2714,7 +2714,7 @@ quotiented over $E$ (and the axioms of PROP)
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
-  \includegraphics[width=10cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/monoid.png}
+  \includegraphics[width=10cm]{./images/monoid.png}
   #+END_EXPORT
   #+END_CENTER
 
@@ -2727,7 +2727,7 @@ For a co-monoid, black dot is $\Delta$
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=10cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/comonoid.png}
+\includegraphics[width=10cm]{./images/comonoid.png}
 #+END_EXPORT
 #+END_CENTER
 
@@ -2737,7 +2737,7 @@ The operations of a co-monoid are monoid morphisms:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=10cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/bialgebras.png}
+\includegraphics[width=10cm]{./images/bialgebras.png}
 #+END_EXPORT
 #+END_CENTER
 
@@ -2752,7 +2752,7 @@ and a co-monoid:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=10cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/frobenius.png}
+\includegraphics[width=10cm]{./images/frobenius.png}
 #+END_EXPORT
 #+END_CENTER
 
@@ -2769,7 +2769,7 @@ and a co-monoid:
   
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
-  \includegraphics[width=4cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/prop_sum_graph_prop.pdf}
+  \includegraphics[width=4cm]{./images/prop_sum_graph_prop.pdf}
   #+END_EXPORT
   #+END_CENTER
   
@@ -3269,7 +3269,7 @@ Assume C is a category with pullbacks. Then *Span(C)* is such that
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanc_2cellcomp.pdf}
+\includegraphics{./images/spanc_2cellcomp.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -3281,8 +3281,8 @@ Assume C is a category with pullbacks. Then *Span(C)* is such that
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
   \begin{figure}
-  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanc_2cell.pdf}}
-  \subfigure{\includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanc_2cellhcomp.pdf}}
+  \subfigure{\includegraphics{./images/spanc_2cell.pdf}}
+  \subfigure{\includegraphics{./images/spanc_2cellhcomp.pdf}}
   \end{figure} 
   #+END_EXPORT
   #+END_CENTER 
@@ -3291,7 +3291,7 @@ Assume C is a category with pullbacks. Then *Span(C)* is such that
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
-  \includegraphics{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanc_2cellvcomp.pdf}
+  \includegraphics{./images/spanc_2cellvcomp.pdf}
   #+END_EXPORT
   #+END_CENTER
 
@@ -3306,7 +3306,7 @@ Assume C is a category with pullbacks. Then *Span(C)* is such that
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=10cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/bicategory_monad.pdf}
+\includegraphics[width=10cm]{./images/bicategory_monad.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -3317,7 +3317,7 @@ following commute:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=8cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/bicategory_monad_morphism.pdf}
+\includegraphics[width=8cm]{./images/bicategory_monad_morphism.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -3329,8 +3329,8 @@ following commute:
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
   \begin{figure}
-  \subfigure{\includegraphics[width=5cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanset_mu.pdf}}
-  \subfigure{\includegraphics[width=2cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/spanset_eta.pdf}}
+  \subfigure{\includegraphics[width=5cm]{./images/spanset_mu.pdf}}
+  \subfigure{\includegraphics[width=2cm]{./images/spanset_eta.pdf}}
   \end{figure} 
   #+END_EXPORT
   #+END_CENTER 
@@ -5066,7 +5066,7 @@ it is the algebra of processes $(P, \pi)$
 
   #+BEGIN_CENTER
   #+BEGIN_EXPORT latex
-  \includegraphics[width=4cm]{/Users/zaccaria/development/github/org-institutional/anki-cards/key/page-4-crop.pdf}
+  \includegraphics[width=4cm]{./key/page-4-crop.pdf}
   #+END_EXPORT
   #+END_CENTER
 
@@ -5531,7 +5531,7 @@ morphisms in a bicartesian closed category where data types are objects.
 *** Pauli matrices                                                  
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=1\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_pauli.pdf}
+\includegraphics[width=1\linewidth]{./images/q_pauli.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -5541,7 +5541,7 @@ $C^n$ is an Hilbert space where the inner product is defined by:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=1\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_hilb.pdf}
+\includegraphics[width=1\linewidth]{./images/q_hilb.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -5646,7 +5646,7 @@ with the following law:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=0.35\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_cnotgate.pdf}
+\includegraphics[width=0.35\linewidth]{./images/q_cnotgate.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -5663,13 +5663,13 @@ through classic bit communication:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=0.85\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_teleportation.pdf}
+\includegraphics[width=0.85\linewidth]{./images/q_teleportation.pdf}
 #+END_EXPORT
 #+END_CENTER
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=0.55\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_teleportation_psi2.pdf}
+\includegraphics[width=0.55\linewidth]{./images/q_teleportation_psi2.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -5684,7 +5684,7 @@ control bits that are unaffected by the action of the Toffoli gate:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=0.35\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_toffoli.pdf}
+\includegraphics[width=0.35\linewidth]{./images/q_toffoli.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -5695,7 +5695,7 @@ to create a NAND gate:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=0.55\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_ancilla.pdf}
+\includegraphics[width=0.55\linewidth]{./images/q_ancilla.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -5707,7 +5707,7 @@ data register is a superposition, the final state will be in a superposition as 
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=0.55\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_parallelism.pdf}
+\includegraphics[width=0.55\linewidth]{./images/q_parallelism.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -5728,7 +5728,7 @@ With two additional hadamard gates with respect to the classic parallelism gate:
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=0.55\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_deutsch.pdf}
+\includegraphics[width=0.55\linewidth]{./images/q_deutsch.pdf}
 #+END_EXPORT
 #+END_CENTER
 
@@ -5739,7 +5739,7 @@ allowing us to determine some global property of $f$ with just one evaluation of
 
 #+BEGIN_CENTER
 #+BEGIN_EXPORT latex
-\includegraphics[width=0.55\linewidth]{/Users/zaccaria/development/github/org-institutional/anki-cards/images/q_deutsch_josza.pdf}
+\includegraphics[width=0.55\linewidth]{./images/q_deutsch_josza.pdf}
 #+END_EXPORT
 #+END_CENTER
 

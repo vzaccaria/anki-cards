@@ -1,0 +1,3 @@
+s/{=latex}/tikz/gi
+s/\\begin{tikzcd}/\\usepackage{tikz-cd}\\begin{document}\\begin{tikzcd}/gi
+s/\\end{tikzcd}/\\end{tikzcd}\\end{document}/gi
